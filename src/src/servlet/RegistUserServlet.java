@@ -13,23 +13,20 @@ import javax.servlet.http.HttpSession;
 import dao.IdpwDAO;
 import model.Idpw;
 import model.LoginUser;
+import model.Result;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class RegistUserServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/RegistUserServlet")
+public class RegistUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	/*doGetでlogin.jspにフォワードする*/
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-		dispatcher.forward(request, response);
+		//使わない？
 	}
 
 	/**
@@ -41,9 +38,10 @@ public class LoginServlet extends HttpServlet {
 		String id = request.getParameter("ID");
 		String pw = request.getParameter("PW");
 
-		// ログイン処理を行う
+		// ユーザー登録処理
+
 		IdpwDAO iDao = new IdpwDAO();
-		if (iDao.isLoginOK(new Idpw(id, pw))) {	// ログイン成功
+		if (iDao.insert(new Idpw(id, pw))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("id", new LoginUser(id));
@@ -51,14 +49,17 @@ public class LoginServlet extends HttpServlet {
 			// メニューサーブレットにリダイレクトする
 			response.sendRedirect("/simpleBC/MenuServlet");
 		}
-		else {									// ログイン失敗
-			// （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+		else {									// 登録失敗
+			//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			request.setAttribute("result",
-			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/LoginServlet"));
+			new Result("登録失敗！", "IDを変えてもう一度やり直してください。", "/simpleBC/LoginServlet"));
 
-			// （要変更？）結果ページにフォワードする
+			//  （要変更？）結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
 			dispatcher.forward(request, response);
 		}
 	}
+
+	}
+
 }
