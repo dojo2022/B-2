@@ -11,7 +11,10 @@
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<h1>TASUMA</h1>
 	<h2>メニュー</h2>
-	
+
+	<%--
+
+
 	<!-- ハンバーガーメニュー -->
 	<nav class="header_nav nav" id="js-nav">
 		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
@@ -26,9 +29,9 @@
 		<span></span>
 		<span></span>
 	</button>
-	
+
 	<!-- ${ }の中身はJavaBeansが決まらないと書けない(現状はとりあえず仮で書いているだけ) -->
-	
+
 	<!-- 本日の目標 -->
 	<c:forEach var="e1" items="${Certifications }">
 		<h3>本日の目標-${e1.certification}</h3>
@@ -38,18 +41,19 @@
 			</c:forEach>
 		</ul>
 	</c:forEach>
-	
+
 	<!-- 残り日数 -->
 	<c:forEach var="e" items="${Certifications }">
 		<h4>${e.certification}まで残り${e.date }日です。</h4>
 	</c:forEach>
-	
+
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示 -->
 	<div id="calendar"></div>
-	
+
 	<script src="JavaScript/calendar.js"></script>
-	
+
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
+	---%>
 </body>
 </html>
