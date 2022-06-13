@@ -4,35 +4,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/tasuma/css/style.css">
+<link rel="stylesheet" href="/tasuma/css/menu.css">
 <title>TASUMA | メニュー</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
-	<h1>TASUMA</h1>
+
 	<h2>メニュー</h2>
 
-	<%--
-
-
 	<!-- ハンバーガーメニュー -->
-	<nav class="header_nav nav" id="js-nav">
-		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
-		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
-		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
-		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
-		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
-		<button class="menu-button" onclick="location.href='https://codic.jp/engine'"></button>
+	<nav class="menu" id="js-nav">
+		<ul class="nav__items nav-items">
+			<li class="nav-items__item"><a href="">My資格</a></li>
+			<li class="nav-items__item"><a href="">目標設定</a></li>
+			<li class="nav-items__item"><a href="">理解度報告</a></li>
+			<li class="nav-items__item"><a href="">掲示板</a></li>
+			<li class="nav-items__item"><a href="">ユーザ設定</a></li>
+			<li class="nav-items__item"><a href="">ログアウト</a></li>
+		</ul>
 	</nav>
-	<button class="header_hamburger hamburger active" id="js-hamburger">
+	<button class="menu-btn">
 		<span></span>
 		<span></span>
 		<span></span>
 	</button>
 
-	<!-- ${ }の中身はJavaBeansが決まらないと書けない(現状はとりあえず仮で書いているだけ) -->
+	<!-- 中身はJavaBeansが決まらないと書けない(現状はとりあえず仮で書いているだけ) -->
 
 	<!-- 本日の目標 -->
+	<%--
 	<c:forEach var="e1" items="${Certifications }">
 		<h3>本日の目標-${e1.certification}</h3>
 		<ul>
@@ -47,13 +47,14 @@
 		<h4>${e.certification}まで残り${e.date }日です。</h4>
 	</c:forEach>
 
+	--%>
+
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示 -->
 	<div id="calendar"></div>
 
-	<script src="JavaScript/calendar.js"></script>
+	<script src="JavaScript/menu.js"></script>
 
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
-	---%>
 </body>
 </html>

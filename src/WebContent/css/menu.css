@@ -1,4 +1,13 @@
 @charset "UTF-8";
 
 /*ハンバーガーメニュー*/
+.menu{
+  transform: translateX(-20vw);
+  transition: all .3s linear;
+}
+/* アニメーション後のメニューの状態 */
+.menu.is-active{
+  transform: translateX(0);
+}
+
 /*カレンダー*/
