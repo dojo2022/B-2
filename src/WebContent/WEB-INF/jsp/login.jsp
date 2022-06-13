@@ -8,7 +8,7 @@
 <link rel="stylesheet"type="text/css" href="/tasuma/css/login.css">
 </head>
 <body>
-<header><%@ include file="/tasuma/WebContent/WEB-INF/jsp/header.jsp" %></header>
+<jsp:include page="/WEB-INF/jsp/header.jsp" />
 <!--新規登録ページにリンク飛ぶボタン-->
  <a href="/tasuma/MenuServlet">
 	<button type="button" name="newregister">新規登録</button>
@@ -18,10 +18,10 @@
 ログインボタン
 パスワードを表示するチェックボックス
 のテーブル-->
-<form method="POST" action="/tasuma/LoginServlet">
+<form method="POST" action="/tasuma/LoginServlet" id="loginForm">
 	<table>
 	 	<tr>
-			<td>ユーザ名<input type="text" name="username_box"></td>
+			<td>ユーザ名<input type="text" name="username_box" id="username"></td>
 		</tr>
 		<tr>
 			<td>PW<input type="password" name="password" id="password"></td>
@@ -33,7 +33,7 @@
 	<div class="submit"><input type="submit" name="login" value="Enter"class="login"></div>
 </form>
 <span id="error_message"></span>
-<footer><%@ include file="/tasuma/WebContent/WEB-INF/jsp/footer.jsp" %></footer>
+<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 <script src="/tasuma/WebContent/JavaScript/login.js"></script>
 </body>
 </html>
