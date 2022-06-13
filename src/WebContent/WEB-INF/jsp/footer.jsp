@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>footer</title>
+<link rel="stylesheet"type="text/css" href="/tasuma/css/style.css">
 </head>
 <body>
-  <p>&copy;Copyright B2-Anpanmango.All rights reserved.</p>
+  <p class="footer">&copy;Copyright B2-Anpanmango.All rights reserved.</p>
 </body>
 </html>
