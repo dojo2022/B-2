@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.IdpwDAO;
-import model.Idpw;
+import dao.UsersDAO;
 import model.LoginUser;
+import model.Users;
+//import model.LoginUser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,23 +39,23 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("ID");
-		String pw = request.getParameter("PW");
+		String username = request.getParameter("USERNAME");
+		String password = request.getParameter("PASSWORD");
 
 		// ログイン処理を行う
-		IdpwDAO iDao = new IdpwDAO();
-		if (iDao.isLoginOK(new Idpw(id, pw))) {	// ログイン成功
+		UsersDAO uDao = new UsersDAO();
+		if (uDao.isLoginOK(new Users(username, password))) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
+			session.setAttribute("username", new LoginUser(username));
 
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/simpleBC/MenuServlet");
+			response.sendRedirect("/tasuma/MenuServlet");
 		}
 		else {									// ログイン失敗
 			// （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する
 			request.setAttribute("result",
-			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/LoginServlet"));
+			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/tasuma/LoginServlet"));
 
 			// （要変更？）結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");

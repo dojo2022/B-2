@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
 
+import model.Users;
 
 
 /**
@@ -16,7 +17,7 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet("/UsersDAO")
 public class UsersDAO  {
 	// ログインできるならtrueを返す
-	public boolean isLoginOK(Idpw idpw) {
+	public boolean isLoginOK(Users Users) {
 		Connection conn = null;
 		boolean loginResult = false;
 
@@ -27,10 +28,10 @@ public class UsersDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SELECT文を準備する
-			String sql = "select count(*) from IDPW where ID = ? and PW = ?";
+			String sql = "select count(*) from Users where USERID = ? and PASSWORD = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, idpw.getId());
-			pStmt.setString(2,idpw.getPw());
+			pStmt.setString(1, Users.getUsername());
+			pStmt.setString(2,Users.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -71,7 +72,7 @@ public class UsersDAO  {
 	}
 
 	// 引数Idpwで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Idpw Idpw) {
+	public boolean insert(Users Users) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -87,14 +88,14 @@ public class UsersDAO  {
 
 			// SQL文を完成させる
 
-			if (Idpw.getId() != null && !Idpw.getId().equals("")) {
-				pStmt.setString(1, Idpw.getId());
+			if (Users.getUsername() != null && !Users.getUsername().equals("")) {
+				pStmt.setString(1,Users.getUsername());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if (Idpw.getPw() != null && !Idpw.getPw().equals("")) {
-				pStmt.setString(2, Idpw.getPw());
+			if (Users.getPassword() != null && !Users.getPassword().equals("")) {
+				pStmt.setString(2, Users.getPassword());
 			}
 			else {
 				pStmt.setString(2, null);

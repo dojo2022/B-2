@@ -8,44 +8,34 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MenuServlet
+ * Servlet implementation class CertificationServlet
  */
-@WebServlet("/MenuServlet")
-public class MenuServlet extends HttpServlet {
+@WebServlet("/CertificationServlet")
+public class CertificationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		/*
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/tasuma/LoginServlet");
 			return;
 		}
-		*/
 
-		// 本日の目標のデータを持ってくる
-		//カレンダーの日程を持ってくる
-		//残り日数を持ってくる
-
-		// メニューページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-		dispatcher.forward(request, response);
-
+		// My資格ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
+				dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		//よくわからん
-		//postされたらつかってください
-	}
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String username = request.getParameter("username");
 
 }
