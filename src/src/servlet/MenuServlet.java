@@ -21,14 +21,16 @@ public class MenuServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+
+		//HttpSession session = request.getSession();
 		/*
-		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
 			response.sendRedirect("/tasuma/LoginServlet");
 			return;
 		}
 		*/
 
+		//ユーザ名をスコープから取得→取得したユーザ名をもとに各種データをデータベースから取得＋スコープに保存
 		// 本日の目標のデータを持ってくる
 		//カレンダーの日程を持ってくる
 		//残り日数を持ってくる
@@ -39,6 +41,7 @@ public class MenuServlet extends HttpServlet {
 
 	}
 
+	//おそらく必要ない→確定したら削除する
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
