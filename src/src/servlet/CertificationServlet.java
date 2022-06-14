@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.LoginUser;
-
 /**
  * Servlet implementation class CertificationServlet
  */
@@ -43,9 +41,10 @@ public class CertificationServlet extends HttpServlet {
 		String username = request.getParameter("USERNAME");
 		String certification = request.getParameter("CERTIFICATION");
 
-		// セッションスコープにIDを格納する
+	/*	// セッションスコープにIDを格納する コメントアウトを解除するとうまくログイン画面が出てこない
 		HttpSession session = request.getSession();
 		session.setAttribute("username", new LoginUser(username));
+	*/
    }
 
 }

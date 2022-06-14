@@ -20,8 +20,9 @@
 	資格登録一覧ページリンク飛ぶ「資格登録ボタン」(一覧)
 	-->
 		<button onclick="location.href='/tasuma/MatchingServlet'">マッチング</button>
+		<!-- ...質問チャートを使ってあなたにおすすめの資格をマッチング！！ と表示 -->
 		<button onclick="location.href='/tasuma/CertificationListServlet'">一覧から選ぶ</button>
-
+		<!-- ...取りたい資格が決まっているあなたはこちら！！ と表示 -->
 		<h3>My資格一覧</h3>
 	<!--
 	登録資格一覧(登録済の取得目標資格をリスト形式で表示する)
@@ -29,13 +30,15 @@
 	のテーブル -->
 
 	<!-- ↓に登録された資格が一覧表示される 削除ボタンは横にあるからこの配置？ -->
-	<!-- 自信ないです(泣き) -->
+	<!-- actionには入力情報を処理するプログラムのURLが必要 -->
+	<!-- forEachの中にformを入れると△の注意マークが出てくる-->>
 		<table class="list">
 			<c:forEach var="e" items="${e.cardlist}">
+				<form action="/tasuma/CertificationServlet" method="post" name="list" id="list">
 				<tr class="data_row"><td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除"></td></tr>
+				</form>
 			</c:forEach>
 		</table>
-
 	<!-- メニューボタン -->
 		<button onclick="location.href='/tasuma/MenuServlet'">メニューに戻る</button>
 		<!-- <a href="/tasuma/MenuServlet">メニューに戻る</a> -->
