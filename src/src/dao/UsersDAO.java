@@ -28,7 +28,7 @@ public class UsersDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SELECT文を準備する
-			String sql = "select count(*) from Users where USERID = ? and PASSWORD = ?";
+			String sql = "select count(*) from Users where USERNAME = ? and PASSWORD = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, Users.getUsername());
 			pStmt.setString(2,Users.getPassword());
@@ -71,7 +71,7 @@ public class UsersDAO  {
 		return loginResult;
 	}
 
-	// 引数Idpwで指定されたレコードを登録し、成功したらtrueを返す
+	// 引数Usersで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Users Users) {
 		Connection conn = null;
 		boolean result = false;
@@ -83,7 +83,7 @@ public class UsersDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "insert into IDPW (ID, PW) values (?, ?)";
+			String sql = "insert into Users (Username, PassWord) values (?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
