@@ -34,8 +34,7 @@ public class CertificationServlet extends HttpServlet {
 				dispatcher.forward(request, response);
 	}
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
+		// リクエストパラメータを取得する わからないので有識者の方...
+
 
 }
