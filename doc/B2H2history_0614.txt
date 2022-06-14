@@ -73,7 +73,11 @@ certification_id CHAR(5) NOT NULL,
 FOREIGN KEY(certification_id) REFERENCES Certifications (certification_id),
 item_id CHAR(5) NOT NULL,
 FOREIGN KEY(item_id) REFERENCES Items (item_id)
+
+
+
 );
+
 {データの登録}
 INSERT INTO My_certifications (user_id,certification_id,item_id) VALUES ('u1','a1','b1');
 INSERT INTO My_certifications (user_id,certification_id,item_id) VALUES ('u1','a1','b2');
@@ -96,6 +100,9 @@ INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a1'
 INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a1','2023-04-01','','');
 INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a2','2022-10-01','','');
 
+{資格名と試験日程の検索}
+SELECT Certifications.certification, Test_days.testdays FROM Certifications, Test_days WHERE  Certifications .certification_id =Test_days .certification_id ;
+SELECT TEST_DAYS .certification_id, TEST_DAYS .testdays FROM CERTIFICATIONS ,Test_days WHERE  Certifications .certification_id =Test_days .certification_id AND CERTIFICATIONS .CERTIFICATION LIKE ? ORDER BY testdays;
 ---------------------------------
 [目標マスタ]
 {テーブルの作成}
@@ -165,7 +172,6 @@ FOREIGN KEY(user_id) REFERENCES Users (user_id ),
 content_bbs VARCHAR (200),
 time_bbs DATETIME
 );
-//作業途中
 {データの登録}
 INSERT INTO Comments (thread_id,user_id,content_bbs,time_bbs) VALUES ('x1','u1','アルゴリズム全くわからん',now());
 UPDATE Comments SET comment_id=(SELECT CONCAT('y',id) FROM Comments WHERE comment_id IS NULL) WHERE comment_id IS NULL;
@@ -179,3 +185,13 @@ UPDATE Comments SET comment_id=(SELECT CONCAT('y',id) FROM Comments WHERE commen
 UPDATE Users SET  user_id =(SELECT concat('u',right(concat('0000',CAST( (SELECT id FROM USERS where user_id is null) AS CHAR)),4) )from users where user_id is null ) where user_id is null;
 [テーブルの削除]
 DROP TABLE IF EXISTS Users;
+
+[My資格トランザクション　入れるとバグるかも]
+testdays CHAR(10) NOT NULL,
+FOREIGN KEY(testdays) REFERENCES Test_days(testdays)
+
+{データの登録}
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b1','2022-10-01');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b2','2022-10-01');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b3','2022-10-01');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b4','2022-10-01');

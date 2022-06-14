@@ -11,10 +11,11 @@
 <body>
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<h2>My資格</h2>
-	<h3>資格名</h3>
+	<h2>ユーザ名：<c:out value="${username.username}" /></h2>
+	<h3>資格名:${certification.certification}</h3>
 	<table class="list">
-	<form method="post" action="">
-	<c:forEach var="e" items="${cardList}" >
+	<form method="post" action="/tasuma/ScheduleServlet">
+	<c:forEach var="e" items="${Test_daysList}" >
 		<tr><td><input type="radio" name="select_schedule"></td><td>試験日程1<!-- ${e.testdays} --></td><td></td></tr>
 	</c:forEach>
 		<tr><td></td><td></td><td><input type="submit" name="regist"></td>

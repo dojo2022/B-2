@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
 import model.LoginUser;
+import model.Result;
 import model.Users;
-//import model.LoginUser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -53,12 +53,12 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/tasuma/MenuServlet");
 		}
 		else {									// ログイン失敗
-			// （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+			// リクエストスコープに、失敗したよというタイトルとメッセージを送る。
 			request.setAttribute("result",
-			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/tasuma/LoginServlet"));
+			new Result("false", "IDまたはPWに間違いがあります。"));
 
-			// （要変更？）結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+			//	もう一度ログインjspにフォワード（？）する
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

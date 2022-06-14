@@ -32,10 +32,19 @@ public class CertificationServlet extends HttpServlet {
 		// My資格ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
 				dispatcher.forward(request, response);
-	}
+
 
 		// リクエストパラメータを取得する
+		// ユーザ名をスコープから取得→取得したユーザ名をもとに各種データをデータベースから取得＋スコープに保存
+		// 登録した資格のデータを持ってくる？
 		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
+		String username = request.getParameter("USERNAME");
+		String certification = request.getParameter("CERTIFICATION");
+
+	/*	// セッションスコープにIDを格納する コメントアウトを解除するとうまくログイン画面が出てこない
+		HttpSession session = request.getSession();
+		session.setAttribute("username", new LoginUser(username));
+	*/
+   }
 
 }
