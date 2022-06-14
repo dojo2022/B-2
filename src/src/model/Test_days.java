@@ -5,18 +5,35 @@ public class Test_days implements Serializable {
 	//TABLE Test_days
 	private String id;
 	private String certification_id;
+	private String certification;
 	private String testdays;
 	private String app_start;
 	private String app_fin;
 
 	//引数のあるコンストラクタ
-	public Test_days(String id, String certification_id, String testdays, String app_start, String app_fin) {
+	public Test_days(String id, String certification_id, String certification,String testdays, String app_start, String app_fin) {
+		super();
+		this.id = id;
+		this.certification_id = certification_id;
+		this.certification = certification;
+		this.testdays = testdays;
+		this.app_start = app_start;
+		this.app_fin = app_fin;
+	}
+	//引数のあるコンストラクタ
+	public Test_days(String id, String certification_id,String testdays, String app_start, String app_fin) {
 		super();
 		this.id = id;
 		this.certification_id = certification_id;
 		this.testdays = testdays;
 		this.app_start = app_start;
 		this.app_fin = app_fin;
+	}
+	//引数のあるコンストラクタ
+	public Test_days(String certification_id,String testdays) {
+		super();
+		this.certification_id = certification_id;
+		this.testdays = testdays;
 	}
 
 	//引数のないコンストラクタ(デフォルトコンストラクタ)
@@ -46,6 +63,12 @@ public class Test_days implements Serializable {
 		this.certification_id = certification_id;
 	}
 
+	public String getCertification() {
+		return certification;
+	}
+	public void setCertification(String certification) {
+		this.certification = certification;
+	}
 	public String getTestdays() {
 		return testdays;
 	}

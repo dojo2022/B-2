@@ -72,13 +72,15 @@ FOREIGN KEY(user_id) REFERENCES Users (user_id),
 certification_id CHAR(5) NOT NULL,
 FOREIGN KEY(certification_id) REFERENCES Certifications (certification_id),
 item_id CHAR(5) NOT NULL,
-FOREIGN KEY(item_id) REFERENCES Items (item_id)
+FOREIGN KEY(item_id) REFERENCES Items (item_id),
+testdays CHAR(10) NOT NULL,
+FOREIGN KEY(testdays) REFERENCES Test_days(testdays)
 );
 {データの登録}
-INSERT INTO My_certifications (user_id,certification_id,item_id) VALUES ('u1','a1','b1');
-INSERT INTO My_certifications (user_id,certification_id,item_id) VALUES ('u1','a1','b2');
-INSERT INTO My_certifications (user_id,certification_id,item_id) VALUES ('u1','a1','b3');
-INSERT INTO My_certifications (user_id,certification_id,item_id) VALUES ('u1','a1','b4');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b1','2022-10-01');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b2','2022-10-01');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b3','2022-10-01');
+INSERT INTO My_certifications (user_id,certification_id,item_id,testdays) VALUES ('u1','a1','b4','2022-10-01');
 
 ---------------------------------
 [試験日マスタ]
@@ -98,6 +100,7 @@ INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a2'
 
 {資格名と試験日程の検索}
 SELECT Certifications.certification, Test_days.testdays FROM Certifications, Test_days WHERE  Certifications .certification_id =Test_days .certification_id ;
+SELECT TEST_DAYS .certification_id, TEST_DAYS .testdays FROM CERTIFICATIONS ,Test_days WHERE  Certifications .certification_id =Test_days .certification_id AND CERTIFICATIONS .CERTIFICATION LIKE ? ORDER BY testdays;
 ---------------------------------
 [目標マスタ]
 {テーブルの作成}
