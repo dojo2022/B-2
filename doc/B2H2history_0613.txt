@@ -96,6 +96,8 @@ INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a1'
 INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a1','2023-04-01','','');
 INSERT INTO Test_days (certification_id,testdays,app_start,app_fin) VALUES ('a2','2022-10-01','','');
 
+{資格名と試験日程の検索}
+SELECT Certifications.certification, Test_days.testdays FROM Certifications, Test_days WHERE  Certifications .certification_id =Test_days .certification_id ;
 ---------------------------------
 [目標マスタ]
 {テーブルの作成}
