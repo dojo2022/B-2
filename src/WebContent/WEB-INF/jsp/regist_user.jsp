@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>TASUMA|新規会員登録</title>
-<link rel="stylesheet"type="text/css" href="/tasuma/css/login.css">
+<link rel="stylesheet"type="text/css" href="/tasuma/css/regist_user.css">
 </head>
 <body>
+<div class="wrapper">
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <h2>新規登録</h2>
 <!--
@@ -23,17 +24,24 @@ PW＊
 		<tr>
 			<td>ユーザ名 ※<input type="text" name="new_username" id="newUsername"></td>
 		</tr>
+		<tr>
+			<td>メールアドレス <input type="text" name="mail" id="mail"></td>
+		</tr>
         <tr>
-			<td>PW<input type="password" name="password" id="newPassword"></td>
+			<td>PW※<input type="password" name="password" id="newPassword"></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" id="pw_display">パスワードを表示する </td>
 		</tr>
 	</table>
-    <input type="submit" name="new_register" value="登録"><br>
+	<a href="/tasuma/LoginServlet">
+		<button type="button" name="loginReturn" class="loginReturn">戻る</button>
+	</a>
+    <input type="submit" name="new_register" value="登録" class="regist"><br>
 </form>
 <span id="error_message"></span>
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
-<script src="/tasuma/WebContent/JavaScript/regist_user.js"></script>
+</div>
+<script src="/tasuma/JavaScript/regist_user.js"></script>
 </body>
 </html>

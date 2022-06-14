@@ -1,4 +1,14 @@
 @charset "UTF-8";
+h2{
+	margin:auto;
+	text-align:center;
+}
+.wrapper{
+	margin:0 auto 0 auto;
+	max-width:960px;
+	width: 100%;
+  	position: relative;
+}
 table {
 
 	margin:auto;
@@ -6,3 +16,11 @@ table {
 	font-weight:bold;
 
   }
+.returnLogin{
+	display: block;
+    margin: auto;
+}
+.regist{
+	display: block;
+    margin: auto;
+}
