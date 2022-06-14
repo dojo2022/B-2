@@ -2,12 +2,17 @@ package servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.UsersDAO;
+import model.UserSetting;
+import model.Users;
 
 /**
  * Servlet implementation class UserSettingServlet
@@ -29,25 +34,45 @@ public class UserSettingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
+		// ユーザー設定ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
+		dispatcher.forward(request, response);
+
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/tasuma/LoginServlet");
-			return;
-		}
+
+
+
 
 	// リクエストパラメータを取得する
-	request.setCharacterEncoding("UTF-8");
-	String username = request.getParameter("USERNAME");
-	String mail = request.getParameter("MAIL");
-	String password = request.getParameter("PASSWORD");
+		request.setCharacterEncoding("UTF-8");
+		String username = request.getParameter("USERNAME");
+		String password = request.getParameter("PASSWORD");
+		String mail = request.getParameter("MAIL");
+
+		// 更新を行う
+		UsersDAO iDao = new UsersDAO();
+		if (request.getParameter("SUBMIT").equals("更新")) {
+			if (iDao.update(new Users(username, password, mail))) {	// 更新成功
+				request.setAttribute("result_setting",
+				new UserSetting("更新成功！", "レコードを更新しました。", "/tasuma/MenuServlet"));
+			}else {												// 更新失敗
+				request.setAttribute("result_setting",
+				new UserSetting("更新失敗！", "レコードを更新できませんでした。", "/tasuma/UserSettingServlet"));
+			}
+		}
 	}
 }
 
