@@ -14,15 +14,20 @@
 <body>
 <jsp:include page="/WEB-INF/jsp/header.jsp"/>
 
+<!-- ログインしているユーザ名を右上に表示 -->
+<p class = "username">ユーザ名：${username.username}</p>
+
 <div id = "table">
 
-<h1>TASUMA</h1>
+<h1>TASUMA</h1> <!-- タイトル -->
 
 <h2>My資格</h2> <!-- サブタイトル -->
 
-<table id = "list">
-	<tr>
-  		<th><select name="select"> <!-- カテゴリをプルダウンで表示 -->
+<!-- カテゴリをプルダウンで表示 -->
+<form method = "post">
+	<div>
+  			<label for ="select">カテゴリ</label><!-- カテゴリをプルダウンで表示 -->
+  			<select name = "select">
   			<option value="allit">IT知識全般</option>
   			<option value="gengo">IT言語</option>
   			<option value="data">データベース</option>
@@ -32,29 +37,35 @@
   			<option value="jimu">事務作業</option>
   			<option value="des">デザイン</option>
   			</select>
-  		</th>
+  	</div>
+</form>
+<!-- カテゴリをプルダウンで表示ここまで -->
 
-  		<!-- 資格名をテキスト入力 -->
+<!-- 資格名をテキスト入力 -->
+<table>
+	<tr>
   		<th><input type="text" id="certification" name="CERTIFICATION"></th>
 	</tr>
 </table>
+<!-- 資格名をテキスト入力ここまで -->
 
+<table>
+	<td colspan="2">
 	<!-- 検索ボタンをカテゴリと資格名の横につける -->
-	<input type="submit" name="SUBMIT" value="検索">
+	<a href="/tasuma/CertificationListServlet"><input type="submit" name="SUBMIT" value="検索"></a>
+	</td>
+</table>
 
 
 <h3>資格一覧</h3>
 
 <table>
 	<c:forEach var="e" items="${cardList}"> <!-- 番号と資格名を持ってくる -->
-	<tr class="data_row"><td>${e.number}</td><td>${e.name}</td></tr>
+	<tr class="data_row">
+	<td>${e.number}</td><td>${e.name}</td>
+	<td><form method = "POST" action="/tasuma/CertificationListServlet"><button type ="submit" name="NUMBER" value=${e.number}></button></form>
+	</tr> <!-- 日程を決めるボタンを資格名の横に付ける -->
 	</c:forEach>  <!-- ${}内の名前は仮 -->
-
-	<tr>
-		<td colspan="2">
-	    <a href="/tasuma/schedule.jsp"><input type="submit" name="SUBMIT" value="日程を決める"></a>
-		</td>  <!-- 日程を決めるボタンを資格名の横に付ける -->
-	</tr>
 
 
 	<tr>
@@ -64,21 +75,21 @@
 	</tr>
 </table>
 
-<h4>ユーザ名："${username}"</h4>
-<!-- 画面右上にログインしているユーザ名を表示 -->
-
 
 </div>
 
-<!-- 74～76 これはなんか入れただけ -->
+<!-- これは名刺管理アプリで一覧を作成した際に使用していたコードを、
+ 一応コピペをして入れてみただけのものです。必要なのでしょうか？ -->
 <form method="GET" action="certification_list.jsp" id="form">
 	<input type="hidden" name="number">
 </form>
+<!-- ここまで -->
 
 
+<!-- フッター -->
 <jsp:include page="/WEB-INF/jsp/footer.jsp"/>
 
-
+<!-- javascript -->
 <script src="/tasuma/WebContent/JavaScript/certification_list.js"></script>
 
 </body>

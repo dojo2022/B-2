@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BcDAO;
-import model.Bc;
+import dao.CertificationsDAO;
+import model.Certifications;
+
+/* DAOが出来上がり次第起動できる */
 
 	/**
 	 * Servlet implementation class SearchServlet
@@ -25,31 +27,62 @@ import model.Bc;
 		 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 		 */
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
-			if (session.getAttribute("id") == null) {
+			if (session.getAttribute("username") == null) {
 				response.sendRedirect("/tasuma/LoginServlet");
 				return;
 			}
-
+*/
 			// 資格登録一覧ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Certification_List.jsp");
 			dispatcher.forward(request, response);
 		}
 
+
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 		 */
-		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		    // 資格名の情報を持ちながら遷移する処理↓↓↓
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { {
+		/*	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 			HttpSession session = request.getSession();
 			if (session.getAttribute("id") == null) {
 				response.sendRedirect("/tasuma/LoginServlet");
 				return;
 			}
-
+*/
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
+			String number = request.getParameter("NUMBER");
+			username username = (username)session.getAttribute("username");
+			String user = username.getId();
+
+			// 検索処理を行う
+			CertificationsDAO cDao = new CertificationsDAO();
+			List<Certifications> cardList = cDao.select(new CertificationsDAO(number, null, null, null, null, null, null, null))
+
+			// 検索結果をリクエストスコープに格納する
+			request.setAttribute("cardList", cardList);
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/schedule.jsp");
+			dispatcher.forward(request.response);
+
+		} // 資格名の情報を持ちながら遷移する処理はここまで↑↑↑
+
+
+
+		// カテゴリ検索の処理↓↓↓
+		/*	// もしもログインしていなかったらログインサーブレットにリダイレクトする
+			HttpSession session = request.getSession();
+			if (session.getAttribute("id") == null) {
+				response.sendRedirect("/tasuma/LoginServlet");
+				return;
+			}
+*/
+			// リクエストパラメータを取得する
+			request.setCharacterEncoding("UTF-8"); {
 			String allit = request.getParameter("allit");
 			String gengo = request.getParameter("gengo");
 			String data = request.getParameter("data");
@@ -60,8 +93,8 @@ import model.Bc;
 			String des = request.getParameter("des");
 
 			// 検索処理を行う
-			BcDAO bDao = new BcDAO();
-			List<Bc> cardList = bDao.select(new Bc(allit, gengo, data, sec, net, mana, jimu, des));
+			CertificationsDAO cDao = new CertificationsDAO();
+			List<Certifications> cardList = cDao.select(new Certifications(allit, gengo, data, sec, net, mana, jimu, des));
 
 			// 検索結果をリクエストスコープに格納する
 			request.setAttribute("cardList", cardList);
@@ -69,6 +102,8 @@ import model.Bc;
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification_list.jsp");
 			dispatcher.forward(request, response);
+
+			// カテゴリ検索の処理はここまで↑↑↑
 		}
 
 
