@@ -20,12 +20,10 @@ public class My_certifications implements Serializable{
 	}
 
 	//引数のあるコンストラクタ
-	public My_certifications(String id, String user_id, String certification_id, String item_id, String testdays) {
+	public My_certifications(String user_id, String certification_id, String testdays) {
 		super();
-		this.id = id;
 		this.user_id = user_id;
 		this.certification_id = certification_id;
-		this.item_id = item_id;
 		this.testdays = testdays;
 	}
 

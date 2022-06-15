@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.My_certificationsDAO;
 import dao.Test_daysDAO;
+import model.My_certifications;
 import model.Test_days;
 
 /**
@@ -79,18 +81,12 @@ public class ScheduleServlet extends HttpServlet {
 
 		// 登録処理を行う　
 		//My資格トランザクションに「ユーザID、試験名、試験日程」を追加
-
-		//My資格DAOに変更する（多分）
-		Test_daysDAO tdDao = new Test_daysDAO();
-
-//作業中
-//川上に確認→My_certifications.javaを調整
-//		if (tdDao.insert(new My_certifications(id,user_id, certification_id,testdays))) {	// 登録成功
-//
-//			// メニューサーブレット？ページ？にフォワードする
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
-//			dispatcher.forward(request, response);
-//			}
+		My_certificationsDAO tdDao = new My_certificationsDAO();
+		if (tdDao.insert(new My_certifications(user_id, certification_id,testdays))) {	// 登録成功
+			// メニューサーブレット？ページ？にフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
+			dispatcher.forward(request, response);
+			}
 
 
 	}

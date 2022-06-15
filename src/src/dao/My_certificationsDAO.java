@@ -104,21 +104,17 @@ public class My_certificationsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する 改造
-				String sql = "INSERT INTO My_certifications (id, user_id, certification_id, item_id) values (?, ?, ?, ?)";
+//テーブルが確定するまで保留
+				String sql = "INSERT INTO My_certifications (user_id, certification_id, testdays) values (?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
+//作業中　?に合わせる作業
 				// SQL文を完成させる 改造
-				if (card.getId() != null && !card.getId().equals("")) {
-					pStmt.setString(1, card.getId());
+				if (card.getUser_id() != null && !card.getUser_id().equals("")) {
+					pStmt.setString(1, card.getUser_id());
 				}
 				else {
 					pStmt.setString(1, null);
-				}
-				if (card.getUser_id() != null && !card.getUser_id().equals("")) {
-					pStmt.setString(2, card.getUser_id());
-				}
-				else {
-					pStmt.setString(2, null);
 				}
 				if (card.getCertification_id() != null && !card.getCertification_id().equals("")) {
 					pStmt.setString(3, card.getCertification_id());
