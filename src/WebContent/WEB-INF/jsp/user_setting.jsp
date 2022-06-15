@@ -9,33 +9,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 <header><jsp:include page="/WEB-INF/jsp/header.jsp"/></header>
-	 <p class ="username">ユーザー名：${users,username}</p>
         <h1>TASUMA</h1>
         <h2>ユーザ設定</h2>
-        <h4>ユーザー名</h4>
-        <form method="POST" action="/tasuma/User_SettingServlet" id="user_setting">
+        <form method="POST" action="/tasuma/UserSettingServlet" id="user_setting">
             <table>
                 <tr>
-                    <td>ユーザー名</td><td><input type="text" name="username_box"></td>
+                    <td>ユーザー名</td><td><input type="text" name="username"></td>
                 </tr>
                 <tr>
-                    <td>メールアドレス</td><td><input type="text" name="mail_box"></td>
+                    <td>メールアドレス</td><td><input type="text" name="mail"></td>
                 </tr>
                 <tr>
-                    <td>PW</td><td><input type="password" name="password_box" id="password"></td>
+                    <td>PW</td><td><input type="password" name="password" id="password" class="box"></td>
                 </tr>
                 <tr>
                     <td><input type="checkbox" name="pw_display" id="pw_display">パスワードを表示</td>
                 </tr>
                 <tr>
-                    <td><input type="button" name="back_menu" value="メニューに戻る"></td>
+                    <td><a href="/tasuma/MenuServlet"><input type="button" name="back_menu" value="メニューに戻る"></a></td>
                     <td><input type="submit" name="change_profile" value="変更"></td>
                 </tr>
             </table>
             </form>
-            <span id="error_message"></span>
-        <script src="/tasuma/WebContent/JavaScript/user_setting.js"></script>
-        <footer><jsp:include page="/WEB-INF/jsp/footer.jsp"></footer>
+ <!-- <span id="error_message"></span> -->
+        <script src="/tasuma/JavaScript/user_setting.js"></script>
 </body>
 </html>
