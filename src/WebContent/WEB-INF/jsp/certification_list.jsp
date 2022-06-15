@@ -27,7 +27,7 @@
 <form method = "post">
 	<div>
   			<label for ="select">カテゴリ</label><!-- カテゴリをプルダウンで表示 -->
-  			<select name = "select">
+  			<select name ="select">
   			<option value="allit">IT知識全般</option>
   			<option value="gengo">IT言語</option>
   			<option value="data">データベース</option>
@@ -40,7 +40,6 @@
   	</div>
 </form>
 <!-- カテゴリをプルダウンで表示ここまで -->
-
 <!-- 資格名をテキスト入力 -->
 <table>
 	<tr>
@@ -74,7 +73,6 @@
 		</td>  <!-- メニューに戻るボタンを左下につける -->
 	</tr>
 </table>
-
 
 </div>
 

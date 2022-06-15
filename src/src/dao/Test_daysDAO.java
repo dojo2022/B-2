@@ -44,7 +44,6 @@ public class Test_daysDAO  {
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
-//作業中
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Test_days days = new Test_days(
