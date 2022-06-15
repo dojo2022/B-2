@@ -12,19 +12,21 @@
 <title>TASUMA | メニュー</title>
 </head>
 <body>
+	<input type="hidden" id="getjs" value="${username.username }">
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
-
+	<p class="username">${username.username }</p>
 	<h2>メニュー</h2>
 
 	<!-- ハンバーガーメニュー -->
+	<!-- 各リンクの内、サーブレットが未作成のものはとりあえずMenuServletを指定 -->
 	<nav class="menu" id="js-nav">
 		<ul class="nav__items nav-items">
-			<li class="nav-items__item"><a href="">My資格</a></li>
-			<li class="nav-items__item"><a href="">目標設定</a></li>
-			<li class="nav-items__item"><a href="">理解度報告</a></li>
-			<li class="nav-items__item"><a href="">掲示板</a></li>
-			<li class="nav-items__item"><a href="">ユーザ設定</a></li>
-			<li class="nav-items__item"><a href="">ログアウト</a></li>
+			<li class="nav-items__item"><a href="/tasuma/CertificationServlet">My資格</a></li>
+			<li class="nav-items__item"><a href="/tasuma/MenuServlet">目標設定</a></li>
+			<li class="nav-items__item"><a href="/tasuma/UnderstandServlet">理解度報告</a></li>
+			<li class="nav-items__item"><a href="/tasuma/MenuServlet">掲示板</a></li>
+			<li class="nav-items__item"><a href="/tasuma/UserSettingServlet">ユーザ設定</a></li>
+			<li class="nav-items__item"><a href="/tasuma/LoginServlet">ログアウト</a></li>
 		</ul>
 	</nav>
 	<button class="menu-btn">
@@ -55,6 +57,7 @@
 
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示 -->
+
 	<button id="prev" type="button">前の月</button>
 	<button id="next" type="button">次の月</button>
 	<div id="calendar"></div>
