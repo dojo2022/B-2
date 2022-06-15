@@ -22,9 +22,9 @@ import model.Certifications;
 
 				// データベースに接続する
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-                                                                                                            // from以降はいる・・？
+
 				// SQL文を準備する（資格の検索）
-				String sql = "SELECT id, certification_id, certification, category, book_name, book_image from BC WHERE name LIKE ? AND company LIKE ? order by CAST(number as INT)";
+				String sql = "SELECT CERTIFICATION_ID, certification, category from CERTIFICATIONS WHERE category LIKE ? ORDER BY CERTIFICATION_ID";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -50,16 +50,6 @@ import model.Certifications;
 				}
 				else {
 					pStmt.setString(4, "%");
-				}if (param.getBook_name() != null) {
-					pStmt.setString(5, "%" + param.getBook_name() + "%");
-				}
-				else {
-					pStmt.setString(5, "%");
-				}if (param.getBook_image() != null) {
-					pStmt.setString(6, "%" + param.getBook_image() + "%");
-				}
-				else {
-					pStmt.setString(6, "%");
 				}
 
 
@@ -72,9 +62,7 @@ import model.Certifications;
 					rs.getString("id"),
 					rs.getString("certification_id"),
 					rs.getString("certification"),
-					rs.getString("category"),
-					rs.getString("book_name"),
-					rs.getString("book_image")
+					rs.getString("category")
 					);
 					cardList.add(card);
 				}
@@ -118,7 +106,7 @@ import model.Certifications;
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "insert into BC (id, certification_id, certification, category, book_name, book_image) values (?, ?, ?, ?, ?, ?)";
+				String sql = "insert into CERTIFICATION (id, certification_id, certification, category) values (?, ?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる（登録）
@@ -145,17 +133,6 @@ import model.Certifications;
 				}
 				else {
 					pStmt.setString(4, null);
-				}
-				if (card.getBook_name() != null && !card.getBook_name().equals("")) {
-					pStmt.setString(5, card.getBook_name());
-				}
-				else {
-					pStmt.setString(5, null);
-				}if (card.getBook_image() != null && !card.getBook_image().equals("")) {
-					pStmt.setString(6, card.getBook_image());
-				}
-				else {
-					pStmt.setString(6, null);
 				}
 
 				// SQL文を実行する
@@ -198,7 +175,7 @@ import model.Certifications;
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "update BC set id=?, certification_id=?, certification=?, category=?, book_name=?, book_image=?";
+				String sql = "update Certifications set id=?, certification_id=?, certification=?, category=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる(改造）
@@ -224,16 +201,6 @@ import model.Certifications;
 				}
 				else {
 					pStmt.setString(4, null);
-				}if (card.getBook_name() != null && !card.getBook_name().equals("")) {
-					pStmt.setString(5, card.getBook_name());
-				}
-				else {
-					pStmt.setString(5, null);
-				}if (card.getBook_image() != null && !card.getBook_image().equals("")) {
-					pStmt.setString(6, card.getBook_image());
-				}
-				else {
-					pStmt.setString(6, null);
 				}
 
 				// SQL文を実行する
