@@ -28,28 +28,11 @@ import model.Certifications;
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				if (param.getId() != null) {
-					pStmt.setString(1, "%" + param.getId() + "%");
+				if (param.getCategory() != null) {
+					pStmt.setString(1, "%" + param.getCategory() + "%");
 				}
 				else {
 					pStmt.setString(1, "%");
-				}
-				if (param.getCertification_id() != null) {
-					pStmt.setString(2, "%" + param.getCertification_id() + "%");
-				}
-				else {
-					pStmt.setString(2, "%");
-				}
-				if (param.getCertification() != null) {
-					pStmt.setString(3, "%" + param.getCertification() + "%");
-				}
-				else {
-					pStmt.setString(3, "%");
-				}if (param.getCategory() != null) {
-					pStmt.setString(4, "%" + param.getCategory() + "%");
-				}
-				else {
-					pStmt.setString(4, "%");
 				}
 
 

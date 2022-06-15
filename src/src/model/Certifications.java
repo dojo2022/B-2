@@ -22,6 +22,16 @@ public class Certifications implements Serializable {
 		this.book_image = book_image;
 	}
 
+	//引数のあるコンストラクタ
+		public Certifications(String id, String certification_id, String certification, String category) {
+			super();
+			this.id = id;
+			this.certification_id = certification_id;
+			this.certification = certification;
+			this.category = category;
+
+		}
+
 	//引数のないコンストラクタ(デフォルトコンストラクタ)
 	public Certifications() {
 		super();
