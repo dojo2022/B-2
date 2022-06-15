@@ -7,6 +7,7 @@ public class My_certifications implements Serializable{
 	private String user_id;
 	private String certification_id;
 	private String item_id;
+	private String testdays;
 
 
 	//引数のあるコンストラクタ
@@ -17,6 +18,17 @@ public class My_certifications implements Serializable{
 		this.certification_id = certification_id;
 		this.item_id = item_id;
 	}
+
+	//引数のあるコンストラクタ
+	public My_certifications(String id, String user_id, String certification_id, String item_id, String testdays) {
+		super();
+		this.id = id;
+		this.user_id = user_id;
+		this.certification_id = certification_id;
+		this.item_id = item_id;
+		this.testdays = testdays;
+	}
+
 
 	//引数のないコンストラクタ(デフォルトコンストラクタ)
 	public My_certifications() {
@@ -58,6 +70,14 @@ public class My_certifications implements Serializable{
 
 	public void setItem_id(String item_id) {
 		this.item_id = item_id;
+	}
+
+	public String getTestdays() {
+		return testdays;
+	}
+
+	public void setTestdays(String testdays) {
+		this.testdays = testdays;
 	}
 
 }
