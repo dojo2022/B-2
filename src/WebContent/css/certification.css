@@ -1,4 +1,23 @@
 @charset "UTF-8";
 
  /* マッチングと一覧から選ぶボタンを横並びにする */
+.button{
+	padding-top: 30px;
+  	display: flex;
+  	justify-content: space-evenly;
+  	text-align: center;
+}
 
+/* ユーザネームを右上に表示 */
+.username{
+	text-align: right;
+}
+
+
+.menu{
+	padding-top: 30px;
+}
+
+h2{
+	text-align: center;
+}

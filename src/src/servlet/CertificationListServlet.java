@@ -50,12 +50,27 @@ import model.Certifications;
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification_list.jsp");
 			dispatcher.forward(request,response);
+
 		}
+
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			request.setCharacterEncoding("UTF-8");
+			//検索するためのカテゴリを取得
+			String category = request.getParameter("select");
+
+			//categoryが一致する資格を検索する 冨原さん記載
+
+			//検索結果をjspに送る　冨原さん記載
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification_list.jsp");
+			dispatcher.forward(request,response);
+		}}
 
 			// 資格名の情報を持ちながら遷移する処理はここまで↑↑↑
 
-
-	/*		// カテゴリ検索の処理↓↓↓
+/*
+			// カテゴリ検索の処理↓↓↓
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			String allit = request.getParameter("allit");
@@ -85,9 +100,9 @@ import model.Certifications;
 			// 資格登録一覧ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Certification_List.jsp");
 			dispatcher.forward(request, response);
-*/
-		}
 
+		}
+*/
 
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

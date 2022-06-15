@@ -108,7 +108,6 @@ public class My_certificationsDAO {
 				String sql = "INSERT INTO My_certifications (user_id, certification_id, testdays) values (?, ?, ?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
-//作業中　?に合わせる作業
 				// SQL文を完成させる 改造
 				if (card.getUser_id() != null && !card.getUser_id().equals("")) {
 					pStmt.setString(1, card.getUser_id());
@@ -117,16 +116,16 @@ public class My_certificationsDAO {
 					pStmt.setString(1, null);
 				}
 				if (card.getCertification_id() != null && !card.getCertification_id().equals("")) {
-					pStmt.setString(3, card.getCertification_id());
+					pStmt.setString(2, card.getCertification_id());
+				}
+				else {
+					pStmt.setString(2, null);
+				}
+				if (card.getTestdays() != null && !card.getTestdays().equals("")) {
+					pStmt.setString(3, card.getTestdays());
 				}
 				else {
 					pStmt.setString(3, null);
-				}
-				if (card.getItem_id() != null && !card.getItem_id().equals("")) {
-					pStmt.setString(4, card.getItem_id());
-				}
-				else {
-					pStmt.setString(4, null);
 				}
 
 				// SQL文を実行する

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TASUMA|My資格</title>
-<link rel="stylesheet"type="text/css" href="/tasuma/css/login.css">
+<link rel="stylesheet"type="text/css" href="/tasuma/css/certification.css">
 </head>
 <body>
 	<!-- ヘッダーここから -->
@@ -17,17 +17,19 @@
 		<h2>My資格</h2>
 
 	<!--マッチングページにリンク飛ぶボタン-->
-		<!--<div class="button">-->
-		  <a href="/tasuma/MatchingServlet">
-			<button type="button" name="to_matching">マッチング</button>
-		</a>
-		<p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p>
+	<table>
+	  <tr class="button">
+		  <td><a href="/tasuma/MatchingServlet">
+				<button type="button" name="to_matching">マッチング</button>
+		      </a>
+		  <p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p></td>
 	<!--資格登録一覧ページにリンク飛ぶボタン-->
-		<a href="/tasuma/MatchingServlet">
-			<button type="button" name="to_list">一覧から選ぶ</button>
-		</a>
-		<p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p>
-		<!--</div>-->
+		 <td><a href="/tasuma/MatchingServlet">
+				<button type="button" name="to_list">一覧から選ぶ</button>
+		     </a>
+		  <p>...取りたい資格が決まっているあなたはこちら！</p></td>
+	  </tr>
+	</table>
 		<h3>My資格一覧</h3>
 	<!--
 	登録資格一覧(登録済の取得目標資格をリスト形式で表示する)
@@ -36,7 +38,7 @@
 
 	<!-- ↓に登録された資格が一覧表示される 削除ボタンは横にあるからこの配置？ -->
 	<!-- actionには入力情報を処理するプログラムのURLが必要 -->
-	<!-- forEachの中にformを入れると△の注意マークが出てくる-->>
+	<!-- forEachの中にformを入れると△の注意マークが出てくる-->
 		<table class="list">
 			<c:forEach var="e" items="${e.cardlist}">
 				<form action="/tasuma/CertificationServlet" method="post" name="list" id="list">
@@ -45,9 +47,13 @@
 			</c:forEach>
 		</table>
 	<!-- メニューボタン -->
-		<button onclick="location.href='/tasuma/MenuServlet'">メニューに戻る</button>
-		<!-- <a href="/tasuma/MenuServlet">メニューに戻る</a> -->
-
+	<table>
+	 <tr class="menu">
+		<td><a href="/tasuma/MenuServlet">
+			<button type="button" name="back_menu">メニューに戻る</button>
+		</a></td>
+	 </tr>
+    </table>
 	<!-- フッターここから -->
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
