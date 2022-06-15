@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
-import model.Targets;
+import model.Target_understands;
 
 public class Target_understandsDAO {
 
