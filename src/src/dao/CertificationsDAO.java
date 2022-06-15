@@ -42,10 +42,10 @@ import model.Certifications;
 				// 結果表をコレクションにコピーする
 				while (rs.next()) {
 					Certifications card = new Certifications(
-		//			rs.getString("id"),
-		//			rs.getString("certification_id"),
-		//			rs.getString("certification"),
-		//			rs.getString("category")
+					rs.getString("id"),
+					rs.getString("certification_id"),
+					rs.getString("certification"),
+					rs.getString("category")
 					);
 					cardList.add(card);
 				}
