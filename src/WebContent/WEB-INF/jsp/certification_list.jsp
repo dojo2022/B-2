@@ -27,7 +27,7 @@
 <form method = "post">
 	<div>
   			<label for ="select">カテゴリ</label><!-- カテゴリをプルダウンで表示 -->
-  			<select name = "select">
+  			<select name ="select">
   			<option value="allit">IT知識全般</option>
   			<option value="gengo">IT言語</option>
   			<option value="data">データベース</option>
@@ -38,7 +38,6 @@
   			<option value="des">デザイン</option>
   			</select>
   	</div>
-</form>
 <!-- カテゴリをプルダウンで表示ここまで -->
 
 <!-- 資格名をテキスト入力 -->
@@ -55,17 +54,39 @@
 	<a href="/tasuma/CertificationListServlet"><input type="submit" name="SUBMIT" value="検索"></a>
 	</td>
 </table>
+</form>
 
 
 <h3>資格一覧</h3>
 
 <table>
-	<c:forEach var="e" items="${cardList}"> <!-- 番号と資格名を持ってくる -->
+	<!-- 番号と資格名を持ってくる -->
+	<!-- ここからループ開始 -->
+
+     for(let i=1;i<('.search_table').length;i++){
+	    document.getElementById("delete_btn"+i).onclick = function(e){
+	    	let checkCerflg = window.confirm('本当に削除しますか？');
+
+	    	if(checkCerflg){
+
+
+	    	}else{
+	    		e.preventDefault();
+	    		return;
+	    	}
+	    }
+    }
+
+
+
 	<tr class="data_row">
 	<td>${e.number}</td><td>${e.name}</td>
-	<td><form method = "POST" action="/tasuma/CertificationListServlet"><button type ="submit" name="NUMBER" value=${e.number}></button></form>
+	<td><form method = "POST" action="/tasuma/CertificationListServlet">
+		<button type ="submit" name="NUMBER" value=${e.number}></button></form>
 	</tr> <!-- 日程を決めるボタンを資格名の横に付ける -->
-	</c:forEach>  <!-- ${}内の名前は仮 -->
+
+	<!-- ここまでループ -->
+	<!-- ${}内の名前は仮 -->
 
 
 	<tr>

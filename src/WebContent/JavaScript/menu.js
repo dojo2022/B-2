@@ -4,6 +4,7 @@ const weeks = ['日', '月', '火', '水', '木', '金', '土']
 const date = new Date()
 let year = date.getFullYear()
 let month = date.getMonth() + 1
+const username = document.getElementById("getjs").value
 
 function showCalendar(year, month) {
     const calendarHtml = createCalendar(year, month)
@@ -44,7 +45,7 @@ function createCalendar(year, month) {
                 calendarHtml += '<td class="is-disabled">' + num + '</td>'
                 dayCount++
             } else {
-                calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
+                calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}" data-test="${username}">${dayCount}</td>`
                 dayCount++
             }
         }
@@ -84,6 +85,9 @@ document.querySelector('#next').addEventListener('click', moveCalendar)
 
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("calendar_td")) {
+    	if(e.target.dataset.date === '2022/7/7'){
+    		alert(e.target.dataset.test)
+    	}
         alert('クリックした日付は' + e.target.dataset.date + 'です')
     }
 })
