@@ -27,7 +27,7 @@
 <form method = "post">
 	<div>
   			<label for ="select">カテゴリ</label><!-- カテゴリをプルダウンで表示 -->
-  			<select name = "select">
+  			<select name ="select">
   			<option value="allit">IT知識全般</option>
   			<option value="gengo">IT言語</option>
   			<option value="data">データベース</option>
