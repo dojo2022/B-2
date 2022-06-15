@@ -31,6 +31,13 @@ public class Certifications implements Serializable {
 			this.category = category;
 
 		}
+		//マッチング時オーバライド用コンストラクタ
+		public Certifications( String certification, String category/*, String level*/) {
+			super();
+			this.certification = certification;
+			this.category = category;
+			/* this.level=level; */
+		}
 
 	//引数のないコンストラクタ(デフォルトコンストラクタ)
 	public Certifications() {
