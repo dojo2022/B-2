@@ -21,3 +21,11 @@ table {
 	font-weight:bold;
 
   }
+  .login{
+
+	display: block;
+	margin:auto;
+}
+.errormsg{
+	color:red;
+}

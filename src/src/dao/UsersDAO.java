@@ -71,8 +71,8 @@ public class UsersDAO  {
 		return loginResult;
 	}
 
-	// 引数Usersで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(Users Users) {
+	// 引数regisyで指定されたレコードを登録し、成功したらtrueを返す
+	public boolean insert(Users regist) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -83,24 +83,29 @@ public class UsersDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "insert into Users (Username, PassWord) values (?, ?)";
+			String sql = "insert into Users (username, password,mail) values (?,?,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			if (Users.getUsername() != null && !Users.getUsername().equals("")) {
-				pStmt.setString(1,Users.getUsername());
+			if (regist.getUsername() != null && !regist.getUsername().equals("")) {
+				pStmt.setString(1,regist.getUsername());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if (Users.getPassword() != null && !Users.getPassword().equals("")) {
-				pStmt.setString(2, Users.getPassword());
+			if (regist.getPassword() != null && !regist.getPassword().equals("")) {
+				pStmt.setString(2, regist.getPassword());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-
+			if (regist.getMail() != null && !regist.getMail().equals("")) {
+				pStmt.setString(3, regist.getMail());
+			}
+			else {
+				pStmt.setString(3, null);
+			}
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

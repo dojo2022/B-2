@@ -24,19 +24,19 @@
 <form method="POST" action="/tasuma/LoginServlet" id="loginForm">
 	<table>
 	 	<tr>
-			<td>ユーザ名<input type="text" name="username_box" id="username"></td>
+			<td class="title">ユーザ名</td><td class="box"><input type="text" name="username" id="username"></td>
 		</tr>
 		<tr>
-			<td>PW<input type="password" name="password" id="password"></td>
+			<td class="title">PW</td><td class="box"><input type="password" name="password" id="password"></td>
 		</tr>
 		<tr>
-			<td><input type="checkbox" id="pw_display">パスワードを表示する </td>
+			<td><input type="checkbox" id="pw_display" class="box">パスワードを表示する </td>
 		</tr>
 	</table>
 	<div class="submit"><input type="submit" name="login" value="ログイン"class="login"></div>
 </form>
 <span id="error_message"></span>
-${result.message}
+<div class="errormsg">${result.message}</div>
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </div>
 <script src="/tasuma/JavaScript/login.js" defer></script>

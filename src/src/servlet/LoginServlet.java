@@ -39,8 +39,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("USERNAME");
-		String password = request.getParameter("PASSWORD");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 
 		// ログイン処理を行う
 		UsersDAO uDao = new UsersDAO();
