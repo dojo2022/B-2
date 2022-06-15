@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Target_understands implements Serializable {
 	//フィールド名
@@ -8,11 +9,11 @@ public class Target_understands implements Serializable {
 	private String target_id;
 	private String item_id;
 	private String user_id;
-	private String day;
+	private Date day;
 	private int target_understand;
 
 	//コンストラクタ（引数あり）
-	public Target_understands(int id, String target_id, String item_id, String user_id, String day, int target_understand) {
+	public Target_understands(int id, String target_id, String item_id, String user_id, Date day, int target_understand) {
 		this.setId(id);
 		this.setTarget_id(target_id);
 		this.setItem_id(item_id);
@@ -23,7 +24,13 @@ public class Target_understands implements Serializable {
 
 	//コンストラクタ（引数なし）
 	public Target_understands() {
-		this(0, "", "", "", "", 0);
+		Date now = new Date();
+		this.setId(0);
+		this.setTarget_id("");
+		this.setItem_id("");
+		this.setUser_id("");
+		this.setDay(now);
+		this.setTarget_understand(0);
 	}
 
 	public int getId() {
@@ -58,11 +65,11 @@ public class Target_understands implements Serializable {
 		this.user_id = user_id;
 	}
 
-	public String getDay() {
+	public Date getDay() {
 		return day;
 	}
 
-	public void setDay(String day) {
+	public void setDay(Date day) {
 		this.day = day;
 	}
 
