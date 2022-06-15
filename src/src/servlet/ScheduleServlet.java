@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Test_daysDAO;
 import model.Test_days;
@@ -42,7 +43,6 @@ public class ScheduleServlet extends HttpServlet {
 
 		//試験日程とおすすめ参考書を検索する
 		//試験日程
-//テスト中(Test...DAOTest.java)
 		Test_daysDAO tDao = new Test_daysDAO();
 		List<Test_days> Test_daysList = tDao.select(new Test_days(id, certification_id,certification,testdays,app_start,app_fin));
 
@@ -64,33 +64,33 @@ public class ScheduleServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("id") == null) {
-//			response.sendRedirect("/tasuma/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
 
-		// リクエストパラメータを取得する ...なんの？
-//		request.setCharacterEncoding("UTF-8");
-//		String id = request.getParameter("ID");
-//		String certification_id = request.getParameter("CERTIFICATION_ID");
-//		String certification = request.getParameter("CERTIFICATION");
-//		String testdays = request.getParameter("TESTDAYS");
-//		String app_start = request.getParameter("APP_START");
-//		String app_fin = request.getParameter("APP_FIN");
+//		リクエストパラメータを取得する ...なんの？→ユーザ名(id)、試験名(id)、試験日程（My資格トラ）
+		request.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("ID");
+		String user_id = request.getParameter("USER_ID");
+		String certification_id = request.getParameter("CERTIFICATION_ID");
+		String testdays = request.getParameter("TESTDAYS");
 
 		// 登録処理を行う　
 		//My資格トランザクションに「ユーザID、試験名、試験日程」を追加
 
-//		BcDAO bDao = new BcDAO();
-//		if (bDao.insert(new Bc(number, name,dep,phone,email,co))) {	// 登録成功
-//			request.setAttribute("result",
-//			new Result("登録成功！", "レコードを登録しました。", "/simpleBC/MenuServlet"));
+		//My資格DAOに変更する（多分）
+		Test_daysDAO tdDao = new Test_daysDAO();
+
+//作業中
+//川上に確認→My_certifications.javaを調整
+//		if (tdDao.insert(new My_certifications(id,user_id, certification_id,testdays))) {	// 登録成功
 //
-//			// メニューページにフォワードする
+//			// メニューサーブレット？ページ？にフォワードする
 //			RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
 //			dispatcher.forward(request, response);
-//		}
+//			}
 
 
 	}
