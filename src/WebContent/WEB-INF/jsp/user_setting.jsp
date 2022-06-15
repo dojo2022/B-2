@@ -10,6 +10,7 @@
 </head>
 <body>
 	 <header><jsp:include page="/WEB-INF/jsp/header.jsp"/></header>
+	 <p class ="username">ユーザー名：${users,username}</p>
         <h1>TASUMA</h1>
         <h2>ユーザ設定</h2>
         <h4>ユーザー名</h4>

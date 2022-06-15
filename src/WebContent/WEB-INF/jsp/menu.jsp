@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/tasuma/css/menu.css">
+<script src="JavaScript/menu.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TASUMA | メニュー</title>
 </head>
 <body>
@@ -51,9 +55,9 @@
 
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示 -->
+	<button id="prev" type="button">前の月</button>
+	<button id="next" type="button">次の月</button>
 	<div id="calendar"></div>
-
-	<script src="JavaScript/menu.js"></script>
 
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>

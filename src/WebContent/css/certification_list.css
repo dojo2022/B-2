@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+table {
+	margin:auto;
+	text-align:center;
+	font-weight:bold;
+  }
+
+/* h3 資格一覧の位置 */
+h3 {
+	text-align: left;
+	padding: 20px 20px 20px 0;
+	}
+
+/* カテゴリと資格名（テキストボックス）の位置 */
+   table#list th, table#list td {
+	padding: 4px 16px 4px 0;
+	text-align: center;
+   }
+
+/* 一覧表の表示・位置 */
+
+
+/* カテゴリ、資格名、検索ボタンを横並びにする */
+
+
+/* 資格名と日程を決めるボタンを横並びにする */
+
+
+

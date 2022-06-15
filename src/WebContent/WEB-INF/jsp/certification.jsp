@@ -15,14 +15,19 @@
 		<p class="username">ユーザ名:${username.username}</p>
 	<!-- 画面右上のユーザID ここまで -->
 		<h2>My資格</h2>
-	<!--
-	マッチングページにリンク飛ぶ「資格登録ボタン」(マッチング)
-	資格登録一覧ページリンク飛ぶ「資格登録ボタン」(一覧)
-	-->
-		<button onclick="location.href='/tasuma/MatchingServlet'">マッチング</button>
-		<!-- ...質問チャートを使ってあなたにおすすめの資格をマッチング！！ と表示 -->
-		<button onclick="location.href='/tasuma/CertificationListServlet'">一覧から選ぶ</button>
-		<!-- ...取りたい資格が決まっているあなたはこちら！！ と表示 -->
+
+	<!--マッチングページにリンク飛ぶボタン-->
+		<!--<div class="button">-->
+		  <a href="/tasuma/MatchingServlet">
+			<button type="button" name="to_matching">マッチング</button>
+		</a>
+		<p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p>
+	<!--資格登録一覧ページにリンク飛ぶボタン-->
+		<a href="/tasuma/MatchingServlet">
+			<button type="button" name="to_list">一覧から選ぶ</button>
+		</a>
+		<p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p>
+		<!--</div>-->
 		<h3>My資格一覧</h3>
 	<!--
 	登録資格一覧(登録済の取得目標資格をリスト形式で表示する)
@@ -35,7 +40,7 @@
 		<table class="list">
 			<c:forEach var="e" items="${e.cardlist}">
 				<form action="/tasuma/CertificationServlet" method="post" name="list" id="list">
-				<tr class="data_row"><td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除"></td></tr>
+					<tr class="data_row"><td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除"></td></tr>
 				</form>
 			</c:forEach>
 		</table>

@@ -135,4 +135,69 @@ public class UsersDAO  {
 	}
 
 
+//ユーザ設定で使用するDAO
+
+	// 引数Usersで指定されたレコードを更新し、成功したらtrueを返す
+		public boolean update(Users users) {
+			Connection conn = null;
+			boolean result = false;
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+				// SQL文を準備する
+				String sql = "update Usera set USERNAME=?, PASSWORD=?, MAIL=?,  where USER_ID=?";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+
+				// SQL文を完成させる
+				if (users.getUsername() != null && !users.getUsername().equals("")) {
+					pStmt.setString(1, users.getUsername());
+				}
+				else {
+					pStmt.setString(1, "");
+				}
+				if (users.getPassword() != null && !users.getPassword().equals("")) {
+					pStmt.setString(2, users.getPassword());
+				}
+				else {
+					pStmt.setString(2, "");
+				}
+				if (users.getMail() != null && !users.getMail().equals("")) {
+					pStmt.setString(3, users.getMail());
+				}
+				else {
+					pStmt.setString(3, "");
+				}
+
+				// SQL文を実行する
+				if (pStmt.executeUpdate() == 1) {
+					result = true;
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+
+			// 結果を返す
+			return result;
+		}
+
 }
