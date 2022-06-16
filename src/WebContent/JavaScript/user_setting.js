@@ -14,10 +14,9 @@
  } );
 
 /**更新完了・失敗のアラート表示 */
-setting = request.getAttribute("result_setting"); {
-	if (setting = "更新成功！")	{
-		window.alert('登録情報を変更しました');
-	} else if (setting = "更新失敗！"){
-		window.alert('更新に失敗しました');
+window.onload=function(){
+	let message = document.getElementById('resultmessage').value;
+	if(message != ""){
+		window.alert(message);
 	}
 }
