@@ -42,7 +42,8 @@
 		<table class="list">
 			<c:forEach var="e" items="${e.cardlist}">
 				<form action="/tasuma/CertificationServlet" method="post" name="list" id="list">
-					<tr class="data_row"><td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除"></td></tr>
+					<tr class="data_row"><td>${e.certification}</td>
+										 <td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td></tr>
 				</form>
 			</c:forEach>
 		</table>

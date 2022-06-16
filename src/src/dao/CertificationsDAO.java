@@ -76,7 +76,8 @@ import model.Certifications;
 		}
 
 
-		// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
+
+		// 引数cardで指定されたレコードを登録し、成功したらtrueを返す ★マスタなのでいらないのでは？
 		public boolean insert(Certifications card) {
 			Connection conn = null;
 			boolean result = false;

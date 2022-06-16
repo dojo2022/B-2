@@ -186,4 +186,130 @@ public class Target_understandsDAO {
 
 		return result;
 	}
+
+	//item_id, user_idの場所のdayとtarget_understandを更新
+	public boolean update(Target_understands target_understands){
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "update Target_understands set day = ?, target_understand = ? WHERE item_id = ? AND user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (target_understands.getDay() != null) {
+				pStmt.setString(1, "" + target_understands.getDay());
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+			if (target_understands.getTarget_understand() != 0) {
+				pStmt.setString(2, Integer.toString(target_understands.getTarget_understand()));
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
+				pStmt.setString(3, target_understands.getItem_id());
+			}
+			else {
+				pStmt.setString(3, null);
+			}
+			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
+				pStmt.setString(4, "%" + target_understands.getUser_id() + "%");
+			}
+			else {
+				pStmt.setString(4, null);
+			}
+
+			// 結果表をコレクションにコピーする
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+	}
+
+	//item_id, user_idの場所のdayとtarget_understandを更新
+	public boolean delete(Target_understands target_understands){
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "delete from Target_understands WHERE item_id = ? AND user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
+				pStmt.setString(1, target_understands.getItem_id());
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
+				pStmt.setString(2, "%" + target_understands.getUser_id() + "%");
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+
+			// 結果表をコレクションにコピーする
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+	}
 }
