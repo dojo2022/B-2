@@ -79,14 +79,26 @@ public class ScheduleServlet extends HttpServlet {
 		String certification_id = request.getParameter("CERTIFICATION_ID");
 		String testdays = request.getParameter("TESTDAYS");
 
-		// 登録処理を行う　
-		//My資格トランザクションに「ユーザID、試験名、試験日程」を追加
+
+
+		// ↓登録処理を行う
+		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
 		My_certificationsDAO tdDao = new My_certificationsDAO();
 		if (tdDao.insert(new My_certifications(user_id, certification_id,testdays))) {	// 登録成功
 			// メニューサーブレット？ページ？にフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
 			dispatcher.forward(request, response);
 			}
+
+//		リクエストパラメータを取得する ...ユーザID、項目id、本日の目標（本日の目標トラ）
+
+		// ↓登録処理を行う
+		//本日の目標トランザクションに「ユーザID、項目id、本日の目標」を登録する
+
+//		リクエストパラメータを取得する ...ユーザ名(id)、項目id、目標id、理解度（目標理解度トラ）
+
+		// ↓登録処理を行う
+		//目標理解度トランザクションにユーザ名(id)、項目id、目標id、理解度
 
 
 	}

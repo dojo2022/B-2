@@ -3,42 +3,23 @@ package model;
 import java.io.Serializable;
 
 public class UserSetting implements Serializable {
-	private String title;		// タイトル
-	private String message;	// メッセージ
-	private String backTo;		// 戻り先
+	private String user_id;		// ログインユーザーのユーザーID
 
+	//引数ありコンストラクタ
+	public UserSetting(String user_id) {
+		this.user_id = user_id;
+	}
+	//引数なしコンストラクタ
 	public UserSetting() {
-		this(null, null, null);
+		this.user_id = "";
+	}
+	//ゲッタとセッタ
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public UserSetting(String title, String message, String backTo) {
-		this.title = title;
-		this.message = message;
-		this.backTo = backTo;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getBackTo() {
-		return backTo;
-	}
-
-	public void setBackTo(String backTo) {
-		this.backTo = backTo;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 }
 

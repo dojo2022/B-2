@@ -27,7 +27,7 @@ public class Today_targetsDAO {
 
 			// SQL文を完成させる
 
-			if (today_targets.getId() != -1) {
+			if (today_targets.getId() != 0) {
 				pStmt.setString(1, Integer.toString(today_targets.getId()));
 			}
 			else {

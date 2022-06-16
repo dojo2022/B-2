@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/tasuma/css/menu.css">
+<link rel="stylesheet" href="/tasuma/css/style.css">
 <script type="text/javascript">
 
 </script>
@@ -18,6 +19,7 @@
 	<input type="hidden" id="getjs" value="${username.username }">
 	<input type="hidden" id="getjs2" value="${username }">
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
+	<!-- ユーザ名の表示 -->
 	<p class="username">${username.username }</p>
 	<h2>メニュー</h2>
 
@@ -43,11 +45,11 @@
 
 	<!-- 本日の目標 -->
 	<%--
-	<c:forEach var="e1" items="${Certifications }">
+	<c:forEach var="e1" items="${menu_data }">
 		<h3>本日の目標-${e1.certification}</h3>
 		<ul>
-			<c:forEach var="e2" items="${e1.Targets }">
-				<li>${e2.target }
+			<c:forEach var="e2" items="${e1.itemList }">
+				<li>${e2 }
 			</c:forEach>
 		</ul>
 	</c:forEach>

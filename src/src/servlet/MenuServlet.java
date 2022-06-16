@@ -30,17 +30,21 @@ public class MenuServlet extends HttpServlet {
 
 		/*
 		//ユーザ名の取得
-		LoginUser loginuser = (LoginUser)session.getAttribute("id");
+		LoginUser loginuser = (LoginUser)session.getAttribute("username");
 		String username = loginuser.getUsername();
 
 		//各種データを取得しスコープに保存
 		//My資格を持ってくる
 		My_certificationsDAO myDao = new My_certificationsDAO();
 		List<My_certifications> myList = myDao.select(new My_certifications(null, username, null, null));
-		//List<Menu_data> menu_data = new ArrayList<Menu_data>();
+		List<Menu_data> menu_data = new ArrayList<Menu_data>();
 		//今日の目標を持ってくる(テーブル及びDAO等が完成するまで保留)
 		Today_targetsDAO ttDao = new Today_targetsDAO();
-		List<Today_targets> ttList = ttDao.select(new Today_targets(-1, username, null, -1));//intはnullを入れられないので代わりに-1を代入(0でもいいかもしれない)
+		//ItemsDAO iDao = new ItemsDAO(); //ItemDAOが完成したらコメントを外す
+		if(myList.isEmpty()) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+			dispatcher.forward(request, response);
+		}
 
 		//My資格ごとに必要なデータの抽出及び格納
 		for(My_certifications my :myList) {
@@ -55,18 +59,23 @@ public class MenuServlet extends HttpServlet {
 			//String remainingDays = testday - now; //残り日数の計算（イメージ）
 			//今日の目標の内、該当する資格の項目をリストに格納
 			//List<String> itemList = new ArrayList<String>();
-			for(){
+			List<Today_targets> ttList = ttDao.select(new Today_targets(0, username, null, 1));
+			///////ttListがnullだった時について考えないといけない
+			for(Today_targets tt :ttList){
 				//本日の目標項目idを取得して、項目名を取得しitemListに格納
+				//String item = iDao.select(); //ItemDAOが完成したらコメントを外す
+				//itemList.add(item);
 			}
 
 			//My資格の内、資格名、残り日数、本日の目標項目一覧を格納（資格ごとにリストに追加）
 			//menu_data.add(new Menu_data(certification, remainingDays, itemList));
 		}
+		session.setAttribute("menu_data", menu_data);
 		//カレンダーの日程を持ってくる(現在時刻を取得し試験までの残り日数を計算)
+		 */
 
 		//自分用コメント
 		//メニューに必要なデータを格納するmodelを用意Menu(試験名, 残り日数, 目標項目一覧(リスト))
-		*/
 
 		// メニューページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");

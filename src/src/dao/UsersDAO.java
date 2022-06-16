@@ -150,7 +150,7 @@ public class UsersDAO  {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "update Usera set USERNAME=?, PASSWORD=?, MAIL=?,  where USER_ID=?";
+				String sql = "update Users set USERNAME=?, PASSWORD=?, MAIL=?  where USER_ID=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -171,11 +171,6 @@ public class UsersDAO  {
 				}
 				else {
 					pStmt.setString(3, "");
-				}
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
 				}
 			}
 			catch (SQLException e) {
