@@ -69,8 +69,8 @@ import model.Certifications;
 
 			// 資格名の情報を持ちながら遷移する処理はここまで↑↑↑
 
-
-/*			// カテゴリ検索の処理↓↓↓
+/*
+			// カテゴリ検索の処理↓↓↓
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			String allit = request.getParameter("allit");
@@ -102,7 +102,7 @@ import model.Certifications;
 			dispatcher.forward(request, response);
 
 		}
-
+*/
 
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

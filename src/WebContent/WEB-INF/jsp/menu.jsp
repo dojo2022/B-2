@@ -5,7 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/tasuma/css/menu.css">
-<script src="JavaScript/menu.js" defer></script>
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript" src="JavaScript/menu.js" defer></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +16,7 @@
 </head>
 <body>
 	<input type="hidden" id="getjs" value="${username.username }">
+	<input type="hidden" id="getjs2" value="${username }">
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<p class="username">${username.username }</p>
 	<h2>メニュー</h2>

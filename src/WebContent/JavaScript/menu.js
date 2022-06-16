@@ -4,7 +4,11 @@ const weeks = ['日', '月', '火', '水', '木', '金', '土']
 const date = new Date()
 let year = date.getFullYear()
 let month = date.getMonth() + 1
+
+//スコープデータ取得のテスト用
 const username = document.getElementById("getjs").value
+const username2 = document.getElementById("getjs2").value
+
 
 function showCalendar(year, month) {
     const calendarHtml = createCalendar(year, month)
@@ -88,6 +92,7 @@ document.addEventListener("click", function(e) {
     	if(e.target.dataset.date === '2022/7/7'){
     		alert(e.target.dataset.test)
     	}
+		alert(username)//スコープデータ取得のテスト用
         alert('クリックした日付は' + e.target.dataset.date + 'です')
     }
 })

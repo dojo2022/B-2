@@ -1,5 +1,0 @@
-<script>
-'use strict'
-
-/**/
-</script>
