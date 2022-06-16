@@ -15,10 +15,10 @@ import dao.CertificationsDAO;
 import model.Certifications;
 
 /**
- * Servlet implementation class MatchingServlet
+ * Servlet implementation class Matching1Servlet
  */
-@WebServlet("/MatchingServlet")
-public class MatchingServlet extends HttpServlet {
+@WebServlet("/Matching1Servlet")
+public class Matching1Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -50,13 +50,11 @@ public class MatchingServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する ☆名前、カテゴリ、★難易度
 		request.setCharacterEncoding("UTF-8");
-		String certification = request.getParameter("certification");
-		String category = request.getParameter("category");
-//		String level = request.getParameter("level");　★難易度
+		String category = request.getParameter("category"); //カテゴリ
 
 		// 検索処理を行う　☆名前、カテゴリ、★難易度
 		CertificationsDAO cDao = new CertificationsDAO();
-		List<Certifications> cardList = cDao.select(new Certifications( certification, category/*,level*/));
+		List<Certifications> cardList = cDao.select(new Certifications( category));
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);

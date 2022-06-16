@@ -9,10 +9,11 @@ public class Certifications implements Serializable {
 	private String category;
 	private String book_name;
 	private String book_image;
+	private String level;
 
 	//引数のあるコンストラクタ
 	public Certifications(String id, String certification_id, String certification, String category, String book_name,
-			String book_image) {
+			String book_image, String level) {
 		super();
 		this.id = id;
 		this.certification_id = certification_id;
@@ -20,6 +21,7 @@ public class Certifications implements Serializable {
 		this.category = category;
 		this.book_name = book_name;
 		this.book_image = book_image;
+		this.level=level;
 	}
 
 	//引数のあるコンストラクタ
@@ -32,11 +34,11 @@ public class Certifications implements Serializable {
 
 		}
 		//マッチング時オーバライド用コンストラクタ
-		public Certifications( String certification, String category/*, String level*/) {
+		public Certifications( String certification, String category, String level) {
 			super();
 			this.certification = certification;
 			this.category = category;
-			/* this.level=level; */
+			this.level= level;
 		}
 
 	//引数のないコンストラクタ(デフォルトコンストラクタ)
@@ -48,7 +50,10 @@ public class Certifications implements Serializable {
 		this.category = "";
 		this.book_name = "";
 		this.book_image = "";
+		this.level = "";
 	}
+
+
 
 	//ゲッタセッタ
 	public String getId() {
@@ -97,6 +102,13 @@ public class Certifications implements Serializable {
 
 	public void setBook_image(String book_image) {
 		this.book_image = book_image;
+	}
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
 	}
 
 }

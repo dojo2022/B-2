@@ -12,7 +12,7 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <h2>My資格</h2>
 <!-- 質問 -->
-<form method="POST" action="/tasuma/MatchingServlet" id="matching">
+<form method="POST" action="/tasuma/Matching1Servlet" id="matching">
 	<table>
 	<caption>何に興味がありますか？</caption>
 	 	<tr>
