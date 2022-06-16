@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<header></header>
-<!-- <h2>理解度報告</h2> -->
+	<jsp:include page="/WEB-INF/jsp/header.jsp" />
+	<p class="username">${username.username }</p>
+	<h2>理解度報告</h2>
+
 
 <footer></footer>
 </body>
