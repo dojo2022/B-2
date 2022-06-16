@@ -24,17 +24,14 @@ public class UnderstandServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/simpleBC/LoginServlet");
+			response.sendRedirect("/tasuma/LoginServlet");
 			return;
 		}
-		//ユーザの資格を持ってくる
-		//今日の目標を持ってくる
+
 		//達成度を(計算して)持ってくる
-		//項目一覧を持ってくる
-		//ユーザが達成した項目を持ってくる
 
 		// 理解度報告ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/understand.jsp");
 		dispatcher.forward(request, response);
 
 	}
