@@ -26,7 +26,7 @@
 <!-- カテゴリをプルダウンで表示 -->
 <form method = "post">
 	<div>
-  			<label for ="select">カテゴリ</label><!-- カテゴリをプルダウンで表示 -->
+  			<label for ="select2">カテゴリ</label><!-- カテゴリをプルダウンで表示 -->
   			<select name ="select">
   			<option value="allit">IT知識全般</option>
   			<option value="gengo">IT言語</option>
@@ -40,6 +40,10 @@
   	</div>
 <!-- カテゴリをプルダウンで表示ここまで -->
 
+
+<!-- カテゴリ検索用のc:foreachをここに書く -->
+
+
 <!-- 資格名をテキスト入力 -->
 <table>
 	<tr>
@@ -49,7 +53,7 @@
 <!-- 資格名をテキスト入力ここまで -->
 
 <table>
-	<td colspan="2">
+	<td cospan="2">
 	<!-- 検索ボタンをカテゴリと資格名の横につける -->
 	<a href="/tasuma/CertificationListServlet"><input type="submit" name="SUBMIT" value="検索"></a>
 	</td>
@@ -61,31 +65,15 @@
 
 <table>
 	<!-- 番号と資格名を持ってくる -->
-	<!-- ここからループ開始 -->
-
-     for(let i=1;i<('.search_table').length;i++){
-	    document.getElementById("delete_btn"+i).onclick = function(e){
-	    	let checkCerflg = window.confirm('本当に削除しますか？');
-
-	    	if(checkCerflg){
-
-
-	    	}else{
-	    		e.preventDefault();
-	    		return;
-	    	}
-	    }
-    }
-
-
+	<!-- ここからループ開始 冨原さん記載 -->
 
 	<tr class="data_row">
 	<td>${e.number}</td><td>${e.name}</td>
 	<td><form method = "POST" action="/tasuma/CertificationListServlet">
-		<button type ="submit" name="NUMBER" value=${e.number}></button></form>
+		<button type ="submit" name="NUMBER" value=${e.number }></button></form>
 	</tr> <!-- 日程を決めるボタンを資格名の横に付ける -->
 
-	<!-- ここまでループ -->
+	<!-- ここまでループ 冨原さん記載 -->
 	<!-- ${}内の名前は仮 -->
 
 
