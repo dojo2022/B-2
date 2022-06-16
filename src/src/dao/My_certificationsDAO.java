@@ -24,7 +24,7 @@ public class My_certificationsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM My_certifications WHERE id = ? AND user_id = ? AND certification_id = ? AND item_id = ? ";
+			String sql = "SELECT * FROM My_certifications WHERE id = ? AND user_id = ? AND certification_id = ? AND testdays = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -46,8 +46,8 @@ public class My_certificationsDAO {
 			else {
 				pStmt.setString(3, "%");
 			}
-			if (param.getItem_id() != null) {
-				pStmt.setString(4, "%" + param.getItem_id() + "%");
+			if (param.getTestdays() != null) {
+				pStmt.setString(4, "%" + param.getTestdays() + "%");
 			}
 			else {
 				pStmt.setString(4, "%");
@@ -63,7 +63,7 @@ public class My_certificationsDAO {
 				rs.getString("id"),
 				rs.getString("user_id"),
 				rs.getString("certification_id"),
-				rs.getString("item_id")
+				rs.getString("testdays")
 				);
 				My_certificationsList.add(new_My_certifications);
 			}
@@ -169,7 +169,7 @@ public class My_certificationsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する idはいらない？
-				String sql = "UPDATE My_certifications SET certification_id = ? AND item_id = ? WHERE user_id = ?";
+				String sql = "UPDATE My_certifications SET certification_id = ? AND testdays = ? WHERE user_id = ?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -179,14 +179,14 @@ public class My_certificationsDAO {
 				else {
 					pStmt.setString(1, "");
 				}
-				if (card.getItem_id() != null && !card.getItem_id().equals("")) {
-					pStmt.setString(2, card.getItem_id());
+				if (card.getTestdays() != null && !card.getTestdays().equals("")) {
+					pStmt.setString(2, card.getTestdays());
 				}
 				else {
 					pStmt.setString(2, "");
 				}
 
-					pStmt.setInt(11, Integer.parseInt(card.getUser_id()));
+					pStmt.setInt(3, Integer.parseInt(card.getUser_id()));
 
 					// SQL文を実行する
 					if (pStmt.executeUpdate() == 1) {
@@ -228,7 +228,7 @@ public class My_certificationsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "DELETE FROM My_certifications WHERE certification_id=?";
+				String sql = "DELETE FROM My_certifications WHERE user_id='?' AND certification_id ='?'";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
