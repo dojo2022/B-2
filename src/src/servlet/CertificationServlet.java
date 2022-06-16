@@ -34,6 +34,11 @@ public class CertificationServlet extends HttpServlet {
 		// My資格ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
 		dispatcher.forward(request, response);
+
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String username = request.getParameter("username");
+		String certification = request.getParameter("certification");
 	}
 
 	/**
@@ -49,15 +54,13 @@ public class CertificationServlet extends HttpServlet {
 */
 
 		// リクエストパラメータを取得する
-		// ユーザ名とユーザIDと資格IDとテスト日程を持ってきて表示する？
+		// 資格IDを持ってきて表示する？
 		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
-		String certification = request.getParameter("certification");
 		String certification_id = request.getParameter("certification_id");
 
    		// 削除を行う
     	My_certificationsDAO mDao = new My_certificationsDAO();
-   	    if (mDao.delete(certification)) {	// 削除成功
+   	    if (mDao.delete(certification_id)) {	// 削除成功
 		   request.setAttribute("result",
 		   new Result("削除成功！", "レコードを削除しました。"));
 	    }
@@ -65,5 +68,10 @@ public class CertificationServlet extends HttpServlet {
 		   request.setAttribute("result",
 		   new Result("削除失敗！", "レコードを削除できませんでした。"));
 	    }
+
+   	    // My資格ページにフォワードする
+   		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
+   		dispatcher.forward(request, response);
+
    	}
 }
