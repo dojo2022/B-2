@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>TASUMA|My資格</title>
 <link rel="stylesheet"type="text/css" href="/tasuma/css/certification.css">
+<!-- <link rel="stylesheet"type="text/css" href="/tasuma/css/style.css"> -->
 </head>
 <body>
 	<!-- ヘッダーここから -->
 		<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<!-- ヘッダーここまで -->
-	<!-- 画面右上のユーザID ここから これで合ってますか？ -->
+	<!-- 画面右上のユーザID ここから -->
 		<p class="username">ユーザ名:${username.username}</p>
 	<!-- 画面右上のユーザID ここまで -->
 		<h2>My資格</h2>
@@ -37,16 +39,19 @@
 	のテーブル -->
 
 	<!-- ↓に登録された資格が一覧表示される 削除ボタンは横にあるからこの配置？ -->
-	<!-- actionには入力情報を処理するプログラムのURLが必要 -->
-	<!-- forEachの中にformを入れると△の注意マークが出てくる-->
-		<table class="list">
+	<!-- actionには入力情報を処理するプログラムのURLが必要 あっているかはわからない... -->
+
 			<c:forEach var="e" items="${e.cardlist}">
-				<form action="/tasuma/CertificationServlet" method="post" name="list" id="list">
-					<tr class="data_row"><td>${e.certification}</td>
-										 <td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td></tr>
+				<form action="/tasuma/CertificationServlet" method="post" id="list">
+					<table class="list">
+						<tr>
+							<td>${e.certification}</td>
+							<td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
+						</tr>
+					</table>
 				</form>
 			</c:forEach>
-		</table>
+
 	<!-- メニューボタン -->
 	<table>
 	 <tr class="menu">
@@ -59,5 +64,5 @@
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
 </body>
-<script src="/tasuma/WebContent/JavaScript/login.js"></script>
+<script src="/tasuma/WebContent/JavaScript/certification.js"></script>
 </html>
