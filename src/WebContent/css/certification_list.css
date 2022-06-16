@@ -6,6 +6,20 @@ table {
 	font-weight:bold;
   }
 
+
+.logo{
+	margin:50px 0 40px 0;
+	line-height: 0;
+	text-align:center;
+	font-weight:bold;
+}
+
+.footer{
+	font-size: 12px;
+	font-weight:bold;
+	text-align:center;
+}
+
 /* h3 資格一覧の位置 */
 h3 {
 	text-align: left;

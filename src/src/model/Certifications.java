@@ -22,7 +22,7 @@ public class Certifications implements Serializable {
 		this.book_image = book_image;
 	}
 
-	//引数のあるコンストラクタ
+	//資格の検索表示用コンストラクタ
 		public Certifications(String id, String certification_id, String certification, String category) {
 			super();
 			this.id = id;
@@ -31,6 +31,12 @@ public class Certifications implements Serializable {
 			this.category = category;
 
 		}
+
+		// カテゴリの表示用コンストラクタ
+				public Certifications(String certification) {
+				this.certification = certification;
+				}
+
 		//マッチング時オーバライド用コンストラクタ
 		public Certifications( String certification, String category/*, String level*/) {
 			super();
