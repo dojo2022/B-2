@@ -19,17 +19,18 @@
 		<h2>My資格</h2>
 
 	<!--マッチングページにリンク飛ぶボタン-->
-	<table>
-	  <tr class="button">
+	<table class="button">
+	  <tr>
 		  <td><a href="/tasuma/MatchingServlet">
 				<button type="button" name="to_matching">マッチング</button>
-		      </a>
-		  <p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p></td>
+		      </a></td>
 	<!--資格登録一覧ページにリンク飛ぶボタン-->
-		 <td><a href="/tasuma/MatchingServlet">
+		  <td><a href="/tasuma/MatchingServlet">
 				<button type="button" name="to_list">一覧から選ぶ</button>
-		     </a>
-		  <p>...取りたい資格が決まっているあなたはこちら！</p></td>
+		      </a></td>
+	  </tr>
+	  <tr><td><p>...質問チャートを使ってあなたにおすすめの資格をマッチング！</p></td>
+		  <td><p>...取りたい資格が決まっているあなたはこちら！</p></td>
 	  </tr>
 	</table>
 		<h3>My資格一覧</h3>
