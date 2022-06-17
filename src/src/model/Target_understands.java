@@ -10,10 +10,11 @@ public class Target_understands implements Serializable {
 	private String item_id;
 	private String user_id;
 	private Date day;
-	private int target_understand;
+	private String target_understand;
+
 
 	//コンストラクタ（引数あり）
-	public Target_understands(int id, String target_id, String item_id, String user_id, Date day, int target_understand) {
+	public Target_understands(int id, String target_id, String item_id, String user_id, Date day, String target_understand) {
 		this.setId(id);
 		this.setTarget_id(target_id);
 		this.setItem_id(item_id);
@@ -21,6 +22,14 @@ public class Target_understands implements Serializable {
 		this.setDay(day);
 		this.setTarget_understand(target_understand);
 	}
+
+	//資格登録時用コンストラクタ（引数あり）
+	public Target_understands(String target_id, String item_id, String user_id) {
+		this.setTarget_id(target_id);
+		this.setItem_id(item_id);
+		this.setUser_id(user_id);
+	}
+
 
 	//コンストラクタ（引数なし）
 	public Target_understands() {
@@ -30,7 +39,7 @@ public class Target_understands implements Serializable {
 		this.setItem_id("");
 		this.setUser_id("");
 		this.setDay(now);
-		this.setTarget_understand(0);
+		this.setTarget_understand("");
 	}
 
 	public int getId() {
@@ -73,11 +82,12 @@ public class Target_understands implements Serializable {
 		this.day = day;
 	}
 
-	public int getTarget_understand() {
+	public String getTarget_understand() {
 		return target_understand;
 	}
 
-	public void setTarget_understand(int target_understand) {
+	public void setTarget_understand(String target_understand) {
 		this.target_understand = target_understand;
 	}
+
 }
