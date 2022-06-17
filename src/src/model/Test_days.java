@@ -30,6 +30,12 @@ public class Test_days implements Serializable {
 		this.app_fin = app_fin;
 	}
 	//引数のあるコンストラクタ
+	public Test_days(String certification) {
+		super();
+		this.certification = certification;
+	}
+
+	//引数のあるコンストラクタ
 	public Test_days(String certification_id,String testdays) {
 		super();
 		this.certification_id = certification_id;
