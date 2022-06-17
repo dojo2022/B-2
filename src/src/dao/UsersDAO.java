@@ -5,12 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
-import model.UserSetting;
 import model.Users;
 
 
@@ -140,73 +137,11 @@ public class UsersDAO  {
 
 //ユーザ設定で使用するDAO
 
-	//UsersテーブルからユーザーIDを取ってくる
-	public List<UserSetting> select(UserSetting param) {
-		Connection conn = null;
-		List<UserSetting> UserSettingList = new ArrayList<UserSetting>();
-
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
-
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-
-			// SQL文を準備する
-			String sql = "SELECT user_id  FROM Users  WHERE  username = ?";
-			PreparedStatement pStmt = conn.prepareStatement(sql);
-
-			// SQL文を完成させる
-			if (param.getUsername() != null) {
-				pStmt.setString(1, "%" + param.getUsername() + "%");
-			}
-			else {
-				pStmt.setString(1, "%");
-			}
-
-
-			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
-
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
-				UserSetting id = new UserSetting(
-				rs.getString("USER_ID"),
-				rs.getString("USERNAME")
-				);
-				UserSetting.add(id);
-			}
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			UserSettingList = null;
-		}
-		catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			UserSettingList = null;
-		}
-		finally {
-			// データベースを切断
-			if (conn != null) {
-				try {
-					conn.close();
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-					UserSettingList = null;
-				}
-			}
-		}
-
-		// 結果を返す
-		return UserSettingList;
-	}
 
 	// 引数Usersで指定されたレコードを更新し、成功したらtrueを返す
 		public boolean update(Users users) {
 			Connection conn = null;
 			boolean result = false;
-
 			try {
 				// JDBCドライバを読み込む
 				Class.forName("org.h2.Driver");
@@ -215,7 +150,7 @@ public class UsersDAO  {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "update Users set USERNAME=?, PASSWORD=?, MAIL=?  where USER_ID=?";
+				String sql = "update Users set USERNAME=?, PASSWORD=?, MAIL=?  where USERNAME=?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -236,6 +171,16 @@ public class UsersDAO  {
 				}
 				else {
 					pStmt.setString(3, "");
+				}
+				if (users.getOld_username() != null && !users.getOld_username().equals("")) {
+					pStmt.setString(4, users.getOld_username());
+				}
+				else {
+					pStmt.setString(4, "");
+				}
+				// SQL文を実行する
+				if (pStmt.executeUpdate() == 1) {
+					result = true;
 				}
 			}
 			catch (SQLException e) {
@@ -260,4 +205,55 @@ public class UsersDAO  {
 			return result;
 		}
 
+		public String getUser_id(String username) {
+        	Connection conn = null;
+    		String result = null;
+
+    		try {
+    			// JDBCドライバを読み込む
+    			Class.forName("org.h2.Driver");
+
+    			// データベースに接続する
+    			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+    			// SQL文を準備する
+    			String sql = "SELECT user_id from Users WHERE username = ?";
+    			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+    			// SQL文を完成させる
+				pStmt.setString(1, username);
+
+
+    			// SQL文を実行し、結果表を取得する
+    			ResultSet rs = pStmt.executeQuery();
+
+    			// 結果表をコレクションにコピーする
+    			while (rs.next()) {
+    				result = rs.getString("user_id");
+    			}
+    		}
+    		catch (SQLException e) {
+    			e.printStackTrace();
+    			result = null;
+    		}
+    		catch (ClassNotFoundException e) {
+    			e.printStackTrace();
+    			result = null;
+    		}
+    		finally {
+    			// データベースを切断
+    			if (conn != null) {
+    				try {
+    					conn.close();
+    				}
+    				catch (SQLException e) {
+    					e.printStackTrace();
+    					result = null;
+    				}
+    			}
+    		}
+
+    		// 結果を返す
+    		return result;
+        }
 }
