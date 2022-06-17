@@ -29,14 +29,15 @@ book_name VARCHAR (50),
 book_image VARCHAR (30),
 level VARCHAR (5)
 );
+
 --{データの登録}
-INSERT INTO Certifications (certification,category,book_name,book_image,level) VALUES ('ITパスポート','IT知識全般','','','★★');
+INSERT INTO Certifications (certification,category,book_name,book_image,level) VALUES ('ITパスポート','allit','イメージ＆クレバー方式でよくわかる栢木先生のITパスポート教室','WebContents/img/img0003.png','★★');
 UPDATE Certifications SET  certification_id=(SELECT CONCAT('a',id) FROM Certifications WHERE certification_id IS NULL) WHERE certification_id IS NULL;
 
-INSERT INTO Certifications (certification,category,book_name,book_image,level) VALUES ('基本情報技術者試験','IT知識全般','よくわかる！FE','WebContents/img/img0001.png','★★★');
+INSERT INTO Certifications (certification,category,book_name,book_image,level) VALUES ('基本情報技術者試験','allit','よくわかる！FE','WebContents/img/img0001.png','★★★');
 UPDATE Certifications SET  certification_id=(SELECT CONCAT('a',id) FROM Certifications WHERE certification_id IS NULL) WHERE certification_id IS NULL;
 
-INSERT INTO Certifications (certification,category,book_name,book_image,level) VALUES ('応用情報技術者試験','IT知識全般','よくわかる！AP','WebContents/img/img0002.png','★★★★');
+INSERT INTO Certifications (certification,category,book_name,book_image,level) VALUES ('応用情報技術者試験','allit','よくわかる！AP','WebContents/img/img0002.png','★★★★');
 UPDATE Certifications SET  certification_id=(SELECT CONCAT('a',id) FROM Certifications WHERE certification_id IS NULL) WHERE certification_id IS NULL;
 
 ---------------------------------
