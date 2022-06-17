@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDAO;
+import model.LoginUser;
 import model.Result;
 import model.Users;
 
@@ -42,15 +43,6 @@ public class UserSettingServlet extends HttpServlet {
 			return;
 		}
 
-		//セッションスコープにユーザーIDを格納する
-		HttpSession session_id = request.getSession();
-		session_id.setAttribute("user_id", "USER_ID");
-		System.out.println("USER_ID");
-
-		//格納したユーザーIDをsetUser_idでセットし、UsersDAOに格納させる
-
-		//→ユーザーIDを参照してログインユーザーの情報が入ったデータを呼び出すため
-
 		// ユーザー設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
 		dispatcher.forward(request, response);
@@ -74,10 +66,19 @@ public class UserSettingServlet extends HttpServlet {
 			String password = request.getParameter("password");
 			String mail = request.getParameter("mail");
 
+
+
+			//セッションスコープからインスタンスを取り出す
+			HttpSession session = request.getSession();
+			LoginUser old_username_obj = (LoginUser)session.getAttribute("username");
+			String old_username = old_username_obj.getUsername();
+//old_usernameからold_mail,old_pwを取るselect DAOを作成する
+			//変数oldpw,oldmailに代入する
+
 			// 更新を行う
 			UsersDAO iDao = new UsersDAO();
-			if (request.getParameter("change_profile").equals("変更")) {
-				if (iDao.update(new Users(username, password, mail))) {	// 更新成功
+//			if (request.getParameter("change_profile").equals("変更")) {
+				if (iDao.update(new Users(old_username,username, password, mail))) {	// 更新成功
 					request.setAttribute("result",
 					new Result("更新成功！", "登録情報を変更しました"));
 
@@ -92,7 +93,7 @@ public class UserSettingServlet extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
 					dispatcher.forward(request, response);
 				}
-			}
+//			}
 	}
 }
 

@@ -16,7 +16,7 @@
 <title>TASUMA|メニュー</title>
 </head>
 <body>
-	<input type="hidden" id="getjs" value="${username.username }">
+<%-- 	<input type="hidden" id="getjs" value="${username.username }"> --%>
 	<input type="hidden" id="getjs2" value="${username }">
 <!-- ヘッダーここから -->
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />

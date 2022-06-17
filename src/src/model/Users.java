@@ -2,6 +2,7 @@ package model;
 import java.io.Serializable;
 
 public class Users implements Serializable {
+	private String old_username;
 	private String username;	// ID
 	private String password;	// PW
 	private String mail; //メールアドレス
@@ -9,6 +10,13 @@ public class Users implements Serializable {
 //引数ありコンストラクタ
 	public Users(String username, String password, String mail) {
 		super();
+		this.username = username;
+		this.password = password;
+		this.mail= mail;
+	}
+	public Users(String old_username,String username, String password, String mail) {
+		super();
+		this.old_username = old_username;
 		this.username = username;
 		this.password = password;
 		this.mail= mail;
@@ -46,6 +54,15 @@ public class Users implements Serializable {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	public String getOld_username() {
+		return old_username;
+	}
+	public void setOld_username(String old_username) {
+		this.old_username = old_username;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
