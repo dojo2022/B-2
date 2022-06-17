@@ -22,35 +22,24 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "select * from Today_targets WHERE id = ? AND user_id = ? AND item_id = ? AND today_target = ?";
+			String sql = "select * from Today_targets WHERE user_id = ? AND item_id = ? AND today_target = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			if (today_targets.getId() != 0) {
-				pStmt.setString(1, Integer.toString(today_targets.getId()));
+			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
+				pStmt.setString(1, today_targets.getUser_id());
 			}
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
-				pStmt.setString(2, today_targets.getUser_id());
+			if (today_targets.getItem_id() != null && !today_targets.getItem_id().equals("")) {
+				pStmt.setString(2, today_targets.getItem_id());
 			}
 			else {
 				pStmt.setString(2, "%");
 			}
-			if (today_targets.getItem_id() != null && !today_targets.getItem_id().equals("")) {
-				pStmt.setString(3, today_targets.getItem_id());
-			}
-			else {
-				pStmt.setString(3, "%");
-			}
-			if (today_targets.getToday_target() != -1) {
-				pStmt.setString(4, Integer.toString(today_targets.getToday_target()));
-			}
-			else {
-				pStmt.setString(4, "%");
-			}
+			pStmt.setInt(3, today_targets.getToday_target());
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -86,5 +75,126 @@ public class Today_targetsDAO {
 		}
 
 		return resultList;
+	}
+
+	public boolean insert(Today_targets today_targets){
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "insert into Today_targets (id, user_id, item_id, today_target) values (?, ?, ? ,?)";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
+			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
+				pStmt.setString(2, today_targets.getUser_id());
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+			if (today_targets.getItem_id() != null && !today_targets.getItem_id().equals("")) {
+				pStmt.setString(3, today_targets.getItem_id());
+			}
+			else {
+				pStmt.setString(3, null);
+			}
+			if (today_targets.getToday_target() != 1 && today_targets.getToday_target() != 2) {
+				pStmt.setInt(4, 0);
+			}
+			else {
+				pStmt.setInt(4, today_targets.getToday_target());
+			}
+
+			// 結果表をコレクションにコピーする
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public boolean update(Today_targets today_targets){
+		Connection conn = null;
+		boolean result = false;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "update Today_targets set Today_target = ? WHERE item_id = ? AND user_id = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			pStmt.setInt(1, today_targets.getToday_target());//サーブレットで0,1,2以外の数値ははじく
+			if (today_targets.getItem_id() != null && today_targets.getItem_id().equals("")) {
+				pStmt.setString(2, today_targets.getItem_id());
+			}
+			else {
+				pStmt.setString(2, null);
+			}
+			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
+				pStmt.setString(3, today_targets.getUser_id());
+			}
+			else {
+				pStmt.setString(3, null);
+			}
+
+			// 結果表をコレクションにコピーする
+			// SQL文を実行する
+			if (pStmt.executeUpdate() == 1) {
+				result = true;
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return result;
 	}
 }

@@ -36,9 +36,9 @@ import model.Certifications;
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
 			String id = request.getParameter("ID");
-			String certification_id = request.getParameter("CERTIFICATION_ID");
-			String certification = request.getParameter("CERTIFICATION");
-			String category = request.getParameter("CATEGORY");
+//			String certification_id = request.getParameter("CERTIFICATION_ID");
+//			String certification = request.getParameter("CERTIFICATION");
+//			String category = request.getParameter("CATEGORY");
 
 			// 検索処理を行う
 			CertificationsDAO cDao = new CertificationsDAO();
