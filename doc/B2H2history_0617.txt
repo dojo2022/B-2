@@ -125,16 +125,16 @@ CREATE TABLE Target_understands (
 id INT (4) PRIMARY KEY AUTO_INCREMENT,
 target_id CHAR(5) NOT NULL,
 FOREIGN KEY(target_id) REFERENCES Targets (target_id ),
+item_id CHAR(5) NOT NULL,
+FOREIGN KEY(item_id) REFERENCES Items (item_id ),
 user_id CHAR(5) NOT NULL,
 FOREIGN KEY(user_id) REFERENCES Users (user_id ),
-day DATE NOT NULL,
-target_understand INT(1) NOT NULL
+day CHAR(10) ,
+target_understand CHAR(1) DEFAULT 0
 );
 --{データの登録}
-INSERT INTO Target_understands (target_id,user_id,day,target_understand) VALUES ('c1','u1',now(),'2');
-INSERT INTO Target_understands (target_id,user_id,day,target_understand) VALUES ('c2','u1',now(),'0');
-INSERT INTO Target_understands (target_id,user_id,day,target_understand) VALUES ('c1','u2',now(),'1');
-
+INSERT INTO Target_understands (target_id,item_id,user_id) VALUES ('c1','b1','u1');
+INSERT INTO Target_understands (target_id,item_id,user_id) VALUES ('c2','b1','u1');
 ---------------------------------
 --[本日の目標トランザクション]
 --{テーブルの作成}
