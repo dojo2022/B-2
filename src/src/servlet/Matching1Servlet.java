@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.CertificationsDAO;
 import model.Certifications;
@@ -24,13 +23,8 @@ public class Matching1Servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/tasuma/LoginServlet");
-			return;
-		}
 		// jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/matching1.jsp");
 		dispatcher.forward(request, response);
@@ -40,23 +34,18 @@ public class Matching1Servlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/tasuma/LoginServlet");
-			return;
-		}
 
-		// リクエストパラメータを取得する ☆名前、カテゴリ、★難易度
+		// リクエストパラメータを取得する ☆カテゴリ
 		request.setCharacterEncoding("UTF-8");
 		String category = request.getParameter("category"); //カテゴリ
 
-		// 検索処理を行う　☆名前、カテゴリ、★難易度
+		// 検索処理を行う　☆カテゴリ
 		CertificationsDAO cDao = new CertificationsDAO();
-		List<Certifications> cardList = cDao.select(new Certifications( category));
+		List<Certifications> cardList = cDao.select_category(category);
 
-		// 検索結果をリクエストスコープに格納する
+		// 検索結果をリクエストスコープに格納する ☆カテゴリを踏まえて資格名、カテゴリ、難易度を格納
 		request.setAttribute("cardList", cardList);
 
 		// 結果ページにフォワードする

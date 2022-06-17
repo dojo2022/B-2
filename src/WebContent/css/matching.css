@@ -1,0 +1,15 @@
+@charset "UTF-8";
+table {
+	margin:auto;
+	text-align:center;
+	font-weight:bold;
+
+}
+p{
+	font-weight:bold;
+	font-size:1.5em;
+	text-align:center;
+}
+.next{
+	text-align:center;
+}
