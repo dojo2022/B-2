@@ -36,9 +36,14 @@ h3 {
 
 
 /* カテゴリ、資格名、検索ボタンを横並びにする */
+.button{
+	padding-top: 30px;
+  	display: flex;
+  	justify-content: space-evenly;
+  	text-align: center;
+}
 
 
 /* 資格名と日程を決めるボタンを横並びにする */
-
 
 
