@@ -44,6 +44,8 @@
 <!-- カテゴリ検索用のc:foreachをここに書く -->
 
 
+
+
 <!-- 資格名をテキスト入力 -->
 <table>
 	<tr>
@@ -53,7 +55,7 @@
 <!-- 資格名をテキスト入力ここまで -->
 
 <table>
-	<td cospan="2">
+	<td colspan="2">
 	<!-- 検索ボタンをカテゴリと資格名の横につける -->
 	<a href="/tasuma/CertificationListServlet"><input type="submit" name="SUBMIT" value="検索"></a>
 	</td>
