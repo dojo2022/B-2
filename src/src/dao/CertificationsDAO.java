@@ -64,60 +64,118 @@ import model.Certifications;
             // 結果を返す
             return cardList;
         }
-//        public List<Certifications> select_category(Certifications param) {
-//            Connection conn = null;
-//            List<Certifications> cardList = new ArrayList<Certifications>();
-//            try {
-//                // JDBCドライバを読み込む
-//                Class.forName("org.h2.Driver");
-//                // データベースに接続する
-//                conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-//                // SQL文を準備する（資格の検索）
-//                String sql = "SELECT certification, category,level from CERTIFICATIONS WHERE category LIKE ?";
-//                PreparedStatement pStmt = conn.prepareStatement(sql);
-//                // SQL文を完成させる
-//                if (param.getCategory() != null) {
-//                    pStmt.setString(1, "%" + param.getCategory() + "%");
-//                }
-//                else {
-//                    pStmt.setString(1, "%");
-//                }
-//                // SQL文を実行し、結果表を取得する
-//                ResultSet rs = pStmt.executeQuery();
-//                // 結果表をコレクションにコピーする
-//                while (rs.next()) {
-//                    Certifications card = new Certifications(
-//                    rs.getString("certification"),
-//                    rs.getString("category")
-//                    rs.getString("level")
-//                    );
-//                    cardList.add(card);
-//                }
-//            }
-//            catch (SQLException e) {
-//                e.printStackTrace();
-//                cardList = null;
-//            }
-//            catch (ClassNotFoundException e) {
-//                e.printStackTrace();
-//                cardList = null;
-//            }
-//            finally {
-//                // データベースを切断
-//                if (conn != null) {
-//                    try {
-//                        conn.close();
-//                    }
-//                    catch (SQLException e) {
-//                        e.printStackTrace();
-//                        cardList = null;
-//                    }
-//                }
-//            }
-//            // 結果を返す
-//            return cardList;
-//        }
-
+        public List<Certifications> select_category(String category) {
+            Connection conn = null;
+            List<Certifications> cardList = new ArrayList<Certifications>();
+            try {
+                // JDBCドライバを読み込む
+                Class.forName("org.h2.Driver");
+                // データベースに接続する
+                conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+                // SQL文を準備する（資格の検索）
+                String sql = "SELECT certification, category,level from CERTIFICATIONS WHERE category LIKE ?";
+                PreparedStatement pStmt = conn.prepareStatement(sql);
+                // SQL文を完成させる
+                if (category != null) {
+                    pStmt.setString(1, "%" + category + "%");
+                }
+                else {
+                    pStmt.setString(1, "%");
+                }
+                // SQL文を実行し、結果表を取得する
+                ResultSet rs = pStmt.executeQuery();
+                // 結果表をコレクションにコピーする
+                while (rs.next()) {
+                    Certifications card = new Certifications(
+                    rs.getString("certification"),
+                    rs.getString("category"),
+                    rs.getString("level")
+                    );
+                    cardList.add(card);
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            finally {
+                // データベースを切断
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                        cardList = null;
+                    }
+                }
+            }
+            // 結果を返す
+            return cardList;
+        }
+        public List<Certifications> select_level(Certifications param) {
+            Connection conn = null;
+            List<Certifications> cardList = new ArrayList<Certifications>();
+            try {
+                // JDBCドライバを読み込む
+                Class.forName("org.h2.Driver");
+                // データベースに接続する
+                conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+                // SQL文を準備する（資格の検索）
+                String sql = "SELECT certification, category, level from CERTIFICATIONS WHERE category LIKE ? AND level LIKE ?";
+                PreparedStatement pStmt = conn.prepareStatement(sql);
+                // SQL文を完成させる
+                if (param.getCategory() != null) {
+                    pStmt.setString(1, "%" + param.getCategory() + "%");
+                }
+                else {
+                    pStmt.setString(1, "%");
+                }
+                if (param.getLevel() != null) {
+                    pStmt.setString(2, "%" + param.getLevel() + "%");
+                }
+                else {
+                    pStmt.setString(2, "%");
+                }
+                // SQL文を実行し、結果表を取得する
+                ResultSet rs = pStmt.executeQuery();
+                // 結果表をコレクションにコピーする
+                while (rs.next()) {
+                    Certifications card = new Certifications(
+                    rs.getString("certification"),
+                    rs.getString("category"),
+                    rs.getString("level")
+                    );
+                    cardList.add(card);
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            finally {
+                // データベースを切断
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                        cardList = null;
+                    }
+                }
+            }
+            // 結果を返す
+            return cardList;
+        }
         public List<Certifications> select_allit() {
             Connection conn = null;
             List<Certifications> cardList = new ArrayList<Certifications>();
