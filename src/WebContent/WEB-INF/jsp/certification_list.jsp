@@ -33,6 +33,7 @@
 				<label for="select2">カテゴリ</label>
 				<!-- カテゴリをプルダウンで表示 -->
 				<select name="select">
+					<option>選択してください</option>
 					<option value="allit">IT知識全般</option>
 					<option value="gengo">IT言語</option>
 					<option value="data">データベース</option>
@@ -92,9 +93,9 @@
 			<tr>
 				<th>IT知識全般</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_allit}">
+			<c:forEach var="e" items="${allit}">
 				<tr class="data_row">
-					<td>${e.allit}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 
 		</table>
@@ -104,9 +105,9 @@
 			<tr>
 				<th>IT言語</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_gengo}">
+			<c:forEach var="e" items="${gengo}">
 				<tr class="data_row">
-					<td>${e.gengo}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 
@@ -115,9 +116,9 @@
 			<tr>
 				<th>データべース</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_data}">
+			<c:forEach var="e" items="${data}">
 				<tr class="data_row">
-					<td>${e.data}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 
@@ -126,9 +127,9 @@
 			<tr>
 				<th>セキュリティ</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_sec}">
+			<c:forEach var="e" items="${sec}">
 				<tr class="data_row">
-					<td>${e.sec}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 
@@ -137,9 +138,9 @@
 			<tr>
 				<th>ネットワーク</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_net}">
+			<c:forEach var="e" items="${net}">
 				<tr class="data_row">
-					<td>${e.net}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 
@@ -148,9 +149,9 @@
 			<tr>
 				<th>マネジメント</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_mana}">
+			<c:forEach var="e" items="${mana}">
 				<tr class="data_row">
-					<td>${e.mana}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 
@@ -159,9 +160,9 @@
 			<tr>
 				<th>事務作業</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_jimu}">
+			<c:forEach var="e" items="${jimu}">
 				<tr class="data_row">
-					<td>${e.jimu}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 
@@ -170,9 +171,9 @@
 			<tr>
 				<th>デザイン</th>
 			</tr>
-			<c:forEach var="e" items="${cardList_des}">
+			<c:forEach var="e" items="${des}">
 				<tr class="data_row">
-					<td>${e.des}</td>
+					<td>${e.certification}</td>
 			</c:forEach>
 		</table>
 

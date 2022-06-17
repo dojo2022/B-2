@@ -9,26 +9,23 @@
 <link rel="stylesheet"type="text/css" href="/tasuma/css/matching.css">
 </head>
 <body>
-<div class="wrapper">
 <!-- ヘッダー -->
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
-<h2>My資格</h2>
+<h2>My資格-結果</h2>
 <!-- 質問 -->
-<p>どのレベルにしますか？</p>
+<p>あなたにおすすめの資格です！</p>
 <hr>
-<form method="POST" action="/tasuma/Matching2Servlet" id="matching">
+<form method="POST" action="/tasuma/ScheduleServlet" id="matchingResult">
 	<table>
 	<c:forEach var="e" items="${cardList}" >
-	 	<tr>
-			<td><input type="radio" name="selectlevel" id="selectlevel" value="${e.level}" ></td><td >${e.level}</td>
-		<td><input type="hidden" name="category" value="${e.category}"></td>
+		<tr>
+			<td><input type="radio" name="selectCertification" id="selectCertification"></td><td >${e.certification}</td><td >${e.level}</td>
 		</tr>
 	</c:forEach>
 	</table>
-	<div class="submit"><input type="submit" name="matchingResult" value="結果を見る"class="next"></div>
+	<div class="submit"><input type="submit" name="toSchedule" value="受験日の選択へ"class="next"></div>
 </form>
 <!-- フッター -->
-</div>
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
 </html>

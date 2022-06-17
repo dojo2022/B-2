@@ -19,6 +19,7 @@ import dao.CertificationsDAO;
 import dao.ItemsDAO;
 import dao.My_certificationsDAO;
 import dao.Today_targetsDAO;
+import dao.UsersDAO;
 import model.LoginUser;
 import model.Menu_data;
 import model.My_certifications;
@@ -48,8 +49,10 @@ public class MenuServlet extends HttpServlet {
 
 		//各種データを取得しスコープに保存
 		//My資格を持ってくる
+		UsersDAO uDao = new UsersDAO();
+		String user_id = uDao.getUser_id(username);
 		My_certificationsDAO myDao = new My_certificationsDAO();
-		List<My_certifications> myList = myDao.select(new My_certifications(null, username, null, null));
+		List<My_certifications> myList = myDao.select(new My_certifications(null, user_id, null, null));
 		List<Menu_data> menu_data = new ArrayList<Menu_data>();
 		Today_targetsDAO ttDao = new Today_targetsDAO();
 		ItemsDAO iDao = new ItemsDAO();
@@ -57,6 +60,7 @@ public class MenuServlet extends HttpServlet {
 		if(myList.isEmpty()) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 			dispatcher.forward(request, response);
+			return;
 		}
 
 		//My資格ごとに必要なデータの抽出及び格納
@@ -70,7 +74,7 @@ public class MenuServlet extends HttpServlet {
 	        Date testday = null;
 	        Date now_date = null;//今日の日付
 	        try {
-	            testday = sdf.parse(my.getTestdays());
+	            testday = sdf.parse(my.getTestdays());//ここでエラー
 	            now_date = sdf.parse(sdf.format(now));
 	        }catch (ParseException e) {
 	            e.printStackTrace();
@@ -81,10 +85,11 @@ public class MenuServlet extends HttpServlet {
 	        String remainingDays = Integer.toString((int)dayDiff);
 
 			//今日の目標の内、該当する資格の項目をリストに格納
-			List<Today_targets> ttList = ttDao.select(new Today_targets(0, username, null, "1"));
+			List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, "1"));
 			if(ttList.isEmpty()) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 				dispatcher.forward(request, response);
+				return;
 			}
 			List<String> itemList = new ArrayList<String>();
 			for(Today_targets tt :ttList){
