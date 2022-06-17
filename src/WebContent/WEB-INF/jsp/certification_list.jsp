@@ -33,6 +33,7 @@
 				<label for="select2">カテゴリ</label>
 				<!-- カテゴリをプルダウンで表示 -->
 				<select name="select">
+					<option>選択してください</option>
 					<option value="allit">IT知識全般</option>
 					<option value="gengo">IT言語</option>
 					<option value="data">データベース</option>
