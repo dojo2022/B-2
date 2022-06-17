@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+/* ユーザネームを右側に表示 */
+.username{
+	text-align: right;
+}
+
+/* サブタイトル(目標設定) */
+h2{
+	text-align: center;
+}
+
+/* 更新ボタンを右側に配置 */
+.target{
+	text-align: right;
+}
+
+

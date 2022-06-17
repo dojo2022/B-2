@@ -34,7 +34,6 @@ public class My_certifications implements Serializable{
 			this.id = "";
 			this.user_id = "";
 			this.certification_id = "";
-			item_id = "";
 	}
 
 	//ゲッタセッタ
