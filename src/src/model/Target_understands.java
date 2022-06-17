@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Target_understands implements Serializable {
@@ -9,12 +11,12 @@ public class Target_understands implements Serializable {
 	private String target_id;
 	private String item_id;
 	private String user_id;
-	private Date day;
+	private String day;
 	private String target_understand;
 
 
 	//コンストラクタ（引数あり）
-	public Target_understands(int id, String target_id, String item_id, String user_id, Date day, String target_understand) {
+	public Target_understands(int id, String target_id, String item_id, String user_id, String day, String target_understand) {
 		this.setId(id);
 		this.setTarget_id(target_id);
 		this.setItem_id(item_id);
@@ -33,12 +35,19 @@ public class Target_understands implements Serializable {
 
 	//コンストラクタ（引数なし）
 	public Target_understands() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date now = new Date();
+        try {
+            now = sdf.parse(sdf.format(now));
+        }catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String nowStr = now.toString();
 		this.setId(0);
 		this.setTarget_id("");
 		this.setItem_id("");
 		this.setUser_id("");
-		this.setDay(now);
+		this.setDay(nowStr);
 		this.setTarget_understand("");
 	}
 
@@ -74,11 +83,11 @@ public class Target_understands implements Serializable {
 		this.user_id = user_id;
 	}
 
-	public Date getDay() {
+	public String getDay() {
 		return day;
 	}
 
-	public void setDay(Date day) {
+	public void setDay(String day) {
 		this.day = day;
 	}
 
