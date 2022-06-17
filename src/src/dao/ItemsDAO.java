@@ -88,5 +88,55 @@ public class ItemsDAO {
 		return cardList;
 	}
 
+	 public String getItem(String item_id) {
+     	Connection conn = null;
+ 		String result = null;
 
+ 		try {
+ 			// JDBCドライバを読み込む
+ 			Class.forName("org.h2.Driver");
+
+ 			// データベースに接続する
+ 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+ 			// SQL文を準備する
+ 			String sql = "SELECT item from items WHERE item_id = ?";
+ 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+ 			// SQL文を完成させる
+				pStmt.setString(1, item_id);
+
+
+ 			// SQL文を実行し、結果表を取得する
+ 			ResultSet rs = pStmt.executeQuery();
+
+ 			// 結果表をコレクションにコピーする
+ 			while (rs.next()) {
+ 				result = rs.getString("item");
+ 			}
+ 		}
+ 		catch (SQLException e) {
+ 			e.printStackTrace();
+ 			result = null;
+ 		}
+ 		catch (ClassNotFoundException e) {
+ 			e.printStackTrace();
+ 			result = null;
+ 		}
+ 		finally {
+ 			// データベースを切断
+ 			if (conn != null) {
+ 				try {
+ 					conn.close();
+ 				}
+ 				catch (SQLException e) {
+ 					e.printStackTrace();
+ 					result = null;
+ 				}
+ 			}
+ 		}
+
+ 		// 結果を返す
+ 		return result;
+     }
 }
