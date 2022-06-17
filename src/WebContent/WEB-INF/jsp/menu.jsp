@@ -13,18 +13,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TASUMA | メニュー</title>
+<title>TASUMA|メニュー</title>
 </head>
 <body>
 	<input type="hidden" id="getjs" value="${username.username }">
 	<input type="hidden" id="getjs2" value="${username }">
+<!-- ヘッダーここから -->
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
-	<!-- ユーザ名の表示 -->
+<!-- ヘッダーここまで -->
+
+<!-- ユーザ名の表示 -->
 	<p class="username">${username.username }</p>
 	<h2>メニュー</h2>
 
-	<!-- ハンバーガーメニュー -->
-	<!-- 各リンクの内、サーブレットが未作成のものはとりあえずMenuServletを指定 -->
+<!-- ハンバーガーメニュー -->
+<!-- 各リンクの内、サーブレットが未作成のものはとりあえずMenuServletを指定 -->
 	<nav class="menu" id="js-nav">
 		<ul class="nav__items nav-items">
 			<li class="nav-items__item"><a href="/tasuma/CertificationServlet">My資格</a></li>
@@ -43,7 +46,7 @@
 
 	<!-- 中身はJavaBeansが決まらないと書けない(現状はとりあえず仮で書いているだけ) -->
 
-	<!-- 本日の目標 -->
+<!-- 本日の目標 -->
 	<%--
 	<c:forEach var="e1" items="${menu_data }">
 		<h3>本日の目標-${e1.certification}</h3>
@@ -54,20 +57,22 @@
 		</ul>
 	</c:forEach>
 
-	<!-- 残り日数 -->
-	<c:forEach var="e" items="${Certifications }">
-		<h4>${e.certification}まで残り${e.date }日です。</h4>
+<!-- 残り日数 -->
+	<c:forEach var="e" items="${menu_data }">
+		<h4>${e.certification}まで残り${e.testday }日です。</h4>
 	</c:forEach>
 
 	--%>
 
-	<!-- カレンダー -->
-	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示 -->
+<!-- カレンダー -->
+	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示(余裕があれば) -->
 
 	<button id="prev" type="button">前の月</button>
 	<button id="next" type="button">次の月</button>
 	<div id="calendar"></div>
 
+<!-- フッターここから -->
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
+<!-- フッターここまで -->
 </body>
 </html>
