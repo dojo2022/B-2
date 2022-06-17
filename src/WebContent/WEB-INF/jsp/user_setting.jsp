@@ -6,6 +6,7 @@
 <head>
 	<title>TASUMA|ユーザー設定</title>
     <link rel="stylesheet"type="text/css" href="/tasuma/css/user_setting.css">
+    <link rel="stylesheet" href="/tasuma/css/style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -13,6 +14,8 @@
 <div class=wrapper>
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <input id="resultmessage" type="hidden" value="${result.message}">
+<!-- ユーザ名の表示 -->
+	<p class="username">${username.username }</p>
         <h2>ユーザ設定</h2>
         <form method="POST" action="/tasuma/UserSettingServlet" id="user_setting" name="change_profile">
             <table class=table>
