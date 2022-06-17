@@ -43,10 +43,12 @@ public class UserSettingServlet extends HttpServlet {
 		}
 
 		//セッションスコープにユーザーIDを格納する
-		//HttpSession session_id = request.getSession();
-		//session_id.setAttribute("user_id", new UserSetting(user_id));
+		HttpSession session_id = request.getSession();
+		session_id.setAttribute("user_id", "USER_ID");
+		System.out.println("USER_ID");
 
 		//格納したユーザーIDをsetUser_idでセットし、UsersDAOに格納させる
+
 		//→ユーザーIDを参照してログインユーザーの情報が入ったデータを呼び出すため
 
 		// ユーザー設定ページにフォワードする
@@ -55,6 +57,8 @@ public class UserSettingServlet extends HttpServlet {
 
 
 	}
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

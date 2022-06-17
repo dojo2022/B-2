@@ -39,7 +39,12 @@ public class Today_targetsDAO {
 			else {
 				pStmt.setString(2, "%");
 			}
-			pStmt.setInt(3, today_targets.getToday_target());
+			if (today_targets.getToday_target() != null && !today_targets.getToday_target().equals("")) {
+				pStmt.setString(3, today_targets.getToday_target());
+			}
+			else {
+				pStmt.setString(3, "%");
+			}
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -50,7 +55,7 @@ public class Today_targetsDAO {
 					rs.getInt("id"),
 					rs.getString("user_id"),
 					rs.getString("item_id"),
-					rs.getInt("today_target")
+					rs.getString("today_target")
 					);
 				resultList.add(new_target);
 			}
@@ -88,36 +93,61 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "insert into Today_targets (id, user_id, item_id, today_target) values (?, ?, ? ,?)";
+			String sql = "insert into Today_targets (user_id, item_id, today_target) values (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
+//			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
 			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
-				pStmt.setString(2, today_targets.getUser_id());
+				pStmt.setString(1, today_targets.getUser_id());
+			}
+			else {
+				pStmt.setString(1, null);
+			}
+			if (today_targets.getItem_id() != null && !today_targets.getItem_id().equals("")) {
+				pStmt.setString(2, today_targets.getItem_id());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-			if (today_targets.getItem_id() != null && !today_targets.getItem_id().equals("")) {
-				pStmt.setString(3, today_targets.getItem_id());
-			}
-			else {
+			if (today_targets.getToday_target() != null && !today_targets.getToday_target().equals("")) {
+//			if (today_targets.getToday_target() != 1 && today_targets.getToday_target() != 2) {
 				pStmt.setString(3, null);
 			}
-			if (today_targets.getToday_target() != 1 && today_targets.getToday_target() != 2) {
-				pStmt.setInt(4, 0);
-			}
 			else {
-				pStmt.setInt(4, today_targets.getToday_target());
+				pStmt.setString(3, today_targets.getToday_target());
 			}
 
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
+			}
+
+			//上からn個を本日の目標にする
+			// SQL文を準備する
+//作業中
+	//update
+			String sql2 = "insert into Today_targets (user_id, item_id, today_target) values (?, ?, ?)";
+			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+
+			// SQL文を完成させる
+
+//			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
+			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
+				pStmt2.setString(1, today_targets.getUser_id());
+			}
+			else {
+				pStmt2.setString(1, null);
+			}
+
+			// 結果表をコレクションにコピーする
+			// SQL文を実行する
+			if (pStmt2.executeUpdate() == 1) {
 				result = true;
 			}
+
+
 
 		}
 		catch (SQLException e) {
@@ -156,7 +186,7 @@ public class Today_targetsDAO {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			pStmt.setInt(1, today_targets.getToday_target());//サーブレットで0,1,2以外の数値ははじく
+			pStmt.setString(1, today_targets.getToday_target());//サーブレットで0,1,2以外の数値ははじく
 			if (today_targets.getItem_id() != null && today_targets.getItem_id().equals("")) {
 				pStmt.setString(2, today_targets.getItem_id());
 			}
