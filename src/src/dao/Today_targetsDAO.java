@@ -22,7 +22,7 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "select * from Today_targets WHERE user_id = ? AND item_id = ? AND today_target = ?";
+			String sql = "select * from Today_targets WHERE user_id LIKE ? AND item_id LIKE ? AND today_target LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

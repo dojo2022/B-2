@@ -187,7 +187,7 @@ import model.Certifications;
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE allit";
+                String sql = "SELECT * from certifications WHERE category = 'IT知識全般'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -236,7 +236,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE gengo";
+                String sql = "SELECT * from certifications WHERE category = 'IT言語'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -284,7 +284,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE data";
+                String sql = "SELECT * from certifications WHERE category = 'データベース'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -332,7 +332,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE sec";
+                String sql = "SELECT * from certifications WHERE category = 'セキュリティ'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -380,7 +380,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certification WHERE net";
+                String sql = "SELECT * from certification WHERE category = 'ネットワーク'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -428,7 +428,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE mana";
+                String sql = "SELECT * from certifications WHERE category = 'マネジメント'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -476,7 +476,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE jimu";
+                String sql = "SELECT * from certifications WHERE category = '事務作業'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する
@@ -524,7 +524,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT * from certifications WHERE des";
+                String sql = "SELECT * from certifications WHERE category = 'デザイン'";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
 
                 // SQL文を実行し、結果表を取得する

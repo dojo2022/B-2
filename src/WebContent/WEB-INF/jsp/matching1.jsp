@@ -12,9 +12,10 @@
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <h2>My資格</h2>
 <!-- 質問 -->
+<p>何に興味がありますか？</p>
+<hr>
 <form method="POST" action="/tasuma/Matching1Servlet" id="matching">
 	<table>
-	<caption>何に興味がありますか？</caption>
 	 	<tr>
 			<td><input type="radio" name="allit" id="allit"></td><td >IT知識全般</td>
 		</tr>
@@ -40,7 +41,7 @@
 			<td><input type="radio" name="des" id="des"></td><td>デザイン</td>
 		</tr>
 	</table>
-	<div class="submit"><input type="submit" name="matching_next" value="次へ"class="matching_next"></div>
+	<div class="submit"><input type="submit" name="matching_next" value="次へ"class="next"></div>
 </form>
 <!-- フッター -->
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />

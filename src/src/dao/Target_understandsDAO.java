@@ -26,46 +26,40 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "select * from Target_understands WHERE id = ? AND target_id = ? AND item_id = ? AND user_id = ? AND day = ? AND target_understand = ?";
+			String sql = "select * from Target_understands WHERE target_id LIKE ? AND item_id LIKE ? AND user_id LIKE ? AND day LIKE ? AND target_understand LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-			if (target_understands.getId() != 0) {
-				pStmt.setString(1, Integer.toString(target_understands.getId()));
+			if (target_understands.getTarget_id() != null && !target_understands.getTarget_id().equals("")) {
+				pStmt.setString(1, target_understands.getTarget_id());
 			}
 			else {
 				pStmt.setString(1, "%");
 			}
-			if (target_understands.getTarget_id() != null && !target_understands.getTarget_id().equals("")) {
-				pStmt.setString(2, target_understands.getTarget_id());
+			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
+				pStmt.setString(2, target_understands.getItem_id());
 			}
 			else {
 				pStmt.setString(2, "%");
 			}
-			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
-				pStmt.setString(3, target_understands.getItem_id());
+			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
+				pStmt.setString(3, target_understands.getUser_id());
 			}
 			else {
 				pStmt.setString(3, "%");
 			}
-			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
-				pStmt.setString(4, "%" + target_understands.getUser_id() + "%");
+			if (target_understands.getDay() != null && !target_understands.getDay().equals("")) {
+				pStmt.setString(4, target_understands.getDay());
 			}
 			else {
 				pStmt.setString(4, "%");
 			}
-			if (target_understands.getDay() != null && !target_understands.getDay().equals("")) {
-				pStmt.setString(5, "%" + target_understands.getDay() + "%");
+			if (target_understands.getTarget_understand() != null && !target_understands.getTarget_understand().equals("")) {
+				pStmt.setString(5, target_understands.getTarget_understand());
 			}
 			else {
 				pStmt.setString(5, "%");
-			}
-			if (target_understands.getTarget_understand() != null && !target_understands.getTarget_understand().equals("")) {
-				pStmt.setString(6, "%" + target_understands.getTarget_understand() + "%");
-			}
-			else {
-				pStmt.setString(6, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
@@ -78,7 +72,7 @@ public class Target_understandsDAO {
 					rs.getString("target_id"),
 					rs.getString("item_id"),
 					rs.getString("user_id"),
-					rs.getDate("day"),
+					rs.getString("day"),
 					rs.getString("target_understand")
 					);
 				resultList.add(new_target);
