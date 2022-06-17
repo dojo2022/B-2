@@ -28,7 +28,7 @@ public class TargetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "select * from Targets WHERE id = ? AND target_id = ? AND item_id = ? AND target LIKE ?";
+			String sql = "select * from Targets WHERE id = ? AND target_id LIKE ? AND item_id LIKE ? AND target LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
