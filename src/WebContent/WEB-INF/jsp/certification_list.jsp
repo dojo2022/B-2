@@ -11,37 +11,37 @@
 <link rel="stylesheet" type="text/css"
 	href="/tasuma/css/certification_list.css">
 <!-- <link rel = "stylesheet"type = "text/css" href = "/tasuma/css/style.css"> -->
+<script src="./JavaScript/certification_list.js" defer></script>
 </head>
 
 <body>
-	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 
 	<!-- ログインしているユーザ名を右上に表示 -->
 	<p class="username">ユーザ名：${username.username}</p>
 
 	<div id="table">
 
-		<h1>TASUMA</h1>
+		<h1><jsp:include page="/WEB-INF/jsp/header.jsp" /></h1>
 		<!-- タイトル -->
 
 		<h2>My資格</h2>
 		<!-- サブタイトル -->
 
 		<!-- カテゴリをプルダウンで表示 -->
-		<form method="post">
+		<form method="POST" action="/tasuma/CertificationListServlet">
 			<div>
 				<label for="select2">カテゴリ</label>
 				<!-- カテゴリをプルダウンで表示 -->
-				<select name="select">
-					<option>選択してください</option>
-					<option value="allit">IT知識全般</option>
-					<option value="gengo">IT言語</option>
-					<option value="data">データベース</option>
-					<option value="sec">セキュリティ</option>
-					<option value="net">ネットワーク</option>
-					<option value="mana">マネジネント</option>
-					<option value="jimu">事務作業</option>
-					<option value="des">デザイン</option>
+				<select id="selector" name="select">
+					<option value="">選択してください</option>
+					<option value="IT知識全般">IT知識全般</option>
+					<option value="IT言語">IT言語</option>
+					<option value="データベース">データベース</option>
+					<option value="セキュリティ">セキュリティ</option>
+					<option value="ネットワーク">ネットワーク</option>
+					<option value="マネジメント">マネジネント</option>
+					<option value="事務作業">事務作業</option>
+					<option value="デザイン">デザイン</option>
 				</select>
 			</div>
 			<!-- カテゴリをプルダウンで表示ここまで -->
@@ -49,46 +49,40 @@
 
 
 			<!-- 資格名をテキスト入力 -->
-			<table>
+			<!-- 	<table>
 				<tr>
 					<th><input type="text" id="certification" name="CERTIFICATION"></th>
 				</tr>
 			</table>
 			<!-- 資格名をテキスト入力ここまで -->
 
-			<table>
+			<!--  <table>
 				<tr>
 					<td colspan="2">
-						<!-- 検索ボタンをカテゴリと資格名の横につける --> <a
-						href="/tasuma/CertificationListServlet"><input type="submit"
-							name="SUBMIT" value="検索"></a>
+				<!--		<!-- 検索ボタンをカテゴリと資格名の横につける -->
+			<!-- 		<a href="/tasuma/CertificationListServlet"></a>
+						<input type = submit name = submit value= 検索>
 					</td>
 				</tr>
-			</table>
+			</table> -->
+
+
+			<!-- テキスト検索 -->
+
+			<input type="text" id="certification" name="CERTIFICATION"><br>
+			<input id="submit" type="submit" name="REGIST" value="検索"><br>
 		</form>
+
+
 
 		<h3>資格一覧</h3>
 
-		<table>
-			<!-- 番号と資格名を持ってくる -->
-			<c:forEach var="e" items="${cardList}">
-				<tr class="data_row">
 
-					<td>${e.number}</td>
-					<td>${e.certifications}</td>
-					<td><form method="POST"
-							action="/tasuma/CertificationListServlet">
-							<button type="submit" name="SUBMIT" value="日程を決める"></button>
-						</form>
-				</tr>
-				<!-- 日程を決めるボタンを資格名の横に付ける -->
-			</c:forEach>
-		</table>
 
 		<!-- カテゴリ検索用のc:foreachをここに書く -->
 		<!-- IT知識全般のカテゴリを一覧表示 -->
 
-		<table id="allit">
+		<%-- <table id="allit">
 
 			<tr>
 				<th>IT知識全般</th>
@@ -175,8 +169,35 @@
 				<tr class="data_row">
 					<td>${e.certification}</td>
 			</c:forEach>
-		</table>
+		</table> --%>
 
+		<!-- カテゴリとテキスト検索 -->
+	<!--  	<table>
+			<tr>
+				<th>${certList[0].category}</th>
+			</tr>
+			<c:forEach var="e" items="${certList}">
+				<tr class="data_row">
+					<td>${e.certification}</td>
+			</c:forEach>
+		</table>
+		<!-- カテゴリとテキスト検索ここまで -->
+
+
+		<!-- 日程を決めるボタンを資格名の横に付ける＋共通ページへ遷移 -->
+		<h4>${certList[0].category}</h4>
+		<div class="table">
+			<table>
+				<c:forEach var = "e" items = "${certList}">
+				<tr class ="rowdata">
+				<td>${e.certification}</td>
+				<td><form method = "POST" action = "/tasuma/ScheduleServlet">
+				<button type = "submit" name="certification" value = ${e.certification }>日程を決める</button></form></td>
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<!-- 日程を決めるボタンここまで -->
 
 		<table>
 			<tr>
@@ -186,6 +207,7 @@
 			</tr>
 		</table>
 	</div>
+
 
 	<!-- これは名刺管理アプリで一覧を作成した際に使用していたコードを、
  一応コピペをして入れてみただけのものです。必要なのでしょうか？ -->
@@ -199,7 +221,7 @@
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 
 	<!-- javascript -->
-	<script src="/tasuma/WebContent/JavaScript/certification_list.js"></script>
-
+	<!-- <script src="/tasuma/WebContent/JavaScript/certification_list.js"></script>
+ -->
 </body>
 </html>
