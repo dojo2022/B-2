@@ -30,7 +30,7 @@
 	</details>
 
 	<div class="target">
-		<input type="submit" name="target_setting" value="更新">
+		<input type="submit" name="target_setting" value="更新" onclick="return window.alert()">
 	</div>
 
 	<!-- メニューボタン -->
