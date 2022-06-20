@@ -15,11 +15,11 @@
 <!-- 質問 -->
 <p>あなたにおすすめの資格です！</p>
 <hr>
-<form method="POST" action="/tasuma/ScheduleServlet" id="matchingResult">
+<form method="GET" action="/tasuma/ScheduleServlet" id="matchingResult">
 	<table>
 	<c:forEach var="e" items="${cardList}" >
 		<tr>
-			<td><input type="radio" name="selectCertification" id="selectCertification"></td><td >${e.certification}</td><td >( レベル ${e.level} )</td>
+			<td><input type="radio" name="selectCertification" id="${e.certification}"></td><td >${e.certification}</td><td >( レベル ${e.level} )</td>
 		</tr>
 	</c:forEach>
 	</table>
