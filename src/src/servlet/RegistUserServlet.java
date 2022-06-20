@@ -14,8 +14,6 @@ import dao.UsersDAO;
 import model.LoginUser;
 import model.Result;
 import model.Users;
-//import model.LoginUser;
-//import model.Result;
 
 /**
  * Servlet implementation class RegistUserServlet
@@ -28,6 +26,7 @@ public class RegistUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	/*doGetでlogin.jspにフォワードする*/
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 新規登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp");
@@ -37,6 +36,7 @@ public class RegistUserServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -61,7 +61,7 @@ public class RegistUserServlet extends HttpServlet {
 			new Result("登録失敗！", "IDを変えてもう一度やり直してください。"));
 
 			//  （要変更？）結果ページにフォワードする★保留
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/RegistUser.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

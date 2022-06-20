@@ -51,7 +51,7 @@ public class Matching2Servlet extends HttpServlet {
 		// リクエストパラメータを取得する ☆カテゴリ、難易度
 		request.setCharacterEncoding("UTF-8");
 		String category = request.getParameter("category"); //カテゴリ
-		String level = request.getParameter("level"); //カテゴリ
+		String level = request.getParameter("level"); //レベル
 
 		// 検索処理を行う　☆カテゴリ、難易度
 		CertificationsDAO cDao = new CertificationsDAO();
