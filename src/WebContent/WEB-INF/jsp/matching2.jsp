@@ -16,11 +16,11 @@
 <!-- 質問 -->
 <p>どのレベルにしますか？</p>
 <hr>
-<form method="POST" action="/tasuma/Matching2Servlet" id="matching">
+<form method="POST" action="/tasuma/Matching2Servlet" id="select_level">
 	<table>
 	<c:forEach var="e" items="${cardList}" >
 	 	<tr>
-			<td><input type="radio" name="selectlevel" id="selectlevel" value="${e.level}" ></td><td >${e.level}</td>
+			<td><input type="radio" name="level" id="selectlevel" value="${e.level}" ></td><td >レベル ${e.level}</td>
 		<td><input type="hidden" name="category" value="${e.category}"></td>
 		</tr>
 	</c:forEach>
