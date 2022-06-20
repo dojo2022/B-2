@@ -98,11 +98,14 @@ public class MenuServlet extends HttpServlet {
 				itemList.add(item);
 			}
 
+			//JavaScript用試験日データ
+	        String testday_js = new SimpleDateFormat("yyyy/M/d").format(testday);
+
 			//My資格の内、資格名、残り日数、本日の目標項目一覧を格納（資格ごとにリストに追加）
-			menu_data.add(new Menu_data(certification, remainingDays, itemList));
+			menu_data.add(new Menu_data(certification, remainingDays, testday_js, itemList));
 		}
 		session.setAttribute("menu_data", menu_data);
-		//カレンダーの日程を持ってくる(現在時刻を取得し試験までの残り日数を計算)
+
 
 		// メニューページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");

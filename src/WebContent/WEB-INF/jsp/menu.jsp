@@ -6,18 +6,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/tasuma/css/menu.css">
 <link rel="stylesheet" href="/tasuma/css/style.css">
-<script type="text/javascript">
-
-</script>
-<script type="text/javascript" src="JavaScript/menu.js" defer></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TASUMA|メニュー</title>
+<script defer src="JavaScript/menu.js"></script>
 </head>
 <body>
-<%-- 	<input type="hidden" id="getjs" value="${username.username }"> --%>
-	<input type="hidden" id="getjs2" value="${username }">
+<% int count = 0; %>
+	<c:forEach var="e" items="${menu_data }">
+		<input type="hidden" id="cer<%= count %>" value="${e.certification}">
+		<input type="hidden" id="test<%= count %>" value="${e.testDay }">
+		<% count++; %>
+	</c:forEach>
+	<input type="hidden" id="count" value="<%= count %>">
 <!-- ヘッダーここから -->
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 <!-- ヘッダーここまで -->
@@ -44,7 +46,6 @@
 		<span></span>
 	</button>
 
-	<!-- 中身はJavaBeansが決まらないと書けない(現状はとりあえず仮で書いているだけ) -->
 
 <!-- 本日の目標 -->
 	<c:forEach var="e1" items="${menu_data }">
@@ -58,7 +59,7 @@
 
 <!-- 残り日数 -->
 	<c:forEach var="e" items="${menu_data }">
-		<h4>${e.certification}まで残り${e.testday }日です。</h4>
+		<h4>${e.certification}まで残り${e.remainingDays }日です。</h4>
 	</c:forEach>
 
 
