@@ -25,7 +25,7 @@
 <!-- ヘッダーここまで -->
 
 <!-- ユーザ名の表示 -->
-	<p class="username">${username.username }</p>
+	<p class="username">ユーザ名:${username.username }</p>
 	<h2>メニュー</h2>
 
 <!-- ハンバーガーメニュー -->
