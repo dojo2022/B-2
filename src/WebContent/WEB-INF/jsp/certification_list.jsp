@@ -185,9 +185,12 @@
 
 
 		<!-- 日程を決めるボタンを資格名の横に付ける＋共通ページへ遷移 -->
-		<h4>${certList[0].category}</h4>
+
 		<div class="table">
 			<table>
+			<tr>
+			<th>${certList[0].category}</th>
+			</tr>
 				<c:forEach var = "e" items = "${certList}">
 				<tr class ="rowdata">
 				<td>${e.certification}</td>
