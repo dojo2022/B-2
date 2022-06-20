@@ -16,19 +16,20 @@
 
 <!--ユーザ名が出ない  -->
 <p class="username">ユーザ名:${username.username}</p>
-
+	<form method="post" action="/tasuma/ScheduleServlet">
 
 <!--資格名が出ない  -->
 	<h3>資格名:${certification}</h3>
 
 	<table class="list">
-	<form method="post" action="/tasuma/ScheduleServlet">
+
 	<c:forEach var="e" items="${Test_daysList}" >
-		<tr><td></td><td><input type="radio" name="select_schedule"></td><td>${e.testdays}</td><td></td></tr>
+		<tr><td></td><td><input type="radio" name="select_schedule" value="${e.testdays}"></td><td>${e.testdays}</td><td></td></tr>
 	</c:forEach>
 		<tr><td><a href="/tasuma/MenuServlet"><input type="button" name="back_menu" value="メニューに戻る"></a></td><td></td><td></td><td><input type="submit" name="regist" value="登録"></td></tr>
-	</form>
+
 	</table>
+	</form>
 <!-- アマゾンのリンクを入れるテーブルカラムを用意してない！！！ -->
 <!--
 	<h3>おすすめ参考書</h3>
