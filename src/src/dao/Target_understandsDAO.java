@@ -112,29 +112,21 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
+//作業中:登録処理の方針決め
 			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を完成させる
-			//作業中
-
-			if (target_understands.getTarget_id() != null && !target_understands.getTarget_id().equals("")) {
-				pStmt.setString(1, target_understands.getTarget_id());
+			if (target_understands.getUsername() != null && !target_understands.getUsername().equals("")) {
+				pStmt.setString(1, target_understands.getUsername());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
-				pStmt.setString(2, target_understands.getItem_id());
+			if (target_understands.getCertification() != null && !target_understands.getCertification().equals("")) {
+				pStmt.setString(2, target_understands.getCertification());
 			}
 			else {
 				pStmt.setString(2, null);
-			}
-			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
-				pStmt.setString(3, "%" + target_understands.getUser_id() + "%");
-			}
-			else {
-				pStmt.setString(3, null);
 			}
 
 			// 結果表をコレクションにコピーする

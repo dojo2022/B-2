@@ -16,6 +16,7 @@ import dao.Target_understandsDAO;
 import dao.Test_daysDAO;
 import dao.Today_targetsDAO;
 import model.My_certifications;
+import model.Target_understands;
 import model.Test_days;
 
 /**
@@ -51,10 +52,10 @@ public class ScheduleServlet extends HttpServlet {
 //		BcDAO bDao = new BcDAO();
 //		List<Bc> Test_daysList = bDao.select(new Bc(number, name,dep,phone,email,co));
 
-		// 検索結果をセッションスコープに格納する
+		// 検索結果（資格名）をセッションスコープに格納する
 		HttpSession session_cer = request.getSession();
 		session_cer.setAttribute("certification", certification);
-		// 検索結果をリクエストスコープに格納する
+		// 検索結果（試験日）をリクエストスコープに格納する
 		request.setAttribute("Test_daysList", Test_daysList);
 
 		//最後に
@@ -96,17 +97,20 @@ public class ScheduleServlet extends HttpServlet {
 
 			//本日の目標トランザクションに「ユーザID、項目id、本日の目標」を登録する
 			Today_targetsDAO ttDao = new Today_targetsDAO();
-//			if (ttDao.insert(new Today_targets(user_id, item_id,today_target))) {	// 登録成功
+//			if (ttDao.insert(new Today_targets(username, item_id,today_target))) {	// 登録成功
 
 				//目標理解度トランザクションにユーザ名(id)、項目id、目標id、理解度
 				Target_understandsDAO tuDao = new Target_understandsDAO();
-//				if (tuDao.insert(new Target_understands(target_id, item_id,user_id))) {	// 登録成功
+				if (tuDao.insert(new Target_understands(username,certification))) {	// 登録成功
+
+					//セッションスコープ（資格名）を破棄する
+					session_cer.invalidate();
 
 					// メニューサーブレット？ページ？にフォワードする
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
 					dispatcher.forward(request, response);
 		}
-//		}
+		}
 //	}
 	}
 }

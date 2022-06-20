@@ -13,6 +13,10 @@ public class Target_understands implements Serializable {
 	private String user_id;
 	private String day;
 	private String target_understand;
+	private String username;
+	private String certification;
+
+
 
 
 	//コンストラクタ（引数あり）
@@ -26,10 +30,10 @@ public class Target_understands implements Serializable {
 	}
 
 	//資格登録時用コンストラクタ（引数あり）
-	public Target_understands(String target_id, String item_id, String user_id) {
-		this.setTarget_id(target_id);
-		this.setItem_id(item_id);
-		this.setUser_id(user_id);
+	public Target_understands(String username, String certification) {
+		super();
+		this.username = username;
+		this.certification = certification;
 	}
 
 
@@ -97,6 +101,22 @@ public class Target_understands implements Serializable {
 
 	public void setTarget_understand(String target_understand) {
 		this.target_understand = target_understand;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getCertification() {
+		return certification;
+	}
+
+	public void setCertification(String certification) {
+		this.certification = certification;
 	}
 
 }
