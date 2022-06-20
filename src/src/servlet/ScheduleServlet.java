@@ -82,11 +82,11 @@ public class ScheduleServlet extends HttpServlet {
 		String certification = (String) session_cer.getAttribute("certification");
 		//セッションパラメータからユーザ名を取得する
 		String username = (String) session.getAttribute("username");
-//--------------------------資格名・日程が取れているかテスト-----------------
-		System.out.println("ユーザ：" + username);
-		System.out.println("資格名：" + certification);
-		System.out.println("試験日：" + testdays);
-//--------------------------テストここまで-----------------------------------
+////--------------------------資格名・日程が取れているかテスト-----------------
+//		System.out.println("ユーザ：" + username);
+//		System.out.println("資格名：" + certification);
+//		System.out.println("試験日：" + testdays);
+////--------------------------テストここまで-----------------------------------
 
 		// 登録処理を行う
 		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
