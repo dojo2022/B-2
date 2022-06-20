@@ -47,6 +47,13 @@ import model.Certifications;
 		    // 検索結果をリクエストスコープに格納する
 			request.setAttribute("cardList", cardList);
 
+			// 検索処理を行う
+			// 各カテゴリをリクエストスコープに格納する
+//			CertificationsDAO cDao = new CertificationsDAO();
+			List<Certifications> cardList_all = cDao.select_all();
+			request.setAttribute("certList", cardList_all);
+
+
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification_list.jsp");
 			dispatcher.forward(request,response);
@@ -59,52 +66,62 @@ import model.Certifications;
 			// カテゴリ検索の処理↓↓↓
 			// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
-			String allit = request.getParameter("allit");
-			String gengo = request.getParameter("gengo");
-			String data = request.getParameter("data");
-			String sec = request.getParameter("sec");
-			String net = request.getParameter("net");
-			String mana = request.getParameter("mana");
-			String jimu = request.getParameter("jimu");
-			String des = request.getParameter("des");
+		//	String selected = request.getParameter("select");
+
 
 			// 検索処理を行う
 			// 各カテゴリをリクエストスコープに格納する
 			CertificationsDAO cDao = new CertificationsDAO();
-			List<Certifications> cardList_allit = cDao.select_allit();
-			request.setAttribute("allit", cardList_allit);
+		//	if("allit".equals(selected)){
+		//	List<Certifications> cardList_allit = cDao.select_allit();
+		//	request.setAttribute("certList", cardList_allit);
+		//	}else if("gengo".equals(selected)){
+		//	List<Certifications> cardList_gengo = cDao.select_gengo();
+		//	request.setAttribute("certList", cardList_gengo);
+		//	}else if("data".equals(selected)){
+		//	List<Certifications> cardList_data = cDao.select_data();
+		//	request.setAttribute("certList", cardList_data);
+		//	}else if("sec".equals(selected)){
+		//	List<Certifications> cardList_sec = cDao.select_sec();
+		//	request.setAttribute("certList", cardList_sec);
+		//	}else if("net".equals(selected)){
+		//	List<Certifications> cardList_net = cDao.select_net();
+		//	request.setAttribute("certList", cardList_net);
+		//	}else if("mana".equals(selected)){
+		//	List<Certifications> cardList_mana = cDao.select_mana();
+		//	request.setAttribute("certList", cardList_mana);
+		//	}else if("jimu".equals(selected)){
+		//	List<Certifications> cardList_jimu = cDao.select_jimu();
+		//	request.setAttribute("certList", cardList_jimu);
+		//	}else if("des".equals(selected)){
+		//	List<Certifications> cardList_des = cDao.select_des();
+		//	request.setAttribute("certList", cardList_des);
+		//	}
 
-			List<Certifications> cardList_gengo = cDao.select_gengo();
-			request.setAttribute("gengo", cardList_gengo);
 
-			List<Certifications> cardList_data = cDao.select_data();
-			request.setAttribute("data", cardList_data);
-
-			List<Certifications> cardList_sec = cDao.select_sec();
-			request.setAttribute("sec", cardList_sec);
-
-			List<Certifications> cardList_net = cDao.select_net();
-			request.setAttribute("net", cardList_net);
-
-			List<Certifications> cardList_mana = cDao.select_mana();
-			request.setAttribute("mana", cardList_mana);
-
-			List<Certifications> cardList_jimu = cDao.select_jimu();
-			request.setAttribute("jimu", cardList_jimu);
-
-			List<Certifications> cardList_des = cDao.select_des();
-			request.setAttribute("des", cardList_des);
-
-
-
-			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification_list.jsp");
-			dispatcher.forward(request,response);
-			}}
 			// カテゴリ検索の処理ここまで↑↑↑
 
 
 
+			// 名刺管理アプリからコピー（テキスト検索）
+
+			// リクエストパラメータを取得する
+			request.setCharacterEncoding("UTF-8");
+			String certification = request.getParameter("CERTIFICATION");
+			String category = request.getParameter("select");
+
+			// 検索処理を行う　☆引数増える
+			List<Certifications> cardList = cDao.select_certification(certification, category);
+
+			// 検索結果をリクエストスコープに格納する
+			request.setAttribute("certList", cardList);
+
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification_list.jsp");
+			dispatcher.forward(request, response);
+
+		}
+	}
 		/**
 		 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 		 */

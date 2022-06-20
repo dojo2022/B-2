@@ -1,4 +1,4 @@
-'use strict';
+
 
 const weeks = ['日', '月', '火', '水', '木', '金', '土']
 const date = new Date()
@@ -6,8 +6,19 @@ let year = date.getFullYear()
 let month = date.getMonth() + 1
 
 //スコープデータ取得のテスト用
-const username = document.getElementById("getjs").value
-const username2 = document.getElementById("getjs2").value
+const count = document.getElementById("count").value
+var cArray = new Array(count);
+var tArray = new Array(count);
+
+for(let i = 0; i < count; i++){
+	cArray[i] = document.getElementById("cer"+i).value
+	tArray[i] = document.getElementById("test"+i).value
+}
+
+for(let i = 0; i < count; i++){
+	console.log(cArray[i])
+	console.log(tArray[i])
+}
 
 
 function showCalendar(year, month) {
@@ -38,7 +49,7 @@ function createCalendar(year, month) {
     for (let w = 0; w < 6; w++) {
         calendarHtml += '<tr>'
 
-        for (let d = 0; d < 7; d++) {
+        loop: for (let d = 0; d < 7; d++) {
             if (w == 0 && d < startDay) {
                 // 1行目で1日の曜日の前
                 let num = lastMonthendDayCount - startDay + d + 1
@@ -49,7 +60,16 @@ function createCalendar(year, month) {
                 calendarHtml += '<td class="is-disabled">' + num + '</td>'
                 dayCount++
             } else {
-                calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}" data-test="${username}">${dayCount}</td>`
+            	const daytext = year + '/' + month + '/' + dayCount
+    	        for(let i = 0; i < count; i++){
+        			if(tArray[i] === daytext){
+        				console.log('test')
+        				calendarHtml += `<td class="calendar_td" id="check" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
+						dayCount++;
+        				continue loop;
+        			}
+        		}
+                calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
                 dayCount++
             }
         }
@@ -89,11 +109,11 @@ document.querySelector('#next').addEventListener('click', moveCalendar)
 
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("calendar_td")) {
-    	if(e.target.dataset.date === '2022/7/7'){
-    		alert(e.target.dataset.test)
-    	}
-		alert(username)//スコープデータ取得のテスト用
-        alert('クリックした日付は' + e.target.dataset.date + 'です')
+        for(let i = 0; i < count; i++){
+        	if(e.target.dataset.date === tArray[i]){
+        		alert(cArray[i] + 'の試験日です！')
+        	}
+        }
     }
 })
 
@@ -103,6 +123,3 @@ document.querySelector('.menu-btn').addEventListener('click', function(){
 });
 
 showCalendar(year, month)
-
-//試験日程から現在日時を引いて表示させる
-//カレンダーも？

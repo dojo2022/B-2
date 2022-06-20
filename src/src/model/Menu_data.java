@@ -4,19 +4,21 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Menu_data implements Serializable {
-	private String certification;
-	private String testday;
-	private List<String> itemList;
+	private String certification;//試験名
+	private String remainingDays;//残り日数
+	private String testday;//試験日
+	private List<String> itemList;//項目リスト
 
 	//コンストラクタ（引数あり）
-	public Menu_data(String certification, String testday, List<String> itemList) {
+	public Menu_data(String certification, String remainingDays, String testday, List<String> itemList) {
 		this.setCertification(certification);
-		this.setTestday(testday);
+		this.setRemainingDays(remainingDays);
+		this.setTestDay(testday);
 		this.setItemList(itemList);
 	}
 	//コンストラクタ（引数なし）
 	public Menu_data() {
-		this(null, null, null);
+		this(null, null, null, null);
 	}
 
 	public String getCertification() {
@@ -26,11 +28,11 @@ public class Menu_data implements Serializable {
 		this.certification = certification;
 	}
 
-	public String getTestday() {
-		return testday;
+	public String getRemainingDays() {
+		return remainingDays;
 	}
-	public void setTestday(String testday) {
-		this.testday = testday;
+	public void setRemainingDays(String remainingDays) {
+		this.remainingDays = remainingDays;
 	}
 
 	public List<String> getItemList() {
@@ -38,5 +40,11 @@ public class Menu_data implements Serializable {
 	}
 	public void setItemList(List<String> itemList) {
 		this.itemList = itemList;
+	}
+	public String getTestDay() {
+		return testday;
+	}
+	public void setTestDay(String testday) {
+		this.testday = testday;
 	}
 }

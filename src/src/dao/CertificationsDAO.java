@@ -19,7 +19,7 @@ import model.Certifications;
                 // データベースに接続する
                 conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
                 // SQL文を準備する（資格の検索）
-                String sql = "SELECT CERTIFICATION_ID, certification, category from CERTIFICATIONS WHERE category LIKE ? ORDER BY CERTIFICATION_ID";
+                String sql = "SELECT id, CERTIFICATION_ID, certification, category from CERTIFICATIONS WHERE category LIKE ? ORDER BY CERTIFICATION_ID";
                 PreparedStatement pStmt = conn.prepareStatement(sql);
                 // SQL文を完成させる
                 if (param.getCategory() != null) {
@@ -64,6 +64,73 @@ import model.Certifications;
             // 結果を返す
             return cardList;
         }
+
+        // テキスト検索
+        public List<Certifications> select_certification(String certification,String category) {
+            Connection conn = null;
+            List<Certifications> cardList = new ArrayList<Certifications>();
+            try {
+                // JDBCドライバを読み込む
+                Class.forName("org.h2.Driver");
+
+                // データベースに接続する
+                conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+                // SQL文を準備する（資格の検索）
+                String sql = "SELECT certification,category from CERTIFICATIONS WHERE certification LIKE ? and category LIKE ?";
+                PreparedStatement pStmt = conn.prepareStatement(sql);
+
+                // SQL文を完成させる
+                if (certification != null) {
+                    pStmt.setString(1, "%" + certification + "%");
+                }
+                else {
+                    pStmt.setString(1, "%");
+                }
+                if (category != null) {
+                    pStmt.setString(2, "%" + category + "%");
+                }
+                else {
+                    pStmt.setString(2, "%");
+                }
+
+                // SQL文を実行し、結果表を取得する
+                ResultSet rs = pStmt.executeQuery();
+
+                // 結果表をコレクションにコピーする
+                while (rs.next()) {
+                	Certifications certifications = new Certifications(
+                	rs.getString("certification"),
+                	rs.getString("category"),
+                	null);
+                    cardList.add(certifications);
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            finally {
+                // データベースを切断
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                        cardList = null;
+                    }
+                }
+            }
+            // 結果を返す
+            return cardList;
+        }
+
+
         public List<Certifications> select_category(String category) {
             Connection conn = null;
             List<Certifications> cardList = new ArrayList<Certifications>();
@@ -149,6 +216,57 @@ import model.Certifications;
                     rs.getString("certification"),
                     rs.getString("category"),
                     rs.getString("level")
+                    );
+                    cardList.add(card);
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                cardList = null;
+            }
+            finally {
+                // データベースを切断
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                        cardList = null;
+                    }
+                }
+            }
+            // 結果を返す
+            return cardList;
+        }
+        public List<Certifications> select_all() {
+            Connection conn = null;
+            List<Certifications> cardList = new ArrayList<Certifications>();
+            try {
+                // JDBCドライバを読み込む
+                Class.forName("org.h2.Driver");
+
+                // データベースに接続する
+                conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+                // SQL文を準備する（資格の検索）
+                String sql = "SELECT * from certifications";
+                PreparedStatement pStmt = conn.prepareStatement(sql);
+
+                // SQL文を実行し、結果表を取得する
+                ResultSet rs = pStmt.executeQuery();
+
+                // 結果表をコレクションにコピーする
+                while (rs.next()) {
+                    Certifications card = new Certifications(
+                    rs.getString("id"),
+                    rs.getString("certification_id"),
+                    rs.getString("certification"),
+                    rs.getString("category")
                     );
                     cardList.add(card);
                 }
