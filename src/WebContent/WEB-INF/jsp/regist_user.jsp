@@ -22,13 +22,13 @@ PW＊
 <form method="POST" action="/tasuma/RegistUserServlet" id="registForm">
 	<table>
 		<tr>
-			<td>ユーザ名 ※<input type="text" name="new_username" id="newUsername"></td>
+			<td>ユーザ名 ※<input type="text" name="USERNAME" id="newUsername"></td>
 		</tr>
 		<tr>
-			<td>メールアドレス <input type="text" name="mail" id="mail"></td>
+			<td>メールアドレス <input type="text" name="MAIL" id="mail"></td>
 		</tr>
         <tr>
-			<td>PW※<input type="password" name="password" id="newPassword"></td>
+			<td>PW※<input type="password" name="PASSWORD" id="newPassword"></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" id="pw_display">パスワードを表示する </td>

@@ -28,7 +28,7 @@ public class RegistUserServlet extends HttpServlet {
 	/*doGetでlogin.jspにフォワードする*/
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 新規登録ページにフォワードする
+		// jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/regist_user.jsp");
 		dispatcher.forward(request, response);
 	}

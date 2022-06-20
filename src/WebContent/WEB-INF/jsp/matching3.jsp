@@ -19,7 +19,7 @@
 	<table>
 	<c:forEach var="e" items="${cardList}" >
 		<tr>
-			<td><input type="radio" name="selectCertification" id="${e.certification}"></td><td >${e.certification}</td><td >( レベル ${e.level} )</td>
+			<td ><input type="radio" name="selectCertification" ></td><td id="${e.certification}">${e.certification}</td><td >( レベル ${e.level} )</td>
 		</tr>
 	</c:forEach>
 	</table>
@@ -28,4 +28,5 @@
 <!-- フッター -->
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
+<script src="/tasuma/JavaScript/matching.js" ></script>
 </html>
