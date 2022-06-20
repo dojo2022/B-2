@@ -1,5 +1,16 @@
 @charset "UTF-8";
 
+
+/* ユーザネームを右上に表示 */
+.username{
+	text-align: right;
+}
+
+/* サブタイトル(My資格) */
+h2{
+	text-align: center;
+}
+
 /*ハンバーガーメニュー*/
 .menu{
   transform: translateX(-20vw);
@@ -45,4 +56,8 @@ td:last-child {
 
 td.is-disabled {
   color: #ccc;
+}
+
+td#check {
+	background-color: red;
 }

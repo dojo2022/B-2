@@ -49,7 +49,7 @@ function createCalendar(year, month) {
     for (let w = 0; w < 6; w++) {
         calendarHtml += '<tr>'
 
-        for (let d = 0; d < 7; d++) {
+        loop: for (let d = 0; d < 7; d++) {
             if (w == 0 && d < startDay) {
                 // 1行目で1日の曜日の前
                 let num = lastMonthendDayCount - startDay + d + 1
@@ -60,9 +60,13 @@ function createCalendar(year, month) {
                 calendarHtml += '<td class="is-disabled">' + num + '</td>'
                 dayCount++
             } else {
+            	const daytext = year + '/' + month + '/' + dayCount
     	        for(let i = 0; i < count; i++){
-        			if(e.target.dataset.date === tArray[i]){
-        			alert(cArray[i] + 'の試験日です！')
+        			if(tArray[i] === daytext){
+        				console.log('test')
+        				calendarHtml += `<td class="calendar_td" id="check" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`
+						dayCount++;
+        				continue loop;
         			}
         		}
                 calendarHtml += `<td class="calendar_td" data-date="${year}/${month}/${dayCount}">${dayCount}</td>`

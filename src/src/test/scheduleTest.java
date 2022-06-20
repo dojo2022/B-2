@@ -28,8 +28,8 @@ public class scheduleTest extends HttpServlet {
 		//scheduleServlet,jsp確認用のファイル
 		// リクエストパラメータを取得する
 				request.setCharacterEncoding("UTF-8");
-				String username = "太郎山田";
-				String password = "password";
+				String username = "ヤマダタロウ";
+				String password = "pass";
 
 				// ログイン処理を行う
 				UsersDAO uDao = new UsersDAO();
