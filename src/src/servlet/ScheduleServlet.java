@@ -39,8 +39,13 @@ public class ScheduleServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-//		String username = request.getParameter("username");
-		String certification = request.getParameter("CERTIFICATION");
+		//セッションパラメータから取得する
+//要作業 こんな感じ
+		HttpSession session_cer = request.getSession();
+		String certification = (String) session_cer.getAttribute("certification");
+
+			//これはリクエストパラメータ
+//			String certification = request.getParameter("CERTIFICATION");
 
 
 		//試験日程とおすすめ参考書を検索する
@@ -52,9 +57,10 @@ public class ScheduleServlet extends HttpServlet {
 //		BcDAO bDao = new BcDAO();
 //		List<Bc> Test_daysList = bDao.select(new Bc(number, name,dep,phone,email,co));
 
-		// 検索結果（資格名）をセッションスコープに格納する
-		HttpSession session_cer = request.getSession();
-		session_cer.setAttribute("certification", certification);
+//		// 検索結果（資格名）をセッションスコープに格納する...マッチングからセッションスコープに入れる
+//		HttpSession session_cer = request.getSession();
+//		session_cer.setAttribute("certification", certification);
+
 		// 検索結果（試験日）をリクエストスコープに格納する
 		request.setAttribute("Test_daysList", Test_daysList);
 
@@ -78,16 +84,18 @@ public class ScheduleServlet extends HttpServlet {
 		//リクエストパラメータから試験日程を取得する
 		request.setCharacterEncoding("UTF-8");
 		String testdays = request.getParameter("select_schedule");
+//要作業
 		//セッションパラメータから資格名を取得する
 		HttpSession session_cer = request.getSession();
 		String certification = (String) session_cer.getAttribute("certification");
+//要作業ここまで
 		//セッションパラメータからユーザ名を取得する
 		String username = (String) session.getAttribute("username");
-////--------------------------資格名・日程が取れているかテスト-----------------
-//		System.out.println("ユーザ：" + username);
-//		System.out.println("資格名：" + certification);
-//		System.out.println("試験日：" + testdays);
-////--------------------------テストここまで-----------------------------------
+//--------------------------資格名・日程が取れているかテスト-----------------
+		System.out.println("ユーザ：" + username);
+		System.out.println("資格名：" + certification);
+		System.out.println("試験日：" + testdays);
+//--------------------------テストここまで-----------------------------------
 
 		// 登録処理を行う
 		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
@@ -100,16 +108,24 @@ public class ScheduleServlet extends HttpServlet {
 //			if (ttDao.insert(new Today_targets(username, item_id,today_target))) {	// 登録成功
 
 				//目標理解度トランザクションにユーザ名(id)、項目id、目標id、理解度
+				//1.目標一覧を検索 リストに入れる List<> x=...
+				//2.拡張for文でループ
+
+				//3.ユーザid+リストを登録する　if (tuDao.insert(new Target_understands(username,x)))
 				Target_understandsDAO tuDao = new Target_understandsDAO();
 				if (tuDao.insert(new Target_understands(username,certification))) {	// 登録成功
 
+				}
+				//4.ループを閉じる
+
+				//5.最後に
 					//セッションスコープ（資格名）を破棄する
 					session_cer.invalidate();
 
 					// メニューサーブレット？ページ？にフォワードする
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
 					dispatcher.forward(request, response);
-		}
+
 		}
 //	}
 	}
