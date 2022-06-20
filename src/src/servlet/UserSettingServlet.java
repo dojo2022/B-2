@@ -72,28 +72,25 @@ public class UserSettingServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			LoginUser old_username_obj = (LoginUser)session.getAttribute("username");
 			String old_username = old_username_obj.getUsername();
-//old_usernameからold_mail,old_pwを取るselect DAOを作成する
+			//old_usernameからold_mail,old_pwを取るselect DAOを作成する
 			//変数oldpw,oldmailに代入する
 
 			// 更新を行う
 			UsersDAO iDao = new UsersDAO();
-//			if (request.getParameter("change_profile").equals("変更")) {
-				if (iDao.update(new Users(old_username,username, password, mail))) {	// 更新成功
-					request.setAttribute("result",
-					new Result("更新成功！", "登録情報を変更しました"));
+			if (iDao.update(new Users(old_username,username, password, mail))) {	// 更新成功
+				request.setAttribute("result",
+				new Result("更新成功！", "登録情報を変更しました"));
 
-//					もう一度ユーザー設定jspにフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
-					dispatcher.forward(request, response);
-				}else {												// 更新失敗
-					request.setAttribute("result",
-					new Result("更新失敗！", "変更に失敗しました"));
-
-//					もう一度ユーザ設定jspにフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
-					dispatcher.forward(request, response);
-				}
-//			}
+//				もう一度ユーザー設定jspにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
+				dispatcher.forward(request, response);
+			}else {												// 更新失敗
+				request.setAttribute("result",
+				new Result("更新失敗！", "変更に失敗しました"));
+//				もう一度ユーザ設定jspにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
+				dispatcher.forward(request, response);
+			}
 	}
 }
 
