@@ -23,7 +23,7 @@
 		  <a href="/tasuma/Matching1Servlet">
 				<button type="button" name="to_matching">マッチング</button></a>
 	<!--資格登録一覧ページにリンク飛ぶボタン-->
-		  <a href="/tasuma/MatchingServlet">
+		  <a href="/tasuma/CertificationListServlet">
 				<button type="button" name="to_list">一覧から選ぶ</button></a>
 	</div>
 
