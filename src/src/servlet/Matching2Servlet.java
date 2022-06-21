@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CertificationsDAO;
 import model.Certifications;
+import model.LoginUser;
 
 /**
  * Servlet implementation class Matching2Servlet
@@ -43,11 +45,15 @@ public class Matching2Servlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("username") == null) {
-//			response.sendRedirect("/tasuma/LoginServlet");
-//			return;
-//		}
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
+
+		LoginUser loginuser = (LoginUser)session.getAttribute("username");
+		String username = loginuser.getUsername();
+
 		// リクエストパラメータを取得する ☆カテゴリ、難易度
 		request.setCharacterEncoding("UTF-8");
 		String category = request.getParameter("category"); //カテゴリ
