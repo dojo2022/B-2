@@ -6,7 +6,6 @@ public class My_certifications implements Serializable{
 	private String id;
 	private String user_id;
 	private String certification_id;
-	//private String item_id;
 	private String testdays;
 	private String username;
 	private String certification;
@@ -65,16 +64,6 @@ public class My_certifications implements Serializable{
 	public void setCertification_id(String certification_id) {
 		this.certification_id = certification_id;
 	}
-
-	/*
-	public String getItem_id() {
-		return item_id;
-	}
-
-	public void setItem_id(String item_id) {
-		this.item_id = item_id;
-	}
-	*/
 
 	public String getTestdays() {
 		return testdays;
