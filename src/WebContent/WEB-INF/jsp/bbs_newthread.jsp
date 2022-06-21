@@ -33,6 +33,7 @@
 				<!-- カテゴリをプルダウンで表示 -->
 				<select name="select">
 					<option value="">選択してください</option>
+					<!-- ここに作成済みのカテゴリを表示する -->
 				</select>
 			</div>
 
