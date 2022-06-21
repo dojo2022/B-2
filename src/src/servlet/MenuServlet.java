@@ -48,15 +48,24 @@ public class MenuServlet extends HttpServlet {
 		String username = loginuser.getUsername();
 
 		//各種データを取得しスコープに保存
-		//My資格を持ってくる
+
+		//ユーザIDの取得
 		UsersDAO uDao = new UsersDAO();
 		String user_id = uDao.getUser_id(username);
+
+		//My資格の取得
 		My_certificationsDAO myDao = new My_certificationsDAO();
 		List<My_certifications> myList = myDao.select(new My_certifications(null, user_id, null, null));
+
+		//スコープ保存用リストの定義
 		List<Menu_data> menu_data = new ArrayList<Menu_data>();
+
+		//各種DAOのインスタンス化
 		Today_targetsDAO ttDao = new Today_targetsDAO();
 		ItemsDAO iDao = new ItemsDAO();
 		CertificationsDAO cDao = new CertificationsDAO();
+
+		//myListが空ならフォワード
 		if(myList.isEmpty()) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 			dispatcher.forward(request, response);
@@ -86,11 +95,15 @@ public class MenuServlet extends HttpServlet {
 
 			//今日の目標の内、該当する資格の項目をリストに格納
 			List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, "1"));
+
+			//ttListが空ならフォワード
 			if(ttList.isEmpty()) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 				dispatcher.forward(request, response);
 				return;
 			}
+
+			//本日の目標項目一覧itemListの定義
 			List<String> itemList = new ArrayList<String>();
 			for(Today_targets tt :ttList){
 				//本日の目標項目idを取得して、項目名を取得しitemListに格納
@@ -101,9 +114,10 @@ public class MenuServlet extends HttpServlet {
 			//JavaScript用試験日データ
 	        String testday_js = new SimpleDateFormat("yyyy/M/d").format(testday);
 
-			//My資格の内、資格名、残り日数、本日の目標項目一覧を格納（資格ごとにリストに追加）
+			//資格名、残り日数、試験日、本日の目標項目一覧をmenu_dataに格納
 			menu_data.add(new Menu_data(certification, remainingDays, testday_js, itemList));
 		}
+		//セッションスコープに格納
 		session.setAttribute("menu_data", menu_data);
 
 
