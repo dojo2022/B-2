@@ -9,11 +9,12 @@
 <link rel="stylesheet" href="/tasuma/css/style.css">
 </head>
 <body>
+	<p class="username">ユーザ名:${username.username }</p>
 <div class=wrapper>
 <!-- ヘッダーここから -->
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 <!-- ヘッダーここまで -->
-	<p class="username">${username.username }</p>
+
 	<h2>理解度報告</h2>
 
 <h3>登録しました。<br>

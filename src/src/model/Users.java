@@ -2,8 +2,10 @@ package model;
 import java.io.Serializable;
 
 public class Users implements Serializable {
-	private String old_username;
-	private String username;	// ID
+	private String old_username; //ログインユーザーのユーザーネーム
+	private String old_mail;   //ログインユーザーのメールアドレス
+	private String old_pw;     //ログインユーザーのパスワード
+	private String username;	// ユーザーネーム
 	private String password;	// PW
 	private String mail; //メールアドレス
 
@@ -64,5 +66,19 @@ public class Users implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getOld_mail() {
+		return old_mail;
+	}
+	public void setOld_mail(String old_mail) {
+		this.old_mail = old_mail;
+	}
+	public String getOld_pw() {
+		return old_pw;
+	}
+	public void setOld_pw(String old_pw) {
+		this.old_pw = old_pw;
+	}
+
+			
 
 }

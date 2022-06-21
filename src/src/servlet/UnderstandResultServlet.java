@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class UnderstandResultServlet
@@ -30,11 +29,11 @@ public class UnderstandResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-				HttpSession session = request.getSession();
-				if (session.getAttribute("username") == null) {
-					response.sendRedirect("/tasuma/LoginServlet");
-					return;
-				}
+		//		HttpSession session = request.getSession();
+		//		if (session.getAttribute("username") == null) {
+		//			response.sendRedirect("/tasuma/LoginServlet");
+		//			return;
+		//		}
 
 				//達成度イラスト表示用に達成度を(計算して)持ってくる
 

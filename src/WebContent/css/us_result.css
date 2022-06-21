@@ -11,3 +11,7 @@ h3{
   	position: relative;
 
 }
+/* ユーザネームを右上に表示 */
+.username{
+	text-align: right;
+}

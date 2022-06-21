@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -135,7 +137,73 @@ public class UsersDAO  {
 	}
 
 
+
+
+
 //ユーザ設定で使用するDAO
+
+	//old_usernameからold_mail,old_pw(ログインユーザーのメールアドレスとパスワード)を取得する
+	//ユーザ設定で入力なしの場合に現状のものを再設定するため
+	 public List<Users> select(Users param) {
+		Connection conn = null;
+		List<Users> cardList = new ArrayList<Users>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+			// SQL文を準備する
+			String sql = "SELECT address, password from Users WHERE username LIKE ? ";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+			if (param.getOld_username() != null) {
+				pStmt.setString(1,   param.getOld_username() );
+			}
+			else {
+				pStmt.setString(1, "%" + param.getOld_username() + "%");
+			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Users card = new Users(
+				rs.getString("address"),
+				rs.getString("password")
+				);
+				cardList.add(card);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			cardList = null;
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+			}
+		}
+
+		// 結果を返す
+		return cardList;
+	}
+
 
 
 	// 引数Usersで指定されたレコードを更新し、成功したらtrueを返す
