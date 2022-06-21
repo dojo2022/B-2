@@ -11,11 +11,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- ユーザ名の表示 -->
+	<p class="username">ユーザ名:${username.username }</p>
 <div class=wrapper>
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <input id="resultmessage" type="hidden" value="${result.message}">
-<!-- ユーザ名の表示 -->
-	<p class="username">${username.username }</p>
+
         <h2>ユーザ設定</h2>
         <form method="POST" action="/tasuma/UserSettingServlet" id="user_setting" name="change_profile">
             <table class=table>

@@ -73,6 +73,7 @@ public class UserSettingServlet extends HttpServlet {
 			LoginUser old_username_obj = (LoginUser)session.getAttribute("username");
 			String old_username = old_username_obj.getUsername();
 			//old_usernameからold_mail,old_pwを取るselect DAOを作成する
+			
 			//変数oldpw,oldmailに代入する
 
 			// 更新を行う
