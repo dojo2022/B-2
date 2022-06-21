@@ -12,8 +12,8 @@
 		を送る
  -->
  <form method="GET" action="/tasuma/ScheduleServlet" id="Test">
- 	<input type="radio" name="CERTIFICATION" value="ITパスポート">
- 	<input type="radio" name="CERTIFICATION" value="基本情報技術者試験">
+ 	<input type="radio" name="selectCertification" value="ITパスポート">
+ 	<input type="radio" name="selectCertification" value="基本情報技術者試験">
 	<input type="submit" name="regist" value="登録">
 </form>
 

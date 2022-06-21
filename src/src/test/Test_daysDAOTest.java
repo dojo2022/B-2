@@ -10,7 +10,7 @@ public class Test_daysDAOTest{
 
 	// select()のテスト
 	System.out.println("---------- select()のテスト ----------");
-	List<Test_days> cardList2 = dao.select(new Test_days("", "","ITパスポート","","",""));
+	List<Test_days> cardList2 = dao.select(new Test_days("ITパスポート"));
 	for (Test_days card : cardList2) {
 		System.out.println("試験日程：" + card.getTestdays());
 

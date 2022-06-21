@@ -15,7 +15,6 @@ import dao.My_certificationsDAO;
 import dao.Target_understandsDAO;
 import dao.Test_daysDAO;
 import dao.Today_targetsDAO;
-import model.My_certifications;
 import model.Target_understands;
 import model.Test_days;
 
@@ -31,30 +30,34 @@ public class ScheduleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("username") == null) {
-			response.sendRedirect("/tasuma/LoginServlet");
-			return;
-		}
+//		if (session.getAttribute("username") == null) {
+//			response.sendRedirect("/tasuma/LoginServlet");
+//			return;
+//		}
 
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		//セッションパラメータから取得する
-//要作業 こんな感じ
-		HttpSession session_cer = request.getSession();
-		String certification = (String) session_cer.getAttribute("certification");
+		String certification = request.getParameter("selectCertification");
 
-			//これはリクエストパラメータ
-//			String certification = request.getParameter("CERTIFICATION");
-//		String username = request.getParameter("username");
-//		String certification = request.getParameter("CERTIFICATION");
 
-		//セッションパラメータから資格名を取得する
-		HttpSession session_cerList = request.getSession();
-//		System.out.println(session_cerList.get());
-
-//		String certification = (String) session_cerList.getAttribute("cardList");
-
+//-----------------------------------いらないと思う　後で消す
+//		//セッションパラメータから取得する
+////要作業 こんな感じ
+//		HttpSession session_cer = request.getSession();
+//		String certification = (String) session_cer.getAttribute("certification");
+//
+//			//これはリクエストパラメータ
+////			String certification = request.getParameter("CERTIFICATION");
+////		String username = request.getParameter("username");
+////		String certification = request.getParameter("CERTIFICATION");
+//
+//		//セッションパラメータから資格名を取得する
+//		HttpSession session_cerList = request.getSession();
+////		System.out.println(session_cerList.get());
+//
+////		String certification = (String) session_cerList.getAttribute("cardList");
+//-----------------------------------------------------------------
 
 		//試験日程とおすすめ参考書を検索する
 		//試験日程...	資格名から日程を検索
@@ -65,15 +68,16 @@ public class ScheduleServlet extends HttpServlet {
 //		BcDAO bDao = new BcDAO();
 //		List<Bc> Test_daysList = bDao.select(new Bc(number, name,dep,phone,email,co));
 
-
+//---------------------------------被ってる　後で消す--------------------------------
 //		// 検索結果（資格名）をセッションスコープに格納する...マッチングからセッションスコープに入れる
 //		HttpSession session_cer = request.getSession();
 //		session_cer.setAttribute("certification", certification);
+//----------------------------------------------------------------------------------------
 
 
-//		// 検索結果（資格名）をセッションスコープに格納する
-//		HttpSession session_cer = request.getSession();
-//		session_cer.setAttribute("certification", certification);
+		// 検索結果（資格名）をセッションスコープに格納する
+		HttpSession session_cer = request.getSession();
+		session_cer.setAttribute("certification", certification);
 
 		// 検索結果（試験日）をリクエストスコープに格納する
 		request.setAttribute("Test_daysList", Test_daysList);
@@ -90,14 +94,15 @@ public class ScheduleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("username") == null) {
-			response.sendRedirect("/tasuma/LoginServlet");
-			return;
-		}
+//		if (session.getAttribute("username") == null) {
+//			response.sendRedirect("/tasuma/LoginServlet");
+//			return;
+//		}
 
 		//リクエストパラメータから試験日程を取得する
 		request.setCharacterEncoding("UTF-8");
 		String testdays = request.getParameter("select_schedule");
+//		String certification = request.getParameter("selectCertification");
 //要作業
 		//セッションパラメータから資格名を取得する
 		HttpSession session_cer = request.getSession();
@@ -111,10 +116,10 @@ public class ScheduleServlet extends HttpServlet {
 		System.out.println("試験日：" + testdays);
 //--------------------------テストここまで-----------------------------------
 
-		// 登録処理を行う
-		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
+//		// 登録処理を行う
+//		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
 		My_certificationsDAO tdDao = new My_certificationsDAO();
-		if (tdDao.insert(new My_certifications(username, certification,testdays))) {	// 登録成功
+//		if (tdDao.insert(new My_certifications(username, certification,testdays))) {	// 登録成功
 
 
 			//本日の目標トランザクションに「ユーザID、項目id、本日の目標」を登録する
@@ -127,31 +132,36 @@ public class ScheduleServlet extends HttpServlet {
 				Target_understandsDAO tu_sDao = new Target_understandsDAO();
 				List<Target_understands> resultList = tu_sDao.insert_select(new Target_understands(certification));
 
+
 				//2.拡張for文でループ
 				for(Target_understands x:resultList) {
 //ここまでは合っていそう
 
 				//3.ユーザid+リストを登録する
+
+					x.setUsername(username);
 				Target_understandsDAO tuDao = new Target_understandsDAO();
-//				if (tuDao.insert(new Target_understands(username,x))) {	// 登録成功
-//
-//				}
+				if (tuDao.insert(x)){	// 登録成功
+
+				}
 				//4.ループを閉じる
 				}
 				//5.最後に
 					//セッションスコープ（資格名）を破棄する
-					//session_cer は仮
 					session_cer.invalidate();
 
 					// メニューサーブレット？ページ？にフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("MenuServlet");
 					dispatcher.forward(request, response);
 
 
 		}
 	}
-}
+//}
 
+
+//-------------------------------------------------------------------------------------------
+//--------------------復旧用 -06171400-------------------------------------------------------
 //		My_certificationsDAO tdDao = new My_certificationsDAO();
 //		if (tdDao.insert(new My_certifications(username, certification,testdays))) {	// 登録成功
 //

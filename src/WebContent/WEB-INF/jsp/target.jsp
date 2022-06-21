@@ -22,17 +22,6 @@
 	<!-- 資格目標の右隣に重み(％)とチェックボックスをつける -->
 	<!-- 折り畳みボタンを使って表示/非表示を切り替える -->
 
-<!--<details>
-	<summary>資格の目標一覧を表示する</summary>
-	<c:forEach var="e" items="${targetsList}">
-		<form action="/tasuma/target.jsp" method="post" id="list">
-			<ul>
-				<li><label>${e.target}<input type ="checkbox" name="${e.target}"></label></li>
-			</ul>
-		</form>
-	</c:forEach>
-	</details>-->
-
 	<details>
 	<summary>資格の目標一覧を表示する</summary>
 	<% int count = 0; %>
@@ -43,11 +32,11 @@
 			<% count++; %>
 		</form>
 	</c:forEach>
-	<input type="text" id="count" value="<%= count %>">
+	<input type="hidden" id="count" value="<%= count %>">
 	</details>
 
 	<div class="target">
-		<input type="submit" name="target_setting" value="更新" onclick="return window.alert()">
+		<input type="submit" name="target_setting" value="更新" onsubmit="return itemsubmit()">
 	</div>
 
 	<!-- メニューボタン -->
