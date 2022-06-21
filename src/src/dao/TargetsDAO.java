@@ -94,4 +94,111 @@ public class TargetsDAO {
 		// 結果を返す
 		return targetsList;
 	}
+
+	public String getTarget(String target_id) {
+
+     	Connection conn = null;
+ 		String result = null;
+
+ 		try {
+ 			// JDBCドライバを読み込む
+ 			Class.forName("org.h2.Driver");
+
+ 			// データベースに接続する
+ 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+ 			// SQL文を準備する
+ 			String sql = "SELECT target from targets WHERE target_id = ?";
+ 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+ 			// SQL文を完成させる
+				pStmt.setString(1, target_id);
+
+
+ 			// SQL文を実行し、結果表を取得する
+ 			ResultSet rs = pStmt.executeQuery();
+
+ 			// 結果表をコレクションにコピーする
+ 			while (rs.next()) {
+ 				result = rs.getString("target");
+ 			}
+ 		}
+ 		catch (SQLException e) {
+ 			e.printStackTrace();
+ 			result = null;
+ 		}
+ 		catch (ClassNotFoundException e) {
+ 			e.printStackTrace();
+ 			result = null;
+ 		}
+ 		finally {
+ 			// データベースを切断
+ 			if (conn != null) {
+ 				try {
+ 					conn.close();
+ 				}
+ 				catch (SQLException e) {
+ 					e.printStackTrace();
+ 					result = null;
+ 				}
+ 			}
+ 		}
+
+ 		// 結果を返す
+ 		return result;
+     }
+
+	public String getTarget_id(String target) {
+
+     	Connection conn = null;
+ 		String result = null;
+
+ 		try {
+ 			// JDBCドライバを読み込む
+ 			Class.forName("org.h2.Driver");
+
+ 			// データベースに接続する
+ 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+ 			// SQL文を準備する
+ 			String sql = "SELECT target_id from targets WHERE target = ?";
+ 			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+ 			// SQL文を完成させる
+				pStmt.setString(1, target);
+
+
+ 			// SQL文を実行し、結果表を取得する
+ 			ResultSet rs = pStmt.executeQuery();
+
+ 			// 結果表をコレクションにコピーする
+ 			while (rs.next()) {
+ 				result = rs.getString("target_id");
+ 			}
+ 		}
+ 		catch (SQLException e) {
+ 			e.printStackTrace();
+ 			result = null;
+ 		}
+ 		catch (ClassNotFoundException e) {
+ 			e.printStackTrace();
+ 			result = null;
+ 		}
+ 		finally {
+ 			// データベースを切断
+ 			if (conn != null) {
+ 				try {
+ 					conn.close();
+ 				}
+ 				catch (SQLException e) {
+ 					e.printStackTrace();
+ 					result = null;
+ 				}
+ 			}
+ 		}
+
+ 		// 結果を返す
+ 		return result;
+     }
+
 }

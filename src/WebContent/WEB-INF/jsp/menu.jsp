@@ -33,7 +33,7 @@
 	<nav class="menu" id="js-nav">
 		<ul class="nav__items nav-items">
 			<li class="nav-items__item"><a href="/tasuma/CertificationServlet">My資格</a></li>
-			<li class="nav-items__item"><a href="/tasuma/MenuServlet">目標設定</a></li>
+			<li class="nav-items__item"><a href="/tasuma/TargetServlet">目標設定</a></li>
 			<li class="nav-items__item"><a href="/tasuma/UnderstandServlet">理解度報告</a></li>
 			<li class="nav-items__item"><a href="/tasuma/MenuServlet">掲示板</a></li>
 			<li class="nav-items__item"><a href="/tasuma/UserSettingServlet">ユーザ設定</a></li>
