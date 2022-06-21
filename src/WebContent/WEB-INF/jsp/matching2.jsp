@@ -11,6 +11,7 @@
 <body>
 <div class="wrapper">
 <!-- ヘッダー -->
+<p class="username">ユーザ名:${username.username}</p>
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <h2>My資格</h2>
 <!-- 質問 -->

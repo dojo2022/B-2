@@ -76,13 +76,13 @@ public class CertificationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
    	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("username") == null) {
 			response.sendRedirect("/tasuma/LoginServlet");
 			return;
 		}
-*/
+
 
 		// リクエストパラメータを取得する
 		// 資格IDを持ってきて表示する？

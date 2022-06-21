@@ -19,7 +19,7 @@
 	<!-- ログインしているユーザ名を右上に表示 -->
 	<p class="username">ユーザ名：${username.username}</p>
 
-	<div id="table">
+	<div>
 
 		<h1><jsp:include page="/WEB-INF/jsp/header.jsp" /></h1>
 		<!-- タイトル -->
@@ -29,10 +29,10 @@
 
 		<!-- カテゴリをプルダウンで表示 -->
 		<form method="POST" action="/tasuma/CertificationListServlet">
-			<div>
+			<div class="same">
 				<label for="select2">カテゴリ</label>
 				<!-- カテゴリをプルダウンで表示 -->
-				<select id="selector" name="select">
+				<select name="select">
 					<option value="">選択してください</option>
 					<option value="IT知識全般">IT知識全般</option>
 					<option value="IT言語">IT言語</option>
@@ -43,34 +43,17 @@
 					<option value="事務作業">事務作業</option>
 					<option value="デザイン">デザイン</option>
 				</select>
+
+				<!-- カテゴリをプルダウンで表示ここまで -->
+
+
+				<!-- テキスト検索 -->
+
+				<input type="text" id="certification" name="CERTIFICATION"><br>
+
+				<!-- 検索ボタン -->
+				<input id="submit" type="submit" name="REGIST" value="検索"><br>
 			</div>
-			<!-- カテゴリをプルダウンで表示ここまで -->
-
-
-
-			<!-- 資格名をテキスト入力 -->
-			<!-- 	<table>
-				<tr>
-					<th><input type="text" id="certification" name="CERTIFICATION"></th>
-				</tr>
-			</table>
-			<!-- 資格名をテキスト入力ここまで -->
-
-			<!--  <table>
-				<tr>
-					<td colspan="2">
-				<!--		<!-- 検索ボタンをカテゴリと資格名の横につける -->
-			<!-- 		<a href="/tasuma/CertificationListServlet"></a>
-						<input type = submit name = submit value= 検索>
-					</td>
-				</tr>
-			</table> -->
-
-
-			<!-- テキスト検索 -->
-
-			<input type="text" id="certification" name="CERTIFICATION"><br>
-			<input id="submit" type="submit" name="REGIST" value="検索"><br>
 		</form>
 
 
@@ -78,135 +61,31 @@
 		<h3>資格一覧</h3>
 
 
-
-		<!-- カテゴリ検索用のc:foreachをここに書く -->
-		<!-- IT知識全般のカテゴリを一覧表示 -->
-
-		<%-- <table id="allit">
-
-			<tr>
-				<th>IT知識全般</th>
-			</tr>
-			<c:forEach var="e" items="${allit}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-
-		</table>
-
-		<!-- IT言語系のカテゴリを一覧表示 -->
-		<table id="gengo">
-			<tr>
-				<th>IT言語</th>
-			</tr>
-			<c:forEach var="e" items="${gengo}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-
-		<!-- データベース系のカテゴリを一覧表示 -->
-		<table id="data">
-			<tr>
-				<th>データべース</th>
-			</tr>
-			<c:forEach var="e" items="${data}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-
-		<!-- セキュリティ系のカテゴリを一覧表示 -->
-		<table id="sec">
-			<tr>
-				<th>セキュリティ</th>
-			</tr>
-			<c:forEach var="e" items="${sec}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-
-		<!-- ネットワーク系のカテゴリを一覧表示 -->
-		<table id="net">
-			<tr>
-				<th>ネットワーク</th>
-			</tr>
-			<c:forEach var="e" items="${net}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-
-		<!-- マネジメント系のカテゴリを一覧表示 -->
-		<table id="mana">
-			<tr>
-				<th>マネジメント</th>
-			</tr>
-			<c:forEach var="e" items="${mana}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-
-		<!-- 事務作業系のカテゴリを一覧表示 -->
-		<table id="jimu">
-			<tr>
-				<th>事務作業</th>
-			</tr>
-			<c:forEach var="e" items="${jimu}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-
-		<!-- デザイン系のカテゴリを一覧表示 -->
-		<table id="des">
-			<tr>
-				<th>デザイン</th>
-			</tr>
-			<c:forEach var="e" items="${des}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table> --%>
-
-		<!-- カテゴリとテキスト検索 -->
-	<!--  	<table>
-			<tr>
-				<th>${certList[0].category}</th>
-			</tr>
-			<c:forEach var="e" items="${certList}">
-				<tr class="data_row">
-					<td>${e.certification}</td>
-			</c:forEach>
-		</table>
-		<!-- カテゴリとテキスト検索ここまで -->
-
-
 		<!-- 日程を決めるボタンを資格名の横に付ける＋共通ページへ遷移 -->
+		<!-- 資格の一覧が表示される＆検索で絞り込みされたものが表示 -->
 
+		<h4>${certList[0].category}</h4>
 		<div class="table">
-			<table>
-			<tr>
-			<th>${certList[0].category}</th>
-			</tr>
-				<c:forEach var = "e" items = "${certList}">
-				<tr class ="rowdata">
-				<td>${e.certification}</td>
-				<td><form method = "POST" action = "/tasuma/ScheduleServlet">
-				<button type = "submit" name="certification" value = ${e.certification }>日程を決める</button></form></td>
-				</tr>
+			<table id="list">
+				<c:forEach var="e" items="${certList}">
+					<tr class="rowdata">
+						<td>${e.certification}</td>
+						<td><form method="GET" action="/tasuma/ScheduleServlet">
+								<button type="submit" name="selectCertification"
+									value=${e.certification }>日程を決める</button>
+							</form></td>
+					</tr>
 				</c:forEach>
 			</table>
 		</div>
 		<!-- 日程を決めるボタンここまで -->
 
+		<!-- メニューに戻るボタン -->
 		<table>
-			<tr>
-				<td colspan="2"><a href="/tasuma/MenuServlet"><input
-						type="button" name="BUTTON" value="メニューに戻る"></a></td>
-				<!-- メニューに戻るボタンを左下につける -->
+			<tr class="menu">
+				<td><a href="/tasuma/MenuServlet">
+						<button type="button" name="menu">メニューに戻る</button>
+				</a></td>
 			</tr>
 		</table>
 	</div>
