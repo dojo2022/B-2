@@ -131,6 +131,9 @@ public class ScheduleServlet extends HttpServlet {
 				//1.目標一覧を検索 リストに入れる List<> =...
 				Target_understandsDAO tu_sDao = new Target_understandsDAO();
 				List<Target_understands> resultList = tu_sDao.insert_select(new Target_understands(certification));
+				// メニューサーブレット？ページ？にフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/scheduleTest.jsp");
+				dispatcher.forward(request, response);
 
 
 				//2.拡張for文でループ
@@ -150,9 +153,9 @@ public class ScheduleServlet extends HttpServlet {
 					//セッションスコープ（資格名）を破棄する
 					session_cer.invalidate();
 
-					// メニューサーブレット？ページ？にフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("MenuServlet");
-					dispatcher.forward(request, response);
+//					// メニューサーブレット？ページ？にフォワードする
+//					RequestDispatcher dispatcher = request.getRequestDispatcher("MenuServlet");
+//					dispatcher.forward(request, response);
 
 
 		}
