@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,13 @@
 	<!-- 折り畳みボタンを使って表示/非表示を切り替える -->
 	<details>
 	<summary>資格の目標一覧を表示する</summary>
-		<ul>
-			<li><label>折りたたむ内容<input type ="checkbox"></label></li>
-			<li>折りたたむ内容</li>
-			<li>折りたたむ内容</li>
-		</ul>
+	<c:forEach var="e" items="${targetsList}">
+		<form action="/tasuma/target.jsp" method="post" id="list">
+			<ul>
+				<li><label>${e.target}<input type ="checkbox"></label></li>
+			</ul>
+		</form>
+	</c:forEach>
 	</details>
 
 	<div class="target">
