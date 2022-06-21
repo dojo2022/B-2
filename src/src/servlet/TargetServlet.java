@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.ItemsDAO;
 import dao.Today_targetsDAO;
 import dao.UsersDAO;
 import model.LoginUser;
-import model.Result;
 import model.Today_targets;
 
 /**
@@ -39,16 +40,29 @@ public class TargetServlet extends HttpServlet {
 		LoginUser loginuser = (LoginUser)session.getAttribute("username");
 		String username = loginuser.getUsername();
 
-		// 本日の目標の取得
+		// 本日の目標(項目)の取得
 		UsersDAO uDao = new UsersDAO();
 		String user_id = uDao.getUser_id(username);
 		Today_targetsDAO ttDao = new Today_targetsDAO();
-		List<Today_targets> Today_targetsList = ttDao.Today_targetsList(new Username(target));
+		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null));
 
+		//myListが空ならフォワード
+		if(ttList.isEmpty()) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String username = request.getParameter("username");
+		//本日の目標項目一覧itemListの定義
+		ItemsDAO iDao = new ItemsDAO();
+		List<String> itemList = new ArrayList<String>();
+		for(Today_targets tt :ttList){
+			//本日の目標項目idを取得して、項目名を取得しitemListに格納
+			String item = iDao.getItem(tt.getItem_id());
+			itemList.add(item);
+		}
+
+		session.setAttribute("itemList", itemList);
 
 		// 目標設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
@@ -66,22 +80,39 @@ public class TargetServlet extends HttpServlet {
 			return;
 		}
 
+		// ユーザ名の取得
+		LoginUser loginuser = (LoginUser)session.getAttribute("username");
+		String username = loginuser.getUsername();
+
+		// 本日の目標(項目)の取得
+		UsersDAO uDao = new UsersDAO();
+		String user_id = uDao.getUser_id(username);
+
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String today_target = request.getParameter("today_target");
+		//いらないかも String today_target = request.getParameter("today_target");
 
-		// 更新を行う
+		//ループ回数の取得
+		int count = Integer.parseInt(request.getParameter("count"));
+		//ItemsDAOの定義
+		ItemsDAO iDao = new ItemsDAO();
+		//Today_targetsDAOの定義
 		Today_targetsDAO ttDao = new Today_targetsDAO();
-		if (request.getParameter("SUBMIT").equals("更新")) {
-			if (ttDao.update(new Today_targets(today_target))) {	// 更新成功
-				request.setAttribute("result",
-				new Result("更新成功！", "レコードを更新しました。"));
-			}
-			else {												// 更新失敗
-				request.setAttribute("result",
-				new Result("更新失敗！", "レコードを更新できませんでした。"));
-			}
-		}
+		// 更新できたかどうか判断する
+		boolean result = true;
+		for(int i = 0; i < count; i++){
+		    //項目名とチェックの値を取得 項目名から項目idを取得
+		    String item = request.getParameter("item" + i);
+		    String check = request.getParameter("check" + i);
+		    //チェックの値が１か０か
+		    if(check == null) {
+		    	check = "0";
+		    }
+		    String item_id = iDao.getItem_id(item);
+		    if(ttDao.update(new Today_targets(user_id, item_id, check)) == false) {
+		    	result = false;
+		    	}
+		    }
 
 		// 目標設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
@@ -89,3 +120,4 @@ public class TargetServlet extends HttpServlet {
 	}
 
 }
+
