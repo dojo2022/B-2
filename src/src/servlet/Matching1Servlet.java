@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CertificationsDAO;
 import model.Certifications;
+import model.LoginUser;
 
 /**
  * Servlet implementation class Matching1Servlet
@@ -25,6 +27,17 @@ public class Matching1Servlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//ユーザ名の取得
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
+
+		LoginUser loginuser = (LoginUser)session.getAttribute("username");
+		String username = loginuser.getUsername();
+
 		// jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/matching1.jsp");
 		dispatcher.forward(request, response);
