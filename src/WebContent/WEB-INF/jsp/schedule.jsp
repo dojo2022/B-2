@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/tasuma/css/style.css">
+<link rel="stylesheet" href="/tasuma/css/schedule.css">
 <title>TASUMA | 資格(日程を決める)</title>
 </head>
 <body>

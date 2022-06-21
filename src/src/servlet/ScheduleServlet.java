@@ -122,18 +122,18 @@ public class ScheduleServlet extends HttpServlet {
 			Today_targetsDAO ttDao = new Today_targetsDAO();
 //			if (ttDao.insert(new Today_targets(username, item_id,today_target))) {	// 登録成功
 
-				//目標理解度トランザクションにユーザ名(id)、項目id、目標id、理解度
-				//1.目標一覧を検索 リストに入れる List<> x=...
+				//目標理解度トランザクションにユーザ名(id)、項目id、目標id
+				//1.目標一覧を検索 リストに入れる List<> =...
 				Target_understandsDAO tu_sDao = new Target_understandsDAO();
 				List<Target_understands> resultList = tu_sDao.insert_select(new Target_understands(certification));
 
 				//2.拡張for文でループ
-				for(Target_understands i:resultList) {
+				for(Target_understands x:resultList) {
 //ここまでは合っていそう
 
-				//3.ユーザid+リストを登録する　if (tuDao.insert(new Target_understands(username,x)))
+				//3.ユーザid+リストを登録する
 				Target_understandsDAO tuDao = new Target_understandsDAO();
-//				if (tuDao.insert(new Target_understands(username,i))) {	// 登録成功
+//				if (tuDao.insert(new Target_understands(username,x))) {	// 登録成功
 //
 //				}
 				//4.ループを閉じる

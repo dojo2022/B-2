@@ -170,7 +170,10 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-//作業中:SQL文がよくわからない
+//作業中:リストを活用したSQL文がよくわからない
+			//insert...(item_id) value=(?)↓
+			//if(x.getString("i_id")!=null...か？
+
 			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,(SELECT user_id FROM Users WHERE Users.username = ?))";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 //?に合わせてあとで調節

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+table {
+  /*display: flex;
+  justify-content: center;
+	padding:20,0px;
+	margin:40.0px;*/
+	margin:auto;
+	text-align:center;
+	font-weight:bold;
+
+}
+h3{
+	text-align:center;
+	font-weight:bold;
+}
+.username{
+	text-align:right;
+	font-weight:bold;
+}
+
