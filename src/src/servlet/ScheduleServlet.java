@@ -118,23 +118,39 @@ public class ScheduleServlet extends HttpServlet {
 
 
 			//本日の目標トランザクションに「ユーザID、項目id、本日の目標」を登録する
+			//後で作業
 			Today_targetsDAO ttDao = new Today_targetsDAO();
 //			if (ttDao.insert(new Today_targets(username, item_id,today_target))) {	// 登録成功
 
 				//目標理解度トランザクションにユーザ名(id)、項目id、目標id、理解度
 				//1.目標一覧を検索 リストに入れる List<> x=...
+				Target_understandsDAO tu_sDao = new Target_understandsDAO();
+				List<Target_understands> resultList = tu_sDao.insert_select(new Target_understands(certification));
+
 				//2.拡張for文でループ
+				for(Target_understands i:resultList) {
+//ここまでは合っていそう
 
 				//3.ユーザid+リストを登録する　if (tuDao.insert(new Target_understands(username,x)))
 				Target_understandsDAO tuDao = new Target_understandsDAO();
-				if (tuDao.insert(new Target_understands(username,certification))) {	// 登録成功
+				if (tuDao.insert(new Target_understands(username,i))) {	// 登録成功
 
 				}
 				//4.ループを閉じる
-
+				}
 				//5.最後に
 					//セッションスコープ（資格名）を破棄する
+					//session_cer は仮
 					session_cer.invalidate();
+
+					// メニューサーブレット？ページ？にフォワードする
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
+					dispatcher.forward(request, response);
+
+
+		}
+	}
+}
 
 //		My_certificationsDAO tdDao = new My_certificationsDAO();
 //		if (tdDao.insert(new My_certifications(username, certification,testdays))) {	// 登録成功
@@ -152,19 +168,11 @@ public class ScheduleServlet extends HttpServlet {
 //					session_cer.invalidate();
 
 
-					// メニューサーブレット？ページ？にフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/tasuma/MenuServlet");
-					dispatcher.forward(request, response);
-
-
-		}
-
 //		}
 //		}
 
 //	}
-	}
-}
+
 //-------------------------------------------------------------------------------------------
 //--------------------復旧用 -06171400-------------------------------------------------------
 //	/**

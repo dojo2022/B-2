@@ -100,6 +100,64 @@ public class Target_understandsDAO {
 		return resultList;
 	}
 
+	//資格登録時item_id,target_id検索用
+	public List<Target_understands> insert_select(Target_understands target_understands){
+		Connection conn = null;
+		List<Target_understands> resultList = new ArrayList<Target_understands>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "SELECT Targets.item_id AS i_id,Targets.target_id AS t_id FROM Targets,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?);";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+			if (target_understands.getCertification() != null && !target_understands.getCertification().equals("")) {
+				pStmt.setString(1, target_understands.getCertification());
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				Target_understands new_target = new Target_understands(
+					rs.getString("i_id"),
+					rs.getString("t_id")
+					);
+				resultList.add(new_target);
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return resultList;
+	}
+
 	//現在時刻はサーブレット側で取得してJavaBeansに格納しておく
 	public boolean insert(Target_understands target_understands){
 		Connection conn = null;
@@ -112,17 +170,17 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-//作業中:登録処理の方針決め
-			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,?)";
+//作業中:SQL文がよくわからない
+			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,(SELECT user_id FROM Users WHERE Users.username = ?))";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
+//?に合わせてあとで調節
 			if (target_understands.getUsername() != null && !target_understands.getUsername().equals("")) {
 				pStmt.setString(1, target_understands.getUsername());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if (target_understands.getCertification() != null && !target_understands.getCertification().equals("")) {
+			if (target_understands.get() != null && !target_understands.getCertification().equals("")) {
 				pStmt.setString(2, target_understands.getCertification());
 			}
 			else {

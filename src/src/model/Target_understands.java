@@ -30,11 +30,19 @@ public class Target_understands implements Serializable {
 	}
 
 	//資格登録時用コンストラクタ（引数あり）
+	//要変更？
 	public Target_understands(String username, String certification) {
 		super();
 		this.username = username;
 		this.certification = certification;
 	}
+
+	//資格登録時用コンストラクタその２（引数あり）
+	public Target_understands(String certification) {
+		super();
+		this.certification = certification;
+	}
+
 
 
 	//コンストラクタ（引数なし）

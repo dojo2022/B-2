@@ -19,7 +19,7 @@
 	<form method="post" action="/tasuma/ScheduleServlet">
 
 
-	<h3>資格名:${certification.certification}</h3>
+	<h3>資格名:${certification}</h3>
 
 	<table class="list">
 
