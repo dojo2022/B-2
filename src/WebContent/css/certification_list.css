@@ -1,54 +1,80 @@
 @charset "UTF-8";
 
 table {
-	margin:auto;
-	text-align:center;
-	font-weight:bold;
-  }
-
-
-.logo{
-	margin:50px 0 40px 0;
-	line-height: 0;
-	text-align:center;
-	font-weight:bold;
+	margin: auto;
+	text-align: center;
+	font-weight: bold;
 }
 
-.footer{
+.logo {
+	margin: 50px 0 40px 0;
+	line-height: 0;
+	text-align: center;
+	font-weight: bold;
+}
+
+/* フッター部分 */
+.footer {
 	font-size: 12px;
-	font-weight:bold;
-	text-align:center;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* ログインしているユーザネームの位置 */
+.username {
+	text-align: right;
 }
 
 /* h3 資格一覧の位置 */
 h3 {
 	text-align: left;
 	padding: 20px 20px 20px 0;
-	}
+}
 
-/* カテゴリと資格名（テキストボックス）の位置 */
-   table#list th, table#list td {
-	padding: 4px 16px 4px 0;
+/* h2 My資格のサブタイトルの位置 */
+h2 {
 	text-align: center;
-   }
+}
 
-/* 一覧表の表示・位置 */
- div#table {
-	width: 700px;
-	height: 150px;
-	overflow: auto;	/* はみ出した場合は、スクロールバーを表示する OK*/
-  }
+/* h4 カテゴリ名 */
+h4 {
+	text-align: left;
+}
 
-
-/* カテゴリ、資格名、検索ボタンを横並びにする */
-.button{
+/* カテゴリ・テキストボックス・検索ボタンを横並びにする */
+.same {
 	padding-top: 30px;
   	display: flex;
   	justify-content: space-evenly;
   	text-align: center;
+  	padding: 20px 4px 4px 0;
 }
 
 
-/* 資格名と日程を決めるボタンを横並びにする */
+/* 一覧表の表示・位置 */
+div.table {
+	width: 400px;
+	height: 250px;
+	text-align: center;
+	overflow: auto; /* はみ出した場合は、スクロールバーを表示する OK*/
+}
 
+/* 表の中のドットの下線 OK*/
+table#list th, table#list td {
+	border-bottom-width: 3px;
+	border-bottom-style: dotted;
+	border-bottom-color: black;
+	padding: 4px 16px 4px 0;
+	text-align: center;
+	white-space: nowrap; /* 折り返さない */
+}
 
+/* 一覧のデータ行 カーソルを重ねた時の色 OK*/
+table#list tr.rowdata:hover {
+	background-color: #b0c4de;
+}
+
+/* メニューボタンの位置 */
+.menu {
+	padding-top: 30px;
+}
