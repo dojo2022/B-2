@@ -180,12 +180,12 @@ public class Target_understandsDAO {
 			else {
 				pStmt.setString(1, null);
 			}
-			if (target_understands.get() != null && !target_understands.getCertification().equals("")) {
-				pStmt.setString(2, target_understands.getCertification());
-			}
-			else {
-				pStmt.setString(2, null);
-			}
+//			if (target_understands.get() != null && !target_understands.getCertification().equals("")) {
+//				pStmt.setString(2, target_understands.getCertification());
+//			}
+//			else {
+//				pStmt.setString(2, null);
+//			}
 
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する

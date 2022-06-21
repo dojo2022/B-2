@@ -133,9 +133,9 @@ public class ScheduleServlet extends HttpServlet {
 
 				//3.ユーザid+リストを登録する　if (tuDao.insert(new Target_understands(username,x)))
 				Target_understandsDAO tuDao = new Target_understandsDAO();
-				if (tuDao.insert(new Target_understands(username,i))) {	// 登録成功
-
-				}
+//				if (tuDao.insert(new Target_understands(username,i))) {	// 登録成功
+//
+//				}
 				//4.ループを閉じる
 				}
 				//5.最後に
