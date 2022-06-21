@@ -59,10 +59,10 @@ public class CertificationServlet extends HttpServlet {
 				}
 				for(My_certifications my :myList){
 
-		 /* 		// 資格IDから資格名を取得 Gitが解決すれば
+		  		// 資格IDから資格名を取得
 					String certification = cDao.getCertification(my.getCertification_id());
 					menu_data.add(new Menu_data(certification, null, null, null));
-		*/
+
 				}
 				// ""内は書き換える
 				session.setAttribute("certification", menu_data);

@@ -21,15 +21,29 @@
 	<!-- 各資格における目標一覧（達成済みは除く）をリスト形式で表示する -->
 	<!-- 資格目標の右隣に重み(％)とチェックボックスをつける -->
 	<!-- 折り畳みボタンを使って表示/非表示を切り替える -->
-	<details>
+
+<!--<details>
 	<summary>資格の目標一覧を表示する</summary>
 	<c:forEach var="e" items="${targetsList}">
 		<form action="/tasuma/target.jsp" method="post" id="list">
 			<ul>
-				<li><label>${e.target}<input type ="checkbox"></label></li>
+				<li><label>${e.target}<input type ="checkbox" name="${e.target}"></label></li>
 			</ul>
 		</form>
 	</c:forEach>
+	</details>-->
+
+	<details>
+	<summary>資格の目標一覧を表示する</summary>
+	<% int count = 0; %>
+	<c:forEach var="e" items="${itemList}">
+		<form action="/tasuma/target.jsp" method="post" id="list">
+			<input type="text" name="tar<%= count %>" value="${e}">
+			<input type="checkbox" name="check<%= count %>" value="1">
+			<% count++; %>
+		</form>
+	</c:forEach>
+	<input type="text" id="count" value="<%= count %>">
 	</details>
 
 	<div class="target">
