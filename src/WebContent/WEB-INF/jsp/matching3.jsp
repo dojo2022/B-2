@@ -19,7 +19,11 @@
 	<table>
 	<c:forEach var="e" items="${cardList}" >
 		<tr>
+<<<<<<< HEAD
 			<td ><input type="radio" name="selectCertification" value="${e.certification}" ></td><td id="${e.certification}">${e.certification}</td><td >( レベル ${e.level} )</td>
+=======
+			<td ><input type="radio" name="selectCertification" value="${e.certification}"></td><td id="${e.certification}">${e.certification}</td><td >( レベル ${e.level} )</td>
+>>>>>>> 5953a6b410f28b306ef61f67c49f8a2106480638
 		</tr>
 	</c:forEach>
 	</table>
