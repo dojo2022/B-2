@@ -110,7 +110,7 @@ import model.Certifications;
 			String certification = request.getParameter("CERTIFICATION");
 			String category = request.getParameter("select");
 
-			// 検索処理を行う　☆引数増える
+			// 検索処理を行う
 			List<Certifications> cardList = cDao.select_certification(certification, category);
 
 			// 検索結果をリクエストスコープに格納する

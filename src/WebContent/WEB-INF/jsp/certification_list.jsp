@@ -19,7 +19,7 @@
 	<!-- ログインしているユーザ名を右上に表示 -->
 	<p class="username">ユーザ名：${username.username}</p>
 
-	<div id="table">
+	<div>
 
 		<h1><jsp:include page="/WEB-INF/jsp/header.jsp" /></h1>
 		<!-- タイトル -->
@@ -29,10 +29,10 @@
 
 		<!-- カテゴリをプルダウンで表示 -->
 		<form method="POST" action="/tasuma/CertificationListServlet">
-			<div>
+			<div class="selector">
 				<label for="select2">カテゴリ</label>
 				<!-- カテゴリをプルダウンで表示 -->
-				<select id="selector" name="select">
+				<select class="selector" name="select">
 					<option value="">選択してください</option>
 					<option value="IT知識全般">IT知識全般</option>
 					<option value="IT言語">IT言語</option>
@@ -68,9 +68,17 @@
 
 
 			<!-- テキスト検索 -->
+			<div class="text">
+				<input type="text" class="text" id="certification"
+					name="CERTIFICATION">
+			</div>
 
-			<input type="text" id="certification" name="CERTIFICATION"><br>
-			<input id="submit" type="submit" name="REGIST" value="検索"><br>
+			<!-- 検索ボタン -->
+			<div class="kensaku">
+				<input id="submit" class="kensaku" type="submit" name="REGIST"
+					value="検索">
+			</div>
+
 		</form>
 
 
@@ -172,7 +180,7 @@
 		</table> --%>
 
 		<!-- カテゴリとテキスト検索 -->
-	<!--  	<table>
+		<!--  	<table>
 			<tr>
 				<th>${certList[0].category}</th>
 			</tr>
@@ -186,29 +194,33 @@
 
 		<!-- 日程を決めるボタンを資格名の横に付ける＋共通ページへ遷移 -->
 
-		<div class="table">
-			<table>
-			<tr>
-			<th>${certList[0].category}</th>
-			</tr>
-				<c:forEach var = "e" items = "${certList}">
-				<tr class ="rowdata">
-				<td>${e.certification}</td>
-				<td><form method = "POST" action = "/tasuma/ScheduleServlet">
-				<button type = "submit" name="certification" value = ${e.certification }>日程を決める</button></form></td>
+		<div id="table">
+			<table id="list">
+				<tr>
+					<th>${certList[0].category}</th>
 				</tr>
+				<c:forEach var="e" items="${certList}">
+					<tr class="rowdata">
+						<td>${e.certification}</td>
+						<td><form method="GET" action="/tasuma/ScheduleServlet">
+								<button type="submit" name="certification"
+									value=${e.certification }>日程を決める</button>
+							</form></td>
+					</tr>
 				</c:forEach>
 			</table>
 		</div>
 		<!-- 日程を決めるボタンここまで -->
 
-		<table>
-			<tr>
-				<td colspan="2"><a href="/tasuma/MenuServlet"><input
-						type="button" name="BUTTON" value="メニューに戻る"></a></td>
-				<!-- メニューに戻るボタンを左下につける -->
+		<!-- メニューに戻るボタン -->
+		<table class=menu>
+			<tr class="menu">
+				<td><a href="/tasuma/MenuServlet">
+						<button type="button" name="back_menu">メニューに戻る</button>
+				</a></td>
 			</tr>
 		</table>
+
 	</div>
 
 

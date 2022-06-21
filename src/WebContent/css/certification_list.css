@@ -1,54 +1,106 @@
 @charset "UTF-8";
-
+/*
 table {
-	margin:auto;
-	text-align:center;
-	font-weight:bold;
-  }
-
-
-.logo{
-	margin:50px 0 40px 0;
-	line-height: 0;
-	text-align:center;
-	font-weight:bold;
+	margin: auto;
+	text-align: center;
+	font-weight: bold;
 }
 
-.footer{
+.logo {
+	margin: 50px 0 40px 0;
+	line-height: 0;
+	text-align: center;
+	font-weight: bold;
+}
+*/
+
+/* フッター部分 */
+.footer {
 	font-size: 12px;
-	font-weight:bold;
-	text-align:center;
+	font-weight: bold;
+	text-align: center;
+}
+
+/* ログインしているユーザネームの位置 */
+.username {
+	text-align: right;
+}
+
+/* h2 My資格（サブタイトル）の位置 */
+h2 {
+	position: relative; /* 今の位置を基準とする */
+	top: 5px; /* 上から10px */
+	bottom: 5px;
 }
 
 /* h3 資格一覧の位置 */
 h3 {
 	text-align: left;
 	padding: 20px 20px 20px 0;
-	}
-
-/* カテゴリと資格名（テキストボックス）の位置 */
-   table#list th, table#list td {
-	padding: 4px 16px 4px 0;
-	text-align: center;
-   }
-
-/* 一覧表の表示・位置 */
- div#table {
-	width: 700px;
-	height: 150px;
-	overflow: auto;	/* はみ出した場合は、スクロールバーを表示する OK*/
-  }
-
-
-/* カテゴリ、資格名、検索ボタンを横並びにする */
-.button{
-	padding-top: 30px;
-  	display: flex;
-  	justify-content: space-evenly;
-  	text-align: center;
 }
 
+/* カテゴリのプルダウンの位置や大きさ */
+.selector {
+	border: 1px;
+	padding: 10px;
+	margin-top: 10px;
+	text-align: left;
+	justify-content: space-evenly;
+}
+
+/* 資格名検索のテキストボックスの位置や大きさ */
+.text {
+	border: 1px;
+	padding: 10px;
+	margin-top: 10px;
+	text-align: center;
+	justify-content: space-evenly;
+}
+
+/* 検索ボタンの位置 */
+.kensaku {
+	border: 1px;
+	padding: 10px;
+	margin-top: 10px;
+	text-align: right;
+	justify-content: space-evenly;
+}
+
+/* 一覧表の表示・位置 */
+div#table {
+	width: 380px;
+	height: 400px;
+	text-align: center;
+	overflow: auto; /* はみ出した場合は、スクロールバーを表示する OK*/
+}
+
+/* 表の中のドットの下線 OK*/
+table#list th, table#list td {
+	border-bottom-width: 3px;
+	border-bottom-style: dashed;
+	border-bottom-color: black;
+	padding: 4px 16px 4px 0;
+	text-align: center;
+	white-space: nowrap; /* 折り返さない */
+}
+
+/* 一覧のデータ行 カーソルを重ねた時の色 OK*/
+table#list tr.rowdata:hover {
+	background-color: #b0c4de;
+}
+
+/* カテゴリ、資格名、検索ボタンを横並びにする */
+.button {
+	padding-top: 30px;
+	display: flex;
+	justify-content: space-evenly;
+	text-align: center;
+}
 
 /* 資格名と日程を決めるボタンを横並びにする */
 
-
+/* メニューボタンの位置 */
+.menu {
+	padding: 20px 16px 20px 0;
+	text-align: left;
+}
