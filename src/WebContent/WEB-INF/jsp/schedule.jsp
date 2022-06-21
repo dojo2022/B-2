@@ -14,12 +14,12 @@
 
 
 
-<!--ユーザ名が出ない  -->
+
 <p class="username">ユーザ名:${username.username}</p>
 	<form method="post" action="/tasuma/ScheduleServlet">
 
-<!--資格名が出ない  -->
-	<h3>資格名:${certification}</h3>
+
+	<h3>資格名:${certification.certification}</h3>
 
 	<table class="list">
 
@@ -42,11 +42,3 @@
 </body>
 </html>
 
-<!--
-
-//要テスト
-${ユーザ名}
-${資格名}
-	→${参考書}
-${試験日程}
- -->
