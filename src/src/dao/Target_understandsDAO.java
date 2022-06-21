@@ -112,7 +112,7 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT Targets.item_id AS i_id,Targets.target_id AS t_id FROM Targets,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?);";
+			String sql = "SELECT Targets.item_id as ID,Targets.target_id as DAY FROM Targets,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -124,16 +124,28 @@ public class Target_understandsDAO {
 				pStmt.setString(1, "%");
 			}
 
+//			// SQL文を実行し、結果表を取得する
+//			ResultSet rs = pStmt.executeQuery();
+//
+//			// 結果表をコレクションにコピーする
+//			while (rs.next()) {
+//				Target_understands new_target = new Target_understands(
+//					rs.getString("item_id"),
+//					rs.getString("target_id")
+//					);
+//				resultList.add(new_target);
+//			}
+
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Target_understands new_target = new Target_understands(
-					rs.getString("i_id"),
-					rs.getString("t_id")
-					);
-				resultList.add(new_target);
+				Target_understands days = new Target_understands(
+				rs.getString("ID"),
+				rs.getString("DAY")
+				);
+				resultList.add(days);
 			}
 
 		}
@@ -169,27 +181,41 @@ public class Target_understandsDAO {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-			// SQL文を準備する
-//作業中:リストを活用したSQL文がよくわからない
-			//insert...(item_id) value=(?)↓
-			//if(x.getString("i_id")!=null...か？
+			// SQL文を準備する-の準備をする
+			//user_id
+				String selectuserSql = "SELECT user_id FROM Users WHERE username = ?";
+				PreparedStatement selectuserStmt = conn.prepareStatement(selectuserSql);
+				selectuserStmt.setString(1,target_understands.getUsername() );
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = selectuserStmt.executeQuery();
+				rs.next();
+				//ユーザidを使えるように定義
+				String user_id = rs.getString("user_id");
 
-			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,(SELECT user_id FROM Users WHERE Users.username = ?))";
+
+
+				// SQL文を準備する
+			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-//?に合わせてあとで調節
-			if (target_understands.getUsername() != null && !target_understands.getUsername().equals("")) {
-				pStmt.setString(1, target_understands.getUsername());
-			}
-			else {
-				pStmt.setString(1, null);
-			}
+
+			pStmt.setString(1,target_understands.getTarget_id());
+			pStmt.setString(2,target_understands.getItem_id());
+			pStmt.setString(3,user_id);
+
+//-----------多分いらない　後で消す---------------------------------------------------------------------------------
+//			if (target_understands.getUsername() != null && !target_understands.getUsername().equals("")) {
+//				pStmt.setString(1, target_understands.getUsername());
+//			}
+//			else {
+//				pStmt.setString(1, null);
+//			}
 //			if (target_understands.get() != null && !target_understands.getCertification().equals("")) {
 //				pStmt.setString(2, target_understands.getCertification());
 //			}
 //			else {
 //				pStmt.setString(2, null);
 //			}
-
+//-------------------------------------------------------------------------------------------------------------------
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
