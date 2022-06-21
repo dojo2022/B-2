@@ -46,18 +46,18 @@ public class TargetServlet extends HttpServlet {
 		Today_targetsDAO ttDao = new Today_targetsDAO();
 		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null));
 
-		//myListが空ならフォワード
+		// myListが空ならフォワード
 		if(ttList.isEmpty()) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
 			dispatcher.forward(request, response);
 			return;
 		}
 
-		//本日の目標項目一覧itemListの定義
+		// 本日の目標項目一覧itemListの定義
 		ItemsDAO iDao = new ItemsDAO();
 		List<String> itemList = new ArrayList<String>();
 		for(Today_targets tt :ttList){
-			//本日の目標項目idを取得して、項目名を取得しitemListに格納
+			// 本日の目標項目idを取得して、項目名を取得しitemListに格納
 			String item = iDao.getItem(tt.getItem_id());
 			itemList.add(item);
 		}
@@ -90,24 +90,25 @@ public class TargetServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		//いらないかも String today_target = request.getParameter("today_target");
+		// いらないかも String today_target = request.getParameter("today_target");
 
-		//ループ回数の取得
+		// ループ回数の取得
 		int count = Integer.parseInt(request.getParameter("count"));
-		//ItemsDAOの定義
+		// ItemsDAOの定義
 		ItemsDAO iDao = new ItemsDAO();
-		//Today_targetsDAOの定義
+		// Today_targetsDAOの定義
 		Today_targetsDAO ttDao = new Today_targetsDAO();
 		// 更新できたかどうか判断する
 		boolean result = true;
 		for(int i = 0; i < count; i++){
-		    //項目名とチェックの値を取得 項目名から項目idを取得
+		    // 項目名とチェックの値を取得
 		    String item = request.getParameter("item" + i);
 		    String check = request.getParameter("check" + i);
-		    //チェックの値が１か０か
+		    // チェックの値が1か0か チェックが入っていなければ0 入っていれば1(jspには1)
 		    if(check == null) {
 		    	check = "0";
 		    }
+		    // 項目名から項目idを取得
 		    String item_id = iDao.getItem_id(item);
 		    if(ttDao.update(new Today_targets(user_id, item_id, check)) == false) {
 		    	result = false;
