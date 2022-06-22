@@ -68,7 +68,10 @@
 			<table id="list">
 				<c:forEach var="e" items="${certList}">
 					<tr class="rowdata">
-						<td>${e.certification}</td>
+					 	<%-- <c:if test="${${empty ${e.certification}}}"> --%>
+					 	<%-- <c:if test="${${e.certification} != ''}"> --%>
+						<td><c:out value="${e.certification}"/></td>
+						  <%-- </c:if> --%>
 						<td><form method="GET" action="/tasuma/ScheduleServlet">
 								<button type="submit" name="selectCertification"
 									value=${e.certification }>日程を決める</button>

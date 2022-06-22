@@ -20,27 +20,30 @@
 		<h1><jsp:include page="/WEB-INF/jsp/header.jsp" /></h1>
 
 		<!-- サブタイトル -->
-		<h2>掲示板 - 基本情報技術者試験</h2>
+		<!-- 掲示板のタイトル？に合わせて表示が変わる -->
+		<h2>掲示板 - ${thread_bbs }</h2>
 
 
 		<!-- 投稿されたコメントの表示① -->
 		<table class=comments1>
 			<!-- 投稿時間と投稿した人のIDを表示する -->
-			
-			<p class="username">ID：${username.username}</p>
+			<tr class="time_bbs">${time_bbs}</tr>
+			<td class="user_id">ID：${user_id}</td>
 			<!-- 投稿されたコメントを表示する -->
-			<textarea name="${comment1}"></textarea>
-			<br>
+			<textarea name="${content_bbs}"></textarea>
 		</table>
+
+		<textarea><name="time_bbs">${time_bbs}<name="user_id">${user_id}</textarea>
+
+${content_bbs}
 
 		<!-- 投稿されたコメントの表示② -->
 		<table class=comments2>
 			<!-- 投稿時間と投稿した人のIDを表示する -->
-
-			<p class="username">ID：${username.username}</p>
+			<tr class="time_bbs">${time_bbs}</tr>
+			<class="user_id">ID：${user_id}
 			<!-- 投稿されたコメントを表示する -->
-			<textarea name="${comment2}"></textarea>
-			<br>
+			<textarea name="${content_bbs}"></textarea>
 		</table>
 
 
