@@ -46,7 +46,7 @@
 				<form action="/tasuma/CertificationServlet" method="post" id="list">
 					<table class="list">
 						<tr>
-							<td>${e.certification}</td>
+							<td><input type="text" name="certification_id" value="${e.certification}"></td>
 							<td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
 						</tr>
 					</table>

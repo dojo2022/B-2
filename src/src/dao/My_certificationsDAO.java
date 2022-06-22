@@ -215,7 +215,7 @@ public class My_certificationsDAO {
 		}
 
 	// 引数certification_idで指定されたレコードを削除し、成功したらtrueを返す
-		public boolean delete(String certification_id) {
+		public boolean delete(String user_id, String certification_id) {
 			Connection conn = null;
 			boolean result = false;
 
@@ -231,7 +231,8 @@ public class My_certificationsDAO {
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				pStmt.setString(1, certification_id);
+				pStmt.setString(1, user_id);
+				pStmt.setString(2, certification_id);
 
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {

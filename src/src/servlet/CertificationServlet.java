@@ -83,16 +83,28 @@ public class CertificationServlet extends HttpServlet {
 			return;
 		}
 
+		// ユーザ名の取得
+		LoginUser loginuser = (LoginUser)session.getAttribute("username");
+		String username = loginuser.getUsername();
+
+		// My資格の取得
+		UsersDAO uDao = new UsersDAO();
+		String user_id = uDao.getUser_id(username);
 
 		// リクエストパラメータを取得する
-		// 資格IDを持ってきて表示する？
+		// 資格を持ってきて表示する
 		request.setCharacterEncoding("UTF-8");
-		String certification_id = request.getParameter("certification_id");
+		String certification = request.getParameter("certification");
+
+		// 資格名から資格idを取得する
+		CertificationsDAO cDao = new CertificationsDAO();
+		String certification_id = cDao.getCertification_id(certification);
+
 
    		// 削除を行う
     	My_certificationsDAO mDao = new My_certificationsDAO();
     	if (request.getParameter("regist_delete").equals("削除")) {
-   	    if (mDao.delete(certification_id)) {	// 削除成功
+   	    if (mDao.delete(user_id,certification_id)) {	// 削除成功
 		   request.setAttribute("result",
 		   new Result("削除成功！", "レコードを削除しました。"));
 	    }
