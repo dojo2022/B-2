@@ -116,8 +116,5 @@ public class CertificationServlet extends HttpServlet {
     	}
    	    // My資格ページにリダイレクトする
     	response.sendRedirect("/tasuma/CertificationServlet");
- //  		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
- //  		dispatcher.forward(request, response);
-
    	}
 }
