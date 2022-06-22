@@ -8,8 +8,8 @@
 
 }
 .newregist_button{
-	display: block;
-    margin: 0 0 0 auto;
+	/*display: block;*/
+    margin: 20 0 0 auto;
 }
 table {
 	margin:auto;
@@ -25,4 +25,7 @@ table {
 .errormsg{
 	text-align:center;
 	color:red;
+}
+.box{
+	text-align:center;
 }

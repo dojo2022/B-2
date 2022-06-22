@@ -143,7 +143,7 @@ user_id CHAR(5) NOT NULL,
 FOREIGN KEY(user_id) REFERENCES Users (user_id ),
 item_id CHAR(5) NOT NULL,
 FOREIGN KEY(item_id) REFERENCES Items (item_id ),
-today_target INT(1) NOT NULL
+today_target CHAR(1) DEFAULT 0
 );
 --{データの登録}
 INSERT INTO Today_targets (user_id,item_id,today_target) VALUES ('u1','b1','2');

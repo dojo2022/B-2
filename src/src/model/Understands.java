@@ -6,10 +6,10 @@ import java.util.List;
 public class Understands implements Serializable {
 	private String certification;
 	private List<Target_understands> tuList;
-	private List<Today_targets> ttList;
+	private List<Target_understands> ttList;
 
 	//コンストラクタ(引数あり)
-	public Understands(String certification, List<Target_understands> tuList, List<Today_targets> ttList) {
+	public Understands(String certification, List<Target_understands> tuList, List<Target_understands> ttList) {
 		this.setCertification(certification);
 		this.setTuList(tuList);
 		this.setTtList(ttList);
@@ -36,11 +36,11 @@ public class Understands implements Serializable {
 		this.tuList = tuList;
 	}
 
-	public List<Today_targets> getTtList() {
+	public List<Target_understands> getTtList() {
 		return ttList;
 	}
 
-	public void setTtList(List<Today_targets> ttList) {
+	public void setTtList(List<Target_understands> ttList) {
 		this.ttList = ttList;
 	}
 }

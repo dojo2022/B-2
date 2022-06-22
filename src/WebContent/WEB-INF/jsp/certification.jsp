@@ -65,5 +65,5 @@
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
 </body>
-<script src="/tasuma/WebContent/JavaScript/certification.js"></script>
+<script src="JavaScript/certification.js"></script>
 </html>
