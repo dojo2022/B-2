@@ -20,13 +20,6 @@ import model.Threads;
 public class BbsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BbsServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -69,7 +62,7 @@ public class BbsServlet extends HttpServlet {
 		// 検索結果をリクエストスコープに格納する ☆カテゴリ、難易度を踏まえて資格名、カテゴリ、難易度を格納
 		request.setAttribute("threadList", threadList);
 
-		// jspへフォワード
+		// jspへ結果を返す
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs.jsp");
 		dispatcher.forward(request, response);
 	}

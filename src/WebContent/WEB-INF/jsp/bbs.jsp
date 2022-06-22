@@ -29,6 +29,12 @@
 			<tr><td><a href="/tasuma/BbsThreadServlet">${e.thread_bbs}</a></td></tr>
 		</c:forEach>
 	</table>
+	<table>
+	<tr>
+	<td><button type="button" onclick="location.href='/tasuma/MenuServlet'">メニューへ戻る</button></td>
+	<td><button type="button" onclick="location.href='/tasuma/BbsNewServlet'">+</button></td>
+	</tr>
+	</table>
 	<!-- フッター -->
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
