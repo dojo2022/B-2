@@ -19,6 +19,12 @@ public class Today_targets implements Serializable {
 		this.setToday_target(today_target);
 	}
 
+	public Today_targets(String user_id, String item_id, String today_target) {
+		this.setUser_id(user_id);
+		this.setItem_id(item_id);
+		this.setToday_target(today_target);
+	}
+
 	//コンストラクタ（引数あり）
 	//資格登録時用その２
 	public Today_targets(String item_id, String certification) {
