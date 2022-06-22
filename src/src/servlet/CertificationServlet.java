@@ -91,6 +91,7 @@ public class CertificationServlet extends HttpServlet {
 
    		// 削除を行う
     	My_certificationsDAO mDao = new My_certificationsDAO();
+    	if (request.getParameter("regist_delete").equals("削除")) {
    	    if (mDao.delete(certification_id)) {	// 削除成功
 		   request.setAttribute("result",
 		   new Result("削除成功！", "レコードを削除しました。"));
@@ -99,7 +100,7 @@ public class CertificationServlet extends HttpServlet {
 		   request.setAttribute("result",
 		   new Result("削除失敗！", "レコードを削除できませんでした。"));
 	    }
-
+    	}
    	    // My資格ページにフォワードする
    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
    		dispatcher.forward(request, response);

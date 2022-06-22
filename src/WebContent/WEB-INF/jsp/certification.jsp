@@ -38,9 +38,9 @@
 	のテーブル -->
 
 	<!-- ↓に登録された資格が一覧表示される 削除ボタンは横にあるからこの配置？ -->
-	<!-- actionには入力情報を処理するプログラムのURLが必要 あっているかはわからない... -->
+	<!-- actionには入力情報を処理するプログラムのURLが必要 -->
 
-			<c:forEach var="e" items="${e.cardlist}">
+			<c:forEach var="e" items="${certification}">
 				<form action="/tasuma/CertificationServlet" method="post" id="list">
 					<table class="list">
 						<tr>
