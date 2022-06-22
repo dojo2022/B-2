@@ -13,7 +13,7 @@ h2{
 
 /*ハンバーガーメニュー*/
 .menu{
-  transform: translateX(-20vw);
+  transform: translateX(-40vw);
   transition: all .3s linear;
 }
 /* アニメーション後のメニューの状態 */
