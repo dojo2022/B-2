@@ -183,6 +183,8 @@ public class Today_targetsDAO {
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
+			//下行はupdateが完成し次第削除する
+				result = true;
 			}
 
 //			//上からn個を本日の目標にする
@@ -204,10 +206,10 @@ public class Today_targetsDAO {
 
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
-			if (pStmt.executeUpdate() == 1) {
+
 //			if (pStmt2.executeUpdate() == 1) {
-				result = true;
-			}
+//				result = true;
+//			}
 
 
 
