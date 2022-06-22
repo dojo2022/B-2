@@ -31,10 +31,10 @@ public class Target_understands implements Serializable {
 
 	//資格登録時用コンストラクタ（引数あり）
 	//要変更？
-	public Target_understands(String username, String certification) {
+	public Target_understands(String item_id, String target_id) {
 		super();
-		this.username = username;
-		this.certification = certification;
+		this.item_id = item_id;
+		this.target_id = target_id;
 	}
 
 	//資格登録時用コンストラクタその２（引数あり）

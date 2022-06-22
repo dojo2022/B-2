@@ -27,7 +27,7 @@
 		<!-- スレッド名、コメント、カテゴリプルダウンの入力 -->
 		<form method="POST" action="/tasuma/BbsNewServlet">
 			スレッド名※<input type="text" name="thread" id="threadname"><br>
-			コメント<input type="text" name="comment"><br>
+			コメント<textarea name="comment"></textarea><br>
 
 			<!-- カテゴリプルダウン表示 -->
 			<div class="category">
