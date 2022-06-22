@@ -15,4 +15,7 @@ h2{
 	text-align: right;
 }
 
-
+/* 目標項目の長さ */
+input[name=tar] {
+  width: 20em;
+}
