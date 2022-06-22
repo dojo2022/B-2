@@ -20,7 +20,8 @@
 <h3>登録しました。<br>
 今日も1日お疲れさまでした。</h3><br>
 
-<!-- 達成度イラストがこの辺に入る？ -->
+<!--ページ内に図形を描画するキャンバスを用意 -->
+<canvas id="tasuma" width="960" height="640"></canvas>
 
 <a href="/tasuma/MenuServlet">
 <button type="button" name="back_menu">メニューに戻る</button>
@@ -29,5 +30,6 @@
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
 </div>
+<script src="/tasuma/JavaScript/understand_result.js"></script>
 </body>
 </html>
