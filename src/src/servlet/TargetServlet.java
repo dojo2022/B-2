@@ -93,7 +93,12 @@ public class TargetServlet extends HttpServlet {
 		// いらないかも String today_target = request.getParameter("today_target");
 
 		// ループ回数の取得
-		int count = Integer.parseInt(request.getParameter("count"));
+		int count = 0;
+		try {
+			count = Integer.parseInt(request.getParameter("count"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		// ItemsDAOの定義
 		ItemsDAO iDao = new ItemsDAO();
 		// Today_targetsDAOの定義

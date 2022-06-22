@@ -22,6 +22,10 @@ public class Threads implements Serializable {
 		this.thread_bbs = thread_bbs;
 		this.category_bbs = category_bbs;
 	}
+//	(必要かも)select用コンストラクタ
+	public Threads( String category_bbs) {
+		this.category_bbs = category_bbs;
+	}
 
 //	引数なしコンストラクタ
 	public Threads() {

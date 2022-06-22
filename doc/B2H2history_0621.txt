@@ -160,16 +160,16 @@ thread_bbs VARCHAR (30) NOT NULL UNIQUE,
 category_bbs VARCHAR (10) NOT NULL
 );
 --{データの登録}
-INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('基本情報技術者試験','試験');
+INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('基本情報技術者試験','exam');
 UPDATE Threads SET thread_id=(SELECT CONCAT('x',id) FROM Threads WHERE thread_id IS NULL) WHERE thread_id IS NULL;
 
-INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('応用情報技術者試験','試験');
+INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('応用情報技術者試験','exam');
 UPDATE Threads SET thread_id=(SELECT CONCAT('x',id) FROM Threads WHERE thread_id IS NULL) WHERE thread_id IS NULL;
 
-INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('IT就活生の会','雑談');
+INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('IT就活生の会','chat');
 UPDATE Threads SET thread_id=(SELECT CONCAT('x',id) FROM Threads WHERE thread_id IS NULL) WHERE thread_id IS NULL;
 
-INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('非IT企業ユーザーの会','雑談');
+INSERT INTO Threads (thread_bbs,category_bbs) VALUES ('非IT企業ユーザーの会','chat');
 UPDATE Threads SET thread_id=(SELECT CONCAT('x',id) FROM Threads WHERE thread_id IS NULL) WHERE thread_id IS NULL;
 
 ---------------------------------

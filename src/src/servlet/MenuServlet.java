@@ -20,6 +20,7 @@ import dao.ItemsDAO;
 import dao.My_certificationsDAO;
 import dao.Today_targetsDAO;
 import dao.UsersDAO;
+import model.Items;
 import model.LoginUser;
 import model.Menu_data;
 import model.My_certifications;
@@ -76,6 +77,8 @@ public class MenuServlet extends HttpServlet {
 		for(My_certifications my :myList) {
 			//資格IDから資格名を取得
 			String certification = cDao.getCertification(my.getCertification_id());
+			List<Items> iList = iDao.select(new Items(my.getCertification_id(), null, null, 0));
+
 
 			//現在時刻と試験日程を取得し、残り日数を計算
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -83,7 +86,7 @@ public class MenuServlet extends HttpServlet {
 	        Date testday = null;
 	        Date now_date = null;//今日の日付
 	        try {
-	            testday = sdf.parse(my.getTestdays());//ここでエラー
+	            testday = sdf.parse(my.getTestdays());
 	            now_date = sdf.parse(sdf.format(now));
 	        }catch (ParseException e) {
 	            e.printStackTrace();
@@ -106,9 +109,16 @@ public class MenuServlet extends HttpServlet {
 			//本日の目標項目一覧itemListの定義
 			List<String> itemList = new ArrayList<String>();
 			for(Today_targets tt :ttList){
-				//本日の目標項目idを取得して、項目名を取得しitemListに格納
-				String item = iDao.getItem(tt.getItem_id());
-				itemList.add(item);
+				if(iList.isEmpty()) {
+					break;
+				}
+				for(Items i :iList) {
+					if(tt.getItem_id().equals(i.getItem_id())) {
+						//本日の目標項目idを取得して、項目名を取得しitemListに格納
+						String item = iDao.getItem(tt.getItem_id());
+						itemList.add(item);
+					}
+				}
 			}
 
 			//JavaScript用試験日データ

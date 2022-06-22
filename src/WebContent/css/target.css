@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 /* ユーザネームを右側に表示 */
-.username{
+/*.username{
 	text-align: right;
 }
-
+*/
 /* サブタイトル(目標設定) */
 h2{
 	text-align: center;
@@ -15,4 +15,7 @@ h2{
 	text-align: right;
 }
 
-
+/* 目標項目の長さ */
+input[name=tar] {
+  width: 20em;
+}

@@ -22,9 +22,11 @@
 	<div class="button">
 		  <a href="/tasuma/Matching1Servlet">
 				<button type="button" name="to_matching">マッチング</button></a>
+
 	<!--資格登録一覧ページにリンク飛ぶボタン-->
-		  <a href="/tasuma/MatchingServlet">
+		  <a href="/tasuma/CertificationListServlet">
 				<button type="button" name="to_list">一覧から選ぶ</button></a>
+
 	</div>
 
 	<div class="text">
@@ -38,9 +40,9 @@
 	のテーブル -->
 
 	<!-- ↓に登録された資格が一覧表示される 削除ボタンは横にあるからこの配置？ -->
-	<!-- actionには入力情報を処理するプログラムのURLが必要 あっているかはわからない... -->
+	<!-- actionには入力情報を処理するプログラムのURLが必要 -->
 
-			<c:forEach var="e" items="${e.cardlist}">
+			<c:forEach var="e" items="${certification}">
 				<form action="/tasuma/CertificationServlet" method="post" id="list">
 					<table class="list">
 						<tr>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 </head>
 <body>
 <!-- ヘッダー -->
+<p class="username">ユーザ名:${username.username}</p>
 <jsp:include page="/WEB-INF/jsp/header.jsp" />
 <h2>My資格</h2>
 <!-- 質問 -->
