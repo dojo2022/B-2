@@ -124,20 +124,6 @@ public class Target_understandsDAO {
 				pStmt.setString(1, "%");
 			}
 
-//---------Test_daysDAO(できてるやつ)からコピペするためCO--------
-//			// SQL文を実行し、結果表を取得する
-//			ResultSet rs = pStmt.executeQuery();
-//
-//			// 結果表をコレクションにコピーする
-//			while (rs.next()) {
-//				Target_understands new_target = new Target_understands(
-//					rs.getString("item_id"),
-//					rs.getString("target_id")
-//					);
-//				resultList.add(new_target);
-//			}
-//-------------------------------------------------------------------
-
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
@@ -184,7 +170,7 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する-の準備をする
-			//user_id
+				//user_id
 				String selectuserSql = "SELECT user_id FROM Users WHERE username = ?";
 				PreparedStatement selectuserStmt = conn.prepareStatement(selectuserSql);
 				selectuserStmt.setString(1,target_understands.getUsername() );
@@ -194,30 +180,15 @@ public class Target_understandsDAO {
 				//ユーザidを使えるように定義
 				String user_id = rs.getString("user_id");
 
-
-
-				// SQL文を準備する
+			// SQL文を準備する
 			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
+			// SQL文を完成させる
 			pStmt.setString(1,target_understands.getTarget_id());
 			pStmt.setString(2,target_understands.getItem_id());
 			pStmt.setString(3,user_id);
 
-//-----------多分いらない　後で消す---------------------------------------------------------------------------------
-//			if (target_understands.getUsername() != null && !target_understands.getUsername().equals("")) {
-//				pStmt.setString(1, target_understands.getUsername());
-//			}
-//			else {
-//				pStmt.setString(1, null);
-//			}
-//			if (target_understands.get() != null && !target_understands.getCertification().equals("")) {
-//				pStmt.setString(2, target_understands.getCertification());
-//			}
-//			else {
-//				pStmt.setString(2, null);
-//			}
-//-------------------------------------------------------------------------------------------------------------------
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

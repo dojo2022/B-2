@@ -11,11 +11,11 @@ h2{
 }
 
 /* 更新ボタンを右側に配置 */
-.target{
+div{
 	text-align: right;
 }
 
 /* 目標項目の長さ */
-input[name=tar] {
+input[name=item] {
   width: 20em;
 }

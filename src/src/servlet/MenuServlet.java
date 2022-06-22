@@ -119,6 +119,7 @@ public class MenuServlet extends HttpServlet {
 						//本日の目標項目idを取得して、項目名を取得しitemListに格納
 						String item = iDao.getItem(tt.getItem_id());
 						itemList.add(item);
+						break;
 					}
 				}
 			}
