@@ -73,6 +73,8 @@ public class ThreadsDAO  {
 		// 結果を返す
 		return cardList;
 	}
+//	commentsテーブルと外部結合して取り出すselect文
+
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Threads card) {
 		Connection conn = null;
