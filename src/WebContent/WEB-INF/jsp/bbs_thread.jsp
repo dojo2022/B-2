@@ -23,11 +23,23 @@
 		<h2>掲示板 - 基本情報技術者試験</h2>
 
 
-		<!-- 投稿されたコメントの表示 -->
-		<table class = comments>
-			<textarea name="comment1"></textarea>
+		<!-- 投稿されたコメントの表示① -->
+		<table class=comments1>
+			<!-- 投稿時間と投稿した人のIDを表示する -->
+			
+			<p class="username">ID：${username.username}</p>
+			<!-- 投稿されたコメントを表示する -->
+			<textarea name="${comment1}"></textarea>
 			<br>
-			<textarea name="comment2"></textarea>
+		</table>
+
+		<!-- 投稿されたコメントの表示② -->
+		<table class=comments2>
+			<!-- 投稿時間と投稿した人のIDを表示する -->
+
+			<p class="username">ID：${username.username}</p>
+			<!-- 投稿されたコメントを表示する -->
+			<textarea name="${comment2}"></textarea>
 			<br>
 		</table>
 

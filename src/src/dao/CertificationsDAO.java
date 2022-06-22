@@ -99,6 +99,7 @@ import model.Certifications;
 
                 // 結果表をコレクションにコピーする
                 while (rs.next()) {
+
                 	Certifications certifications = new Certifications(
                 	rs.getString("certification"),
                 	rs.getString("category"),
