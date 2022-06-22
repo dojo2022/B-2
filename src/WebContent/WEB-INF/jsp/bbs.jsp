@@ -26,7 +26,7 @@
 	</form>
 	<table class="bbs_list">
 		<c:forEach var="e" items="${threadList}" >
-			<tr><td><a href="/tasuma/BbsThreadServlet">${e.thread_bbs}</a></td></tr>
+			<tr><td><a href="/tasuma/BbsThreadServlet" >${e.thread_bbs}</a></td></tr>
 		</c:forEach>
 	</table>
 	<table>
