@@ -27,12 +27,12 @@
 	<% int count = 0; %>
 		<form action="/tasuma/TargetServlet" method="post" id="list">
 		<c:forEach var="e" items="${itemList}">
-			<input type="text" name="item<%= count %>" value="${e}">
-			<input type="checkbox" name="check<%= count %>" value="1">
+			<li><input type="text" name="item<%= count %>" value="${e}">
+				<input type="checkbox" name="check<%= count %>" value="1"></li>
 			<% count++; %>
 		</c:forEach>
-		<input type="hidden" name="count" value="<%= count %>">
-		<input type="submit" name="check" value="更新" onsubmit="return itemsubmit()">
+			 <input type="hidden" name="count" value="<%= count %>">
+		<div><input type="submit" name="update" value="更新" onclick="return itemsubmit()"></div>
 		</form>
 	</details>
 
@@ -48,5 +48,5 @@
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
 </body>
-<script src="/tasuma/WebContent/JavaScript/target.js"></script>
+<script src="JavaScript/target.js"></script>
 </html>
