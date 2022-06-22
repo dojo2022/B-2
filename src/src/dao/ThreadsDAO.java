@@ -13,7 +13,7 @@ import model.Threads;
 
 
 public class ThreadsDAO  {
-	 public List<Threads> select(Threads param) {
+	 public List<Threads> select_threads(Threads param) {
 		Connection conn = null;
 		List<Threads> cardList = new ArrayList<Threads>();
 
