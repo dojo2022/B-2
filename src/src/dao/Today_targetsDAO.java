@@ -245,7 +245,7 @@ public class Today_targetsDAO {
 
 			// SQL文を完成させる
 			pStmt.setString(1, today_targets.getToday_target());//サーブレットで0,1,2以外の数値ははじく
-			if (today_targets.getItem_id() != null && today_targets.getItem_id().equals("")) {
+			if (today_targets.getItem_id() != null && !today_targets.getItem_id().equals("")) {
 				pStmt.setString(2, today_targets.getItem_id());
 			}
 			else {
