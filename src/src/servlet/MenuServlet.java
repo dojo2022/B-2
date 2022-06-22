@@ -68,7 +68,8 @@ public class MenuServlet extends HttpServlet {
 
 		//myListが空ならフォワード
 		if(myList.isEmpty()) {
-			session.removeAttribute("menu_data");
+			//空のデータをスコープに格納
+			session.setAttribute("menu_data", menu_data);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 			dispatcher.forward(request, response);
 			return;
