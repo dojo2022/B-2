@@ -31,7 +31,7 @@
 			<input type="checkbox" name="check<%= count %>" value="1">
 			<% count++; %>
 		</c:forEach>
-		<input type="hidden" id="count" value="<%= count %>">
+		<input type="hidden" name="count" value="<%= count %>">
 		<input type="submit" name="check" value="更新" onsubmit="return itemsubmit()">
 		</form>
 	</details>
