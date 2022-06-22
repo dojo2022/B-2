@@ -26,7 +26,7 @@ public class ItemsDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT certification_id, item_id,item, item_page from Items WHERE certification_id LIKE ? AND item_id LIKE ? item LIKE ? ";
+			String sql = "SELECT certification_id, item_id,item, item_page from Items WHERE certification_id LIKE ? AND item_id LIKE ? AND item LIKE ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
