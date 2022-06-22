@@ -10,6 +10,7 @@
 <body>
 <div class=wrapper>
 <!--新規登録ページにリンク飛ぶボタン-->
+<br>
 <a href="/tasuma/RegistUserServlet">
 	<button type="button" name="newregister" class="newregist_button">新規登録</button>
 </a>

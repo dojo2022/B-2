@@ -67,6 +67,8 @@ public class BbsServlet extends HttpServlet {
 		// jspへ結果を返す
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs.jsp");
 		dispatcher.forward(request, response);
+//		スレタイを押されたらタイトル、コメント、時間を持ってきてスコープに入れる
+
 	}
 
 }
