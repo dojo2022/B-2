@@ -113,9 +113,10 @@ public class CertificationServlet extends HttpServlet {
 		   new Result("削除失敗！", "レコードを削除できませんでした。"));
 	    }
     	}
-   	    // My資格ページにフォワードする
-   		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
-   		dispatcher.forward(request, response);
+   	    // My資格ページにリダイレクトする
+    	response.sendRedirect("/tasuma/CertificationServlet");
+ //  		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
+ //  		dispatcher.forward(request, response);
 
    	}
 }

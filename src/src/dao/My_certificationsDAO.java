@@ -227,7 +227,7 @@ public class My_certificationsDAO {
 				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 				// SQL文を準備する
-				String sql = "DELETE FROM My_certifications WHERE user_id='?' AND certification_id ='?'";
+				String sql = "DELETE FROM My_certifications WHERE user_id=? AND certification_id =?";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
