@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.ThreadsDAO;
+import model.Result;
 import model.Threads;
 
 /**
@@ -51,16 +52,16 @@ public class BbsNewServlet extends HttpServlet {
 		//String number = request.getParameter("number");
 		String thread_id = request.getParameter("thread_id");
 		String thread_bbs = request.getParameter("thread_bbs");
-		String category_bbs = request.getParameter("category_bbs");
+		String category_bbs = request.getParameter("select");
 
 
 		// 登録処理を行う
 		ThreadsDAO tDao = new ThreadsDAO();
-		if (tDao.insert(new Threads( thread_id, thread_bbs, category_bbs ))) {	// 登録成功
-			request.setAttribute("msgOK", "");
+		if (tDao.insert(new Threads( thread_id, thread_bbs, category_bbs ))) {
 		}
-		else { // 既に使用されているスレッド名だった場合の処理
-			request.setAttribute("msgNG", "※スレッド名が既に利用されています");
+		else {// リクエストスコープに、失敗したよというタイトルとメッセージを送る。
+			request.setAttribute("result",
+			new Result("false", "スレッド名が既に利用されています"));
 		}
 
 		// 結果ページにフォワードする
