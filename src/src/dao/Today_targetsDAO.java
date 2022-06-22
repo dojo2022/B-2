@@ -81,6 +81,62 @@ public class Today_targetsDAO {
 
 		return resultList;
 	}
+	public List<Today_targets> insert_select(Today_targets today_targets){
+		Connection conn = null;
+		List<Today_targets> resultList_tts = new ArrayList<Today_targets>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "SELECT Items.item_id as ID FROM Items,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?);";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+//			if (Today_targets.getCertification() != null && !Today_targets.getCertification().equals("")) {
+//				pStmt.setString(1, Today_targets.getCertification());
+//			}
+//			else {
+//				pStmt.setString(1, "%");
+//			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+//			while (rs.next()) {
+//				Today_targets days = new Today_targets(
+//				rs.getString("ID"),
+//				rs.getString("DAY")
+//				);
+//				resultList_tts.add(days);
+//			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return resultList_tts;
+	}
 
 	public boolean insert(Today_targets today_targets){
 		Connection conn = null;

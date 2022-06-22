@@ -17,5 +17,21 @@ public class Target_understandDAOTest{
 
 	}
 
+//	// insert()のテスト
+//	System.out.println("---------- insert_select()のテスト ----------");
+//	List<Target_understands> x =
+//			Target_understands days = new Target_understands(
+//					"b1",
+//					"c1",
+//					"u1"
+//					);
+//					resultList.add(days);
+//	List<Target_understands> cardList3 = dao.insert(x);
+//	for (Target_understands card : cardList3) {
+//		System.out.println("item_id：" + card.getItem_id());
+//		System.out.println("target_id：" + card.getTarget_id());
+//
+//	}
+
 }
 }

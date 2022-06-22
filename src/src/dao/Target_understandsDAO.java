@@ -124,6 +124,7 @@ public class Target_understandsDAO {
 				pStmt.setString(1, "%");
 			}
 
+//---------Test_daysDAO(できてるやつ)からコピペするためCO--------
 //			// SQL文を実行し、結果表を取得する
 //			ResultSet rs = pStmt.executeQuery();
 //
@@ -135,6 +136,7 @@ public class Target_understandsDAO {
 //					);
 //				resultList.add(new_target);
 //			}
+//-------------------------------------------------------------------
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

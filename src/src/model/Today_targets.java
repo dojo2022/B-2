@@ -7,6 +7,9 @@ public class Today_targets implements Serializable {
 	private String user_id;
 	private String item_id;
 	private String today_target;
+	private String certification;
+	private String username;
+
 
 	//コンストラクタ（引数あり）
 	public Today_targets(int id, String user_id, String item_id, String today_target) {
@@ -22,6 +25,13 @@ public class Today_targets implements Serializable {
 		this.setUser_id(user_id);
 		this.setItem_id(item_id);
 		this.setToday_target(today_target);
+	}
+
+	//コンストラクタ（引数あり）
+	//資格登録時用その１
+	public Today_targets(String certification) {
+		super();
+		this.certification = certification;
 	}
 
 	//コンストラクタ（引数無し）
@@ -59,6 +69,22 @@ public class Today_targets implements Serializable {
 
 	public void setToday_target(String today_target) {
 		this.today_target = today_target;
+	}
+
+	public String getCertification() {
+		return certification;
+	}
+
+	public void setCertification(String certification) {
+		this.certification = certification;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 }

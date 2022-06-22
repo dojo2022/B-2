@@ -14,9 +14,11 @@ import javax.servlet.http.HttpSession;
 import dao.My_certificationsDAO;
 import dao.Target_understandsDAO;
 import dao.Test_daysDAO;
-import dao.Today_targetsDAO;
+import dao.UsersDAO;
+import model.LoginUser;
 import model.Target_understands;
 import model.Test_days;
+import model.Users;
 
 /**
  * Servlet implementation class ScheduleServlet
@@ -28,17 +30,33 @@ public class ScheduleServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//---------------------------------------------------------------------------------------------------
+		//確認用ユーザ名、資格名の入力　後で消す
+		String username = "ヤマダタロウ";
+		String password = "pass";
+
+		// ログイン処理を行う
+		UsersDAO uDao = new UsersDAO();
+		if (uDao.isLoginOK(new Users(username, password))) {	// ログイン成功
+			// セッションスコープにIDを格納する
+			HttpSession session = request.getSession();
+			session.setAttribute("username", new LoginUser(username));
+		}
+			String certification = "ITパスポート";
+
+
+
+//		//ここから下　ユーザ名、資格名の復旧-------------------------------------------------------------------
 //		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 //		if (session.getAttribute("username") == null) {
 //			response.sendRedirect("/tasuma/LoginServlet");
 //			return;
 //		}
-
-
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String certification = request.getParameter("selectCertification");
+//
+//		// リクエストパラメータを取得する
+//		request.setCharacterEncoding("UTF-8");
+//		String certification = request.getParameter("selectCertification");
 
 
 //-----------------------------------いらないと思う　後で消す
@@ -102,65 +120,68 @@ public class ScheduleServlet extends HttpServlet {
 		//リクエストパラメータから試験日程を取得する
 		request.setCharacterEncoding("UTF-8");
 		String testdays = request.getParameter("select_schedule");
-//		String certification = request.getParameter("selectCertification");
-//要作業
+
+
 		//セッションパラメータから資格名を取得する
 		HttpSession session_cer = request.getSession();
 		String certification = (String) session_cer.getAttribute("certification");
-//要作業ここまで
+
 		//セッションパラメータからユーザ名を取得する
 		String username = (String) session.getAttribute("username");
-//--------------------------資格名・日程が取れているかテスト-----------------
+
+		//--------------------資格名・日程が取れているかテスト-----------------
 		System.out.println("ユーザ：" + username);
-		System.out.println("資格名：" + certification);
-		System.out.println("試験日：" + testdays);
-//--------------------------テストここまで-----------------------------------
+//		System.out.println("資格名：" + certification);
+//		System.out.println("試験日：" + testdays);
+		//---------------------テストここまで-----------------------------------
 
 //		// 登録処理を行う
 //		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
 		My_certificationsDAO tdDao = new My_certificationsDAO();
 //		if (tdDao.insert(new My_certifications(username, certification,testdays))) {	// 登録成功
+//		}
 
 
-			//本日の目標トランザクションに「ユーザID、項目id、本日の目標」を登録する
-			//後で作業
-			Today_targetsDAO ttDao = new Today_targetsDAO();
-//			if (ttDao.insert(new Today_targets(username, item_id,today_target))) {	// 登録成功
+//			//本日の目標トランザクションに「ユーザID、項目id」を登録する
+//			//1.項目id一覧を検索 リストに入れる List<> =...
+//			Today_targetsDAO tt_sDao = new Today_targetsDAO();
+//			List<Today_targets> resultList_tts = tt_sDao.insert_select(new Today_targets(certification));
+//
+//			for(Today_targets y:resultList_tts) {
+//				y.setUsername(username);
+//				if (tt_sDao.insert(y)) {	// 登録成功
+//				}
+//			}
 
 				//目標理解度トランザクションにユーザ名(id)、項目id、目標id
 				//1.目標一覧を検索 リストに入れる List<> =...
 				Target_understandsDAO tu_sDao = new Target_understandsDAO();
 				List<Target_understands> resultList = tu_sDao.insert_select(new Target_understands(certification));
-				// メニューサーブレット？ページ？にフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/scheduleTest.jsp");
-				dispatcher.forward(request, response);
-
 
 				//2.拡張for文でループ
 				for(Target_understands x:resultList) {
-//ここまでは合っていそう
 
 				//3.ユーザid+リストを登録する
-
+					//検索結果リストresultListにユーザ名を追加
 					x.setUsername(username);
+
 				Target_understandsDAO tuDao = new Target_understandsDAO();
 				if (tuDao.insert(x)){	// 登録成功
-
+					System.out.println("目標理解度を登録しました");
 				}
 				//4.ループを閉じる
 				}
-				//5.最後に
-					//セッションスコープ（資格名）を破棄する
-					session_cer.invalidate();
+		//5.最後に
+		//セッションスコープ（資格名）を破棄する
+		session_cer.invalidate();
 
-//					// メニューサーブレット？ページ？にフォワードする
-//					RequestDispatcher dispatcher = request.getRequestDispatcher("MenuServlet");
-//					dispatcher.forward(request, response);
+		// メニューサーブレット？ページ？にフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("MenuServlet");
+		dispatcher.forward(request, response);
 
 
-		}
 	}
-//}
+}
 
 
 //-------------------------------------------------------------------------------------------
