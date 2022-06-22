@@ -8,6 +8,6 @@
 <link rel="stylesheet"type="text/css" href="/tasuma/css/style.css">
 </head>
 <body>
-<h1 class=logo><img src="/tasuma/img/logo_1-2.png"width=75% height=75%></h1>
+<h1 class=logo><img src="/tasuma/img/logo10.png"width=30% height=30%></h1>
 </body>
 </html>

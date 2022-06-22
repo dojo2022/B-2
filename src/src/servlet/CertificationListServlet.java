@@ -65,11 +65,11 @@ public class CertificationListServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/tasuma/LoginServlet");
-			return;
-		}
+//		HttpSession session = request.getSession();
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/tasuma/LoginServlet");
+//			return;
+//		}
 
 		// カテゴリ検索の処理↓↓↓
 		// リクエストパラメータを取得する

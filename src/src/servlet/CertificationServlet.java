@@ -53,6 +53,7 @@ public class CertificationServlet extends HttpServlet {
 
 				// myListが空だったらフォワード
 				if(myList.isEmpty()) {
+					session.removeAttribute("certification");
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
 					dispatcher.forward(request, response);
 					return;
@@ -115,8 +116,5 @@ public class CertificationServlet extends HttpServlet {
     	}
    	    // My資格ページにリダイレクトする
     	response.sendRedirect("/tasuma/CertificationServlet");
- //  		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/certification.jsp");
- //  		dispatcher.forward(request, response);
-
    	}
 }
