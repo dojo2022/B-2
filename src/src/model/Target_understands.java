@@ -30,7 +30,6 @@ public class Target_understands implements Serializable {
 	}
 
 	//資格登録時用コンストラクタ（引数あり）
-	//要変更？
 	public Target_understands(String item_id, String target_id) {
 		super();
 		this.item_id = item_id;

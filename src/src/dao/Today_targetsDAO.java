@@ -81,6 +81,8 @@ public class Today_targetsDAO {
 
 		return resultList;
 	}
+
+	//資格登録時item_id検索用
 	public List<Today_targets> insert_select(Today_targets today_targets){
 		Connection conn = null;
 		List<Today_targets> resultList_tts = new ArrayList<Today_targets>();

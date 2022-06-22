@@ -14,11 +14,8 @@ import javax.servlet.http.HttpSession;
 import dao.My_certificationsDAO;
 import dao.Target_understandsDAO;
 import dao.Test_daysDAO;
-import dao.UsersDAO;
-import model.LoginUser;
 import model.Target_understands;
 import model.Test_days;
-import model.Users;
 
 /**
  * Servlet implementation class ScheduleServlet
@@ -31,32 +28,32 @@ public class ScheduleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//---------------------------------------------------------------------------------------------------
-		//確認用ユーザ名、資格名の入力　後で消す
-		String username = "ヤマダタロウ";
-		String password = "pass";
-
-		// ログイン処理を行う
-		UsersDAO uDao = new UsersDAO();
-		if (uDao.isLoginOK(new Users(username, password))) {	// ログイン成功
-			// セッションスコープにIDを格納する
-			HttpSession session = request.getSession();
-			session.setAttribute("username", new LoginUser(username));
-		}
-			String certification = "ITパスポート";
-
-
-
-//		//ここから下　ユーザ名、資格名の復旧-------------------------------------------------------------------
-//		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-//		HttpSession session = request.getSession();
-//		if (session.getAttribute("username") == null) {
-//			response.sendRedirect("/tasuma/LoginServlet");
-//			return;
-//		}
+//		//確認用ユーザ名、資格名の入力　後で消す
+//		String username = "ヤマダタロウ";
+//		String password = "pass";
 //
-//		// リクエストパラメータを取得する
-//		request.setCharacterEncoding("UTF-8");
-//		String certification = request.getParameter("selectCertification");
+//		// ログイン処理を行う
+//		UsersDAO uDao = new UsersDAO();
+//		if (uDao.isLoginOK(new Users(username, password))) {	// ログイン成功
+//			// セッションスコープにIDを格納する
+//			HttpSession session = request.getSession();
+//			session.setAttribute("username", new LoginUser(username));
+//		}
+//			String certification = "ITパスポート";
+
+
+
+		//ここから下　ユーザ名、資格名の復旧-------------------------------------------------------------------
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
+
+		// リクエストパラメータを取得する
+		request.setCharacterEncoding("UTF-8");
+		String certification = request.getParameter("selectCertification");
 
 
 //-----------------------------------いらないと思う　後で消す
@@ -131,8 +128,8 @@ public class ScheduleServlet extends HttpServlet {
 
 		//--------------------資格名・日程が取れているかテスト-----------------
 		System.out.println("ユーザ：" + username);
-//		System.out.println("資格名：" + certification);
-//		System.out.println("試験日：" + testdays);
+		System.out.println("資格名：" + certification);
+		System.out.println("試験日：" + testdays);
 		//---------------------テストここまで-----------------------------------
 
 //		// 登録処理を行う
