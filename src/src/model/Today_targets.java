@@ -20,11 +20,10 @@ public class Today_targets implements Serializable {
 	}
 
 	//コンストラクタ（引数あり）
-	//資格登録時用
-	public Today_targets(String user_id, String item_id, String today_target) {
-		this.setUser_id(user_id);
+	//資格登録時用その２
+	public Today_targets(String item_id, String certification) {
 		this.setItem_id(item_id);
-		this.setToday_target(today_target);
+		this.setCertification(certification);
 	}
 
 	//コンストラクタ（引数あり）

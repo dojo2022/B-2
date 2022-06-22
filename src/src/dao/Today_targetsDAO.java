@@ -94,29 +94,29 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT Items.item_id as ID FROM Items,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?);";
+			String sql = "SELECT Items.item_id as ID, CERTIFICATIONS .certification as DAY FROM Items,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 
-//			if (Today_targets.getCertification() != null && !Today_targets.getCertification().equals("")) {
-//				pStmt.setString(1, Today_targets.getCertification());
-//			}
-//			else {
-//				pStmt.setString(1, "%");
-//			}
+			if (today_targets.getCertification() != null && !today_targets.getCertification().equals("")) {
+				pStmt.setString(1, today_targets.getCertification());
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
-//			while (rs.next()) {
-//				Today_targets days = new Today_targets(
-//				rs.getString("ID"),
-//				rs.getString("DAY")
-//				);
-//				resultList_tts.add(days);
-//			}
+			while (rs.next()) {
+				Today_targets new_target = new Today_targets(
+						rs.getString("ID"),
+						rs.getString("DAY")
+						);
+				resultList_tts.add(new_target);
+			}
 
 		}
 		catch (SQLException e) {
@@ -150,15 +150,25 @@ public class Today_targetsDAO {
 
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する-の準備をする
+			//user_id
+			String selectuserSql = "SELECT user_id FROM Users WHERE username = ?";
+			PreparedStatement selectuserStmt = conn.prepareStatement(selectuserSql);
+			selectuserStmt.setString(1, today_targets.getUsername());
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = selectuserStmt.executeQuery();
+			rs.next();
+			//ユーザidを使えるように定義
+			String user_id = rs.getString("user_id");
+
+
 			// SQL文を準備する
-			String sql = "insert into Today_targets (user_id, item_id, today_target) values (?, ?, ?)";
+			String sql = "insert into Today_targets (user_id, item_id) values (?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-
-//			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
-			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
-				pStmt.setString(1, today_targets.getUser_id());
+			if (user_id != null && !user_id.equals("")) {
+				pStmt.setString(1, user_id);
 			}
 			else {
 				pStmt.setString(1, null);
@@ -169,39 +179,33 @@ public class Today_targetsDAO {
 			else {
 				pStmt.setString(2, null);
 			}
-			if (today_targets.getToday_target() != null && !today_targets.getToday_target().equals("")) {
-//			if (today_targets.getToday_target() != 1 && today_targets.getToday_target() != 2) {
-				pStmt.setString(3, null);
-			}
-			else {
-				pStmt.setString(3, today_targets.getToday_target());
-			}
 
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
 			}
 
-			//上からn個を本日の目標にする
-			// SQL文を準備する
-//作業中
-	//update
-			String sql2 = "insert into Today_targets (user_id, item_id, today_target) values (?, ?, ?)";
-			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
-
-			// SQL文を完成させる
-
-//			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
-			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
-				pStmt2.setString(1, today_targets.getUser_id());
-			}
-			else {
-				pStmt2.setString(1, null);
-			}
+//			//上からn個を本日の目標にする
+//			// SQL文を準備する
+////作業中
+//	//update
+//			String updatesql = "";
+//			PreparedStatement pStmt2 = conn.prepareStatement(updatesql);
+//
+//			// SQL文を完成させる
+//
+////			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
+//			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
+//				pStmt2.setString(1, today_targets.getUser_id());
+//			}
+//			else {
+//				pStmt2.setString(1, null);
+//			}
 
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
-			if (pStmt2.executeUpdate() == 1) {
+			if (pStmt.executeUpdate() == 1) {
+//			if (pStmt2.executeUpdate() == 1) {
 				result = true;
 			}
 
