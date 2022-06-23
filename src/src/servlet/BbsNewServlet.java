@@ -58,14 +58,17 @@ public class BbsNewServlet extends HttpServlet {
 		// 登録処理を行う
 		ThreadsDAO tDao = new ThreadsDAO();
 		if (tDao.insert(new Threads( thread_id, thread_bbs, category_bbs ))) {
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
+			dispatcher.forward(request, response);
 		}
 		else {// リクエストスコープに、失敗したよというタイトルとメッセージを送る。
 			request.setAttribute("result",
-			new Result("false", "スレッド名が既に利用されています"));
+			new Result("false", "正常に作成ができませんでした"));
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_newthread.jsp");
+			dispatcher.forward(request, response);
 		}
 
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/BbsThreadServlet");
-		dispatcher.forward(request, response);
 	}
 }
