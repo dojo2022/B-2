@@ -342,4 +342,69 @@ public class Target_understandsDAO {
 
 		return result;
 	}
+
+	public int getCount(Target_understands target_understands){
+		Connection conn = null;
+		int count = 0;
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("org.h2.Driver");
+
+			// データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+			// SQL文を準備する
+			String sql = "SELECT count(*) FROM Target_understands WHERE item_id LIKE ? AND user_id LIKE ? AND target_understand LIKE ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			// SQL文を完成させる
+
+			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
+				pStmt.setString(1, target_understands.getItem_id());
+			}
+			else {
+				pStmt.setString(1, "%");
+			}
+			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
+				pStmt.setString(2, target_understands.getUser_id());
+			}
+			else {
+				pStmt.setString(2, "%");
+			}
+			if (target_understands.getTarget_understand() != null && !target_understands.getTarget_understand().equals("")) {
+				pStmt.setString(3, target_understands.getTarget_understand());
+			}
+			else {
+				pStmt.setString(3, "%");
+			}
+
+			// SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			// 結果表をコレクションにコピーする
+			while (rs.next()) {
+				count = rs.getInt("count(*)");
+			}
+
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return count;
+	}
 }

@@ -1,1 +1,46 @@
 @charset "UTF-8";
+
+.username {
+	text-align: right;
+}
+
+/* h2 サブタイトルの位置 */
+h2 {
+	text-align: center;
+}
+
+/* スレッド名の位置やサイズ */
+.thread{
+	position: relative;
+	top: 10px;
+	left: 304px;
+}
+
+/* コメントの位置やサイズ */
+.comment{
+	width: 350px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+/* カテゴリーの位置やサイズ */
+.category {
+	position: relative;
+	top: 30px;
+	left: 304px;
+
+}
+
+/* 作成ボタンの位置 */
+.make{
+	position: relative;
+	top: 35px;
+	left: 600px;
+	}
+
+/* 一覧に戻るボタンの位置 */
+.bbs {
+	position: relative;
+	top: 7px;
+	left: 300px;
+}

@@ -1,2 +1,36 @@
 @charset "UTF-8";
 
+/* ログインしているユーザ名のの位置 */
+.username {
+	text-align: right;
+}
+
+/* h2 サブタイトルの位置 */
+h2 {
+	text-align: center;
+}
+
+/* コメント内の投稿時間と投稿した人のIDの位置 */
+.time_id {
+	text-align: left;
+}
+
+/* コメントの位置 */
+.comment {
+	text-align: left;
+}
+
+/* ログインユーザがコメントを投稿するときに、ユーザ名の位置 */
+.username_comment {
+	text-align: left;
+}
+
+/* 投稿ボックスの位置 */
+.comment_box {
+	text-align: left
+}
+
+/* 一覧に戻るボタンの位置 */
+.bbs {
+	padding-top: 30px;
+}
