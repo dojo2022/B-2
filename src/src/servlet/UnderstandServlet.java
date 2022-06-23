@@ -1,7 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -22,9 +24,11 @@ import dao.UsersDAO;
 import model.Items;
 import model.LoginUser;
 import model.My_certifications;
+import model.Percent;
 import model.Target_understands;
 import model.Today_targets;
 import model.Understands;
+import model.Understands_result;
 
 /**
  * Servlet implementation class UnderstandServlet
@@ -44,6 +48,8 @@ public class UnderstandServlet extends HttpServlet {
 			return;
 		}
 
+
+		request.setCharacterEncoding("UTF-8");
 		//ユーザ名の取得
 		LoginUser loginuser = (LoginUser)session.getAttribute("username");
 		String username = loginuser.getUsername();
@@ -156,7 +162,81 @@ public class UnderstandServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 理解度報告ー結果を登録する
-		//あとでかく
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
+
+		request.setCharacterEncoding("UTF-8");
+
+		//ユーザ名の取得
+		LoginUser loginuser = (LoginUser)session.getAttribute("username");
+		String username = loginuser.getUsername();
+
+		//ユーザIDの取得
+		UsersDAO uDao = new UsersDAO();
+		String user_id = uDao.getUser_id(username);
+
+		//資格名の取得
+		String certification = request.getParameter("certification");
+
+		TargetsDAO tDao = new TargetsDAO();
+		Target_understandsDAO tuDao = new Target_understandsDAO();
+		Today_targetsDAO ttDao = new Today_targetsDAO();
+		Date now = new Date();
+		String nowStr = new SimpleDateFormat("yyyy/MM/dd").format(now);
+
+		int count = 0;
+		try {
+			count = Integer.parseInt(request.getParameter("count"));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		for(int i = 0; i < count; i++) {
+			String target_understands = request.getParameter("tu" + i);
+			String target = request.getParameter("t" + i);
+			String target_id = tDao.getTarget_id(target);
+
+			tuDao.update(new Target_understands(0, target_id, null, user_id, nowStr, target_understands));
+		}
+
+		//目標達成度の取得
+		List<Percent> percents = new ArrayList<Percent>();
+		CertificationsDAO cDao = new CertificationsDAO();
+		ItemsDAO iDao = new ItemsDAO();
+
+		String certification_id = cDao.getCertification_id(certification);
+		List<Items> iList = iDao.select(new Items(certification_id, null, null, 0));
+
+		for(Items i :iList) {
+			//全件検索
+			int itemCount = tuDao.getCount(new Target_understands(0, null, i.getItem_id(), user_id, null, null));
+
+			//達成項目数取得
+			int itemCount1 = tuDao.getCount(new Target_understands(0, null, i.getItem_id(), user_id, null, "2"));
+			int itemCount2 = tuDao.getCount(new Target_understands(0, null, i.getItem_id(), user_id, null, "3"));
+
+			//達成度計算
+			double percent = 0;
+			if(itemCount == itemCount1 + itemCount2) {
+				if(itemCount1 != 0 & itemCount2 != 0) {
+					ttDao.update(new Today_targets(user_id, i.getItem_id(), "2"));
+				}
+			}
+			if(itemCount > 0) {
+				percent = (itemCount1 + itemCount2 / itemCount) * 100;
+			}
+			String perStr = Double.toString(percent);
+			percents.add(new Percent(perStr, i.getItem()));
+		}
+
+		//必要なデータ：資格名、項目毎の達成度
+		session.setAttribute("understands_result", new Understands_result(certification, percents));
+
+		// 理解度報告結果ページにリダイレクトする
+		response.sendRedirect("/tasuma/UnderstandServlet");
 	}
 
 }

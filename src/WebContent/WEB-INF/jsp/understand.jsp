@@ -17,15 +17,31 @@
 	<c:forEach var="e" items="${understands }">
 		<h3>${e.certification }</h3>
 		<h4>今日の目標</h4>
-		<form>
+		<% int count = 0; %>
+		<form action="/tasuma/UnderstandServlet" method="post">
 			<table>
+				<tr>
+					<td>項目名</td>
+					<td>目標詳細</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
 				<c:forEach var="e1" items="${e.ttList }">
 					<tr>
 						<td>${e1.item_id }</td>
 						<td>${e1.target_id }</td>
+						<td><input type="radio" name="tu<%=count %>" value="1"></td>
+						<td><input type="radio" name="tu<%=count %>" value="2"></td>
+						<td><input type="radio" name="tu<%=count %>" value="3"></td>
 					</tr>
+					<input type="hidden" name="t<%=count %>" value="${e1.target_id }">
+					<% count++; %>
 				</c:forEach>
 			</table>
+			<input type="hidden" name="count" value="<%=count%>">
+			<input type="hidden" name="certification" value="${e.certification }">
+			<input type="submit" value="報告">
 		</form>
 
 
