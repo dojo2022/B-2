@@ -90,7 +90,6 @@ public class TargetServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		// いらないかも String today_target = request.getParameter("today_target");
 
 		// ループ回数の取得
 		int count = 0;

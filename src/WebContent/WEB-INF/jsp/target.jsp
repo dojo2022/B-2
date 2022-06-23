@@ -26,13 +26,15 @@
 	<summary>資格の目標一覧を表示する</summary>
 	<% int count = 0; %>
 		<form action="/tasuma/TargetServlet" method="post" id="list">
-		<c:forEach var="e" items="${itemList}">
-			<li><input type="text" name="item<%= count %>" value="${e}">
-				<input type="checkbox" name="check<%= count %>" value="1" checked></li>
-			<% count++; %>
-		</c:forEach>
-			 <input type="hidden" name="count" value="<%= count %>">
-		<div><input type="submit" name="update" value="更新" onclick="return itemsubmit()"></div>
+			<table class="list">
+				<c:forEach var="e" items="${itemList}">
+					<tr><td>${e}</td><td><input type="checkbox" name="check<%= count %>" value="1" checked></td><td></td></tr>
+										 <input type="hidden" name="item<%= count %>" value="${e}">
+				<% count++; %>
+				</c:forEach>
+			</table>
+				 <input type="hidden" name="count" value="<%= count %>">
+			<div><input type="submit" name="update" value="更新" onclick="return itemsubmit()"></div>
 		</form>
 	</details>
 

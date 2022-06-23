@@ -1,31 +1,34 @@
 @charset "UTF-8";
 
- /* マッチングと一覧から選ぶボタンを横並びにする */
+/* ユーザネーム */
+.username{
+	font-weight:bold;
+	font-size:1em;
+}
+
+/* サブタイトル(My資格) */
+h2{
+	text-align: center;
+}
+
+/* マッチングと一覧から選ぶボタンを横並びにする */
 .button{
 	padding-top: 30px;
   	display: flex;
   	justify-content: space-evenly;
   	text-align: center;
   	padding: auto;
+
 }
 
+/* マッチングと一覧の説明 */
 .text{
     text-align: center;
 	display: flex;
     justify-content: space-evenly;
 }
 
-/* ユーザネームを右上に表示 */
-/*.username{
-	text-align: right;
-}
-*/
-
+/* メニューボタン */
 .menu{
 	padding-top: 30px;
-}
-
-/* サブタイトル(My資格) */
-h2{
-	text-align: center;
 }

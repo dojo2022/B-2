@@ -46,16 +46,16 @@
 				<form action="/tasuma/CertificationServlet" method="post" id="list">
 					<table class="list">
 						<tr>
-							<td><input type="text" name="certification" value="${e.certification}"></td>
-							<td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
+							<!--<td><input type="text" name="certification" value="${e.certification}"></td>-->
+							<td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
 						</tr>
 					</table>
 				</form>
 			</c:forEach>
 
 	<!-- メニューボタン -->
-	<table>
-	 <tr class="menu">
+	<table class="menu">
+	 <tr>
 		<td><a href="/tasuma/MenuServlet">
 			<button type="button" name="back_menu">メニューに戻る</button>
 		</a></td>
