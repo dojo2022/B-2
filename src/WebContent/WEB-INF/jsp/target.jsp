@@ -10,12 +10,12 @@
 <!-- <link rel="stylesheet"type="text/css" href="/tasuma/css/style.css"> -->
 </head>
 <body>
-	<!-- ヘッダーここから -->
-		<jsp:include page="/WEB-INF/jsp/header.jsp" />
-	<!-- ヘッダーここまで -->
 	<!-- 画面右上のユーザID ここから -->
 		<p class="username">ユーザ名:${username.username}</p>
 	<!-- 画面右上のユーザID ここまで -->
+	<!-- ヘッダーここから -->
+		<jsp:include page="/WEB-INF/jsp/header.jsp" />
+	<!-- ヘッダーここまで -->
 	<h2>目標設定</h2>
 	<h3>資格の目標一覧</h3>
 	<!-- 各資格における目標一覧（達成済みは除く）をリスト形式で表示する -->
@@ -27,8 +27,12 @@
 	<% int count = 0; %>
 		<form action="/tasuma/TargetServlet" method="post" id="list">
 			<table class="list">
-				<c:forEach var="e" items="${itemList}">
-					<tr><td>${e}</td><td><input type="checkbox" name="check<%= count %>" value="1" checked></td><td></td></tr>
+				<c:forEach var="e" items="${itemList}" varStatus="status">
+					<tr><td>${e}</td><td><input type="checkbox" name="check<%= count %>" value="1"
+					<c:if test="${ttList.get(status.index).today_target == '1'}">
+					checked
+					</c:if>
+					></td><td></td></tr>
 										 <input type="hidden" name="item<%= count %>" value="${e}">
 				<% count++; %>
 				</c:forEach>

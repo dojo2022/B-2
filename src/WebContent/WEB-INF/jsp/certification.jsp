@@ -10,12 +10,12 @@
 <!-- <link rel="stylesheet"type="text/css" href="/tasuma/css/style.css"> -->
 </head>
 <body>
-	<!-- ヘッダーここから -->
-		<jsp:include page="/WEB-INF/jsp/header.jsp" />
-	<!-- ヘッダーここまで -->
 	<!-- 画面右上のユーザID ここから -->
 		<p class="username">ユーザ名:${username.username}</p>
 	<!-- 画面右上のユーザID ここまで -->
+	<!-- ヘッダーここから -->
+		<jsp:include page="/WEB-INF/jsp/header.jsp" />
+	<!-- ヘッダーここまで -->
 		<h2>My資格</h2>
 
 	<!--マッチングページにリンク飛ぶボタン-->
