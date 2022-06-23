@@ -99,7 +99,6 @@ public class ScheduleServlet extends HttpServlet {
 
 
 			//本日の目標トランザクションに「ユーザID、項目id」を登録する
-	//作業中:２回登録されてしまう
 			//1.項目id一覧を検索 リストに入れる List<> =...
 			Today_targetsDAO tt_sDao = new Today_targetsDAO();
 			List<Today_targets> resultList_tts = tt_sDao.insert_select(new Today_targets(certification));
@@ -113,10 +112,12 @@ public class ScheduleServlet extends HttpServlet {
 
 				Today_targetsDAO ttDao = new Today_targetsDAO();
 			if (ttDao.insert(y)){	// 登録成功
-				System.out.println("本日の目標を登録しました");
 			}
 			//4.ループを閉じる
 			}
+	//作業中
+			//上からn個を本日の目標にする
+
 
 
 				//目標理解度トランザクションにユーザ名(id)、項目id、目標id
@@ -141,8 +142,7 @@ public class ScheduleServlet extends HttpServlet {
 		//セッションスコープ（資格名）を破棄する
 		session_cer.invalidate();
 
-		// メニューサーブレットにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/MenuServlet");
-		dispatcher.forward(request, response);
+		//メニューサーブレットにリダイレクトする
+		response.sendRedirect("/tasuma/CertificationServlet");
 	}
 }

@@ -186,33 +186,6 @@ public class Today_targetsDAO {
 			//下行はupdateが完成し次第削除する
 				result = true;
 			}
-
-//			//上からn個を本日の目標にする
-//			// SQL文を準備する
-////作業中
-//	//update
-//			String updatesql = "";
-//			PreparedStatement pStmt2 = conn.prepareStatement(updatesql);
-//
-//			// SQL文を完成させる
-//
-////			pStmt.setInt(1, 0);//AUTO_INCREMENTは0で自動連番
-//			if (today_targets.getUser_id() != null && !today_targets.getUser_id().equals("")) {
-//				pStmt2.setString(1, today_targets.getUser_id());
-//			}
-//			else {
-//				pStmt2.setString(1, null);
-//			}
-
-			// 結果表をコレクションにコピーする
-			// SQL文を実行する
-
-//			if (pStmt2.executeUpdate() == 1) {
-//				result = true;
-//			}
-
-
-
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
