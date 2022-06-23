@@ -21,10 +21,10 @@
         <form method="POST" action="/tasuma/UserSettingServlet" id="user_setting" name="change_profile">
             <table class=table>
                 <tr>
-                    <td>ユーザー名</td><td><input type="text" name="username"></td>
+                    <td>ユーザー名</td><td><input type="text" name="username" value="${username.username}"></td>
                 </tr>
                 <tr>
-                    <td>メールアドレス</td><td><input type="text" name="mail"></td>
+                    <td>メールアドレス</td><td><input type="text" name="mail" ></td>
                 </tr>
                 <tr>
                     <td>PW</td><td><input type="password" name="password" id="password" class="box"></td>

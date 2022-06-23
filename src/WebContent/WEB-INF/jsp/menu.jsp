@@ -30,7 +30,9 @@
 
 <!-- ハンバーガーメニュー -->
 <!-- 各リンクの内、サーブレットが未作成のものはとりあえずMenuServletを指定 -->
-	<nav class="menu" id="js-nav">
+
+<!-- ハンバーガーメニューの元の部分 -->
+<nav class="menu" id="js-nav">
 		<ul class="nav__items nav-items">
 			<li class="nav-items__item"><a href="/tasuma/CertificationServlet">My資格</a></li>
 			<li class="nav-items__item"><a href="/tasuma/TargetServlet">目標設定</a></li>
@@ -46,6 +48,22 @@
 		<span></span>
 	</button>
 
+<!-- 竹田が追記 ※未完成 -->
+<!--
+	<button type="button" class="menu-btn">
+		<i class="fa fa-bars" aria-hidden="true"></i>
+	</button>
+
+	<div class="menu">
+			<div class="menu-item"><a href="/tasuma/CertificationServlet">My資格</a></div>
+			<div class="menu-item"><a href="/tasuma/TargetServlet">目標設定</a></div>
+			<div class="menu-item"><a href="/tasuma/UnderstandServlet">理解度報告</a></div>
+			<div class="menu-item"><a href="/tasuma/BbsServlet">掲示板</a></div>
+			<div class="menu-item"><a href="/tasuma/UserSettingServlet">ユーザ設定</a></div>
+			<div class="menu-item"><a href="/tasuma/LoginServlet">ログアウト</a></div>
+		</div>
+		-->
+<!-- 追記ここまで -->
 
 <!-- 本日の目標 -->
 	<c:forEach var="e1" items="${menu_data }">

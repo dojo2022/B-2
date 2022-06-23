@@ -226,19 +226,19 @@ public class UsersDAO  {
 					pStmt.setString(1, users.getUsername());
 				}
 				else {
-					pStmt.setString(1, "");
+					pStmt.setString(1, users.getOld_username());
 				}
 				if (users.getPassword() != null && !users.getPassword().equals("")) {
 					pStmt.setString(2, users.getPassword());
 				}
 				else {
-					pStmt.setString(2, "");
+					pStmt.setString(2, users.getOld_pw());
 				}
 				if (users.getMail() != null && !users.getMail().equals("")) {
 					pStmt.setString(3, users.getMail());
 				}
 				else {
-					pStmt.setString(3, "");
+					pStmt.setString(3, users.getOld_mail());
 				}
 				if (users.getOld_username() != null && !users.getOld_username().equals("")) {
 					pStmt.setString(4, users.getOld_username());

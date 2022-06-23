@@ -31,9 +31,9 @@
 			<table class=bbs>
 				<!-- 投稿時間と投稿した人のIDを表示する -->
 				<tr class="rowdata">
-					<td>${time_bbs} ID：${user_id}
+					<td class = time_id>${time_bbs}ID：${user_id}</td>
 					<!-- 投稿されたコメントを表示する -->
-					${comment_bbs}</td>
+					<td class = comment>${comment_bbs}</td>
 				</tr>
 			</table>
 		</c:forEach>
@@ -44,8 +44,8 @@
 		<!-- 投稿する時の処理 -->
 		<form method="POST" action="/tasuma/BbsThreadServlet">
 			<!-- 投稿するユーザ名を表示 -->
-			<p class="username">ID：${username.username}</p>
-			<textarea name="post1"></textarea>
+			<p class="username_comment">ID：${username.username}</p>
+			<textarea name="post1" class="comment_box"></textarea>
 			<!-- 投稿ボタン -->
 			<input type="submit" name="post" value="投稿"><br>
 		</form>

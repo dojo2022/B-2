@@ -103,9 +103,7 @@ public class MenuServlet extends HttpServlet {
 
 			//ttListが空ならフォワード
 			if(ttList.isEmpty()) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
-				dispatcher.forward(request, response);
-				return;
+				continue;
 			}
 
 			//本日の目標項目一覧itemListの定義
