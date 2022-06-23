@@ -28,7 +28,7 @@
 		<form action="/tasuma/TargetServlet" method="post" id="list">
 		<c:forEach var="e" items="${itemList}">
 			<li><input type="text" name="item<%= count %>" value="${e}">
-				<input type="checkbox" name="check<%= count %>" value="1"></li>
+				<input type="checkbox" name="check<%= count %>" value="1" checked></li>
 			<% count++; %>
 		</c:forEach>
 			 <input type="hidden" name="count" value="<%= count %>">
