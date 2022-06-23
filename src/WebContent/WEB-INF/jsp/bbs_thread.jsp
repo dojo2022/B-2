@@ -22,21 +22,18 @@
 		<!-- サブタイトル -->
 		<!-- 掲示板のタイトル？に合わせて表示が変わる -->
 
-				<h2>掲示板 -${thread_title}</h2>
+		<h2>掲示板 -${thread_bbs}</h2>
 
 
 
 		<!-- 投稿されたコメントの表示(投稿された順番に） -->
 		<c:forEach var="e" items="${threadList}">
-			<table class=comment>
+			<table class=bbs>
 				<!-- 投稿時間と投稿した人のIDを表示する -->
 				<tr class="rowdata">
-					<td><form method="GET" action="/tasuma/BbsThereadServlet">
-							<name ="time_bbs" value="${time_bbs}">
-							<name ="user_id" value="ID：${user_id}">
-							<!-- 投稿されたコメントを表示する -->
-							<textarea name="content">${content_bbs}</textarea></td>
-					</form>
+					<td>${time_bbs} ID：${user_id}
+					<!-- 投稿されたコメントを表示する -->
+					${comment_bbs}</td>
 				</tr>
 			</table>
 		</c:forEach>
