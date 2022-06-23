@@ -21,18 +21,14 @@
 	<!--マッチングページにリンク飛ぶボタン-->
 	<div class="button">
 		  <a href="/tasuma/Matching1Servlet">
-				<button type="button" name="to_matching">マッチング</button></a>
+				<span title="質問チャートを使ってあなたにおすすめの資格をマッチング！"><button type="button" name="to_matching">マッチング</button></span></a>
 
 	<!--資格登録一覧ページにリンク飛ぶボタン-->
 		  <a href="/tasuma/CertificationListServlet">
-				<button type="button" name="to_list">一覧から選ぶ</button></a>
+				<span title="取りたい資格が決まっているあなたはこちら！"><button type="button" name="to_list">一覧から選ぶ</button></span></a>
 
 	</div>
 
-	<div class="text">
-	  	 <p>...質問チャートを使って資格をマッチング！
-		    ...取りたい資格が決まっているあなたはこちら！</p>
-	</div>
 		<h3>My資格一覧</h3>
 	<!--
 	登録資格一覧(登録済の取得目標資格をリスト形式で表示する)
