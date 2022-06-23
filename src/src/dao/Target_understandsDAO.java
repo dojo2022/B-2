@@ -229,7 +229,7 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "update Target_understands set day = ?, target_understand = ? WHERE item_id = ? AND user_id = ?";
+			String sql = "update Target_understands set day = ?, target_understand = ? WHERE item_id LIKE ? AND user_id LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -252,7 +252,7 @@ public class Target_understandsDAO {
 				pStmt.setString(3, null);
 			}
 			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
-				pStmt.setString(4, "%" + target_understands.getUser_id() + "%");
+				pStmt.setString(4, target_understands.getUser_id());
 			}
 			else {
 				pStmt.setString(4, null);
