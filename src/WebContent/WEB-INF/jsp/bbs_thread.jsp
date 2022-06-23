@@ -21,30 +21,26 @@
 
 		<!-- サブタイトル -->
 		<!-- 掲示板のタイトル？に合わせて表示が変わる -->
-		<h2>掲示板 - ${thread_bbs }</h2>
+
+				<h2>掲示板 -${thread_title}</h2>
 
 
-		<!-- 投稿されたコメントの表示① -->
-		<table class=comments1>
-			<!-- 投稿時間と投稿した人のIDを表示する -->
-			<tr class="time_bbs">${time_bbs}</tr>
-			<td class="user_id">ID：${user_id}</td>
-			<!-- 投稿されたコメントを表示する -->
-			<textarea name="${content_bbs}"></textarea>
-		</table>
 
-		<textarea><name="time_bbs">${time_bbs}<name="user_id">${user_id}</textarea>
+		<!-- 投稿されたコメントの表示(投稿された順番に） -->
+		<c:forEach var="e" items="${threadList}">
+			<table class=comment>
+				<!-- 投稿時間と投稿した人のIDを表示する -->
+				<tr class="rowdata">
+					<td><form method="GET" action="/tasuma/BbsThereadServlet">
+							<name ="time_bbs" value="${time_bbs}">
+							<name ="user_id" value="ID：${user_id}">
+							<!-- 投稿されたコメントを表示する -->
+							<textarea name="content">${content_bbs}</textarea></td>
+					</form>
+				</tr>
+			</table>
+		</c:forEach>
 
-${content_bbs}
-
-		<!-- 投稿されたコメントの表示② -->
-		<table class=comments2>
-			<!-- 投稿時間と投稿した人のIDを表示する -->
-			<tr class="time_bbs">${time_bbs}</tr>
-			<class="user_id">ID：${user_id}
-			<!-- 投稿されたコメントを表示する -->
-			<textarea name="${content_bbs}"></textarea>
-		</table>
 
 
 
