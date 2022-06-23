@@ -234,13 +234,13 @@ public class Target_understandsDAO {
 
 			// SQL文を完成させる
 			if (target_understands.getDay() != null) {
-				pStmt.setString(1, "" + target_understands.getDay());
+				pStmt.setString(1, target_understands.getDay());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
 			if (target_understands.getTarget_understand()  != null) {
-				pStmt.setString(2, "" + target_understands.getTarget_understand());
+				pStmt.setString(2, target_understands.getTarget_understand());
 			}
 			else {
 				pStmt.setString(2, null);
