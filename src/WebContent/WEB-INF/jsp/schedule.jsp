@@ -39,14 +39,11 @@
 
 	</table>
 	</form>
-<!-- アマゾンのリンクを入れるテーブルカラムを用意してない！！！ -->
-<!--
 	<h3>おすすめ参考書</h3>
-	<table class="list">
-	<tr><td><a href="amazon.com">参考書画像${a.book_image}</a></td>
-	<td><a href="amazon.com">参考書名${a.book_name}</a></td></tr>
-	</table>
- -->
+	<c:forEach var="a" items="${bookList}">
+	<a href="${a.book_url}" target="_blank"><img src="/tasuma/img/book_img${a.book_image}.jpg"></a><br>
+	<a href="${a.book_url}" target="_blank">${a.book_name}</a>
+	</c:forEach>
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
 </html>

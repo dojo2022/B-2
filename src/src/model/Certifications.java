@@ -9,6 +9,7 @@ public class Certifications implements Serializable {
 	private String category;
 	private String book_name;
 	private String book_image;
+	private String book_url;
 	private String level;
 
 	//引数のあるコンストラクタ
@@ -49,6 +50,16 @@ public class Certifications implements Serializable {
 		public Certifications( String category, String level) {
 			this.category = category;
 			this.level= level;
+		}
+
+		//参考書の検索表示用コンストラクタ
+		public Certifications(String id,String certification, String book_name,String book_image,String book_url) {
+			super();
+			this.id = id;
+			this.certification = certification;
+			this.book_name = book_name;
+			this.book_image = book_image;
+			this.book_url = book_url;
 		}
 
 	//引数のないコンストラクタ(デフォルトコンストラクタ)
@@ -119,6 +130,14 @@ public class Certifications implements Serializable {
 
 	public void setLevel(String level) {
 		this.level = level;
+	}
+
+	public String getBook_url() {
+		return book_url;
+	}
+
+	public void setBook_url(String book_url) {
+		this.book_url = book_url;
 	}
 
 }

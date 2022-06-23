@@ -828,4 +828,68 @@ import model.Certifications;
     		return result;
         }
 
+        // 参考書検索
+        public List<Certifications> bookselect(Certifications certifications) {
+            Connection conn = null;
+            List<Certifications> bookList = new ArrayList<Certifications>();
+            try {
+                // JDBCドライバを読み込む
+                Class.forName("org.h2.Driver");
+
+                // データベースに接続する
+                conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
+
+                // SQL文を準備する（資格の検索）
+                String sql = "SELECT book_name,book_image,book_url from CERTIFICATIONS WHERE certification LIKE ? ";
+                PreparedStatement pStmt = conn.prepareStatement(sql);
+
+                // SQL文を完成させる
+    			if (certifications.getCertification() != null && !certifications.getCertification().equals("")) {
+    				pStmt.setString(1, certifications.getCertification());
+    			}
+    			else {
+    				pStmt.setString(1, "%");
+    			}
+
+                // SQL文を実行し、結果表を取得する
+                ResultSet rs = pStmt.executeQuery();
+
+                // 結果表をコレクションにコピーする
+                while (rs.next()) {
+
+                	Certifications certification = new Certifications(
+                	null,
+                    null,
+                	rs.getString("book_name"),
+                	rs.getString("book_image"),
+                	rs.getString("book_url")
+                	);
+                    bookList.add(certification);
+                }
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+                bookList = null;
+            }
+            catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                bookList = null;
+            }
+            finally {
+                // データベースを切断
+                if (conn != null) {
+                    try {
+                        conn.close();
+                    }
+                    catch (SQLException e) {
+                        e.printStackTrace();
+                        bookList = null;
+                    }
+                }
+            }
+            // 結果を返す
+            return bookList;
+        }
+
+
     }

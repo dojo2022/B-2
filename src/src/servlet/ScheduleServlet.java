@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CertificationsDAO;
 import dao.My_certificationsDAO;
 import dao.Target_understandsDAO;
 import dao.Test_daysDAO;
 import dao.Today_targetsDAO;
+import model.Certifications;
 import model.LoginUser;
 import model.My_certifications;
 import model.Target_understands;
@@ -47,9 +49,9 @@ public class ScheduleServlet extends HttpServlet {
 		Test_daysDAO tDao = new Test_daysDAO();
 		List<Test_days> Test_daysList = tDao.select(new Test_days(certification));
 
-		//参考書（あとで）
-//		BcDAO bDao = new BcDAO();
-//		List<Bc> Test_daysList = bDao.select(new Bc(number, name,dep,phone,email,co));
+		//参考書
+		CertificationsDAO bDao = new CertificationsDAO();
+		List<Certifications> bookList = bDao.bookselect(new Certifications(certification));
 
 
 
@@ -59,6 +61,8 @@ public class ScheduleServlet extends HttpServlet {
 
 		// 検索結果（試験日）をリクエストスコープに格納する
 		request.setAttribute("Test_daysList", Test_daysList);
+		// 検索結果（参考書）をリクエストスコープに格納する
+		request.setAttribute("bookList", bookList);
 
 		//最後に
 		// スケジュールページにフォワードする
