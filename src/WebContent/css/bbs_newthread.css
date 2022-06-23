@@ -38,9 +38,18 @@ h2 {
 	left: 600px;
 	}
 
+/* エラーメッセージの位置 */
+.errormsg {
+	position: relative;
+	top: 35px;
+	left: 600px;
+}
+
 /* 一覧に戻るボタンの位置 */
 .bbs {
 	position: relative;
 	top: 7px;
 	left: 300px;
 }
+
+

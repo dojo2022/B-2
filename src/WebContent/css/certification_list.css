@@ -39,7 +39,9 @@ h2 {
 
 /* h4 カテゴリ名 */
 h4 {
-	text-align: left;
+	position: relative;
+	top: 7px;
+	left: 80px;
 }
 
 /* カテゴリ・テキストボックス・検索ボタンを横並びにする */
