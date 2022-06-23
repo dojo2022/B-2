@@ -120,6 +120,18 @@ public class TargetServlet extends HttpServlet {
 		    	}
 		    }
 
+		// 本日の目標項目一覧itemListの定義
+		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null));
+
+		List<String> itemList = new ArrayList<String>();
+		for(Today_targets tt :ttList){
+			// 本日の目標項目idを取得して、項目名を取得しitemListに格納
+			String item = iDao.getItem(tt.getItem_id());
+			itemList.add(item);
+		}
+
+		session.setAttribute("itemList", itemList);
+
 		// 目標設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
 		dispatcher.forward(request, response);
