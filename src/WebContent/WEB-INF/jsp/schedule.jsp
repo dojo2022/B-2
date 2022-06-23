@@ -25,8 +25,15 @@
 
 	<table class="list">
 
-	<c:forEach var="e" items="${Test_daysList}" >
-		<tr><td></td><td><input type="radio" name="select_schedule" value="${e.testdays}"></td><td>${e.testdays}</td><td></td></tr>
+	<c:forEach var="e" items="${Test_daysList}" varStatus="status">
+	<c:choose>
+	  <c:when test="${status.index == 0}">
+		<tr><td></td><td><input type="radio" name="select_schedule" value="${e.testdays}" checked="checked"></td><td>${e.testdays}</td><td></td></tr>
+	  </c:when>
+	  <c:otherwise>
+	  		<tr><td></td><td><input type="radio" name="select_schedule" value="${e.testdays}"></td><td>${e.testdays}</td><td></td></tr>
+	  </c:otherwise>
+	</c:choose>
 	</c:forEach>
 		<tr><td><a href="/tasuma/MenuServlet"><input type="button" name="back_menu" value="メニューに戻る"></a></td><td></td><td></td><td><input type="submit" name="regist" value="登録"></td></tr>
 

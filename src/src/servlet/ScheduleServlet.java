@@ -72,10 +72,10 @@ public class ScheduleServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-//		if (session.getAttribute("username") == null) {
-//			response.sendRedirect("/tasuma/LoginServlet");
-//			return;
-//		}
+		if (session.getAttribute("username") == null) {
+			response.sendRedirect("/tasuma/LoginServlet");
+			return;
+		}
 
 		//リクエストパラメータから試験日程を取得する
 		request.setCharacterEncoding("UTF-8");
@@ -92,7 +92,6 @@ public class ScheduleServlet extends HttpServlet {
 
 		// 登録処理を行う
 		//My資格トランザクションに「ユーザid、資格id、試験日程」を追加
-	//完成済み
 		My_certificationsDAO tdDao = new My_certificationsDAO();
 		if (tdDao.insert(new My_certifications(username, certification,testdays))) {	// 登録成功
 		}
@@ -115,13 +114,25 @@ public class ScheduleServlet extends HttpServlet {
 			}
 			//4.ループを閉じる
 			}
-	//作業中
 			//上からn個を本日の目標にする
+			//1.Today_targetsテーブルからuser_id=?のidを2件とってくる
+			int id=0;
+			Today_targetsDAO ttU_sDao = new Today_targetsDAO();
+			List<Today_targets> resultList_ttus = ttU_sDao.insert_update_select(new Today_targets(id,username));
+			//2.拡張for文でループ
+			for(Today_targets z:resultList_ttus) {
+			//3.idを参照してリストを更新する
+				Today_targetsDAO tt_uDao = new Today_targetsDAO();
+				if (tt_uDao.insert_update(z)){	// 登録成功
+				}
+			//4.ループを閉じる
+			}
+
+
 
 
 
 				//目標理解度トランザクションにユーザ名(id)、項目id、目標id
-	//完成済み
 				//1.目標一覧を検索 リストに入れる List<> =...
 				Target_understandsDAO tu_sDao = new Target_understandsDAO();
 				List<Target_understands> resultList = tu_sDao.insert_select(new Target_understands(certification));
@@ -140,9 +151,9 @@ public class ScheduleServlet extends HttpServlet {
 				}
 
 		//セッションスコープ（資格名）を破棄する
-		session_cer.invalidate();
+		session.removeAttribute("certification");
 
-		//メニューサーブレットにリダイレクトする
+		//My資格サーブレットにリダイレクトする
 		response.sendRedirect("/tasuma/CertificationServlet");
 	}
 }

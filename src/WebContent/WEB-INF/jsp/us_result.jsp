@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>TASUMA|理解度報告</title>
 <link rel="stylesheet" href="/tasuma/css/us_result.css">
-<link rel="stylesheet" href="/tasuma/css/style.css">
 </head>
 <body>
 	<p class="username">ユーザ名:${username.username }</p>
@@ -20,9 +19,29 @@
 <h3>登録しました。<br>
 今日も1日お疲れさまでした。</h3><br>
 
-<!--ページ内に図形を描画するキャンバスを用意 -->
-<canvas id="tasuma" width="960" height="640"></canvas>
-
+<img src="/tasuma/img/HANA.png"  width="100" height="100" alt="花" class="hana1">
+<p class="hana1text">第1章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana2">
+<p class="hana2text">第2章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana3">
+<p class="hana3text">第3章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana4">
+<p class="hana4text">第4章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana5">
+<p class="hana5text">第5章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana6">
+<p class="hana6text">第6章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana7">
+<p class="hana7text">第7章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana8">
+<p class="hana8text">第8章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana9">
+<p class="hana9text">第9章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana10">
+<p class="hana10text">第10章<br>達成率 ％</p>
+<img src="/tasuma/img/HANABIRA.png"  width="45" height="90" alt="花びら" class="hana11">
+<p class="hana11text">第11章<br>達成率 ％</p>
+<div class="break"></div>
 <a href="/tasuma/MenuServlet">
 <button type="button" name="back_menu">メニューに戻る</button>
 		</a>

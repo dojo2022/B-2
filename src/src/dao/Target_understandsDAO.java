@@ -239,7 +239,7 @@ public class Target_understandsDAO {
 			else {
 				pStmt.setString(1, null);
 			}
-			if (target_understands.getTarget_understand()  != null) {
+			if (target_understands.getTarget_understand() != null) {
 				pStmt.setString(2, target_understands.getTarget_understand());
 			}
 			else {

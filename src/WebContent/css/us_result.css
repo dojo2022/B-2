@@ -8,10 +8,310 @@ h3{
 	margin:0 auto 0 auto;
 	max-width:960px;
 	width: 100%;
-  	position: relative;
 
 }
 /* ユーザネームを右上に表示 */
 .username{
 	text-align: right;
+}
+/* 達成度イラスト */
+/* 真ん中の茶色 */
+.hana1{
+		margin:0 0 0 0;
+		text-align:center;
+		position:absolute;
+		top:400px;
+		left:430px;
+}
+.hana1:hover + .hana1text{
+display: block;
+margin-top:5px;
+}
+.hana1text{
+display: none;
+
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/* 真上 */
+.hana2{
+	margin:0 0 0 0;
+	text-align:center;
+	position:absolute;
+	top:310px;
+	left:460px;
+}
+.hana2:hover + .hana2text{
+display: block;
+margin-top:5px;
+}
+.hana2text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*左上　上側*/
+.hana3{
+		margin:0 0 0 0;
+		transform: rotate( -36deg );
+		position:absolute;
+		top:330px;
+		left:400px;
+}
+.hana3:hover + .hana3text{
+display: block;
+margin-top:5px;
+}
+.hana3text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*左上　下側*/
+.hana4{
+		margin:0 0 0 0;
+		transform: rotate( -72deg );
+		position:absolute;
+		top:375px;
+		left:365px;
+}
+.hana4:hover + .hana4text{
+display: block;
+margin-top:5px;
+}
+.hana4text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*左下　上側*/
+.hana5{
+		margin:0 0 0 0;
+		transform: rotate( 72deg );
+		position:absolute;
+		top:430px;
+		left:365px;
+}
+.hana5:hover + .hana5text{
+display: block;
+margin-top:5px;
+}
+.hana5text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*左下　下側*/
+.hana6{
+		margin:0 0 0 0;
+		transform: rotate( 36deg );
+		position:absolute;
+		top:480px;
+		left:400px;
+		}
+.hana6:hover + .hana6text{
+display: block;
+margin-top:5px;
+}
+.hana6text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*真下*/
+.hana7{
+		margin:0 0 0 0;
+		text-align:center;
+		position:absolute;
+		top:500px;
+		left:460px;
+}
+.hana7:hover + .hana7text{
+display: block;
+margin-top:5px;
+}
+.hana7text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*右下　下側*/
+.hana8{
+		margin:0 0 0 0;
+		transform: rotate( -36deg );
+		position:absolute;
+		top:480px;
+		left:515px;;
+}
+.hana8:hover + .hana8text{
+display: block;
+margin-top:5px;
+}
+.hana8text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*右下　上側*/
+.hana9{
+		margin:0 0 0 0;
+		transform: rotate( -72deg );
+		position:absolute;
+		top:430px;
+		left:550px;
+}
+.hana9:hover + .hana9text{
+display: block;
+margin-top:5px;
+}
+.hana9text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*右上　下側*/
+.hana10{
+		margin:0 0 0 0;
+		transform: rotate( 72deg );
+		position:absolute;
+		top:375px;
+		left:550px;
+}
+.hana10:hover + .hana10text{
+display: block;
+margin-top:5px;
+}
+.hana10text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+/*右上　上側*/
+.hana11{
+		margin:0 0 0 0;
+		transform: rotate( 36deg );
+		position:absolute;
+		top:330px;
+		left:515px;
+}
+.hana11:hover + .hana11text{
+display: block;
+margin-top:5px;
+}
+.hana11text{
+display: none;
+top:0;
+left:0;
+width: 30%;
+padding: 10px 15px;
+font-size: 20px;
+background-color: #222222;
+border: 1px solid #0000dd;
+box-sizing: 200px;
+text-align: center;
+border-radius:5px;
+position:absolute;
+top:310px;
+}
+.break{
+		height:250px;
 }
