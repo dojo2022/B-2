@@ -27,12 +27,6 @@ public class Threads implements Serializable {
 		this.category_bbs = category_bbs;
 	}
 
-//	(必要かも)スレッド検索用コンストラクタ
-	public Threads( String thread_id,String thread_bbs) {
-		this.thread_id = thread_id;
-		this.thread_bbs = thread_bbs;
-	}
-
 //	引数なしコンストラクタ
 	public Threads() {
 		this.id = 0;

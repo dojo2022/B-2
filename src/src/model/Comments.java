@@ -19,13 +19,6 @@ public class Comments implements Serializable {
 		this.content_bbs = content_bbs;
 		this.time_id = time_id;
 	}
-
-// select用コンストラクタ
-	public Comments( String user_id, String content_bbs, String time_id) {
-		this.user_id = user_id;
-		this.content_bbs = content_bbs;
-		this.time_id = time_id;
-	}
 // 	引数なしコンストラクタ
 	public Comments() {
 		this.id = 0;

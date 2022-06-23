@@ -13,7 +13,7 @@ import model.Threads;
 
 
 public class ThreadsDAO  {
-	 public List<Threads> select_threads(String category_bbs) {
+	 public List<Threads> select_threads(Threads param) {
 		Connection conn = null;
 		List<Threads> cardList = new ArrayList<Threads>();
 
@@ -25,12 +25,12 @@ public class ThreadsDAO  {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select thread_id, thread_bbs, category_bbs  from Threads WHERE category_bbs LIKE ?";
+			String sql = "select thread_id, thread_bbs, category_bbs  from Threads WHERE category LIKE=? ORDER BY NUMBER";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (category_bbs != null) {
-				pStmt.setString(1,   category_bbs );
+			if (param.getCategory_bbs() != null) {
+				pStmt.setString(1,   param.getCategory_bbs() );
 			}
 			else {
 				pStmt.setString(1, "%");
@@ -73,114 +73,8 @@ public class ThreadsDAO  {
 		// 結果を返す
 		return cardList;
 	}
-//	 スレッドIDを取ってくる
-	 public String getThread_id(String thread_bbs) {
-     	Connection conn = null;
- 		String result = null;
+//	commentsテーブルと外部結合して取り出すselect文
 
- 		try {
- 			// JDBCドライバを読み込む
- 			Class.forName("org.h2.Driver");
-
- 			// データベースに接続する
- 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-
- 			// SQL文を準備する
- 			String sql = "SELECT thread_id from Threads WHERE thread_bbs = ?";
- 			PreparedStatement pStmt = conn.prepareStatement(sql);
-
- 			// SQL文を完成させる
-				pStmt.setString(1, thread_bbs);
-
-
- 			// SQL文を実行し、結果表を取得する
- 			ResultSet rs = pStmt.executeQuery();
-
- 			// 結果表をコレクションにコピーする
- 			while (rs.next()) {
- 				result = rs.getString("thread_id");
- 			}
- 		}
- 		catch (SQLException e) {
- 			e.printStackTrace();
- 			result = null;
- 		}
- 		catch (ClassNotFoundException e) {
- 			e.printStackTrace();
- 			result = null;
- 		}
- 		finally {
- 			// データベースを切断
- 			if (conn != null) {
- 				try {
- 					conn.close();
- 				}
- 				catch (SQLException e) {
- 					e.printStackTrace();
- 					result = null;
- 				}
- 			}
- 		}
-
- 		// 結果を返す
- 		return result;
-     }
-
-
-
-//	コメントを取り出すためのselect文
-	 public String to_thread(String thread_bbs) {
-			Connection conn = null;
-			String result = null;
-
-			try {
-				// JDBCドライバを読み込む
-				Class.forName("org.h2.Driver");
-
-				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
-
-				// SQL文を準備する
-				String sql = "select thread_bbs  from Threads WHERE thread_bbs LIKE ?";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				if (thread_bbs != null) {
-					pStmt.setString(1,   thread_bbs );
-				}
-				else {
-					pStmt.setString(1, "%");
-				}
-
-				// SQL文を実行し、結果表を取得する
-				ResultSet rs = pStmt.executeQuery();
-
-				// 結果表をコレクションにコピーする
-				while (rs.next()) {
-					result = rs.getString("thread_bbs");
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			finally {
-				// データベースを切断
-				if (conn != null) {
-					try {
-						conn.close();
-					}
-					catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-
-			// 結果を返す
-			return result;
-		}
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
 	public boolean insert(Threads card) {
 		Connection conn = null;
