@@ -229,7 +229,7 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "update Target_understands set day = ?, target_understand = ? WHERE item_id LIKE ? AND user_id LIKE ?";
+			String sql = "update Target_understands set day = ?, target_understand = ? WHERE target_id LIKE ? AND item_id LIKE ? AND user_id LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -245,17 +245,23 @@ public class Target_understandsDAO {
 			else {
 				pStmt.setString(2, null);
 			}
-			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
-				pStmt.setString(3, target_understands.getItem_id());
+			if (target_understands.getTarget_id() != null && !target_understands.getTarget_id().equals("")) {
+				pStmt.setString(3, target_understands.getTarget_id());
 			}
 			else {
-				pStmt.setString(3, null);
+				pStmt.setString(3, "%");
+			}
+			if (target_understands.getItem_id() != null && !target_understands.getItem_id().equals("")) {
+				pStmt.setString(4, target_understands.getItem_id());
+			}
+			else {
+				pStmt.setString(4, "%");
 			}
 			if (target_understands.getUser_id() != null && !target_understands.getUser_id().equals("")) {
-				pStmt.setString(4, target_understands.getUser_id());
+				pStmt.setString(5, target_understands.getUser_id());
 			}
 			else {
-				pStmt.setString(4, null);
+				pStmt.setString(5, "%");
 			}
 
 			// 結果表をコレクションにコピーする
