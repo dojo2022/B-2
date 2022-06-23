@@ -27,8 +27,9 @@ table {
 
 /* h3 資格一覧の位置 */
 h3 {
-	text-align: left;
-	padding: 20px 20px 20px 0;
+	position: relative;
+	top: 7px;
+	left: 80px;
 }
 
 /* h2 My資格のサブタイトルの位置 */
@@ -53,9 +54,11 @@ h4 {
 
 /* 一覧表の表示・位置 */
 div.table {
+	position: relative;
 	width: 400px;
 	height: 250px;
-	text-align: center;
+	top: 7px;
+	left: 280px;
 	overflow: auto; /* はみ出した場合は、スクロールバーを表示する OK*/
 }
 
@@ -76,5 +79,7 @@ table#list tr.rowdata:hover {
 
 /* メニューボタンの位置 */
 .menu {
-	padding-top: 30px;
+	position: relative;
+	top: 7px;
+	right: 350px;
 }

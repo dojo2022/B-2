@@ -83,8 +83,8 @@
 		<!-- 日程を決めるボタンここまで -->
 
 		<!-- メニューに戻るボタン -->
-		<table>
-			<tr class="menu">
+		<table class ="menu">
+			<tr>
 				<td><a href="/tasuma/MenuServlet">
 						<button type="button" name="menu">メニューに戻る</button>
 				</a></td>
