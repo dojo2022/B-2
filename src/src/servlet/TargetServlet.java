@@ -62,6 +62,7 @@ public class TargetServlet extends HttpServlet {
 			itemList.add(item);
 		}
 
+		request.setAttribute("ttList", ttList);
 		session.setAttribute("itemList", itemList);
 
 		// 目標設定ページにフォワードする
@@ -129,6 +130,7 @@ public class TargetServlet extends HttpServlet {
 			itemList.add(item);
 		}
 
+		request.setAttribute("ttList", ttList);
 		session.setAttribute("itemList", itemList);
 
 		// 目標設定ページにフォワードする
