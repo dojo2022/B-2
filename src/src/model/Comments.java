@@ -1,7 +1,5 @@
 package model;
-
 import java.io.Serializable;
-
 public class Comments implements Serializable {
 	private int id; //id
 	private String thread_id; //スレッドid(外部キー)
@@ -9,12 +7,18 @@ public class Comments implements Serializable {
 	private String user_id; //ユーザid(外部キー)
 	private String content_bbs; //コメント内容
 	private String time_id; //投稿時間
-
 //	引数ありコンストラクタ
 	public Comments(int id, String thread_id, String comment_id, String user_id, String content_bbs, String time_id) {
 		this.id = id;
 		this.thread_id = thread_id;
 		this.comment_id = comment_id;
+		this.user_id = user_id;
+		this.content_bbs = content_bbs;
+		this.time_id = time_id;
+	}
+
+// select用コンストラクタ
+	public Comments( String user_id, String content_bbs, String time_id) {
 		this.user_id = user_id;
 		this.content_bbs = content_bbs;
 		this.time_id = time_id;
@@ -28,7 +32,6 @@ public class Comments implements Serializable {
 		this.content_bbs = "";
 		this.time_id = "";
 	}
-
 //	ゲッタとセッタ
 	public int getId() {
 		return id;
@@ -66,5 +69,4 @@ public class Comments implements Serializable {
 	public void setTime_id(String time_id) {
 		this.time_id = time_id;
 	}
-
 }
