@@ -45,11 +45,11 @@ h4 {
   position: fixed;
   top: 70px;
   left: 360px;
-  z-index: 2; /* 不明 */
+  z-index: 10; /* 不明 */
   width: 50px; /* 箱の幅 */
   height: 50px; /* 箱の縦幅 */
 
-  border-radius: 2px;
+  border-radius: 0px; /* 箱の丸み？ */
   display: inline-block;
   box-sizing:border-box;
 
@@ -62,7 +62,7 @@ h4 {
 /*----------------------------
 * メニュー本体
 *----------------------------*/
-.menu{
+ .menu{
   position: fixed;
   top: 0; /* 不明 */
   left: 0; /* ハンバーガーを押した際に表示される幅*/
@@ -73,7 +73,7 @@ h4 {
   flex-direction: column; /* メニュー一覧の表示方向 縦で指定 */
   align-items: center;
   justify-content: center;
-  background: #f5f5dc; /* とりあえずわかりやすい色にしておく */
+  background: #dcdcdc; /* とりあえずわかりやすい色にしておく */
 }
 
 .menu__item{ /* メニュー一覧のボタン？について？ */
@@ -105,11 +105,11 @@ h4 {
 /*カレンダー*/
 /* 年月の位置 */
 #calendar {
-	text-align: right;
+	float: right;
 }
 
-.calenderelese{
-	text-align: right;
+.calendarelese{
+	float: right;
 }
 
 /* 周りとの間隔 */
@@ -153,3 +153,4 @@ td#check {
 	background-color: red;
 }
 /* カレンダーここまで */
+
