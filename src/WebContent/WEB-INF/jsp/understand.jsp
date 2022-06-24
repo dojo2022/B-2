@@ -52,7 +52,7 @@
 						<td>${e2.item_id }</td>
 						<td>${e2.target_id }</td>
 						<td>${e2.day }</td>
-						<td>${e2.target_understand }</td>
+						<td><c:if test="${e2.target_understand != '0'}" >${e2.target_understand }</c:if></td>
 					</tr>
 				</c:forEach>
 			</table>

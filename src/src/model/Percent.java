@@ -3,10 +3,10 @@ package model;
 import java.io.Serializable;
 
 public class Percent implements Serializable {
-	private String percent;
+	private Double percent;
 	private String item;
 
-	public Percent(String percent, String item) {
+	public Percent(Double percent, String item) {
 		setPercent(percent);
 		setItem(item);
 	}
@@ -15,10 +15,10 @@ public class Percent implements Serializable {
 		this(null, null);
 	}
 
-	public String getPercent() {
+	public Double getPercent() {
 		return percent;
 	}
-	public void setPercent(String percent) {
+	public void setPercent(Double percent) {
 		this.percent = percent;
 	}
 	public String getItem() {
