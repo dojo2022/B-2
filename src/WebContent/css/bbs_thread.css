@@ -34,3 +34,7 @@ h2 {
 .bbs {
 	padding-top: 30px;
 }
+/* コメントリスト */
+.bbs{
+	text-align:center;
+}

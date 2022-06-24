@@ -28,19 +28,16 @@
 
 
 		<!-- 投稿されたコメントの表示(投稿された順番に） -->
+		<table class="bbs">
 		<c:forEach var="e" items="${comments.comment_bbs}">
-			<table class=bbs>
 				<!-- 投稿時間と投稿した人のIDを表示する -->
 				<tr class="rowdata">
 					<td class = time_bbs>${e.time_bbs}ID：${e.username}</td>
 					<!-- 投稿されたコメントを表示する -->
 					<td class = comment>${e.content_bbs}</td>
 				</tr>
-			</table>
 		</c:forEach>
-
-
-
+			</table>
 
 		<!-- 投稿する時の処理 -->
 		<form method="POST" action="/tasuma/BbsThreadServlet">
@@ -51,6 +48,7 @@
 			<!-- 投稿ボタン -->
 			<input type="submit" name="post" value="投稿"><br>
 		</form>
+
 
 
 
