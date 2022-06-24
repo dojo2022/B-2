@@ -52,7 +52,7 @@ public class MenuServlet extends HttpServlet {
 
 		//ユーザIDの取得
 		UsersDAO uDao = new UsersDAO();
-		String user_id = uDao.getUser_id(username);
+		String user_id = uDao.getUsername(username);
 
 		//My資格の取得
 		My_certificationsDAO myDao = new My_certificationsDAO();
