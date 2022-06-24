@@ -63,7 +63,7 @@
 		<!-- 日程を決めるボタンを資格名の横に付ける＋共通ページへ遷移 -->
 		<!-- 資格の一覧が表示される＆検索で絞り込みされたものが表示 -->
 
-	<h4>${certList[0].category}</h4>
+	<!--  <h4>${certList[0].category}</h4> -->
 		<div class="table">
 			<table id="list">
 				<c:forEach var="e" items="${certList}">

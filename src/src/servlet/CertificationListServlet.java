@@ -54,7 +54,6 @@ public class CertificationListServlet extends HttpServlet {
 		//			CertificationsDAO cDao = new CertificationsDAO();
 		List<Certifications> cardList_all;
 		cardList_all= cDao.select_all();
-		cardList_all.add(0,new Certifications());
 		request.setAttribute("certList", cardList_all);
 
 		// 結果ページにフォワードする
