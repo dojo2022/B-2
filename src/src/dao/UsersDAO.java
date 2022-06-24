@@ -343,7 +343,7 @@ public class UsersDAO  {
     			ResultSet rs = pStmt.executeQuery();
     			// 結果表をコレクションにコピーする
     			while (rs.next()) {
-    				result = rs.getString("username");
+    				result = rs.getString("user_id");
     			}
     		}
     		catch (SQLException e) {
