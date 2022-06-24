@@ -50,18 +50,32 @@ public class BbsThreadServlet extends HttpServlet {
 		String username = loginuser.getUsername();
 		UsersDAO iDao = new UsersDAO();
 		String userId= iDao.getUser_id(username);
-//		投稿された内容を取ってくる
+//		投稿スレッドIDを取ってくる
 		request.setCharacterEncoding("UTF-8");
+		String threadId = request.getParameter("getThreadId");
+//		投稿された内容を取ってくる
 		String content = request.getParameter("post1");
 //		投稿時間を取ってくる
 		Date now = new Date();//現在時刻
 		String time = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(now);//DateをStringに変換
 		CommentsDAO cDao = new CommentsDAO();
-		if (cDao.insert(new Comments(userId, content, time))) {	// 登録成功
+		if (cDao.insert(new Comments(threadId,null, userId, content, time))) {	// 登録成功
 			if (cDao.insert_update()) {	// 登録成功
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/WEB-INF/jsp/bbs_thread.jsp");
+
 			}
+			else {									// 登録失敗
+				//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する★保留
+				request.setAttribute("result",
+				new Result("登録失敗！", "コメントを登録することができませんでした。"));
+
+				//  （要変更？）結果ページにフォワードする★保留
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
+				dispatcher.forward(request, response);
+				return;
+			}}
+
 			else {									// 登録失敗
 				//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する★保留
 				request.setAttribute("result",
@@ -73,9 +87,5 @@ public class BbsThreadServlet extends HttpServlet {
 				return;
 			}
 
-
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
 	}}
