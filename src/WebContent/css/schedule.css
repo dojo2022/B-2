@@ -10,12 +10,57 @@ table {
 	font-weight:bold;
 
 }
+td{
+}
 h3{
 	text-align:center;
 	font-weight:bold;
 }
-.username{
-	text-align:right;
-	font-weight:bold;
+h3.book_name{
+	text-align:center;
+	font-weight:normal;
+}
+h3.testday{
+	text-align:center;
+	margin-top:0;
+	margin-bottom:0;
+	margin-right:2em;
+	font-weight:normal;
+}
+.radio{
+	margin-left:2em;
 }
 
+a:link {
+	color: #80ffff;
+}
+a:visited {
+	color: #80ffff;
+}
+a:hover {
+	color: #00ffff;
+}
+a:active {
+	color: #0000ff;
+}
+.book_image img{
+	margin-left: 150px;
+	height: 250px;
+}
+
+.book_item {
+	display: flex;
+	padding: 20px 8px;
+		/*border-bottom: 1px dashed #bec2c7;*/
+}
+div.book_image {
+	text-align:right;
+	margin: auto;
+	margin-right: 0;
+	padding:0;
+}
+.book_image {
+	margin-right: 16px;
+}
+.book_name {
+}
