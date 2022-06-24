@@ -20,12 +20,18 @@ public class Comments implements Serializable {
 	}
 
 // select用コンストラクタ
+	public Comments(String thread_id,  String comment_id, String user_id, String content_bbs, String time_bbs) {
+		this.thread_id = thread_id;
+		this.comment_id = comment_id;
+		this.user_id = user_id;
+		this.content_bbs = content_bbs;
+		this.time_bbs = time_bbs;
+	}
 	public Comments( String user_id, String content_bbs, String time_bbs) {
 		this.user_id = user_id;
 		this.content_bbs = content_bbs;
 		this.time_bbs = time_bbs;
 	}
-
 	public Comments( String user_id,String username, String content_bbs, String time_bbs) {
 		this.user_id = user_id;
 		this.username = username;

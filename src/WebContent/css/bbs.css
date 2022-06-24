@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* スレッドへ飛ぶボタン */
+.to_thread{
+	height:40px;
+	width:300px;
+}
+.bbs_list{
+	text-align:center;
+}
+.thread_category{
+	text-align:center;
+}
