@@ -32,7 +32,7 @@
 			<table class=bbs>
 				<!-- 投稿時間と投稿した人のIDを表示する -->
 				<tr class="rowdata">
-					<td class = time_id>${e.time_id}ID：${e.user_id}</td>
+					<td class = time_bbs>${e.time_bbs}ID：${e.username}</td>
 					<!-- 投稿されたコメントを表示する -->
 					<td class = comment>${e.content_bbs}</td>
 				</tr>
