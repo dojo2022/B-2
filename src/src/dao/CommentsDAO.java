@@ -41,10 +41,10 @@ public class CommentsDAO  {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Comments card = new Comments(
-				rs.getString("user_id"),
-				rs.getString("username"),
-				rs.getString("content_bbs"),
-				rs.getString("time_bbs")
+				rs.getString("users.user_id"),
+				rs.getString("users.username"),
+				rs.getString("Comments.content_bbs"),
+				rs.getString("Comments.time_bbs")
 				);
 				cardList.add(card);
 			}

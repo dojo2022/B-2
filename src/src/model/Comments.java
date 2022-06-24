@@ -6,31 +6,31 @@ public class Comments implements Serializable {
 	private String comment_id; //コメントid
 	private String user_id; //ユーザid(外部キー)
 	private String content_bbs; //コメント内容
-	private String time_id; //投稿時間
+	private String time_bbs; //投稿時間
 	private String username;
 //	引数ありコンストラクタ
-	public Comments(int id, String thread_id, String comment_id, String user_id, String content_bbs, String time_id, String username) {
+	public Comments(int id, String thread_id, String comment_id, String user_id, String content_bbs, String time_bbs, String username) {
 		this.id = id;
 		this.thread_id = thread_id;
 		this.comment_id = comment_id;
 		this.user_id = user_id;
 		this.content_bbs = content_bbs;
-		this.time_id = time_id;
+		this.time_bbs = time_bbs;
 		this.username = username;
 	}
 
 // select用コンストラクタ
-	public Comments( String user_id, String content_bbs, String time_id) {
+	public Comments( String user_id, String content_bbs, String time_bbs) {
 		this.user_id = user_id;
 		this.content_bbs = content_bbs;
-		this.time_id = time_id;
+		this.time_bbs = time_bbs;
 	}
 
-	public Comments( String user_id,String username, String content_bbs, String time_id) {
+	public Comments( String user_id,String username, String content_bbs, String time_bbs) {
 		this.user_id = user_id;
 		this.username = username;
 		this.content_bbs = content_bbs;
-		this.time_id = time_id;
+		this.time_bbs = time_bbs;
 	}
 // 	引数なしコンストラクタ
 	public Comments() {
@@ -39,7 +39,7 @@ public class Comments implements Serializable {
 		this.comment_id = "";
 		this.user_id = "";
 		this.content_bbs = "";
-		this.time_id = "";
+		this.time_bbs = "";
 		this.username = "";
 	}
 //	ゲッタとセッタ
@@ -73,11 +73,11 @@ public class Comments implements Serializable {
 	public void setContent_bbs(String content_bbs) {
 		this.content_bbs = content_bbs;
 	}
-	public String getTime_id() {
-		return time_id;
+	public String getTime_bbs() {
+		return time_bbs;
 	}
-	public void setTime_id(String time_id) {
-		this.time_id = time_id;
+	public void setTime_bbs(String time_bbs) {
+		this.time_bbs = time_bbs;
 	}
 
 	public String getUsername() {
