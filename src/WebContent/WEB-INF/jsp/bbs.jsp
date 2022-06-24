@@ -22,11 +22,13 @@
 	<option value="q_a">質問</option>
 	<option value="other">その他</option>
 	</select></p>
-		<input type="submit" name="bbs_select" value="bbs_select"class="bbs_selec">
+		<input type="submit" name="submit" value="検索"class="bbs_selec">
 	</form>
 	<table class="bbs_list">
 		<c:forEach var="e" items="${threadList}" >
-			<tr><td><a href="/tasuma/BbsThreadServlet" >${e.thread_bbs}</a></td></tr>
+		<form method="POST" action="/tasuma/BbsServlet" id="select_bbs" id="select_bbs">
+			<tr><td><input type="submit" name="submit" value="${e.thread_bbs}"class="to_thread" ></td></tr>
+		</form>
 		</c:forEach>
 	</table>
 	<table>

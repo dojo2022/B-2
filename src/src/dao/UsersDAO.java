@@ -282,7 +282,8 @@ public class UsersDAO  {
 			// 結果を返す
 			return result;
 		}
-		public String getUser_id(String username) {
+//	ユーザidからユーザ名を取得するメソッド
+		public String getUsername(String user_id) {
         	Connection conn = null;
     		String result = null;
     		try {
@@ -291,15 +292,15 @@ public class UsersDAO  {
     			// データベースに接続する
     			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
     			// SQL文を準備する
-    			String sql = "SELECT user_id from Users WHERE username = ?";
+    			String sql = "SELECT username from Users WHERE user_id = ?";
     			PreparedStatement pStmt = conn.prepareStatement(sql);
     			// SQL文を完成させる
-				pStmt.setString(1, username);
+				pStmt.setString(1, user_id);
     			// SQL文を実行し、結果表を取得する
     			ResultSet rs = pStmt.executeQuery();
     			// 結果表をコレクションにコピーする
     			while (rs.next()) {
-    				result = rs.getString("user_id");
+    				result = rs.getString("username");
     			}
     		}
     		catch (SQLException e) {

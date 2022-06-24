@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,18 +23,18 @@
 		<!-- サブタイトル -->
 		<!-- 掲示板のタイトル？に合わせて表示が変わる -->
 
-		<h2>掲示板 -${thread_bbs}</h2>
+		<h2>掲示板 -${comments.thread_bbs}</h2>
 
 
 
 		<!-- 投稿されたコメントの表示(投稿された順番に） -->
-		<c:forEach var="e" items="${threadList}">
+		<c:forEach var="e" items="${comments.comment_bbs}">
 			<table class=bbs>
 				<!-- 投稿時間と投稿した人のIDを表示する -->
 				<tr class="rowdata">
-					<td class = time_id>${time_bbs}ID：${user_id}</td>
+					<td class = time_id>${e.time_id}ID：${e.user_id}</td>
 					<!-- 投稿されたコメントを表示する -->
-					<td class = comment>${comment_bbs}</td>
+					<td class = comment>${e.content_bbs}</td>
 				</tr>
 			</table>
 		</c:forEach>
