@@ -5,30 +5,32 @@ import java.util.List;
 
 public class Bbs_thread implements Serializable {
 	private String thread_bbs; // thread_bbs
+	private String thread_id; // thread_id
 	private List<Comments> comment_bbs; // List
-	private String username;
 
 	//引数ありコンストラクタ
-	public Bbs_thread(String thread_bbs, List<Comments> comment_bbs/*,String username*/) {
+	public Bbs_thread(String thread_bbs,String thread_id, List<Comments> comment_bbs) {
 		this.thread_bbs = thread_bbs;
+		this.thread_id = thread_id;
 		this.comment_bbs = comment_bbs;
-		/*this.username = username;*/
+
 	}
 
 // 	引数なしコンストラクタ
 	public Bbs_thread() {
 		this.thread_bbs = "";
+		this.thread_id = "";
 		this.comment_bbs = null;
-		this.username = "";
 	}
 
 
-	public String getUsername() {
-		return username;
+
+	public String getThread_id() {
+		return thread_id;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setThread_id(String thread_id) {
+		this.thread_id = thread_id;
 	}
 
 	// ゲッタとセッタ

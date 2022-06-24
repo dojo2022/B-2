@@ -82,32 +82,38 @@ public class CommentsDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する☆
-			String sql = "insert into Comments (  comment_id, user_id, content_bbs, time_bbs) values (  ?, ?, ?, ?)";
+			String sql = "insert into Comments ( thread_id, comment_id, user_id, content_bbs, time_bbs) values (?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる☆
-			if (card.getComment_id() != null && !card.getThread_id().equals("")) {
-				pStmt.setString(1, card.getComment_id());
+			if (card.getThread_id() != null && !card.getThread_id().equals("")) {
+				pStmt.setString(1, card.getThread_id());
 			}
 			else {
 				pStmt.setString(1, null);
 			}
-			if (card.getUser_id() != null && !card.getUser_id().equals("")) {
-				pStmt.setString(2, card.getUser_id());
+			if (card.getComment_id() != null && !card.getComment_id().equals("")) {
+				pStmt.setString(2, card.getComment_id());
 			}
 			else {
 				pStmt.setString(2, null);
 			}
-			if (card.getContent_bbs() != null && !card.getContent_bbs().equals("")) {
-				pStmt.setString(3, card.getContent_bbs());
+			if (card.getUser_id() != null && !card.getUser_id().equals("")) {
+				pStmt.setString(3, card.getUser_id());
 			}
 			else {
 				pStmt.setString(3, null);
 			}
-			if (card.getTime_bbs() != null && !card.getTime_bbs().equals("")) {
-				pStmt.setString(4, card.getTime_bbs());
+			if (card.getContent_bbs() != null && !card.getContent_bbs().equals("")) {
+				pStmt.setString(4, card.getContent_bbs());
 			}
 			else {
 				pStmt.setString(4, null);
+			}
+			if (card.getTime_bbs() != null && !card.getTime_bbs().equals("")) {
+				pStmt.setString(5, card.getTime_bbs());
+			}
+			else {
+				pStmt.setString(5, null);
 			}
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {

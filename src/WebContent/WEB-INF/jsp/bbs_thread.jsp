@@ -47,6 +47,7 @@
 			<!-- 投稿するユーザ名を表示 -->
 			<p class="username_comment">ID：${username.username}</p>
 			<textarea name="post1" class="comment_box"></textarea>
+			<input type="hidden" name="getThreadId" value="${comments.thread_id}">
 			<!-- 投稿ボタン -->
 			<input type="submit" name="post" value="投稿"><br>
 		</form>

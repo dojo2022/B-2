@@ -30,13 +30,13 @@ public class UnderstandResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		//		HttpSession session = request.getSession();
-		//		if (session.getAttribute("username") == null) {
-		//			response.sendRedirect("/tasuma/LoginServlet");
-		//			return;
-		//		}
+				HttpSession session = request.getSession();
+				if (session.getAttribute("username") == null) {
+					response.sendRedirect("/tasuma/LoginServlet");
+					return;
+				}
 
-				//達成度イラスト表示用に達成度を(計算して)持ってくる
+
 
 				// us_result.jspにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/us_result.jsp");
