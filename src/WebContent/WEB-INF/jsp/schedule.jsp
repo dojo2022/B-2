@@ -28,24 +28,25 @@
 	<c:forEach var="e" items="${Test_daysList}" varStatus="status">
 	<c:choose>
 	  <c:when test="${status.index == 0}">
-		<tr><td></td><td><input type="radio" name="select_schedule" value="${e.testdays}" checked="checked" class="radio"></td><td><h3 class="testday">${e.testdays}</h3></td><td></td></tr>
+		<tr class="day_row"><td class="day_row"><label for="${status.index}"><input type="radio" name="select_schedule" value="${e.testdays}" checked="checked" class="radio" id="${status.index}"></label></td><td class="day_row"><h3 class="testday"><label for="${status.index}">${e.testdays}</label></h3></td></tr>
 	  </c:when>
 	  <c:otherwise>
-	  		<tr><td></td><td><input type="radio" name="select_schedule" value="${e.testdays}" class="radio"></td><td><h3 class="testday">${e.testdays}</h3></td><td></td></tr>
+		<tr class="day_row"><td class="day_row"><label for="${status.index}"><input type="radio" name="select_schedule" value="${e.testdays}" class="radio" id="${status.index}"></label></td><td class="day_row"><h3 class="testday"><label for="${status.index}">${e.testdays}</label></h3></td></tr>
 	  </c:otherwise>
 	</c:choose>
 	</c:forEach>
-		<tr><td><a href="/tasuma/MenuServlet"><input type="button" name="back_menu" value="メニューに戻る"></a></td><td></td><td></td><td><input type="submit" name="regist" value="登録"></td></tr>
+		<tr><td></td><td></td><td><input type="submit" name="regist" value="登録"></td></tr>
 
 	</table>
 	</form>
 	<h3>おすすめ参考書</h3>
 	<c:forEach var="a" items="${bookList}">
 	<div class="book_item">
-		<div class="book_image"><a href="${a.book_url}" target="_blank" alt="参考書画像とアマゾンリンク"><img src="/tasuma/img/book_img${a.book_image}.jpg"></a></div>
+		<div class="book_image"><a href="${a.book_url}" target="_blank"><img src="/tasuma/img/book_img${a.book_image}.jpg" alt="参考書画像"></a></div>
 		<h3 class="book_name"><a href="${a.book_url}" target="_blank" class="book_url">${a.book_name}</a></h3>
 	</div>
 	</c:forEach>
+	<a href="/tasuma/MenuServlet"><button type="button" name="back_menu"class="back_menu">登録をキャンセルして<br>メニューに戻る</button></a>
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
 </html>

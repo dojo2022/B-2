@@ -157,7 +157,7 @@ public class ScheduleServlet extends HttpServlet {
 		//セッションスコープ（資格名）を破棄する
 		session.removeAttribute("certification");
 
-		//My資格サーブレットにリダイレクトする
-		response.sendRedirect("/tasuma/CertificationServlet");
+		//メニューサーブレットにリダイレクトする
+		response.sendRedirect("/tasuma/MenuServlet");
 	}
 }

@@ -1,36 +1,43 @@
 @charset "UTF-8";
 
-table {
-  /*display: flex;
-  justify-content: center;
-	padding:20,0px;
-	margin:40.0px;*/
-	margin:auto;
-	text-align:center;
-	font-weight:bold;
-
-}
-td{
-}
+/*「資格名」「おすすめ参考書」の文字
+	中央揃え・太字*/
 h3{
 	text-align:center;
 	font-weight:bold;
 }
-h3.book_name{
-	text-align:center;
-	font-weight:normal;
-}
-h3.testday{
-	text-align:center;
-	margin-top:0;
-	margin-bottom:0;
-	margin-right:2em;
-	font-weight:normal;
-}
-.radio{
-	margin-left:2em;
+
+/*試験日程を表示するテーブル自体の設定*/
+.list {
+	margin: auto;
+	text-align: center;
 }
 
+/*テーブルのデータ列の設定(登録ボタンを除く)*/
+td.day_row{
+	border-bottom-width: 3px;
+	border-bottom-style: dotted;
+	border-bottom-color: black;
+	padding: 4px 16px 4px 0;
+	white-space: nowrap; /* 折り返さない */
+
+}
+
+/*ホバー時、データ列の色を変える*/
+tr.day_row:hover {
+	background-color: #b0c4de;
+}
+
+/*試験日程の文字(2022/10/01)
+	普通の太さに・上下のスペースをつぶした*/
+h3.testday{
+	margin-top:0;
+	margin-bottom:0;
+	font-weight:normal;
+}
+
+/*参考書のアマゾンリンクの色
+	VSCodeの青系統っぽく*/
 a:link {
 	color: #80ffff;
 }
@@ -38,29 +45,35 @@ a:visited {
 	color: #80ffff;
 }
 a:hover {
-	color: #00ffff;
-}
-a:active {
 	color: #0000ff;
 }
+a:active {
+	color: #00ffff;
+}
+
+/*参考書画像の大きさ*/
 .book_image img{
 	margin-left: 150px;
 	height: 250px;
 }
 
+/*参考書名と画像を横並び*/
 .book_item {
 	display: flex;
 	padding: 20px 8px;
-		/*border-bottom: 1px dashed #bec2c7;*/
 }
+
+/*画像と名前を近づけて表示*/
 div.book_image {
 	text-align:right;
 	margin: auto;
 	margin-right: 0;
 	padding:0;
 }
-.book_image {
-	margin-right: 16px;
-}
-.book_name {
+
+/*おすすめ参考書名
+	普通の太さにした*/
+h3.book_name{
+	text-align:center;
+	font-weight:normal;
 }
