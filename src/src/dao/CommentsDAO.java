@@ -81,7 +81,7 @@ public class CommentsDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する☆
-			String sql = "insert into Comments (  comment_id, user_id, content_bbs, time_id) values (  ?, ?, ?, ?)";
+			String sql = "insert into Comments (  comment_id, user_id, content_bbs, time_bbs) values (  ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる☆
 			if (card.getComment_id() != null && !card.getThread_id().equals("")) {
@@ -102,8 +102,8 @@ public class CommentsDAO  {
 			else {
 				pStmt.setString(3, null);
 			}
-			if (card.getTime_id() != null && !card.getTime_id().equals("")) {
-				pStmt.setString(4, card.getTime_id());
+			if (card.getTime_bbs() != null && !card.getTime_bbs().equals("")) {
+				pStmt.setString(4, card.getTime_bbs());
 			}
 			else {
 				pStmt.setString(4, null);
