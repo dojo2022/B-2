@@ -68,9 +68,9 @@ public class BbsServlet extends HttpServlet {
 			String threadTitle = thDao.to_thread(thread_bbs);
 			String threadID = thDao.getThread_id(thread_bbs);
 			CommentsDAO cDAO=new CommentsDAO();
-			List<Comments> commentlist= cDAO.to_thread(threadID);
+			List<Comments> comment_bbs= cDAO.to_thread(threadID);
 			HttpSession session = request.getSession();
-			session.setAttribute("comments",new Bbs_thread(threadTitle,commentlist));
+			session.setAttribute("comments",new Bbs_thread(threadTitle,comment_bbs));
 			// 結果を返す
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
 			dispatcher.forward(request, response);

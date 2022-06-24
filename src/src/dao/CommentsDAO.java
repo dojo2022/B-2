@@ -24,7 +24,7 @@ public class CommentsDAO  {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 
 			// SQL文を準備する
-			String sql = "select user_id, content_bbs, time_bbs  from Comments WHERE thread_id LIKE ? ORDER BY time_bbs";
+			String sql = "select users.user_id,users.username, Comments.content_bbs, Comments.time_bbs  from Comments LEFT JOIN  users  ON Comments.user_id = users.user_id WHERE Comments.thread_id LIKE ? ORDER BY Comments.time_bbs;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -42,6 +42,7 @@ public class CommentsDAO  {
 			while (rs.next()) {
 				Comments card = new Comments(
 				rs.getString("user_id"),
+				rs.getString("username"),
 				rs.getString("content_bbs"),
 				rs.getString("time_bbs")
 				);
