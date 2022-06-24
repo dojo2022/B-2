@@ -1,10 +1,3 @@
-
-/* 竹田追記※未完成 ハンバーガーメニューここから */
-/* document.querySelector('.menu-btn').addEventListener('click', function(){
-document.querySelector('.menu').classList.toggle('is-active');
-}); */
-/* ハンバーガーメニューここまで */
-
 const weeks = ['日', '月', '火', '水', '木', '金', '土']
 const date = new Date()
 let year = date.getFullYear()
