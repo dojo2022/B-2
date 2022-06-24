@@ -226,7 +226,7 @@ public class UnderstandServlet extends HttpServlet {
 				}
 			}
 			if(itemCount > 0) {
-				percent = (itemCount1 + itemCount2 / itemCount) * 100;
+				percent = ((double)itemCount1 + (double)itemCount2 / itemCount) * 100;
 			}
 
 			//percent(達成度)とi.getItem(項目名)をpercentsに追加
