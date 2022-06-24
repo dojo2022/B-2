@@ -44,14 +44,14 @@ public class UserSettingServlet extends HttpServlet {
 		}
 
 		//セッションスコープからインスタンスを取り出す
-		HttpSession session = request.getSession();
-		LoginUser old_username_obj = (LoginUser)session.getAttribute("username");
+		HttpSession session1 = request.getSession();
+		LoginUser old_username_obj = (LoginUser)session1.getAttribute("username");
 		String old_username = old_username_obj.getUsername();
 		//old_usernameからold_mail,old_pwを取るselect DAOを作成する
 
 		//変数oldpw,oldmailに代入する
-		
-		
+
+
 		// ユーザー設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/user_setting.jsp");
 		dispatcher.forward(request, response);
