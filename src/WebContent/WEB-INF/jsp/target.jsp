@@ -28,12 +28,13 @@
 		<form action="/tasuma/TargetServlet" method="post" id="list">
 			<table class="list">
 				<c:forEach var="e" items="${itemList}" varStatus="status">
-					<tr><td>${e}</td><td><input type="checkbox" name="check<%= count %>" value="1"
-					<c:if test="${ttList.get(status.index).today_target == '1'}">
-					checked
-					</c:if>
-					></td><td></td></tr>
-										 <input type="hidden" name="item<%= count %>" value="${e}">
+					<tr><td>${e}</td><td></td>
+						<td><input type="checkbox" name="check<%= count %>" value="1"
+						<c:if test="${ttList.get(status.index).today_target == '1'}">
+						checked
+						</c:if>
+					   ></td></tr>
+						<input type="hidden" name="item<%= count %>" value="${e}">
 				<% count++; %>
 				</c:forEach>
 			</table>
