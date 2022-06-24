@@ -74,7 +74,7 @@
 
 	<!-- 本日の目標 -->
 	<c:forEach var="e1" items="${menu_data }">
-		<h3>本日の目標-${e1.certification}</h3>
+		<h3>本日の目標 - ${e1.certification}</h3>
 		<ul class="data">
 			<c:forEach var="e2" items="${e1.itemList }">
 				<li>${e2 }
@@ -91,14 +91,14 @@
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示(余裕があれば) -->
 
-	<div class="calenderelese">
+	<div class="calendarelese">
 		<button id="prev" type="button">前の月</button>
 		<button id="next" type="button">次の月</button>
-		<div id="calendar"></div>
 	</div>
+		<div id="calendar"></div>
 
 	<!-- フッターここから -->
-	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
+		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
 </body>
 </html>
