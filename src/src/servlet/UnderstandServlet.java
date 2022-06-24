@@ -202,16 +202,16 @@ public class UnderstandServlet extends HttpServlet {
 			tuDao.update(new Target_understands(0, target_id, null, user_id, nowStr, target_understands));
 		}
 
-		//目標達成度の取得
 		List<Percent> percents = new ArrayList<Percent>();
 		CertificationsDAO cDao = new CertificationsDAO();
 		ItemsDAO iDao = new ItemsDAO();
 
+		//資格idを取得し、項目一覧を取得
 		String certification_id = cDao.getCertification_id(certification);
 		List<Items> iList = iDao.select(new Items(certification_id, null, null, 0));
 
 		for(Items i :iList) {
-			//全件検索
+			//項目数取得
 			int itemCount = tuDao.getCount(new Target_understands(0, null, i.getItem_id(), user_id, null, null));
 
 			//達成項目数取得
@@ -228,15 +228,16 @@ public class UnderstandServlet extends HttpServlet {
 			if(itemCount > 0) {
 				percent = (itemCount1 + itemCount2 / itemCount) * 100;
 			}
-			String perStr = Double.toString(percent);
-			percents.add(new Percent(perStr, i.getItem()));
+
+			//percent(達成度)とi.getItem(項目名)をpercentsに追加
+			percents.add(new Percent(percent, i.getItem()));
 		}
 
 		//必要なデータ：資格名、項目毎の達成度
 		session.setAttribute("understands_result", new Understands_result(certification, percents));
 
 		// 理解度報告結果ページにリダイレクトする
-		response.sendRedirect("/tasuma/UnderstandServlet");
+		response.sendRedirect("/tasuma/UnderstandResultServlet");
 	}
 
 }
