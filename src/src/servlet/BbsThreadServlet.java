@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CommentsDAO;
+import dao.ThreadsDAO;
 import dao.UsersDAO;
+import model.Bbs_thread;
 import model.Comments;
 import model.LoginUser;
 import model.Result;
@@ -63,28 +66,27 @@ public class BbsThreadServlet extends HttpServlet {
 			if (cDao.insert_update()) {	// 登録成功
 				// メニューサーブレットにリダイレクトする
 				response.sendRedirect("/WEB-INF/jsp/bbs_thread.jsp");
+				//bbs_thread.jspからスレッドのidをもらう
+				String thread_bbs = request.getParameter("thread_no");
+				ThreadsDAO thDao = new ThreadsDAO();
+				String threadTitle = thDao.to_thread(thread_bbs);
+				String threadID = thDao.getThread_id(thread_bbs);
+				CommentsDAO cDAO=new CommentsDAO();
+				List<Comments> comment_bbs= cDAO.to_thread(threadID);
+
+				session.setAttribute("comments",new Bbs_thread(threadTitle,threadID,comment_bbs));
 
 			}
 			else {									// 登録失敗
 				//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する★保留
 				request.setAttribute("result",
 				new Result("登録失敗！", "コメントを登録することができませんでした。"));
-
+			}
 				//  （要変更？）結果ページにフォワードする★保留
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
 				dispatcher.forward(request, response);
 				return;
-			}}
 
-			else {									// 登録失敗
-				//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する★保留
-				request.setAttribute("result",
-				new Result("登録失敗！", "コメントを登録することができませんでした。"));
-
-				//  （要変更？）結果ページにフォワードする★保留
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
-				dispatcher.forward(request, response);
-				return;
 			}
 
 

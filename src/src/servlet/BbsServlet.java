@@ -68,6 +68,7 @@ public class BbsServlet extends HttpServlet {
 			String threadTitle = thDao.to_thread(thread_bbs);
 			String threadID = thDao.getThread_id(thread_bbs);
 			CommentsDAO cDAO=new CommentsDAO();
+			//threadのidも取ってきてセッションスコープに入れる
 			List<Comments> comment_bbs= cDAO.to_thread(threadID);
 			HttpSession session = request.getSession();
 			session.setAttribute("comments",new Bbs_thread(threadTitle,threadID,comment_bbs));

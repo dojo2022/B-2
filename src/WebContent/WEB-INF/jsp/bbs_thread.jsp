@@ -42,6 +42,8 @@
 		<!-- 投稿する時の処理 -->
 		<form method="POST" action="/tasuma/BbsThreadServlet">
 			<!-- 投稿するユーザ名を表示 -->
+			<!--セッションスコープのスレッドのidを入れる  -->
+			<input type="hidden" name="thread_no" value="${comments.thread_bbs}">
 			<p class="username_comment">ID：${username.username}</p>
 			<textarea name="post1" class="comment_box"></textarea>
 			<input type="hidden" name="getThreadId" value="${comments.thread_id}">
