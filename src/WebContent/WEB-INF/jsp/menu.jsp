@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="/tasuma/css/menu.css">
-<link rel="stylesheet" href="/tasuma/css/style.css">
 
+<link rel="stylesheet" href="/tasuma/css/style.css">
+<link rel="stylesheet" href="/tasuma/css/menu.css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TASUMA|メニュー</title>
@@ -60,6 +60,9 @@
 <body>
 	<button type="button" class="menu-btn">
 		<i class="fa fa-bars" aria-hidden="true"></i>
+		<span class="bar bar_top"></span>
+		<span class="bar bar_mid"></span>
+		<span class="bar bar_bottom"></span>
 	</button>
 	<div class="menu">
 		<div class="menu__item"><a href="/tasuma/CertificationServlet">My資格</a></div>
