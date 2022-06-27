@@ -79,9 +79,43 @@ table#list tr.rowdata:hover {
 	background-color: #b0c4de;
 }
 
+/* 日程を決めるボタンと検索ボタン */
+.btn-square-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #008080;/*背景色*/
+  border-bottom: solid 2px #2f4f4f;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+}
+
+.btn-square-pop:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
 /* メニューボタンの位置 */
-.menu {
+/* .menu {
 	position: relative;
 	top: 7px;
 	right: 350px;
+}*/
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #b0c4de;
+  border: solid 2px #b0c4de;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
 }
