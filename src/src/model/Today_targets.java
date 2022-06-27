@@ -9,6 +9,7 @@ public class Today_targets implements Serializable {
 	private String today_target;
 	private String certification;
 	private String username;
+	private String certification_id;
 
 
 	//コンストラクタ（引数あり）
@@ -101,6 +102,14 @@ public class Today_targets implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getCertification_id() {
+		return certification_id;
+	}
+
+	public void setCertification_id(String certification_id) {
+		this.certification_id = certification_id;
 	}
 
 }

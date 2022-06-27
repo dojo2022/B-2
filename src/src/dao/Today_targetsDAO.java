@@ -163,7 +163,7 @@ public class Today_targetsDAO {
 
 			//データの登録
 				// SQL文を準備する
-				String sql = "insert into Today_targets (user_id, item_id) values (?, ?)";
+				String sql = "insert into Today_targets (user_id, item_id,certification_id) values (?, ?,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -178,6 +178,12 @@ public class Today_targetsDAO {
 				}
 				else {
 					pStmt.setString(2, null);
+				}
+				if (today_targets.getCertification_id() != null && !today_targets.getCertification_id().equals("")) {
+					pStmt.setString(3, today_targets.getCertification_id());
+				}
+				else {
+					pStmt.setString(3, null);
 				}
 
 			// 結果表をコレクションにコピーする
