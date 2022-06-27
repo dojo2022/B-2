@@ -99,7 +99,7 @@ public class MenuServlet extends HttpServlet {
 	        String remainingDays = Integer.toString((int)dayDiff);
 
 			//今日の目標の内、該当する資格の項目をリストに格納
-			List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, "1"));
+			List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null, "1"));
 
 			//ttListが空ならフォワード
 			if(ttList.isEmpty()) {
