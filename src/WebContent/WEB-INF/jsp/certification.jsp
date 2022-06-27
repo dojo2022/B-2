@@ -43,7 +43,7 @@
 					<table class="list">
 						<tr>
 							<!--<td><input type="text" name="certification" value="${e.certification}"></td>-->
-							<td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
+							<td>${e.certification}</td><td><input type="submit" name="regist_delete" class="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
 						</tr>
 					</table>
 					<input type="hidden" name="certification" value="${e.certification}">
