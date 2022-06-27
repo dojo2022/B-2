@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>TASUMA | 掲示板</title>
 <link rel="stylesheet" type="text/css" href="/tasuma/css/bbs_thread.css">
-<!-- <link rel = "stylesheet"type = "text/css" href = "/tasuma/css/style.css"> -->
+
 </head>
 <body>
 
@@ -56,7 +56,7 @@
 
 		<!-- 一覧に戻るボタン -->
 		<table>
-			<tr class="bbs">
+			<tr class="return">
 				<td><a href="/tasuma/BbsServlet">
 						<button type="button" name="back_bbs">一覧に戻る</button>
 				</a></td>

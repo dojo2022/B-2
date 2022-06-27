@@ -8,8 +8,26 @@
 
 }
 .newregist_button{
-	/*display: block;*/
-    text-align:right;
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+   float:right;
+}
+.newregist_button:hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.newregist_button:active, .newregist_button:focus {
+  top: 2px;
 }
 table {
 	margin:auto;
@@ -17,10 +35,29 @@ table {
 	font-weight:bold;
 
   }
-  .login{
 
-	display: block;
-	margin:auto;
+.login{
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+  display: block;
+margin:auto;
+}
+.login:hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.login:active, .login:focus {
+  top: 2px;
 }
 .errormsg{
 	text-align:center;
