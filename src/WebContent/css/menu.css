@@ -181,7 +181,7 @@ button {
 	z-index:55;
 }
 /* カレンダーのボタンデザイン */
-.button a {
+.button button {
   display: flex;
   justify-content: space-between;
   align-items: right;
@@ -195,7 +195,7 @@ button {
   border-radius: 50vh;
 }
 
-.button a::after {
+.button button::after {
   content: '';
   width: 5px;
   height: 5px;
@@ -204,7 +204,7 @@ button {
   transform: rotate(45deg);
 }
 
-.button a:hover {
+.button button:hover {
   text-decoration: none;
   background-color: #bbbbbb;
 }

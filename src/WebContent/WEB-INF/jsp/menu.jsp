@@ -108,8 +108,8 @@
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示(余裕があれば) -->
 
 
-<a id="prev" class="btn">前の月</a>
-	<a id="next" class="btn">次の月</a>
+	<button id="prev">前の月</button>
+	<button id="next">次の月</button>
 	<div id="calendar" class="btn"></div>
 
 	<!-- フッターここから -->
