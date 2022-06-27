@@ -129,7 +129,8 @@ display: none;
 .bnts:after{
 content:"";
 clear:both;
-display:block;
+display:block;display:flex;
+justify-content:space-between;
 }
 /* +ボタン丸にする */
 .btn{
@@ -144,10 +145,8 @@ display:block;
   color:white;
   font-size:80px;
   text-decoration:none;
+  float:right;
 
-  float:left;
-position:absolute;
-right:0;
 }
 .to_menu{
   width: 100px;
@@ -162,13 +161,12 @@ right:0;
   border: 1px solid rgb(128, 255, 128);
   background: #222222;
   color: rgb(128, 255, 128);
-
  float:left;
 }
 .to_menu:hover {
   background: rgb(128, 255, 128);
   color: #fff;
 }
-.to_menu:active, .to_thread:focus {
+.to_menu:active, .to_menu:focus {
   top: 2px;
 }

@@ -93,7 +93,7 @@ public class UnderstandServlet extends HttpServlet {
 			return;
 		}
 
-		List<Today_targets> ttList = ttDao.select(new Today_targets(user_id, null, "1"));
+		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null, "1"));
 
 		//ttListが空ならフォワード
 		if(ttList.isEmpty()) {
@@ -222,7 +222,7 @@ public class UnderstandServlet extends HttpServlet {
 			double percent = 0;
 			if(itemCount == itemCount1 + itemCount2) {
 				if(itemCount1 != 0 & itemCount2 != 0) {
-					ttDao.update(new Today_targets(user_id, i.getItem_id(), "2"));
+					ttDao.update(new Today_targets(user_id, i.getItem_id(), null, "2"));
 				}
 			}
 			if(itemCount > 0) {

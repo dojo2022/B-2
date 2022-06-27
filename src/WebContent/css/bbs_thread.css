@@ -11,14 +11,14 @@ h2 {
 }
 
 /* コメント内の投稿時間と投稿した人のIDの位置 */
-.time_id {
+/*.time_id {
 	text-align: left;
-}
+}*/
 
 /* コメントの位置 */
-.comment {
+/*.comment {
 	text-align: left;
-}
+}*/
 
 /* ログインユーザがコメントを投稿するときに、ユーザ名の位置 */
 .username_comment {
@@ -31,10 +31,16 @@ h2 {
 }
 
 /* 一覧に戻るボタンの位置 */
-.bbs {
+.return {
 	padding-top: 30px;
 }
 /* コメントリスト */
 .bbs{
 	text-align:center;
+	margin: 0 auto;
+}
+.rowdata{
+	text-align:center;
+	margin: 0 auto;
+	border-bottom: 2px solid rgb(128, 255, 128);
 }
