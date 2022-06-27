@@ -110,6 +110,7 @@ public class Today_targetsDAO {
 			ResultSet rs = pStmt.executeQuery();
 
 			// 結果表をコレクションにコピーする
+			//certification_idに入れたいのに、certificationに入ってしまう...①
 			while (rs.next()) {
 				Today_targets new_target = new Today_targets(
 						rs.getString("item_id"),
@@ -179,8 +180,9 @@ public class Today_targetsDAO {
 				else {
 					pStmt.setString(2, null);
 				}
-				if (today_targets.getCertification_id() != null && !today_targets.getCertification_id().equals("")) {
-					pStmt.setString(3, today_targets.getCertification_id());
+				//insert_select①より、certificationに入っているcertification_idを登録する
+				if (today_targets.getCertification() != null && !today_targets.getCertification().equals("")) {
+					pStmt.setString(3, today_targets.getCertification());
 				}
 				else {
 					pStmt.setString(3, null);
