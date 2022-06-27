@@ -14,7 +14,6 @@ import dao.CommentsDAO;
 import dao.ThreadsDAO;
 import model.Bbs_thread;
 import model.Comments;
-import model.LoginUser;
 import model.Threads;
 
 @WebServlet("/BbsServlet")
@@ -30,8 +29,7 @@ public class BbsServlet extends HttpServlet {
 			response.sendRedirect("/tasuma/LoginServlet");
 			return;
 		}
-		LoginUser loginuser = (LoginUser)session.getAttribute("username");
-		String username = loginuser.getUsername();
+
 		// 登録済みの全スレッド検索
 		ThreadsDAO tDao = new ThreadsDAO();
 		List<Threads> threadList = tDao.select_threads(null);

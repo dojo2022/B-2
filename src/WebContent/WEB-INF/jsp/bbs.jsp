@@ -14,20 +14,22 @@
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<h2>掲示板</h2>
 	<!-- カテゴリープルダウン選択 -->
+
 	<div class="bbs_list">
 	<form method="POST" action="/tasuma/BbsServlet" id="select_bbs" class="select_bbs">
-	<table class="thread_category">
+	<table>
 	<tr>
-	<td>スレッドカテゴリー：<select name="select_bbsCategory">
+	<td class=thread_category><select name="select_bbsCategory">
 		<option value="">カテゴリーを選択</option>
 		<option value="exam">試験</option>
 		<option value="chat">雑談</option>
 		<option value="q_a">質問</option>
 		<option value="other">その他</option>
 	</select></td>
-		<td><input type="submit" name="submit" value="検索"class="bbs_selec"></td>
-	</tr>
-	</table>
+	<td></td>
+		<td class="c_submit"><input type="submit" name="submit" value="検索"class="selec"></td>
+		</tr>
+		</table>
 	</form>
 
 		<c:forEach var="e" items="${threadList}" >
@@ -37,12 +39,10 @@
 		</table>
 		</form>
 		</c:forEach>
-	<table>
-	<tr>
-	<td><button type="button" onclick="location.href='/tasuma/MenuServlet'">メニューへ戻る</button></td>
-	<td><button type="button" onclick="location.href='/tasuma/BbsNewServlet'" class="btn">+</button></td>
-	</tr>
-	</table>
+	<div class="btns">
+	<button type="button" onclick="location.href='/tasuma/MenuServlet'" class="to_menu">戻る</button>
+	<button type="button" onclick="location.href='/tasuma/BbsNewServlet'" class="btn">+</button>
+	</div>
 	</div>
 	<!-- フッター -->
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />

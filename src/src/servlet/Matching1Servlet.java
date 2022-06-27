@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.CertificationsDAO;
 import model.Certifications;
-import model.LoginUser;
 
 /**
  * Servlet implementation class Matching1Servlet
@@ -35,8 +34,7 @@ public class Matching1Servlet extends HttpServlet {
 			return;
 		}
 
-		LoginUser loginuser = (LoginUser)session.getAttribute("username");
-		String username = loginuser.getUsername();
+
 
 		// jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/matching1.jsp");
