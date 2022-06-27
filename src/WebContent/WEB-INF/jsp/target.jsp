@@ -43,18 +43,14 @@
 			</c:forEach>
 
 				 <input type="hidden" name="count" value="<%= count %>">
-			<div><input type="submit" class="menu" name="update" value="更新" onclick="return itemsubmit()"></div>
+			<div class="submit"><input type="submit" class="menu" name="update" value="更新" onclick="return itemsubmit()"></div>
 		</form>
 
 
 	<!-- メニューボタン -->
-  	<table>
-		<tr>
-			<td><a href="/tasuma/MenuServlet">
-				<button type="button" class="back_manu" name="back_menu">メニューに戻る</button>
-			</a></td>
-	 	</tr>
-    </table>
+  	<div class="back_manu">
+		<button type="button" onclick="location.href='/tasuma/MenuServlet'" class="back_menu">メニューに戻る</button>
+	</div>
 	<!-- フッターここから -->
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->

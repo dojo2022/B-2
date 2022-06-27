@@ -19,7 +19,7 @@
 		<h2>My資格</h2>
 
 	<!--マッチングページにリンク飛ぶボタン-->
-	<div>
+	<div class="a">
 		  <a href="/tasuma/Matching1Servlet">
 				<span title="質問チャートを使ってあなたにおすすめの資格をマッチング！"><button type="button" class="button" name="to_matching">マッチング</button></span></a>
 
@@ -51,13 +51,12 @@
 			</c:forEach>
 
 	<!-- メニューボタン -->
-	<table>
-	 <tr>
-		<td><a href="/tasuma/MenuServlet">
-			<button type="button" class="manu" name="back_menu">メニューに戻る</button>
-		</a></td>
-	 </tr>
-    </table>
+
+	 <div class="top">
+		<button type="button" onclick="location.href='/tasuma/MenuServlet'" class="menu">メニューに戻る</button>
+	 </div>
+
+
 	<!-- フッターここから -->
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
