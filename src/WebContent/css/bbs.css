@@ -1,12 +1,56 @@
 @charset "UTF-8";
 /* スレッドへ飛ぶボタン */
-.to_thread{
+.to_thread {
+  position: relative;
+  text-align: center;
+  /* 中央揃え */
+  display: block;
+  margin: 0 auto;
+  /* 幅の指定 */
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  /* 色の指定 */
+  background: linear-gradient(135deg, rgb(0, 0, 255),rgb(0, 0, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 2px solid #0000ff;
+  background: #fff;
+  color: rgb(0, 0, 128);
+}
+.to_thread:hover {
+  background: rgb(0, 0, 255);
+  color: #fff;
+}
+.to_thread:active, .to_thread:focus {
+  top: 2px;
+}
+/* .to_thread{
 	height:40px;
 	width:300px;
-}
-.bbs_list{
-	text-align:center;
+} */
+/* 中央ぞろえ */
+ .bbs_list{
+	margin: 0 auto;
+	max-width: 1000px;
 }
 .thread_category{
 	text-align:center;
+}
+/* +ボタン丸にする */
+.btn{
+  display:block;
+  width:70px;
+  height:70px;
+  margin:1em auto;
+  line-height:70px;
+  background:#222222;
+  border-radius:100%;
+  border-color:white;
+  color:white;
+  font-size:80px;
+  text-decoration:none;
+  text-align:center;
 }

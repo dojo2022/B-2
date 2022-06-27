@@ -94,7 +94,7 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT item_id as ID, certification_id as DAY FROM Items WHERE certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ? ORDER BY ID)";
+			String sql = "SELECT item_id, certification_id as DAY FROM Items WHERE certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?) ORDER BY ID;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

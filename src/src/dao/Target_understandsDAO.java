@@ -112,7 +112,7 @@ public class Target_understandsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT Targets.item_id as ID,Targets.target_id as DAY FROM Targets,CERTIFICATIONS WHERE CERTIFICATIONS .certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?);";
+			String sql = "SELECT target_id , certification_id FROM Targets WHERE certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?) ORDER BY ID;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
