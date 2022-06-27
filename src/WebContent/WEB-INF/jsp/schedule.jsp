@@ -35,7 +35,7 @@
 	  </c:otherwise>
 	</c:choose>
 	</c:forEach>
-		<tr><td></td><td></td><td><input type="submit" name="regist" value="登録"></td></tr>
+		<tr><td></td><td></td><td><input type="submit" name="regist" value="登録" class="button"></td></tr>
 
 	</table>
 	</form>
@@ -46,7 +46,7 @@
 		<h3 class="book_name"><a href="${a.book_url}" target="_blank" class="book_url">${a.book_name}</a></h3>
 	</div>
 	</c:forEach>
-	<a href="/tasuma/MenuServlet"><button type="button" name="back_menu"class="back_menu">登録をキャンセルして<br>メニューに戻る</button></a>
+	<a href="/tasuma/MenuServlet"><button type="button" name="back_menu" class="back_menu">登録をキャンセルして<br>メニューに戻る</button></a>
 <jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
 </html>
