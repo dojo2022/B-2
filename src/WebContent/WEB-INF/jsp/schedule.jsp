@@ -42,7 +42,7 @@
 	<h3>おすすめ参考書</h3>
 	<c:forEach var="a" items="${bookList}">
 	<div class="book_item">
-		<div class="book_image"><a href="${a.book_url}" target="_blank"><img src="/tasuma/img/book_img${a.book_image}.jpg" alt="参考書画像"></a></div>
+		<div class="book_image"><a href="${a.book_url}" target="_blank"><img src="${a.book_image}" alt="参考書画像"></a></div>
 		<h3 class="book_name"><a href="${a.book_url}" target="_blank" class="book_url">${a.book_name}</a></h3>
 	</div>
 	</c:forEach>

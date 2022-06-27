@@ -46,6 +46,7 @@
 							<td>${e.certification}</td><td><input type="submit" name="regist_delete" value="削除" onclick="return deleteConfirm()"></td>
 						</tr>
 					</table>
+					<input type="hidden" name="certification" value="${e.certification}">
 				</form>
 			</c:forEach>
 
