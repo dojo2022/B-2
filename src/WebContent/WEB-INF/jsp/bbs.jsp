@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>TASUMA|掲示板</title>
-<link rel="stylesheet"type="text/css" href="/tasuma/css/bbs_thread.css">
+<link rel="stylesheet"type="text/css" href="/tasuma/css/bbs.css">
 </head>
 <body>
 	<p class="username">ユーザ名:${username.username}</p>
@@ -14,6 +14,7 @@
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<h2>掲示板</h2>
 	<!-- カテゴリープルダウン選択 -->
+	<div class="bbs_list">
 	<form method="POST" action="/tasuma/BbsServlet" id="select_bbs" class="select_bbs">
 	<table class="thread_category">
 	<tr>
@@ -29,7 +30,6 @@
 	</table>
 	</form>
 
-	<!-- <table class="bbs_list"> -->
 		<c:forEach var="e" items="${threadList}" >
 		<form method="POST" action="/tasuma/BbsServlet" id="select_bbs" id="select_bbs">
 		<table class="bbs_list">
@@ -37,13 +37,13 @@
 		</table>
 		</form>
 		</c:forEach>
-
 	<table>
 	<tr>
 	<td><button type="button" onclick="location.href='/tasuma/MenuServlet'">メニューへ戻る</button></td>
-	<td><button type="button" onclick="location.href='/tasuma/BbsNewServlet'">+</button></td>
+	<td><button type="button" onclick="location.href='/tasuma/BbsNewServlet'" class="btn">+</button></td>
 	</tr>
 	</table>
+	</div>
 	<!-- フッター -->
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 </body>
