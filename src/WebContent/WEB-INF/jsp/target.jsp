@@ -22,26 +22,29 @@
 	<!-- 資格目標の右隣に重み(％)とチェックボックスをつける -->
 	<!-- 折り畳みボタンを使って表示/非表示を切り替える -->
 
-	<details>
-	<summary>資格の目標一覧を表示する</summary>
+
+
 	<% int count = 0; %>
 		<form action="/tasuma/TargetServlet" method="post" id="list">
 			<table class="list">
-				<c:forEach var="e" items="${itemList}" varStatus="status">
-					<tr><td>${e}</td><td></td>
+				<c:forEach var="ee" items="${itemList}">
+				<details>
+				<summary>${ee.certification}の目標一覧を表示する</summary>
+				<c:forEach var="e" items="${ee.itemList}" varStatus="status">
+					<tr><td>${e}</td>
 						<td><input type="checkbox" name="check<%= count %>" value="1"
-						<c:if test="${ttList.get(status.index).today_target == '1'}">
-						checked
-						</c:if>
-					   ></td></tr>
+
+					    ></td></tr>
 						<input type="hidden" name="item<%= count %>" value="${e}">
 				<% count++; %>
+				</c:forEach>
+				</details>
 				</c:forEach>
 			</table>
 				 <input type="hidden" name="count" value="<%= count %>">
 			<div><input type="submit" name="update" value="更新" onclick="return itemsubmit()"></div>
 		</form>
-	</details>
+
 
 	<!-- メニューボタン -->
   	<table class="menu">
