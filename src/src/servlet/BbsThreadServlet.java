@@ -37,8 +37,21 @@ public class BbsThreadServlet extends HttpServlet {
 			response.sendRedirect("/tasuma/LoginServlet");
 			return;
 		}
-		LoginUser loginuser = (LoginUser)session.getAttribute("username");
-		String username = loginuser.getUsername();
+//		LoginUser loginuser = (LoginUser)session.getAttribute("username");
+//		String username = loginuser.getUsername();
+
+		//bbs_thread.jspからスレッドのidをもらう
+		String thread_bbs = request.getParameter("thread_no");
+		ThreadsDAO thDao = new ThreadsDAO();
+		String threadTitle = thDao.to_thread(thread_bbs);
+		String threadID = thDao.getThread_id(thread_bbs);
+		CommentsDAO cDAO=new CommentsDAO();
+		List<Comments> comment_bbs= cDAO.to_thread(threadID);
+
+		session.setAttribute("comments",new Bbs_thread(threadTitle,threadID,comment_bbs));
+
+
+
 		// jspにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
 		dispatcher.forward(request, response);
@@ -65,23 +78,29 @@ public class BbsThreadServlet extends HttpServlet {
 		if (cDao.insert(new Comments(threadId,null, userId, content, time))) {	// 登録成功
 			if (cDao.insert_update()) {	// 登録成功
 				// メニューサーブレットにリダイレクトする
-				response.sendRedirect("/WEB-INF/jsp/bbs_thread.jsp");
-				//bbs_thread.jspからスレッドのidをもらう
-				String thread_bbs = request.getParameter("thread_no");
-				ThreadsDAO thDao = new ThreadsDAO();
-				String threadTitle = thDao.to_thread(thread_bbs);
-				String threadID = thDao.getThread_id(thread_bbs);
-				CommentsDAO cDAO=new CommentsDAO();
-				List<Comments> comment_bbs= cDAO.to_thread(threadID);
-
-				session.setAttribute("comments",new Bbs_thread(threadTitle,threadID,comment_bbs));
-
+//				response.sendRedirect("/WEB-INF/jsp/bbs_thread.jsp");
+				//response.sendRedirect("/BbsThreadServlet");
+//				doGet(request,response);
+				request.setAttribute("result",
+				new Result("登録成功！", "コメントを登録することができました。"));
 			}
 			else {									// 登録失敗
 				//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する★保留
 				request.setAttribute("result",
 				new Result("登録失敗！", "コメントを登録することができませんでした。"));
 			}
+
+
+			//bbs_thread.jspからスレッドのidをもらう
+			String thread_bbs = request.getParameter("thread_no");
+			ThreadsDAO thDao = new ThreadsDAO();
+			String threadTitle = thDao.to_thread(thread_bbs);
+			String threadID = thDao.getThread_id(thread_bbs);
+			CommentsDAO cDAO=new CommentsDAO();
+			List<Comments> comment_bbs= cDAO.to_thread(threadID);
+
+			session.setAttribute("comments",new Bbs_thread(threadTitle,threadID,comment_bbs));
+
 				//  （要変更？）結果ページにフォワードする★保留
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
 				dispatcher.forward(request, response);
