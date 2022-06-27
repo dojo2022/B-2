@@ -28,7 +28,7 @@
 		<form action="/tasuma/TargetServlet" method="post" id="list">
 			<c:forEach var="ee" items="${itemList}">
 				<details>
-				<summary>${ee.certification}の目標一覧を表示する</summary>
+				<summary>${ee.certification}</summary>
 					<table class="list">
 						<c:forEach var="e" items="${ee.itemList}" varStatus="status">
 							<tr><td>${e}</td>
