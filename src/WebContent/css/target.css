@@ -14,5 +14,50 @@ h2{
 
 /* 更新ボタンを右側に配置 */
 div{
-	text-align: right;
+	 text-align: right;
+}
+.menu{
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+}
+.menu:hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.menu:active, div:focus {
+  top: 2px;
+}
+
+/* メニューボタン */
+.back_menu{
+	padding-top: 30px;
+	width: 100px;
+  	box-sizing: border-box;
+ 	padding: 10px;
+    /* 色の指定 */
+  	background: linear-gradient(135deg, rgb(255, 255, 128));
+  	color: #fff;
+  	font-weight: bold;
+  	/*border-radius: 8px;*/
+  	transition: 0.3s;
+  	border: 1px solid rgb(128, 255, 128);
+  	background: #222222;
+  	color: rgb(128, 255, 128);
+}
+.back_menu:hover {
+ background: rgb(128, 255, 128);
+  color: #fff;
+}
+.back_menu:active, .menu:focus {
+  top: 2px;
 }

@@ -19,13 +19,13 @@
 		<h2>My資格</h2>
 
 	<!--マッチングページにリンク飛ぶボタン-->
-	<div class="button">
+	<div>
 		  <a href="/tasuma/Matching1Servlet">
-				<span title="質問チャートを使ってあなたにおすすめの資格をマッチング！"><button type="button" name="to_matching">マッチング</button></span></a>
+				<span title="質問チャートを使ってあなたにおすすめの資格をマッチング！"><button type="button" class="button" name="to_matching">マッチング</button></span></a>
 
 	<!--資格登録一覧ページにリンク飛ぶボタン-->
 		  <a href="/tasuma/CertificationListServlet">
-				<span title="取りたい資格が決まっているあなたはこちら！"><button type="button" name="to_list">一覧から選ぶ</button></span></a>
+				<span title="取りたい資格が決まっているあなたはこちら！"><button type="button" class="button" name="to_list">一覧から選ぶ</button></span></a>
 
 	</div>
 
@@ -50,10 +50,10 @@
 			</c:forEach>
 
 	<!-- メニューボタン -->
-	<table class="menu">
+	<table>
 	 <tr>
 		<td><a href="/tasuma/MenuServlet">
-			<button type="button" name="back_menu">メニューに戻る</button>
+			<button type="button" class="manu" name="back_menu">メニューに戻る</button>
 		</a></td>
 	 </tr>
     </table>
