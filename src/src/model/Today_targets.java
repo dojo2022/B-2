@@ -55,7 +55,7 @@ public class Today_targets implements Serializable {
 
 	//コンストラクタ（引数無し）
 	public Today_targets() {
-		this(0, null, null, null);
+		this(0, null, null, null, null);
 	}
 
 	public int getId() {
