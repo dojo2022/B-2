@@ -21,11 +21,11 @@
 		<form action="/tasuma/UnderstandServlet" method="post">
 			<table>
 				<tr>
-					<td>項目名</td>
-					<td>目標詳細</td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<th>項目名</th>
+					<th>目標詳細</th>
+					<th>&#x1F613;</th>
+					<th>&#x1f610;</th>
+					<th>&#x1f60a;</th>
 				</tr>
 				<c:forEach var="e1" items="${e.ttList }">
 					<tr>
@@ -47,12 +47,29 @@
 
 		<h4>目標一覧</h4>
 			<table>
+				<tr>
+					<th>項目名</th>
+					<th>目標詳細</th>
+					<th>最終報告日</th>
+					<th>理解度</th>
+				</tr>
 				<c:forEach var="e2" items="${e.tuList }">
 					<tr>
 						<td>${e2.item_id }</td>
 						<td>${e2.target_id }</td>
 						<td>${e2.day }</td>
-						<td><c:if test="${e2.target_understand != '0'}" >${e2.target_understand }</c:if></td>
+						<td>
+						<c:choose>
+							<c:when test="${e2.target_understand == '1'}">
+								&#x1F613;
+							</c:when>
+							<c:when test="${e2.target_understand == '2'}">
+								&#x1f610;
+							</c:when>
+							<c:when test="${e2.target_understand == '3'}">
+								&#x1f60a;
+							</c:when>
+						</c:choose></td>
 					</tr>
 				</c:forEach>
 			</table>
