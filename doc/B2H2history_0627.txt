@@ -107,16 +107,36 @@ INSERT INTO My_certifications (user_id,certification_id,testdays) VALUES ('u2','
 --{テーブルの作成}
 CREATE TABLE Targets (
 id INT (4) PRIMARY KEY AUTO_INCREMENT,
-target_id CHAR(5) ,
+CERTIFICATION_ID  CHAR(5) NOT NULL,
+FOREIGN KEY(CERTIFICATION_ID ) REFERENCES CERTIFICATIONS  (CERTIFICATION_ID ),
 item_id CHAR(5) NOT NULL,
 FOREIGN KEY(item_id) REFERENCES Items (item_id ),
+target_id CHAR(5) ,
 target VARCHAR (40)  NOT NULL
 );
 --{データの登録}
-INSERT INTO Targets (item_id,target) VALUES ('b1','バブルソートがわかる');
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b1','バブルソートがわかる');
 UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
 
-INSERT INTO Targets (item_id,target) VALUES ('b1','二分探索法がわかる');
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b1','二分探索法がわかる');
+UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
+
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b2','b2:バブルソートがわかる');
+UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
+
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b2','b2:二分探索法がわかる');
+UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
+
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b3','b3:バブルソートがわかる');
+UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
+
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b3','b3:二分探索法がわかる');
+UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
+
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b4','b4:バブルソートがわかる');
+UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
+
+INSERT INTO Targets (certification_id,item_id,target) VALUES ('a1','b4','b4:二分探索法がわかる');
 UPDATE Targets SET target_id=(SELECT CONCAT('c',id) FROM Targets WHERE target_id IS NULL) WHERE target_id IS NULL;
 
 ---------------------------------
@@ -176,7 +196,7 @@ UPDATE Threads SET thread_id=(SELECT CONCAT('x',id) FROM Threads WHERE thread_id
 
 ---------------------------------
 --[コメントトランザクション]
---{テーブルの作成}//作業途中
+--{テーブルの作成}
 CREATE TABLE Comments (
 id INT (4) PRIMARY KEY AUTO_INCREMENT,
 thread_id CHAR(5) NOT NULL,
