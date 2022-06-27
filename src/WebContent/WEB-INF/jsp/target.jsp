@@ -26,21 +26,22 @@
 
 	<% int count = 0; %>
 		<form action="/tasuma/TargetServlet" method="post" id="list">
-			<table class="list">
-				<c:forEach var="ee" items="${itemList}">
+			<c:forEach var="ee" items="${itemList}">
 				<details>
 				<summary>${ee.certification}の目標一覧を表示する</summary>
-				<c:forEach var="e" items="${ee.itemList}" varStatus="status">
-					<tr><td>${e}</td>
-						<td><input type="checkbox" name="check<%= count %>" value="1"
+					<table class="list">
+						<c:forEach var="e" items="${ee.itemList}" varStatus="status">
+							<tr><td>${e}</td>
+								<td><input type="checkbox" name="check<%= count %>" value="1"
 
-					    ></td></tr>
-						<input type="hidden" name="item<%= count %>" value="${e}">
-				<% count++; %>
-				</c:forEach>
+					    		></td></tr>
+								<input type="hidden" name="item<%= count %>" value="${e}">
+						<% count++; %>
+						</c:forEach>
+					</table>
 				</details>
-				</c:forEach>
-			</table>
+			</c:forEach>
+
 				 <input type="hidden" name="count" value="<%= count %>">
 			<div><input type="submit" name="update" value="更新" onclick="return itemsubmit()"></div>
 		</form>
