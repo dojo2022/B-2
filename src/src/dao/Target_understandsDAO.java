@@ -181,13 +181,14 @@ public class Target_understandsDAO {
 				String user_id = rs.getString("user_id");
 
 			// SQL文を準備する
-			String sql = "insert into Target_understands (target_id, item_id, user_id) values (? ,? ,?)";
+			String sql = "insert into Target_understands (target_id, item_id, user_id, day) values (? ,? ,?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
 			pStmt.setString(1,target_understands.getTarget_id());
 			pStmt.setString(2,target_understands.getItem_id());
 			pStmt.setString(3,user_id);
+			pStmt.setString(4, "");
 
 			// 結果表をコレクションにコピーする
 			// SQL文を実行する
