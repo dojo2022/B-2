@@ -27,7 +27,9 @@ h2 {
 
 /* 投稿ボックスの位置 */
 .comment_box {
-	text-align: left
+	margin: 0 auto;
+	text-align: left;
+	width:500px;
 }
 
 /* 一覧に戻るボタンの位置 */

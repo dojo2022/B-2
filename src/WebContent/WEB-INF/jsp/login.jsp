@@ -26,10 +26,10 @@
 <form method="POST" action="/tasuma/LoginServlet" id="loginForm">
 	<table>
 	 	<tr>
-			<td class="title">ユーザ名</td><td class="box"><input type="text" name="username" id="username"></td>
+			<td class="title">ユーザ名</td><td class="box"><input type="text" name="username" id="username" class="textbox"></td>
 		</tr>
 		<tr>
-			<td class="title">PW</td><td class="box"><input type="password" name="password" id="password"></td>
+			<td class="title">PW</td><td class="box"><input type="password" name="password" id="password" class="textbox"></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" id="pw_display" class="box">パスワードを表示する </td>
