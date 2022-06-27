@@ -108,9 +108,9 @@
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示(余裕があれば) -->
 
 
-<a id="prev">前の月</a>
-	<a id="next">次の月</a>
-	<div id="calendar"></div>
+<a id="prev" class="btn">前の月</a>
+	<a id="next" class="btn">次の月</a>
+	<div id="calendar" class="btn"></div>
 
 	<!-- フッターここから -->
 	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
