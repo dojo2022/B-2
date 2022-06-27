@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.CertificationsDAO;
 import model.Certifications;
-import model.LoginUser;
 
 /**
  * Servlet implementation class Matching2Servlet
@@ -51,8 +50,7 @@ public class Matching2Servlet extends HttpServlet {
 			return;
 		}
 
-		LoginUser loginuser = (LoginUser)session.getAttribute("username");
-		String username = loginuser.getUsername();
+
 
 		// リクエストパラメータを取得する ☆カテゴリ、難易度
 		request.setCharacterEncoding("UTF-8");
