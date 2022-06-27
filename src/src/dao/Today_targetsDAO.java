@@ -55,6 +55,7 @@ public class Today_targetsDAO {
 					rs.getInt("id"),
 					rs.getString("user_id"),
 					rs.getString("item_id"),
+					rs.getString("certification_id"),
 					rs.getString("today_target")
 					);
 				resultList.add(new_target);
