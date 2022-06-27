@@ -57,7 +57,7 @@
 		<!-- 一覧に戻るボタン -->
 		<table>
 			<tr class="bbs">
-				<td><a href="/tasuma/WEB-INF/bbs.jsp">
+				<td><a href="/tasuma/BbsServlet">
 						<button type="button" name="back_bbs">一覧に戻る</button>
 				</a></td>
 			</tr>
