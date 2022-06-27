@@ -25,12 +25,15 @@
 		%>
 	</c:forEach>
 	<input type="hidden" id="count" value="<%=count%>">
+
+	<!-- ユーザ名の表示 -->
+	<p class="username">ユーザ名:${username.username }</p>
+
 	<!-- ヘッダーここから -->
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 	<!-- ヘッダーここまで -->
 
-	<!-- ユーザ名の表示 -->
-	<p class="username">ユーザ名:${username.username }</p>
+
 	<h2>メニュー</h2>
 
 	<!-- ハンバーガーメニュー -->
