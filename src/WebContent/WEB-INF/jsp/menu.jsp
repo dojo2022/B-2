@@ -11,7 +11,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TASUMA|メニュー</title>
-<script defer src="./JavaScript/menu.js"></script>
+<script defer src="./JavaScript/menu.js" defer></script>
 </head>
 <body>
 	<%
@@ -59,18 +59,29 @@
 	<!-- ハンバーガーメニュー追記ここから  竹田 -->
 <body>
 	<button type="button" class="menu-btn">
-		<i class="fa fa-bars" aria-hidden="true"></i>
-		<span class="bar bar_top"></span>
-		<span class="bar bar_mid"></span>
-		<span class="bar bar_bottom"></span>
+		<i class="fa fa-bars" aria-hidden="true"></i> <span
+			class="bar bar_top"></span> <span class="bar bar_mid"></span> <span
+			class="bar bar_bottom"></span>
 	</button>
 	<div class="menu">
-		<div class="menu__item"><a href="/tasuma/CertificationServlet">My資格</a></div>
-		<div class="menu__item"><a href="/tasuma/TargetServlet">目標設定</a></div>
-		<div class="menu__item"><a href="/tasuma/UnderstandServlet">理解度報告</a></div>
-		<div class="menu__item"><a href="/tasuma/BbsServlet">掲示板</a></div>
-		<div class="menu__item"><a href="/tasuma/UserSettingServlet">ユーザ設定</a></div>
-		<div class="menu__item"><a href="/tasuma/LoginServlet">ログアウト</a></div>
+		<div class="menu__item">
+			<a href="/tasuma/CertificationServlet">My資格</a>
+		</div>
+		<div class="menu__item">
+			<a href="/tasuma/TargetServlet">目標設定</a>
+		</div>
+		<div class="menu__item">
+			<a href="/tasuma/UnderstandServlet">理解度報告</a>
+		</div>
+		<div class="menu__item">
+			<a href="/tasuma/BbsServlet">掲示板</a>
+		</div>
+		<div class="menu__item">
+			<a href="/tasuma/UserSettingServlet">ユーザ設定</a>
+		</div>
+		<div class="menu__item">
+			<a href="/tasuma/LoginServlet">ログアウト</a>
+		</div>
 	</div>
 
 	<!-- ハンバーガーメニューの追記ここまで -->
@@ -86,22 +97,23 @@
 	</c:forEach>
 
 	<!-- 残り日数 -->
+	<div class="target">
 	<c:forEach var="e" items="${menu_data }">
-		<h4>${e.certification}まで残り${e.remainingDays }日です。</h4>
+		<h4 >${e.certification}まで残り${e.remainingDays }日です。</h4>
 	</c:forEach>
+	</div>
 
 
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示(余裕があれば) -->
-	<div class="button">
-  		<button id="prev">前の月</button>
-  		<button id="next">次の月</button>
-	</div>
 
-		<div id="calendar"></div>
+
+<a id="prev">前の月</a>
+	<a id="next">次の月</a>
+	<div id="calendar"></div>
 
 	<!-- フッターここから -->
-		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
+	<jsp:include page="/WEB-INF/jsp/footer.jsp" />
 	<!-- フッターここまで -->
 </body>
 </html>
