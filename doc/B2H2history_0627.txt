@@ -165,6 +165,8 @@ user_id CHAR(5) NOT NULL,
 FOREIGN KEY(user_id) REFERENCES Users (user_id ),
 item_id CHAR(5) NOT NULL,
 FOREIGN KEY(item_id) REFERENCES Items (item_id ),
+certification_id CHAR(5) NOT NULL,
+FOREIGN KEY(certification_id) REFERENCES Certifications (certification_id ),
 today_target CHAR(1) DEFAULT 0
 );
 --{データの登録}
