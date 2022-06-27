@@ -52,7 +52,7 @@
 				<input type="text" id="certification" name="CERTIFICATION"><br>
 
 				<!-- 検索ボタン -->
-				<input id="submit" type="submit" name="REGIST" value="検索"><br>
+				<input id="submit" type="submit" name="REGIST" class="btn-square-pop" value="検索"><br>
 			</div>
 		</form>
 
@@ -74,7 +74,7 @@
 						  <%-- </c:if> --%>
 						<td><form method="GET" action="/tasuma/ScheduleServlet">
 								<button type="submit" name="selectCertification"
-									value=${e.certification }>日程を決める</button>
+									value=${e.certification } class="btn-square-pop">日程を決める</button>
 							</form></td>
 					</tr>
 				</c:forEach>
@@ -83,13 +83,15 @@
 		<!-- 日程を決めるボタンここまで -->
 
 		<!-- メニューに戻るボタン -->
-		<table class ="menu">
+		<!--  table class ="menu">
 			<tr>
 				<td><a href="/tasuma/MenuServlet">
 						<button type="button" name="menu">メニューに戻る</button>
 				</a></td>
 			</tr>
-		</table>
+		</table> -->
+
+		<a href="/tasuma/MenuServlet" class="btn-flat-border">メニューに戻る</a>
 	</div>
 
 

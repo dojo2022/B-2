@@ -12,10 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CertificationsDAO;
 import dao.ItemsDAO;
+import dao.My_certificationsDAO;
 import dao.Today_targetsDAO;
 import dao.UsersDAO;
+import model.Items;
 import model.LoginUser;
+import model.Menu_data;
+import model.My_certifications;
 import model.Today_targets;
 
 /**
@@ -44,7 +49,16 @@ public class TargetServlet extends HttpServlet {
 		UsersDAO uDao = new UsersDAO();
 		String user_id = uDao.getUser_id(username);
 		Today_targetsDAO ttDao = new Today_targetsDAO();
+		My_certificationsDAO myDao = new My_certificationsDAO();
 		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null));
+		List<My_certifications> myList = myDao.select(new My_certifications(null, user_id, null, null));
+
+		// myListが空ならフォワード
+		if(myList.isEmpty()) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
+			dispatcher.forward(request, response);
+			return;
+		}
 
 		// myListが空ならフォワード
 		if(ttList.isEmpty()) {
@@ -55,15 +69,31 @@ public class TargetServlet extends HttpServlet {
 
 		// 本日の目標項目一覧itemListの定義
 		ItemsDAO iDao = new ItemsDAO();
-		List<String> itemList = new ArrayList<String>();
+		CertificationsDAO cDao = new CertificationsDAO();
+		List<Menu_data> data = new ArrayList<Menu_data>();
+		for(My_certifications my :myList) {
+			List<String> itemList = new ArrayList<String>();
+			String certifications = cDao.getCertification(my.getCertification_id());
+			List<Items> iList = iDao.select(new Items(my.getCertification_id(), null, null, 0));
+			if(iList.isEmpty()) {
+				continue;
+			}
+			for(Items i :iList) {
+				itemList.add(i.getItem());
+			}
+			data.add(new Menu_data(certifications, null, null, itemList));
+		}
+
+		/*
 		for(Today_targets tt :ttList){
 			// 本日の目標項目idを取得して、項目名を取得しitemListに格納
 			String item = iDao.getItem(tt.getItem_id());
 			itemList.add(item);
 		}
+		*/
 
 		request.setAttribute("ttList", ttList);
-		session.setAttribute("itemList", itemList);
+		session.setAttribute("itemList", data);
 
 		// 目標設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
