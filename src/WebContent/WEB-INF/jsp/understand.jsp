@@ -9,9 +9,9 @@
 </head>
 <body>
 <!-- ヘッダーここから -->
+	<p class="username">${username.username }</p>
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 <!-- ヘッダーここまで -->
-	<p class="username">${username.username }</p>
 	<h2>理解度報告</h2>
 
 	<c:forEach var="e" items="${understands }">
