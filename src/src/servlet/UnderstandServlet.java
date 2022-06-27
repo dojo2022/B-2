@@ -68,8 +68,7 @@ public class UnderstandServlet extends HttpServlet {
 
 		//スコープ格納用データ
 		List<Understands> uList_scope = new ArrayList<Understands>();
-		List<Target_understands> tuList_scope = new ArrayList<Target_understands>();
-		List<Target_understands> ttList_scope = new ArrayList<Target_understands>();
+
 
 		//My資格の取得
 		List<My_certifications> myList = myDao.select(new My_certifications(null, user_id, null, null));
@@ -93,23 +92,15 @@ public class UnderstandServlet extends HttpServlet {
 			return;
 		}
 
-		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null, "1"));
-
-		//ttListが空ならフォワード
-		if(ttList.isEmpty()) {
-			session.setAttribute("understands", uList_scope);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/understand.jsp");
-			dispatcher.forward(request, response);
-			return;
-		}
-
 		for(My_certifications my :myList) {
+			List<Target_understands> tuList_scope = new ArrayList<Target_understands>();
+			List<Target_understands> ttList_scope = new ArrayList<Target_understands>();
 			//資格名の取得
 			String certification = cDao.getCertification(my.getCertification_id());
 			List<Items> iList = iDao.select(new Items(my.getCertification_id(), null, null, 0));
 			if(iList.isEmpty()) break;
-			for(Target_understands tu :tuList) {
-				for(Items i :iList) {
+			for(Items i :iList) {
+				for(Target_understands tu :tuList) {
 					//item_idが一致しなかったら、次のループへ
 					if(!tu.getItem_id().equals(i.getItem_id())) continue;
 					//目標名の取得
@@ -120,30 +111,32 @@ public class UnderstandServlet extends HttpServlet {
 					String day = tu.getDay();
 					//理解度の取得
 					String target_understand = tu.getTarget_understand();
-
 					//(null,目標名,項目名,null,達成日(最終更新日),理解度(0, 1, 2, 3))
 					tuList_scope.add(new Target_understands(0, target, item, user_id, day, target_understand));
-					break;
 				}
 			}
+
+			List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, my.getCertification_id(), "1"));
+
+			//ttListが空ならフォワード
+			if(ttList.isEmpty()) {
+				uList_scope.add(new Understands(certification, tuList_scope, null));
+				continue;
+			}
+
 			for(Today_targets tt :ttList) {
 				for(Target_understands tu :tuList) {
 					if(!tt.getItem_id().equals(tu.getItem_id())) continue;
-					for(Items i :iList) {
-						//item_idが一致しなかったら、次のループへ
-						if(!tu.getItem_id().equals(i.getItem_id())) continue;
-						//目標名の取得
-						String target = tDao.getTarget(tu.getTarget_id());
-						//項目名の取得
-						String item = iDao.getItem(tu.getItem_id());
-						//達成日の取得
-						String day = tu.getDay();
-						//理解度の取得
-						String target_understand = tu.getTarget_understand();
-						//(null,目標名,項目名,null,達成日(最終更新日),理解度(0, 1, 2, 3))
-						ttList_scope.add(new Target_understands(0, target, item, null, day, target_understand));
-						break;
-					}
+					//目標名の取得
+					String target = tDao.getTarget(tu.getTarget_id());
+					//項目名の取得
+					String item = iDao.getItem(tu.getItem_id());
+					//達成日の取得
+					String day = tu.getDay();
+					//理解度の取得
+					String target_understand = tu.getTarget_understand();
+					//(null,目標名,項目名,null,達成日(最終更新日),理解度(0, 1, 2, 3))
+					ttList_scope.add(new Target_understands(0, target, item, null, day, target_understand));
 				}
 			}
 			uList_scope.add(new Understands(certification, tuList_scope, ttList_scope));
