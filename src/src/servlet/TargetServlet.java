@@ -17,10 +17,9 @@ import dao.ItemsDAO;
 import dao.My_certificationsDAO;
 import dao.Today_targetsDAO;
 import dao.UsersDAO;
-import model.Items;
 import model.LoginUser;
-import model.Menu_data;
 import model.My_certifications;
+import model.Targets_data;
 import model.Today_targets;
 
 /**
@@ -45,12 +44,11 @@ public class TargetServlet extends HttpServlet {
 		LoginUser loginuser = (LoginUser)session.getAttribute("username");
 		String username = loginuser.getUsername();
 
-		// 本日の目標(項目)の取得
+		// 本日の目標(項目)とMy資格の取得
 		UsersDAO uDao = new UsersDAO();
 		String user_id = uDao.getUser_id(username);
 		Today_targetsDAO ttDao = new Today_targetsDAO();
 		My_certificationsDAO myDao = new My_certificationsDAO();
-		List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, null));
 		List<My_certifications> myList = myDao.select(new My_certifications(null, user_id, null, null));
 
 		// myListが空ならフォワード
@@ -60,40 +58,28 @@ public class TargetServlet extends HttpServlet {
 			return;
 		}
 
-		// myListが空ならフォワード
-		if(ttList.isEmpty()) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
-			dispatcher.forward(request, response);
-			return;
-		}
-
 		// 本日の目標項目一覧itemListの定義
 		ItemsDAO iDao = new ItemsDAO();
 		CertificationsDAO cDao = new CertificationsDAO();
-		List<Menu_data> data = new ArrayList<Menu_data>();
+		List<Targets_data> data = new ArrayList<Targets_data>();
 		for(My_certifications my :myList) {
-			List<String> itemList = new ArrayList<String>();
-			String certifications = cDao.getCertification(my.getCertification_id());
-			List<Items> iList = iDao.select(new Items(my.getCertification_id(), null, null, 0));
-			if(iList.isEmpty()) {
+			// 資格名の取得
+			String certification = cDao.getCertification(my.getCertification_id());
+			// 該当する資格の今日の目標を取得
+			List<Today_targets> ttList = ttDao.select(new Today_targets(0, user_id, null, my.getCertification_id(), null));
+			// ttListが空なら次のループ
+			if(ttList.isEmpty()) {
 				continue;
 			}
-			for(Items i :iList) {
-				itemList.add(i.getItem());
+			// 項目idから項目名に変換
+			for(Today_targets tt :ttList) {
+				String item = iDao.getItem(tt.getItem_id());
+				tt.setItem_id(item);
 			}
-			data.add(new Menu_data(certifications, null, null, itemList));
+			data.add(new Targets_data(certification, ttList));
 		}
 
-		/*
-		for(Today_targets tt :ttList){
-			// 本日の目標項目idを取得して、項目名を取得しitemListに格納
-			String item = iDao.getItem(tt.getItem_id());
-			itemList.add(item);
-		}
-		*/
-
-		request.setAttribute("ttList", ttList);
-		session.setAttribute("itemList", data);
+		session.setAttribute("data", data);
 
 		// 目標設定ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/target.jsp");
@@ -131,21 +117,25 @@ public class TargetServlet extends HttpServlet {
 		}
 		// ItemsDAOの定義
 		ItemsDAO iDao = new ItemsDAO();
+		// CertificationsDAOの定義
+		CertificationsDAO cDao = new CertificationsDAO();
 		// Today_targetsDAOの定義
 		Today_targetsDAO ttDao = new Today_targetsDAO();
 		// 更新できたかどうか判断する
 		boolean result = true;
 		for(int i = 0; i < count; i++){
-		    // 項目名とチェックの値を取得
+		    // 項目名とチェックと資格名と資格idの値を取得
 		    String item = request.getParameter("item" + i);
 		    String check = request.getParameter("check" + i);
+		    String certification = request.getParameter("cer" + i);
+		    String certification_id = cDao.getCertification_id(certification);
 		    // チェックの値が1か0か チェックが入っていなければ0 入っていれば1(jspには1)
 		    if(check == null) {
 		    	check = "0";
 		    }
 		    // 項目名から項目idを取得
 		    String item_id = iDao.getItem_id(item);
-		    if(ttDao.update(new Today_targets(user_id, item_id, check)) == false) {
+		    if(ttDao.update(new Today_targets(user_id, item_id, certification_id, check)) == false) {
 		    	result = false;
 		    	}
 		    }
