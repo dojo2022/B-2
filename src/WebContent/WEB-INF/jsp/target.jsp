@@ -35,8 +35,7 @@
 								<td><input type="checkbox" name="check<%= count %>" value="1"
 								<c:if test="${ttList.get(status.index).today_target == '1'}">
 								checked
-								</c:if>
-					    		></td></tr>
+								</c:if>></td></tr>
 								<input type="hidden" name="item<%= count %>" value="${e}">
 						<% count++; %>
 						</c:forEach>
