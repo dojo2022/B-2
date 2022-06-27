@@ -94,7 +94,7 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT item_id, certification_id as DAY FROM Items WHERE certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?) ORDER BY ID;";
+			String sql = "SELECT item_id, certification_id FROM Items WHERE certification_id= (SELECT certification_id FROM Certifications WHERE Certifications.certification = ?) ORDER BY ID;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -112,8 +112,8 @@ public class Today_targetsDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				Today_targets new_target = new Today_targets(
-						rs.getString("ID"),
-						rs.getString("DAY")
+						rs.getString("item_id"),
+						rs.getString("certification_id")
 						);
 				resultList_tts.add(new_target);
 			}
@@ -163,7 +163,7 @@ public class Today_targetsDAO {
 
 			//データの登録
 				// SQL文を準備する
-				String sql = "insert into Today_targets (user_id, item_id) values (?, ?)";
+				String sql = "insert into Today_targets (user_id, item_id,certification_id) values (?, ?,?)";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
@@ -178,6 +178,12 @@ public class Today_targetsDAO {
 				}
 				else {
 					pStmt.setString(2, null);
+				}
+				if (today_targets.getCertification_id() != null && !today_targets.getCertification_id().equals("")) {
+					pStmt.setString(3, today_targets.getCertification_id());
+				}
+				else {
+					pStmt.setString(3, null);
 				}
 
 			// 結果表をコレクションにコピーする
