@@ -13,16 +13,18 @@ public class Today_targets implements Serializable {
 
 
 	//コンストラクタ（引数あり）
-	public Today_targets(int id, String user_id, String item_id, String today_target) {
+	public Today_targets(int id, String user_id, String item_id, String certification_id, String today_target) {
 		this.setId(id);
 		this.setUser_id(user_id);
 		this.setItem_id(item_id);
+		this.setCertification_id(certification_id);
 		this.setToday_target(today_target);
 	}
 
-	public Today_targets(String user_id, String item_id, String today_target) {
+	public Today_targets(String user_id, String item_id, String certification_id, String today_target) {
 		this.setUser_id(user_id);
 		this.setItem_id(item_id);
+		this.setCertification_id(certification_id);
 		this.setToday_target(today_target);
 	}
 
