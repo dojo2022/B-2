@@ -22,7 +22,7 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "select * from Today_targets WHERE user_id LIKE ? AND item_id LIKE ? AND today_target LIKE ?";
+			String sql = "select * from Today_targets WHERE user_id LIKE ? AND item_id LIKE ? AND certification_id LIKE ? AND today_target LIKE ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -39,11 +39,17 @@ public class Today_targetsDAO {
 			else {
 				pStmt.setString(2, "%");
 			}
-			if (today_targets.getToday_target() != null && !today_targets.getToday_target().equals("")) {
-				pStmt.setString(3, today_targets.getToday_target());
+			if (today_targets.getCertification_id() != null && !today_targets.getCertification_id().equals("")) {
+				pStmt.setString(3, today_targets.getCertification_id());
 			}
 			else {
 				pStmt.setString(3, "%");
+			}
+			if (today_targets.getToday_target() != null && !today_targets.getToday_target().equals("")) {
+				pStmt.setString(4, today_targets.getToday_target());
+			}
+			else {
+				pStmt.setString(4, "%");
 			}
 
 			// SQL文を実行し、結果表を取得する
