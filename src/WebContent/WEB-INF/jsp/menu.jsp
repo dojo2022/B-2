@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="/tasuma/css/style.css">
+<!-- link rel="stylesheet" href="/tasuma/css/style.css" -->
 <link rel="stylesheet" href="/tasuma/css/menu.css">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,11 +93,11 @@
 
 	<!-- カレンダー -->
 	<!-- 予定がある場合印付ける→カーソル合わせると詳細表示(余裕があれば) -->
-
-	<div class="calendarelese">
-		<button id="prev" type="button">前の月</button>
-		<button id="next" type="button">次の月</button>
+	<div class="button">
+  		<button id="prev">前の月</button>
+  		<button id="next">次の月</button>
 	</div>
+
 		<div id="calendar"></div>
 
 	<!-- フッターここから -->
