@@ -162,21 +162,21 @@ button {
 /* 年月の位置 */
 #calendar {
 	position: absolute;
-	right:0px;
+	right:360px;
 	top: 300px;
 	z-index:30;
 }
 
 #prev{
 	position: absolute;
-	right:100px;
+	right:460px;
 	top: 310px;
 	z-index:50;
 
 }
 #next{
 	position: absolute;
-	right:50px;
+	right:400px;
 	top: 310px;
 	z-index:55;
 }
