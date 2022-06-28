@@ -30,6 +30,10 @@ h2 {
 	margin: 0 auto;
 	text-align: left;
 	width:500px;
+	background-color:#222222;
+	color:#fff;
+	border:2px, rgb(128, 255, 128);
+	border-bottom:2px, rgb(128, 255, 128);
 }
 
 /* 一覧に戻るボタンの位置 */
