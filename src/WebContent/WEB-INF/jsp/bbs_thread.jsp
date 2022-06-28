@@ -25,8 +25,6 @@
 
 		<h2>掲示板 -${comments.thread_bbs}</h2>
 
-
-
 		<!-- 投稿されたコメントの表示(投稿された順番に） -->
 		<table class="bbs">
 		<c:forEach var="e" items="${comments.comment_bbs}">
@@ -36,6 +34,8 @@
 					<!-- 投稿されたコメントを表示する -->
 					<td class = comment>${e.content_bbs}</td>
 				</tr>
+
+				<br>
 		</c:forEach>
 			</table>
 
