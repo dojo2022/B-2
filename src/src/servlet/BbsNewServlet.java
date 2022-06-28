@@ -59,7 +59,7 @@ public class BbsNewServlet extends HttpServlet {
 
 		// 登録処理を行う
 		ThreadsDAO tDao = new ThreadsDAO();
-		if (tDao.insert(new Threads( thread_id, thread_bbs, category_bbs ))) {
+		if (tDao.insert(new Threads( /*thread_id,*/ thread_bbs, category_bbs, content_bbs))) {
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/bbs_thread.jsp");
 			dispatcher.forward(request, response);
