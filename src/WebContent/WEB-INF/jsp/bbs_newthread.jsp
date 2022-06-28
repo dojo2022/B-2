@@ -27,9 +27,9 @@
 		<!-- スレッド名、コメント、カテゴリプルダウンの入力 -->
 		<form method="POST" action="/tasuma/BbsNewServlet">
 			<div class= "thread">
-			スレッド名※<input type="text" name="thread" id="threadname"></div><br>
+			スレッド名※<input type="text" name="thread_bbs" id="threadname"></div><br>
 			<div class="comment">
-			コメント<textarea name="comment" class="comment"></textarea></div><br>
+			コメント<textarea name="content_bbs" class="comment"></textarea></div><br>
 
 			<!-- カテゴリプルダウン表示 -->
 			<div class="category">
@@ -45,14 +45,15 @@
 			</div>
 
 		<!-- 作成ボタン -->
-		<table>
+		<a href="/tasuma/BbsThreadServlet" class="make">作成</a>
+
+	<!--  <table>
 			<tr class="make">
 				<td><a href="/tasuma/BbsThreadServlet">
-						<input type="submit" name="make" class="make" value="作成"><br>
+						<input type="submit" class="make" value="作成"><br>
 				</a></td>
 			</tr>
-		</table>
-
+		</table> -->
 
 			 <!-- 既に利用されているスレッド名を利用しようとした場合のエラー -->
 			<div class="errormsg" id="errormsg">${result.message}</div>

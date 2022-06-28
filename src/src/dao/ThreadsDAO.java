@@ -185,7 +185,7 @@ public class ThreadsDAO  {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する☆
-			String sql = "insert into Threads ( id, thread_id, thread_bbs, category_bbs) values ( ?, ?, ?, ?)";
+			String sql = "insert into Threads (thread_id, thread_bbs, category_bbs) values (?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる☆
 			if (card.getThread_id() != null && !card.getThread_id().equals("")) {

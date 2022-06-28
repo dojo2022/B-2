@@ -50,10 +50,12 @@ public class BbsNewServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		//String number = request.getParameter("number");
-		String thread_id = request.getParameter("thread_id");
+		String content_bbs = request.getParameter("content_bbs");
 		String thread_bbs = request.getParameter("thread_bbs");
 		String category_bbs = request.getParameter("select");
-
+//thread_bbs,category_bbsで新しいthreadsテーブルに追加
+		//上の条件で自動で追加されたthread_idを取得する
+		//追加したthread_idとcontentbbsとuser_idを使ってcommentテーブルに追加
 
 		// 登録処理を行う
 		ThreadsDAO tDao = new ThreadsDAO();
