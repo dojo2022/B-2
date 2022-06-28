@@ -48,7 +48,7 @@
 		<table>
 			<tr class="make">
 				<td><a href="/tasuma/BbsThreadServlet">
-						<input type="submit" name="make" class="btn" value="作成"><br>
+						<input type="submit" name="make" class="make" value="作成"><br>
 				</a></td>
 			</tr>
 		</table>

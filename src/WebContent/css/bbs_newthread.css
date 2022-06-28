@@ -34,25 +34,25 @@ h2 {
 /* 作成ボタンの位置 */
 .make{
 	position: relative;
-	top: 35px;
-	left: 600px;
+	top: 20px;
+	left: 290px;
 	}
 
 /* エラーメッセージの位置 */
 .errormsg {
 	position: relative;
-	top: 35px;
-	left: 600px;
+	top: 8px;
+	left: 350px;
 }
 
 /* 一覧に戻るボタンの位置 */
-/*.bbs {
+.btn {
 	position: relative;
-	top: 7px;
-	left: 300px;
-} */
+	top: 3px;
+	left: 200px;
+}
 
-/* ボタンの色 */
+/* ボタンの色(一覧に戻る） */
 .btn {
   width: 100px;
   box-sizing: border-box;
@@ -72,6 +72,36 @@ h2 {
   color: #fff;
 }
 .btn :active, .btn:focus {
+  top: 2px;
+}
+
+/* 一覧に戻るボタンの位置 */
+.btn {
+	position: relative;
+	top: 7px;
+	left: 200px;
+}
+
+/* ボタンの色（作成ボタン） */
+.make {
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+}
+.make :hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.make :active, .make:focus {
   top: 2px;
 }
 
