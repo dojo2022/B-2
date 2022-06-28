@@ -4,18 +4,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="/tasuma/css/understand.css">
 <meta charset="UTF-8">
 <title>TASUMA|理解度報告</title>
 </head>
 <body>
 <!-- ヘッダーここから -->
-	<p class="username">${username.username }</p>
+	<p class="username">ユーザ名:${username.username }</p>
 	<jsp:include page="/WEB-INF/jsp/header.jsp" />
 <!-- ヘッダーここまで -->
 	<h2>理解度報告</h2>
 
 	<c:forEach var="e" items="${understands }">
-		<h3>${e.certification }</h3>
+		<details>
+		<summary class="h3">${e.certification }</summary>
 		<h4>今日の目標</h4>
 		<% int count = 0; %>
 		<form action="/tasuma/UnderstandServlet" method="post">
@@ -31,9 +33,18 @@
 					<tr>
 						<td>${e1.item_id }</td>
 						<td>${e1.target_id }</td>
-						<td><input type="radio" name="tu<%=count %>" value="1"></td>
-						<td><input type="radio" name="tu<%=count %>" value="2"></td>
-						<td><input type="radio" name="tu<%=count %>" value="3"></td>
+						<td><input type="radio" name="tu<%=count %>" value="1"
+						<c:if test="${e1.target_understand == '1'}">
+						checked
+						</c:if>></td>
+						<td><input type="radio" name="tu<%=count %>" value="2"
+						<c:if test="${e1.target_understand == '2'}">
+						checked
+						</c:if>></td>
+						<td><input type="radio" name="tu<%=count %>" value="3"
+						<c:if test="${e1.target_understand == '3'}">
+						checked
+						</c:if>></td>
 					</tr>
 					<input type="hidden" name="t<%=count %>" value="${e1.target_id }">
 					<% count++; %>
@@ -41,7 +52,7 @@
 			</table>
 			<input type="hidden" name="count" value="<%=count%>">
 			<input type="hidden" name="certification" value="${e.certification }">
-			<input type="submit" value="報告">
+			<input type="submit" class="button" value="報告">
 		</form>
 
 
@@ -73,13 +84,14 @@
 					</tr>
 				</c:forEach>
 			</table>
+		</details>
 	</c:forEach>
 
 	<!-- メニューボタン -->
 	<table>
 	 <tr class="menu">
 		<td><a href="/tasuma/MenuServlet">
-			<button type="button" name="back_menu">メニューに戻る</button>
+			<button type="button" class="button" name="back_menu">メニューに戻る</button>
 		</a></td>
 	 </tr>
     </table>

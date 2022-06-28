@@ -191,8 +191,9 @@ public class UnderstandServlet extends HttpServlet {
 			String target_understands = request.getParameter("tu" + i);
 			String target = request.getParameter("t" + i);
 			String target_id = tDao.getTarget_id(target);
-
-			tuDao.update(new Target_understands(0, target_id, null, user_id, nowStr, target_understands));
+			if(target_understands != null) {
+				tuDao.update(new Target_understands(0, target_id, null, user_id, nowStr, target_understands));
+			}
 		}
 
 		List<Percent> percents = new ArrayList<Percent>();
