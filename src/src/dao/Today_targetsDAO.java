@@ -234,7 +234,7 @@ public class Today_targetsDAO {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/dojo6Data/dojo6Data", "sa", "");
 			// SQL文を準備する
-			String sql = "SELECT id   FROM Today_targets WHERE user_id= (SELECT user_id FROM Users WHERE Users.username = ?)  ORDER BY ID LIMIT 2;";
+			String sql = "SELECT id   FROM Today_targets WHERE user_id=(SELECT user_id FROM Users WHERE username = ?)  and certification_id=(SELECT certification_id FROM Certifications WHERE certification =?) ORDER BY ID LIMIT 2;;";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -245,6 +245,13 @@ public class Today_targetsDAO {
 			else {
 				pStmt.setString(1, "%");
 			}
+			if (today_targets.getCertification() != null && !today_targets.getCertification().equals("")) {
+				pStmt.setString(2, today_targets.getCertification());
+			}
+			else {
+				pStmt.setString(2, "%");
+			}
+
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();

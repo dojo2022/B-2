@@ -119,10 +119,10 @@ public class ScheduleServlet extends HttpServlet {
 			//4.ループを閉じる
 			}
 			//上からn個を本日の目標にする
-			//1.Today_targetsテーブルからuser_id=?のidを2件とってくる
+			//1.Today_targetsテーブルからuser_id=?,cer=?のidを2件とってくる
 			int id=0;
 			Today_targetsDAO ttU_sDao = new Today_targetsDAO();
-			List<Today_targets> resultList_ttus = ttU_sDao.insert_update_select(new Today_targets(id,username));
+			List<Today_targets> resultList_ttus = ttU_sDao.insert_update_select(new Today_targets(id,username,certification));
 			//2.拡張for文でループ
 			for(Today_targets z:resultList_ttus) {
 			//3.idを参照してリストを更新する
