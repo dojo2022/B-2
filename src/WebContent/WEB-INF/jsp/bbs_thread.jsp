@@ -48,7 +48,7 @@
 			<textarea name="post1" class="comment_box"></textarea>
 			<input type="hidden" name="getThreadId" value="${comments.thread_id}">
 			<!-- 投稿ボタン -->
-			<input type="submit" name="post" value="投稿"><br>
+			<input type="submit" name="post" class="btn" value="投稿"><br>
 		</form>
 
 
@@ -58,10 +58,11 @@
 		<table>
 			<tr class="return">
 				<td><a href="/tasuma/BbsServlet">
-						<button type="button" name="back_bbs">一覧に戻る</button>
+						<button type="button" name="back_bbs" class="btn">一覧に戻る</button>
 				</a></td>
 			</tr>
 		</table>
+
 	</div>
 
 	<!-- フッター -->

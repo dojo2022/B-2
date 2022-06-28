@@ -46,10 +46,32 @@ h2 {
 }
 
 /* 一覧に戻るボタンの位置 */
-.bbs {
+/*.bbs {
 	position: relative;
 	top: 7px;
 	left: 300px;
-}
+} */
 
+/* ボタンの色 */
+.btn {
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+}
+.btn :hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.btn :active, .btn:focus {
+  top: 2px;
+}
 

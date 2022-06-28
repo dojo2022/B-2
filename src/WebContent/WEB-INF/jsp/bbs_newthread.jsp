@@ -47,8 +47,8 @@
 		<!-- 作成ボタン -->
 		<table>
 			<tr class="make">
-				<td><a href="/tasuma/まだ未作成">
-						<input type="submit" name="make" value="作成"><br>
+				<td><a href="/tasuma/BbsThreadServlet">
+						<input type="submit" name="make" class="btn" value="作成"><br>
 				</a></td>
 			</tr>
 		</table>
@@ -59,14 +59,8 @@
 		</form>
 
 		<!-- 一覧に戻るボタン -->
-		<table>
-			<tr class="bbs">
-				<td><a href="/tasuma/BbsServlet">
-						<button type="button" name="back_bbs">一覧に戻る</button>
-				</a></td>
-			</tr>
-		</table>
 
+	<a href="/tasuma/BbsServlet" class="btn">一覧に戻る</a>
 
 	</div>
 
