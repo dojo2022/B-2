@@ -47,13 +47,14 @@ public class RegistUserServlet extends HttpServlet {
 		// ユーザー登録処理
 
 		UsersDAO iDao = new UsersDAO();
-		if (iDao.insert(new Users(username, password, mail))) {	// 登録成功
+		if (iDao.insert(new Users(username, password, mail))) {// 登録成功
+			if (iDao.insert_update()) {
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
 			session.setAttribute("username", new LoginUser(username));
 
 			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/tasuma/MenuServlet");
+			response.sendRedirect("/tasuma/MenuServlet");}
 		}
 		else {									// 登録失敗
 			//  （要変更？）リクエストスコープに、タイトル、メッセージ、戻り先を格納する★保留
