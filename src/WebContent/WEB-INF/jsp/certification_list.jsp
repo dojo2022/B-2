@@ -30,10 +30,10 @@
 		<!-- カテゴリをプルダウンで表示 -->
 		<form method="POST" action="/tasuma/CertificationListServlet">
 			<div class="same">
-				<label for="select2">カテゴリ</label>
 				<!-- カテゴリをプルダウンで表示 -->
+				<div class="category">
 				<select name="select">
-					<option value="">選択してください</option>
+					<option value="">カテゴリを選択</option>
 					<option value="IT知識全般">IT知識全般</option>
 					<option value="IT言語">IT言語</option>
 					<option value="データベース">データベース</option>
@@ -43,13 +43,13 @@
 					<option value="事務作業">事務作業</option>
 					<option value="デザイン">デザイン</option>
 				</select>
-
+				</div>
 				<!-- カテゴリをプルダウンで表示ここまで -->
 
 
 				<!-- テキスト検索 -->
 
-				<input type="text" id="certification" name="CERTIFICATION"><br>
+				<input type="text" id="certification" name="CERTIFICATION" class="textbox" placeholder="資格名検索"><br>
 
 				<!-- 検索ボタン -->
 				<input id="submit" type="submit" name="REGIST" class="btn" value="検索"><br>

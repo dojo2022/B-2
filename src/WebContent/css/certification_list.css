@@ -66,9 +66,9 @@ div.table {
 
 /* 表の中のドットの下線 OK*/
 table#list th, table#list td {
-	border-bottom-width: 3px;
-	border-bottom-style: dotted;
-	border-bottom-color: black;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(128, 255, 128);;
 	padding: 4px 16px 4px 0;
 	text-align: center;
 	white-space: nowrap; /* 折り返さない */
@@ -124,4 +124,70 @@ table#list tr.rowdata:hover {
 }
 .btn:active, .クラス名:focus {
   top: 2px;
+}
+/*プルダウンメニュー（以下コピペ）*/
+
+.category {
+  position: relative;
+  /*Don't really need this just for demo styling*/
+  background-color:#222222;
+  color:rgb(128, 255, 128);
+  border:#222222;
+  float: left;
+  min-width: 200px;
+  /*margin: 50px 33%;*/
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+display: none;
+}
+
+.category:after {
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color:rgb(128, 255, 128);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+  /*Adjust for position however you want*/
+
+  top: 18px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  /*left line */
+
+  position: absolute;
+  pointer-events: none;
+}
+
+.category select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgb(128, 255, 128);
+  background-color: #222222;
+  background-image: none;
+  border: 1px solid rgb(128, 255, 128);
+  -ms-word-break: normal;
+  word-break: normal;
+}
+.textbox{
+	background-color:#222222;
+	color:#fff;
+	border:2px, rgb(128, 255, 128);
+	border-bottom:2px, rgb(128, 255, 128);
 }
