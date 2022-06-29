@@ -72,7 +72,7 @@
 <!-- 強制改行 -->
 <div class="break"></div>
 <a href="/tasuma/MenuServlet">
-<button type="button" name="back_menu">メニューに戻る</button>
+<button type="button" class="button" name="back_menu">メニューに戻る</button>
 		</a>
 	<!-- フッターここから -->
 		<jsp:include page="/WEB-INF/jsp/footer.jsp" />
