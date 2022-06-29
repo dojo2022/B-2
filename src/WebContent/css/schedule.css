@@ -15,8 +15,8 @@ h3{
 
 /*テーブルのデータ列の設定(登録ボタンを除く)*/
 td.day_row{
-	border-bottom-width: 3px;
-	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
 	border-bottom-color: black;
 	padding: 4px 16px 4px 0;
 	white-space: nowrap; /* 折り返さない */
