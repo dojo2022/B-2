@@ -16,11 +16,57 @@ table {
 	font-weight:bold;
 
   }
+
 .returnLogin{
-	display: block;
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+  	display: block;
     margin: auto;
 }
+.returnLogin:hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.returnLogin:active, .returnLogin:focus {
+  top: 2px;
+}
+
 .regist{
-	display: block;
+  width: 100px;
+  box-sizing: border-box;
+  padding: 10px;
+   /* 色の指定 */
+  background: linear-gradient(135deg, rgb(255, 255, 128));
+  color: #fff;
+  font-weight: bold;
+  /*border-radius: 8px;*/
+  transition: 0.3s;
+  border: 1px solid rgb(128, 255, 128);
+  background: #222222;
+  color: rgb(128, 255, 128);
+  	display: block;
     margin: auto;
+}
+.regist:hover {
+  background: rgb(128, 255, 128);
+  color: #fff;
+}
+.regist:active, .regist:focus {
+  top: 2px;
+}
+#newUsername, #mail, #newPassword{
+	background-color:#222222;
+	color:#fff;
+	border:2px, rgb(128, 255, 128);
+	border-bottom:2px, rgb(128, 255, 128);
 }
