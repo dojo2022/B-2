@@ -25,3 +25,23 @@
 .h3 {
 	font-size: 1.2em;
 }
+
+/* テーブル */
+table {
+	border-collapse: collapse;
+	border: none;
+}
+td, th {
+	border: none;
+	border-left: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+	padding: 0px 10px;
+}
+
+td:first-child, th:first-child {
+	border-left: none;
+}
+
+tr:first-child td, tr:first-child th {
+	border-top: none;
+}
